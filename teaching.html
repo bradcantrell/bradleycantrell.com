@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching — Bradley Cantrell</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin: 0 calc(-1 * var(--pad));
+    }
+    .course-card {
+      background: var(--bg2);
+      padding: 2rem;
+    }
+    .course-code {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      margin-bottom: 0.5rem;
+    }
+    .course-title { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .course-level { font-size: 0.75rem; color: var(--accent2); letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .course-desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.7; max-width: none; }
+    .institution-block { margin-top: 4rem; }
+    .institution-name {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><span>Bradley Cantrell</span></div>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="lectures.html">Lectures</a></li>
+    <li><a href="dissertation.html">Dissertation</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 8rem;">
+  <div class="section-header">
+    <h3>Teaching</h3>
+  </div>
+
+  <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 3rem; max-width: 65ch;">
+    Teaching at the intersection of computation, ecology, and landscape design — developing new frameworks for how designers understand and engage complex systems.
+  </p>
+
+  <!-- UVA -->
+  <div class="institution-block">
+    <div class="institution-name">University of Virginia · Department of Landscape Architecture</div>
+    <div class="teaching-grid">
+
+      <div class="course-card">
+        <div class="course-code">LAR [code]</div>
+        <div class="course-title">Responsive Landscapes Studio</div>
+        <div class="course-level">Graduate Design Studio</div>
+        <p class="course-desc">
+          An advanced design studio exploring the integration of computational sensing, feedback systems, and ecological processes in landscape design. Students develop projects that treat the landscape as a dynamic, responsive medium rather than a static artifact.
+        </p>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">LAR [code]</div>
+        <div class="course-title">Computation and Ecology</div>
+        <div class="course-level">Graduate Seminar</div>
+        <p class="course-desc">
+          A seminar examining the theoretical and practical implications of computational methods in ecological design. Topics include modeling, simulation, embedded sensing, and the politics of environmental data.
+        </p>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">LAR [code]</div>
+        <div class="course-title">Digital Representation and Analysis</div>
+        <div class="course-level">Graduate / Advanced Undergraduate</div>
+        <p class="course-desc">
+          Methods of digital representation, spatial analysis, and simulation for landscape architecture. Emphasis on developing fluency with computational tools as instruments of design inquiry rather than production alone.
+        </p>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">LAR [code]</div>
+        <div class="course-title">Territory and Infrastructure</div>
+        <div class="course-level">Graduate Seminar</div>
+        <p class="course-desc">
+          An investigation of territorial-scale design — how landscapes, watersheds, coastlines, and urban ecologies operate as infrastructural systems. Case studies drawn from Southern Louisiana, the Chesapeake Bay, and urban ecological corridors.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Previous institutions -->
+  <div class="institution-block">
+    <div class="institution-name">Previous Appointments — Harvard GSD · RISD · Louisiana State University</div>
+    <p style="font-size:0.85rem; color:var(--text-dim);">[Course listings to be added]</p>
+  </div>
+
+</section>
+
+<footer>
+  <p>Bradley Cantrell · University of Virginia School of Architecture</p>
+  <p>bcantrell@virginia.edu</p>
+</footer>
+
+</body>
+</html>

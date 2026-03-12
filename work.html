@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Bradley Cantrell</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .project-full {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin: 0 calc(-1 * var(--pad));
+    }
+    .project-full-item {
+      background: var(--bg);
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    .project-full-item.wide {
+      grid-column: span 2;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    .project-image {
+      aspect-ratio: 16/9;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-full-item.wide .project-image {
+      aspect-ratio: auto;
+      min-height: 400px;
+    }
+    .project-body {
+      padding: 2rem;
+    }
+    .project-full-item.wide .project-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem;
+    }
+    .project-index {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dimmer);
+      margin-bottom: 1rem;
+    }
+    .project-name {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .project-location {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      max-width: 55ch;
+    }
+    @media (max-width: 768px) {
+      .project-full { grid-template-columns: 1fr; }
+      .project-full-item.wide { grid-column: span 1; grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+      .project-full-item.wide .project-image { min-height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><span>Bradley Cantrell</span></div>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="lectures.html">Lectures</a></li>
+    <li><a href="dissertation.html">Dissertation</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 8rem;">
+  <div class="section-header">
+    <h3>Work</h3>
+    <span class="section-count">Selected projects</span>
+  </div>
+</section>
+
+<div class="project-full">
+
+  <!-- Louisiana — wide featured -->
+  <div class="project-full-item wide">
+    <div class="project-image" style="background: linear-gradient(135deg, #050f06 0%, #0a1a0c 40%, #061008 100%);">
+      <!-- IMAGE: Louisiana delta aerial / ecological monitoring / water systems -->
+      <span style="font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dimmer);text-transform:uppercase;">[Image — Louisiana Delta]</span>
+    </div>
+    <div class="project-body">
+      <div class="project-index">01</div>
+      <div class="project-name">Louisiana Ecological Infrastructures</div>
+      <div class="project-location">Southern Louisiana · Ongoing</div>
+      <p class="project-desc">
+        A decade of practice engaging the physical, cultural, and economic complexity of the Mississippi Delta and coastal Louisiana. Through modeling, simulation, and embedded computation, this work develops methodologies for understanding and designing with systems that exceed prediction — where land is actively becoming sea, where cultural continuity and ecological change are inseparable, and where the politics of who measures what determines whose land gets protected.
+      </p>
+    </div>
+  </div>
+
+  <!-- Mississippi Basin Model -->
+  <div class="project-full-item">
+    <div class="project-image" style="background: linear-gradient(135deg, #060810 0%, #0a0d1a 100%);">
+      <!-- IMAGE: Mississippi Basin Model / Army Corps physical model -->
+      <span style="font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dimmer);text-transform:uppercase;">[Image — Basin Model]</span>
+    </div>
+    <div class="project-body">
+      <div class="project-index">02</div>
+      <div class="project-name">Mississippi Basin Model</div>
+      <div class="project-location">Vicksburg, MS</div>
+      <p class="project-desc">
+        The Army Corps of Engineers' 1:2000 scale physical model of the entire Mississippi River basin — the largest physical model ever built. An analog computer, cautionary tale, and prototype for computational landscape thinking. Now abandoned, it embodies the limits of prediction at territorial scale.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cultivant -->
+  <div class="project-full-item">
+    <div class="project-image" style="background: linear-gradient(135deg, #060f06 0%, #0a1a0a 100%);">
+      <!-- IMAGE: Cultivant robotic system / vegetation management -->
+      <span style="font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dimmer);text-transform:uppercase;">[Image — Cultivant]</span>
+    </div>
+    <div class="project-body">
+      <div class="project-index">03</div>
+      <div class="project-name">Cultivant</div>
+      <div class="project-location">Generational Robotics</div>
+      <p class="project-desc">
+        A robotic system for co-creative vegetation management. Machines that work alongside plant growth cycles over years, introducing inputs and reading plant responses as data — producing landscapes that neither the designer nor the machine could produce alone. A demonstration of multi-species co-authorship at landscape scale.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tangier Island -->
+  <div class="project-full-item">
+    <div class="project-image" style="background: linear-gradient(135deg, #100606 0%, #1a0a0a 100%);">
+      <!-- IMAGE: Tangier Island / Chesapeake Bay / coastal land loss -->
+      <span style="font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dimmer);text-transform:uppercase;">[Image — Tangier Island]</span>
+    </div>
+    <div class="project-body">
+      <div class="project-index">04</div>
+      <div class="project-name">Tangier Island</div>
+      <div class="project-location">Chesapeake Bay, Virginia</div>
+      <p class="project-desc">
+        A sinking island in the Chesapeake Bay whose residents have inhabited and adapted to land loss for generations. A case study in the politics of sensing and measurement: who deploys the instruments, whose knowledge counts, and how the framing of a problem determines which solutions are imaginable.
+      </p>
+    </div>
+  </div>
+
+  <!-- Wetware Ecologies -->
+  <div class="project-full-item">
+    <div class="project-image" style="background: linear-gradient(135deg, #080a10 0%, #0d1015 100%);">
+      <!-- IMAGE: Wetware / computational-ecological assemblage -->
+      <span style="font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dimmer);text-transform:uppercase;">[Image — Wetware Ecologies]</span>
+    </div>
+    <div class="project-body">
+      <div class="project-index">05</div>
+      <div class="project-name">Wetware Ecologies</div>
+      <div class="project-location">Research · Ongoing</div>
+      <p class="project-desc">
+        Territories as cyborg assemblages: the coupling of biological processes with computational sensing and feedback to produce adaptive, self-modifying landscapes. Research into synthetic ground — neither purely natural nor purely designed — where biological autonomy and computational mediation are inseparable.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<section>
+  <p style="font-size:0.8rem; color:var(--text-dimmer);">[Additional projects to be added]</p>
+</section>
+
+<footer>
+  <p>Bradley Cantrell · University of Virginia School of Architecture</p>
+  <p>bcantrell@virginia.edu</p>
+</footer>
+
+</body>
+</html>
