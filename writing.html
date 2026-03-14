@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Writing — Bradley Cantrell</title>
+  <title>Writing â€” Bradley Cantrell</title>
   <link rel="stylesheet" href="style.css">
   <style>
     .book-grid {
@@ -35,7 +35,7 @@
     .book-meta { font-size: 0.8rem; color: var(--text-dim); }
     .book-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.75; max-width: none; }
 
-    .essays-section { margin-top: 0; }
+    .writing-section { margin-top: 3rem; }
     .essay-item {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -45,9 +45,19 @@
       border-bottom: 1px solid var(--border);
     }
     .essay-title { font-size: 0.95rem; font-weight: 400; margin-bottom: 0.2rem; }
-    .essay-pub { font-size: 0.8rem; color: var(--text-dim); }
+    .essay-meta { font-size: 0.8rem; color: var(--text-dim); }
+    .essay-co { font-size: 0.75rem; color: var(--text-dimmer); margin-top: 0.15rem; }
     .essay-year { font-size: 0.8rem; color: var(--text-dimmer); white-space: nowrap; }
-    .placeholder-note { font-size: 0.75rem; color: var(--text-dimmer); letter-spacing: 0.05em; font-style: italic; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      margin-top: 3rem;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -60,6 +70,7 @@
     <li><a href="teaching.html">Teaching</a></li>
     <li><a href="lectures.html">Lectures</a></li>
     <li><a href="dissertation.html">Dissertation</a></li>
+    <li><a href="awards.html">Awards</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
 </nav>
@@ -72,95 +83,234 @@
 
 <!-- Books -->
 <div class="book-grid">
-  <a href="responsive-landscapes.html" class="book-card" style="text-decoration:none;">
-    <div class="book-cover"><span>[Cover image]</span></div>
-    <div class="book-title">Responsive Landscapes</div>
-    <div class="book-meta">Routledge, 2015 · Co-authored with Justine Holzman</div>
-    <p class="book-desc">
-      On the potentials of interactive systems and adaptive design in landscape architecture. Offers a forward-thinking perspective on how constructed landscapes can respond to and shape ecological processes — treating responsiveness not as a technological feature but as a fundamental design disposition.
-    </p>
-    <span style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-top:0.5rem;display:block;">Case studies, symposium, courses →</span>
-  </a>
-  <div class="book-card">
-    <div class="book-cover"><span>[Cover image]</span></div>
-    <div class="book-title">Digital Drawing for Landscape Architecture</div>
-    <div class="book-meta">Wiley, 2010 · Second edition 2014 · Co-authored with Wes Michaels</div>
-    <p class="book-desc">
-      A comprehensive guide to digital tools and techniques for landscape architects — from representation to simulation. A cornerstone text in landscape architecture education, bridging the gap between computational methods and design practice.
-    </p>
-  </div>
+
   <div class="book-card" style="background: linear-gradient(135deg, var(--bg2) 0%, #0d100d 100%); border-left: 1px solid var(--accent2); border-color: var(--accent2);">
     <div class="book-cover" style="background: #0a120a;"><span>[In progress]</span></div>
     <div class="book-title">Adaptive Epistemologies and Neo-Wilds</div>
-    <div class="book-meta">PhD Dissertation · Virginia Tech, 2026</div>
+    <div class="book-meta">PhD Dissertation â€” Virginia Tech, 2026</div>
     <p class="book-desc">
-      A practice-based investigation into how computational technologies transform the epistemic conditions of landscape design. Argues that adaptive epistemology — design propositions tested in situ — is not merely supported by computation, but fundamentally reshaped by it.
+      A practice-based investigation into how computational technologies transform the epistemic conditions of landscape design. Argues that adaptive epistemology â€” design propositions tested in situ through iterative feedback-based knowledge production â€” is not merely supported by computation, but fundamentally reshaped by it.
     </p>
-    <a href="dissertation.html" style="font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent2); margin-top:0.5rem;">Read more →</a>
+    <a href="dissertation.html" style="font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent2); margin-top:0.5rem;">Read more â†’</a>
   </div>
+
+  <div class="book-card">
+    <div class="book-cover"><span>[Cover]</span></div>
+    <div class="book-title">Codify: Computation in Landscape Architecture</div>
+    <div class="book-meta">Routledge, 2019 â€” Co-edited with Anton Mekies</div>
+    <p class="book-desc">
+      An edited volume examining the role of computation in shaping contemporary landscape practice â€” from parametric modeling and simulation to algorithmic design processes and data-driven ecologies.
+    </p>
+  </div>
+
+  <a href="responsive-landscapes.html" class="book-card" style="text-decoration:none;">
+    <div class="book-cover"><span>[Cover]</span></div>
+    <div class="book-title">Responsive Landscapes</div>
+    <div class="book-meta">Routledge, 2016 â€” Co-authored with Justine Holzman</div>
+    <p class="book-desc">
+      On the potentials of interactive systems and adaptive design in landscape architecture. Treats responsiveness not as a technological feature but as a fundamental design disposition â€” landscape as a medium that senses, adapts, and produces knowledge.
+    </p>
+    <span style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-top:0.5rem;display:block;">Case studies, symposium, courses â†’</span>
+  </a>
+
+  <div class="book-card">
+    <div class="book-cover"><span>[Cover]</span></div>
+    <div class="book-title">Digital Drawing for Landscape Architecture</div>
+    <div class="book-meta">Wiley, 2010 â€” Second edition 2014 â€” Co-authored with Wes Michaels</div>
+    <p class="book-desc">
+      A comprehensive guide to digital tools and techniques for landscape architects â€” from representation to simulation. A cornerstone text in landscape architecture education, bridging computational methods and design practice.
+    </p>
+  </div>
+
+  <div class="book-card">
+    <div class="book-cover"><span>[Cover]</span></div>
+    <div class="book-title">Modeling the Environment</div>
+    <div class="book-meta">Wiley, 2012 â€” Co-authored with Natalie Yates</div>
+    <p class="book-desc">
+      A practical guide to digital modeling techniques for environmental and landscape design, covering three-dimensional representation, simulation, and visualization for site-scale and territorial projects.
+    </p>
+  </div>
+
 </div>
 
-<!-- Essays & Chapters -->
-<section class="essays-section">
-  <div class="section-header" style="margin-top: 3rem;">
-    <h3>Essays &amp; Chapters</h3>
-    <span class="section-count placeholder-note">[To be populated]</span>
+<!-- Book Chapters -->
+<section class="writing-section">
+  <div class="section-label">Book Chapters</div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Spectres of a Changing Landscape</div>
+      <div class="essay-meta">In: Amoroso, N. <em>Visualizing Climate.</em> Routledge</div>
+    </div>
+    <div class="essay-year">2024</div>
   </div>
 
   <div class="essay-item">
     <div>
-      <div class="essay-title">Toward a Technogeography of Sensing</div>
-      <div class="essay-pub">Essay — [publication to be added]</div>
+      <div class="essay-title">Choreographing Landscape Resistance</div>
+      <div class="essay-meta">In: Dwyre, C. and Perry, C. <em>Ambiguous Territory: Cyborg Ecology.</em> Actar</div>
     </div>
-    <div class="essay-year">[year]</div>
+    <div class="essay-year">2022</div>
   </div>
 
   <div class="essay-item">
     <div>
-      <div class="essay-title">The Model and the Territory: Simulation as Design Instrument</div>
-      <div class="essay-pub">Book chapter — [publication to be added]</div>
+      <div class="essay-title">Artificial Intelligence in Landscape Architecture</div>
+      <div class="essay-meta">In: As, I. (ed.) <em>Routledge Handbook on Artificial Intelligence in Landscape Architecture.</em> Routledge</div>
+      <div class="essay-co">With Xun Liu and Zihao Zhang</div>
     </div>
-    <div class="essay-year">[year]</div>
+    <div class="essay-year">2021</div>
   </div>
 
   <div class="essay-item">
     <div>
-      <div class="essay-title">Generational Robots: Co-Creation in the Neo-Wild</div>
-      <div class="essay-pub">Essay — [publication to be added]</div>
+      <div class="essay-title">Terra Automata</div>
+      <div class="essay-meta">In: Amoroso, N. (ed.) <em>Representing Landscapes: Digital.</em> Routledge</div>
     </div>
-    <div class="essay-year">[year]</div>
+    <div class="essay-year">2015</div>
   </div>
 
   <div class="essay-item">
     <div>
-      <div class="essay-title">Ecological Infrastructures and the Politics of Measurement</div>
-      <div class="essay-pub">Essay — [publication to be added]</div>
+      <div class="essay-title">Foreword</div>
+      <div class="essay-meta">In: Anderson, J. and Ortega, D. <em>Innovations in Landscape Architecture.</em> Routledge</div>
     </div>
-    <div class="essay-year">[year]</div>
+    <div class="essay-year">2016</div>
+  </div>
+
+</section>
+
+<!-- Journal Articles & Essays -->
+<section class="writing-section">
+  <div class="section-label">Articles &amp; Essays</div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Wild Disequilibria</div>
+      <div class="essay-meta"><em>Bartlett Prospectives</em></div>
+      <div class="essay-co">With Marantha Dawkins</div>
+    </div>
+    <div class="essay-year">2022</div>
   </div>
 
   <div class="essay-item">
     <div>
-      <div class="essay-title">Computation and the Adaptive Landscape</div>
-      <div class="essay-pub">Book chapter — [publication to be added]</div>
+      <div class="essay-title">Cultivated Wildness: Towards Technodiversity and Wildness in Machines</div>
+      <div class="essay-meta"><em>Landscape Architecture Frontiers</em></div>
+      <div class="essay-co">With Zihao Zhang</div>
     </div>
-    <div class="essay-year">[year]</div>
+    <div class="essay-year">2021</div>
   </div>
 
   <div class="essay-item">
     <div>
-      <div class="essay-title">Synthetic Ground: Toward Cyborg Ecologies</div>
-      <div class="essay-pub">Essay — [publication to be added]</div>
+      <div class="essay-title">A Third Intelligence</div>
+      <div class="essay-meta"><em>Landscape Architecture Frontiers</em></div>
+      <div class="essay-co">With Zihao Zhang</div>
     </div>
-    <div class="essay-year">[year]</div>
+    <div class="essay-year">2018</div>
   </div>
 
-  <p style="margin-top: 2rem; font-size:0.8rem; color:var(--text-dimmer);">[Complete bibliography to be added]</p>
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Designing Autonomy: Opportunities for New Wildness in the Anthropocene</div>
+      <div class="essay-meta"><em>Trends in Ecology &amp; Evolution</em></div>
+      <div class="essay-co">With L.J. Martin and E.C. Ellis</div>
+    </div>
+    <div class="essay-year">2017</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Adaptation: Sense, Process, Respond</div>
+      <div class="essay-meta"><em>LA+ Simulation.</em> UPenn Press</div>
+    </div>
+    <div class="essay-year">2016</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">After Modify: On Models and Other Realms</div>
+      <div class="essay-meta"><em>Kerb 23: Digital Landscape</em></div>
+      <div class="essay-co">With Justine Holzman</div>
+    </div>
+    <div class="essay-year">2016</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Choreographing Intelligent Agents</div>
+      <div class="essay-meta">ACSA Annual Meeting Proceedings, <em>Black Box</em></div>
+      <div class="essay-co">With Zihao Zhang</div>
+    </div>
+    <div class="essay-year">2018</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Landscape Choreography: Physical Models for Responsive Infrastructures</div>
+      <div class="essay-meta">LaFarge Holcim Conference Proceedings</div>
+      <div class="essay-co">With Justine Holzman</div>
+    </div>
+    <div class="essay-year">2016</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Synthetic Ecologies: Protocols, Simulation, and Manipulation for Indeterminate Landscapes</div>
+      <div class="essay-meta">ACADIA: Design Agency Conference Proceedings</div>
+      <div class="essay-co">With Justine Holzman</div>
+    </div>
+    <div class="essay-year">2014</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Illustrating Ecologies</div>
+      <div class="essay-meta"><em>OZ Journal.</em> Kansas State University Press</div>
+    </div>
+    <div class="essay-year">2011</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Designing Autonomy: Opportunities for New Wildness in the Anthropocene</div>
+      <div class="essay-meta"><em>Trends in Ecology &amp; Evolution</em></div>
+      <div class="essay-co">With L.J. Martin and E.C. Ellis</div>
+    </div>
+    <div class="essay-year">2017</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Digital Modeling in Landscape Architecture</div>
+      <div class="essay-meta"><em>Landscape Journal.</em> Software Review</div>
+    </div>
+    <div class="essay-year">2009</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Abstraction Language</div>
+      <div class="essay-meta">ACADIA, Chicago, IL</div>
+    </div>
+    <div class="essay-year">2009</div>
+  </div>
+
+  <div class="essay-item">
+    <div>
+      <div class="essay-title">Ambient Space</div>
+      <div class="essay-meta">ACADIA, Halifax, Nova Scotia</div>
+    </div>
+    <div class="essay-year">2007</div>
+  </div>
+
 </section>
 
 <footer>
-  <p>Bradley Cantrell · University of Virginia School of Architecture</p>
+  <p>Bradley Cantrell â€” University of Virginia School of Architecture</p>
 </footer>
 
 </body>
 </html>
+
