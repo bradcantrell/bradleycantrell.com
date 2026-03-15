@@ -648,7 +648,7 @@ function loop() {
 // Text obstacle seeding -- words become physical terrain
 // Canvas is position:fixed filling viewport so element rects map directly to canvas coords
 function seedTextObstacles() {
-  var selectors = ['h1', '.hero-label', '.hero-sub'];
+  var selectors = ['h1', '.hero-label', '.hero-sub', '.visitor-readout'];
   for (var si = 0; si < selectors.length; si++) {
     var el = document.querySelector(selectors[si]);
     if (!el) continue;
@@ -702,7 +702,7 @@ rafId = requestAnimationFrame(loop);
   fetch('https://ipapi.co/json/')
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      set('vr-ip',  d.ip);
+      set('vr-ip',  d.ip); requestAnimationFrame(function() { seedTextObstacles(); });
       set('vr-loc', [d.city, d.region_code, d.country_code].filter(Boolean).join(', '));
     })
     .catch(function() {
