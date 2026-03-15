@@ -13,6 +13,7 @@
   top: 7rem;
   left: var(--pad);
   z-index: 10;
+  pointer-events: none;
   font-family: 'Space Mono', 'Courier New', monospace;
   font-size: 0.62rem;
   letter-spacing: 0.10em;
@@ -51,7 +52,7 @@
 </nav>
 
 <div class="hero">
-  <canvas id="sediment-canvas"></canvas>
+  <canvas id="sediment-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;"></canvas>
 
   <div class="visitor-readout" id="visitor-readout">
     <div class="readout-row"><span class="readout-label">IP</span><span class="readout-value" id="vr-ip">—</span></div>
@@ -589,8 +590,9 @@ function resetSim() {
 
 // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function initSim() {
-  W = canvas.width  = window.innerWidth;
-  H = canvas.height = window.innerHeight;
+  var heroEl = canvas.parentElement;
+  W = canvas.width  = heroEl.offsetWidth || window.innerWidth;
+  H = canvas.height = heroEl.offsetHeight || window.innerHeight;
   GW = Math.ceil(W / CFG.GRID_SCALE);
   GH = Math.ceil(H / CFG.GRID_SCALE);
   terrain  = new Float32Array(GW * GH);
