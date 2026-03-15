@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sediment Simulation — bradleycantrell.com</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #0a0705; overflow: hidden; }
+  canvas { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+/*
+ * ═══════════════════════════════════════════════════════════════════════════
+ *  SEDIMENT FLUME SIMULATION
+ *
+ *  Single source at left edge. Obstacle grid disrupts flow, forcing
+ *  particles to deflect, slow, and deposit. Deposited sediment further
+ *  deflects subsequent passes. Landscape builds and evolves over time.
+ *
+ *  Bradley Cantrell — UVA School of Architecture / Landscape Architecture
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+'use strict';
+
+const CFG = {
+  FLOW_DIR:         'right',
+  GRID_SCALE:       4,        // px per terrain cell
+
+  // Emitter — random origin on left edge, aimed at random target on right edge
+  // New origin + target chosen each cycle
+  EMITTER_SPREAD:   0.06,     // perpendicular spread around the main vector
+  EMITTER_COUNT:    3,        // number of simultaneous streams per cycle
+  // Each stream: random Y on left [0.1..0.9], aimed at random Y on right [0.1..0.9]
+  // Emission duration: random within range (seconds)
+  EMIT_DUR_MIN:     40,       // shortest stream lifetime (secs)
+  EMIT_DUR_MAX:     140,      // longest stream lifetime (secs)
+
+  // Particles
+  MAX_PARTICLES:    3500,
+  SPAWN_RATE:       6,        // per frame from emitter
+  LIFE_MIN:         2200,
+  LIFE_MAX:         3000,
+  SPEED_INIT:       0.012,    // very slow initial push — barely moving at birth
+  SPEED_SPREAD:     0.006,    // tight variance
+
+  // Physics — drag and gravity must balance so terminal velocity is slow but nonzero
+  // Terminal velocity ≈ GRAVITY / (1 - BASE_DRAG) = 0.012 / 0.018 ≈ 0.67 px/frame
+  // At 60fps that's ~40px/sec — slow enough to feel like mud, fast enough to cross screen
+  GRAVITY:          0.012,    // forward drive — enough to overcome drag at terminal
+  LATERAL_NOISE:    0.008,    // low noise — mud doesn't wander much
+  BASE_DRAG:        0.982,    // friction — bleeds speed but gravity wins long-term
+  TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
+
+  // Obstacle grid
+  OBSTACLE_COUNT:   55,       // number of fixed obstacles
+  OBSTACLE_RADIUS:  18,       // pixel radius — influence zone (larger = softer approach)
+  OBSTACLE_STRENGTH:0.28,     // gentle lateral nudge — water finding its way around a rock
+  OBSTACLE_FORWARD_KILL: 0.88,// retain most forward momentum — mud oozes around, doesn't stop
+  OBSTACLE_DEPOSIT: 0.006,    // sediment deposited in obstacle wake per frame of contact
+  // Obstacles placed in a staggered grid with noise, avoiding left 10% and right 5%
+
+  // Sediment transport
+  SEDIMENT_INIT:    0.65,     // initial particle load
+  DROP_RATE:        0.22,     // fraction of load dropped per unit deceleration
+  TERRAIN_DROP_MOD: 3.0,      // extra drop rate when over existing sediment
+  PICKUP_SPEED:     0.22,     // min speed to erode terrain
+  PICKUP_RATE:      0.010,    // sediment picked up per frame when fast
+  MAX_SEDIMENT:     0.85,
+
+  // Terrain relaxation
+  RELAX_RATE:       0.0012,
+  RELAX_EVERY:      3,
+
+  // Cycle
+  CYCLE_SECS:       240,
+  FADE_SECS:        8,
+  HOLD_SECS:        2,
+
+  // Colours — synthetic pink palette, opacity builds with deposition depth
+  BG:        [10,  7,  5],
+  WATER:     [28, 50, 82],
+  // Sediment: dark magenta at thin deposits → bright pink-white at thick
+  SED_THIN:  [180, 40, 120],   // thin deposit — visible magenta
+  SED_THICK: [255, 210, 240],  // thick deposit — near-white pink
+  // Particle alpha — very transparent so they only show as hints
+  PARTICLE_ALPHA_MAX: 0.22,
+};
+
+// ── Canvas + State ───────────────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d', { alpha: false });
+
+let W, H, GW, GH;
+let terrain, terrainB, water;
+let particles = [];
+let obstacles = [];   // [{x, y, nx, ny}] — fixed deflectors with pre-computed normals
+let emitter   = [];  // array of {x, y, vx, vy, endFrame} — streams with direction + lifetime
+
+let frame = 0, cycleFrame = 0;
+let phase = 'run', fadeAlpha = 0, rafId = null;
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+const lerp  = (a, b, t) => a + (b - a) * t;
+const clamp = (x, lo, hi) => x < lo ? lo : x > hi ? hi : x;
+const rand  = () => Math.random();
+const randc = () => rand() - 0.5;
+
+function gIdx(gx, gy) {
+  return clamp(gy | 0, 0, GH - 1) * GW + clamp(gx | 0, 0, GW - 1);
+}
+
+function slopeAt(gx, gy) {
+  const L = terrain[gIdx(gx-1, gy)], R = terrain[gIdx(gx+1, gy)];
+  const U = terrain[gIdx(gx, gy-1)], D = terrain[gIdx(gx, gy+1)];
+  return { dx: (L-R)*0.5, dy: (U-D)*0.5 };
+}
+
+// ── Stream Generation ─────────────────────────────────────────────────────────
+// Each stream: origin on left edge → aimed at target on right edge.
+// Initial velocity vector is normalized toward the target.
+function makeStream() {
+  const oy  = H * (0.10 + rand() * 0.80);  // origin Y on left edge
+  const ty  = H * (0.10 + rand() * 0.80);  // target Y on right edge
+  const dur = CFG.EMIT_DUR_MIN + rand() * (CFG.EMIT_DUR_MAX - CFG.EMIT_DUR_MIN);
+  // Initial vy is a fraction of vx — subtle entry angle, gravity straightens it out
+  // dy/W gives the full diagonal slope; we dampen it to 0.25 so it's a gentle bias
+  const slope = ((ty - oy) / W) * 0.25;
+  return {
+    x:        -8,
+    y:        oy,
+    vx:       CFG.SPEED_INIT,
+    vy:       CFG.SPEED_INIT * slope,       // small vertical component at birth
+    endFrame: frame + dur * 60,
+  };
+}
+
+// ── Obstacle Generation ───────────────────────────────────────────────────────
+// Staggered grid with noise — like rocks in a real flume table.
+// Each obstacle has a fixed deflection normal: points roughly perpendicular
+// to flow, with a randomised upward/downward bias so particles spread vertically.
+function placeObstacles() {
+  obstacles = [];
+  const n   = CFG.OBSTACLE_COUNT;
+  const cols = Math.ceil(Math.sqrt(n * (W / H)));
+  const rows = Math.ceil(n / cols);
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (obstacles.length >= n) break;
+
+      // Base position in a staggered grid
+      const xFrac = 0.10 + (col + 0.5 + (row % 2) * 0.5) / cols * 0.85;
+      const yFrac = (row + 0.5) / rows;
+
+      // Add noise so it doesn't look mechanical
+      const ox = xFrac * W + randc() * W * 0.06;
+      const oy = yFrac * H + randc() * H * 0.06;
+
+      // Skip if too close to right edge
+      if (ox > W * 0.95) continue;
+
+      // Deflection normal: roughly perpendicular to flow (lateral),
+      // with a random up/down bias. This spreads particles across the canvas.
+      const bias  = randc() * 0.6;    // -0.3 to +0.3 lateral bias
+      const angle = (Math.PI / 2) + bias;
+      // Alternate rows deflect up vs down to create spreading fan
+      const sign  = (row % 2 === 0) ? 1 : -1;
+
+      obstacles.push({
+        x:  ox,
+        y:  oy,
+        nx: 0,                          // no forward component — pure lateral
+        ny: sign * (0.5 + rand() * 0.5) // lateral deflection direction
+      });
+    }
+  }
+}
+
+// ── Particle Creation ─────────────────────────────────────────────────────────
+function makeParticle(stream) {
+  const life = CFG.LIFE_MIN + rand() * (CFG.LIFE_MAX - CFG.LIFE_MIN);
+  const spd  = CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD;
+  // Perpendicular to stream direction for lateral spread
+  const perpX = -stream.vy;
+  const perpY =  stream.vx;
+  const spread = randc() * CFG.EMITTER_SPREAD;
+  return {
+    x:    stream.x + perpX * spread * H,
+    y:    stream.y + perpY * spread * H,
+    vx:   stream.vx * (spd / CFG.SPEED_INIT) + randc() * 0.004,
+    vy:   stream.vy * (spd / CFG.SPEED_INIT) + randc() * 0.004,
+    load: CFG.SEDIMENT_INIT + randc() * 0.10,
+    life, fullLife: life,
+    tint: 0,
+    size: 1.1 + rand() * 1.0,
+    alpha: 0,
+  };
+}
+
+// ── Particle Step ─────────────────────────────────────────────────────────────
+function stepParticle(p) {
+  p.life -= 1;
+  if (p.alpha < 1) p.alpha = Math.min(1, p.alpha + 0.07);
+
+  const gx = (p.x / CFG.GRID_SCALE) | 0;
+  const gy = (p.y / CFG.GRID_SCALE) | 0;
+  const gi = gIdx(gx, gy);
+  const th = terrain[gi];
+
+  // ── Slope steering (lateral only — follow valleys in Y)
+  const sl = slopeAt(gx, gy);
+  p.vy += sl.dy * 1.20;
+
+  // ── Forward drive — pure X axis gravity straightens diagonal spawns over time
+  // Particles enter at an angle but get pulled rightward — like entering a current
+  p.vx += CFG.GRAVITY;
+
+  // ── Lateral random walk
+  p.vy += randc() * CFG.LATERAL_NOISE;
+
+  // ── Friction (more over thick sediment)
+  const friction = CFG.BASE_DRAG - th * CFG.TERRAIN_FRICTION;
+  const sb = Math.sqrt(p.vx*p.vx + p.vy*p.vy);  // speed before friction
+  p.vx *= friction;
+  p.vy *= friction;
+
+  // ── Obstacle influence — gradual deflection, strongest at centre
+  for (let i = 0; i < obstacles.length; i++) {
+    const o   = obstacles[i];
+    const dx  = p.x - o.x;
+    const dy  = p.y - o.y;
+    const d2  = dx*dx + dy*dy;
+    const r2  = CFG.OBSTACLE_RADIUS * CFG.OBSTACLE_RADIUS;
+    if (d2 < r2) {
+      // Influence falls off from 1 at centre to 0 at edge radius
+      const influence = 1 - Math.sqrt(d2) / CFG.OBSTACLE_RADIUS;
+
+      // Gently bleed forward momentum and nudge laterally
+      // Water slows as it approaches, deflects sideways, then continues
+      p.vx *= lerp(1, CFG.OBSTACLE_FORWARD_KILL, influence);
+      p.vy += o.ny * CFG.OBSTACLE_STRENGTH * influence;
+
+      // Sediment deposits in the wake proportional to influence
+      const ogx = (o.x / CFG.GRID_SCALE) | 0;
+      const ogy = (o.y / CFG.GRID_SCALE) | 0;
+      const ogi = gIdx(ogx, ogy);
+      const drop = Math.min(p.load, CFG.OBSTACLE_DEPOSIT * influence);
+      terrain[ogi] = Math.min(CFG.MAX_SEDIMENT, terrain[ogi] + drop);
+      p.load = Math.max(0, p.load - drop);
+      break;
+    }
+  }
+
+  // ── Integrate position
+  p.x += p.vx;
+  p.y += p.vy;
+
+  // ── Boundaries — top/bottom bounce, right edge culls
+  if (p.y < 2)      { p.y = 2;     p.vy =  Math.abs(p.vy) * 0.6; }
+  if (p.y > H - 2)  { p.y = H - 2; p.vy = -Math.abs(p.vy) * 0.6; }
+  if (p.x > W + 20) { p.life = 0; return; }
+
+  // ── Speed after integration
+  const sa = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+  const decel = Math.max(0, sb - sa);
+
+  // ── DEPOSIT — proportional to deceleration, boosted over existing sediment
+  if (p.load > 0) {
+    const mod  = 1 + th * CFG.TERRAIN_DROP_MOD;
+    const drop = Math.min(p.load, decel * CFG.DROP_RATE * mod + p.load * 0.0003);
+    terrain[gi] = Math.min(CFG.MAX_SEDIMENT, th + drop);
+    p.load = Math.max(0, p.load - drop);
+  }
+
+  // ── PICKUP — fast particles erode existing terrain
+  if (sa > CFG.PICKUP_SPEED && th > 0.01) {
+    const pickup = Math.min(th * 0.5, CFG.PICKUP_RATE);
+    terrain[gi] = Math.max(0, terrain[gi] - pickup);
+    p.load = Math.min(1, p.load + pickup);
+    water[gi] = Math.min(1, water[gi] + 0.18);
+  }
+}
+
+// ── Terrain Relaxation ────────────────────────────────────────────────────────
+function relaxTerrain() {
+  const R = CFG.RELAX_RATE;
+  terrainB.set(terrain);
+  for (let gy = 1; gy < GH - 1; gy++) {
+    for (let gx = 1; gx < GW - 1; gx++) {
+      const i  = gy * GW + gx;
+      const h  = terrain[i];
+      if (h < 0.005) continue;
+      const hL = terrain[i-1], hR = terrain[i+1];
+      const hU = terrain[(gy-1)*GW+gx], hD = terrain[(gy+1)*GW+gx];
+      let out = 0;
+      if (h > hL) { const f=(h-hL)*R; terrainB[i-1]+=f; out+=f; }
+      if (h > hR) { const f=(h-hR)*R; terrainB[i+1]+=f; out+=f; }
+      if (h > hU) { const f=(h-hU)*R; terrainB[(gy-1)*GW+gx]+=f; out+=f; }
+      if (h > hD) { const f=(h-hD)*R; terrainB[(gy+1)*GW+gx]+=f; out+=f; }
+      terrainB[i] = Math.max(0, terrainB[i] - out);
+    }
+  }
+  const tmp = terrain; terrain = terrainB; terrainB = tmp;
+}
+
+// ── Rendering ─────────────────────────────────────────────────────────────────
+function render() {
+  const [BR, BG_c, BB] = CFG.BG;
+  const [WR, WG, WB]   = CFG.WATER;
+
+  ctx.fillStyle = `rgb(${BR},${BG_c},${BB})`;
+  ctx.fillRect(0, 0, W, H);
+
+  // Terrain + water — pixel-level
+  const img = ctx.getImageData(0, 0, W, H);
+  const px  = img.data;
+  const GS  = CFG.GRID_SCALE;
+
+  for (let gy = 0; gy < GH; gy++) {
+    for (let gx = 0; gx < GW; gx++) {
+      const gi = gy * GW + gx;
+      const th = terrain[gi];
+      const wt = water[gi];
+      if (th < 0.001 && wt < 0.004) continue;
+
+      const ht  = clamp(th / CFG.MAX_SEDIMENT, 0, 1);
+      const ht2 = ht * ht;
+
+      // Synthetic pink palette: thin = dark magenta, thick = bright pink-white
+      // Opacity itself builds with deposit thickness — near-zero is nearly invisible
+      const [TR, TG, TB] = CFG.SED_THIN;
+      const [KR, KG, KB] = CFG.SED_THICK;
+      let sr = Math.round(lerp(TR, KR, ht2));
+      let sg = Math.round(lerp(TG, KG, ht2));
+      let sb = Math.round(lerp(TB, KB, ht2));
+
+      // Water channel darkens toward blue
+      if (wt > 0.01) {
+        const wa = clamp(wt * 0.70, 0, 0.65);
+        sr = Math.round(lerp(sr, WR, wa));
+        sg = Math.round(lerp(sg, WG, wa));
+        sb = Math.round(lerp(sb, WB, wa));
+      }
+
+      // Alpha: thin deposits faintly visible, thick ones solid
+      const alpha = clamp(ht * 1.6 + wt * 0.5, 0, 1);
+      const fr = (lerp(BR,   sr, alpha) + 0.5) | 0;
+      const fg = (lerp(BG_c, sg, alpha) + 0.5) | 0;
+      const fb = (lerp(BB,   sb, alpha) + 0.5) | 0;
+
+      const x0 = gx*GS, y0 = gy*GS;
+      const x1 = Math.min(x0+GS, W), y1 = Math.min(y0+GS, H);
+      for (let py = y0; py < y1; py++) {
+        let idx = (py*W + x0)*4;
+        for (let ppx = x0; ppx < x1; ppx++) {
+          px[idx]=fr; px[idx+1]=fg; px[idx+2]=fb; px[idx+3]=255;
+          idx += 4;
+        }
+      }
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Particles — nearly transparent, just a hint of movement
+  // They reveal themselves only through what they leave behind
+  ctx.save();
+  for (let i = 0; i < particles.length; i++) {
+    const p     = particles[i];
+    const lifeT = clamp(p.life / p.fullLife, 0, 1);
+    // Very low alpha — particles are ghosts, terrain is the truth
+    const pa = p.alpha * CFG.PARTICLE_ALPHA_MAX * Math.min(1, lifeT * 6);
+    if (pa < 0.01) continue;
+    // Colour: near-white when fast (water), pinkish when slow (carrying sediment)
+    const sp = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+    const t  = clamp(1 - sp / 0.15, 0, 1); // t=1 when slow
+    const pr = Math.round(lerp(220, 255, t));
+    const pg = Math.round(lerp(220, 120, t));
+    const pb = Math.round(lerp(240, 180, t));
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, 6.2832);
+    ctx.fillStyle = `rgba(${pr},${pg},${pb},${pa.toFixed(3)})`;
+    ctx.fill();
+  }
+  ctx.restore();
+
+  // Fade overlay
+  if (fadeAlpha > 0) {
+    ctx.fillStyle = `rgba(${CFG.BG[0]},${CFG.BG[1]},${CFG.BG[2]},${fadeAlpha.toFixed(3)})`;
+    ctx.fillRect(0, 0, W, H);
+  }
+}
+
+// ── Cycle ─────────────────────────────────────────────────────────────────────
+function updateCycle() {
+  const elapsed = (frame - cycleFrame) / 60;
+  if (phase === 'run') {
+    if (elapsed >= CFG.CYCLE_SECS) phase = 'fade';
+  } else if (phase === 'fade') {
+    const t = clamp((elapsed - CFG.CYCLE_SECS) / CFG.FADE_SECS, 0, 1);
+    fadeAlpha = t * t;
+    if (fadeAlpha >= 0.999) phase = 'hold';
+  } else if (phase === 'hold') {
+    const t = clamp((elapsed - CFG.CYCLE_SECS - CFG.FADE_SECS) / CFG.HOLD_SECS, 0, 1);
+    if (t >= 1) resetSim();
+  }
+}
+
+function resetSim() {
+  terrain.fill(0); terrainB.fill(0); water.fill(0);
+  particles.length = 0;
+  phase = 'run'; fadeAlpha = 0; cycleFrame = frame;
+  placeObstacles();
+  emitter = [];
+  for (let i = 0; i < CFG.EMITTER_COUNT; i++) emitter.push(makeStream());
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+function initSim() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  GW = Math.ceil(W / CFG.GRID_SCALE);
+  GH = Math.ceil(H / CFG.GRID_SCALE);
+  terrain  = new Float32Array(GW * GH);
+  terrainB = new Float32Array(GW * GH);
+  water    = new Float32Array(GW * GH);
+  particles.length = 0;
+
+  // Generate initial streams
+  emitter = [];
+  for (let i = 0; i < CFG.EMITTER_COUNT; i++) emitter.push(makeStream());
+
+  frame = 0; cycleFrame = 0; phase = 'run'; fadeAlpha = 0;
+  placeObstacles();
+}
+
+// ── Main Loop ─────────────────────────────────────────────────────────────────
+function loop() {
+  rafId = requestAnimationFrame(loop);
+  frame++;
+  updateCycle();
+
+  if (phase === 'run') {
+    // Expire streams that have run their duration; replace with new random stream
+    for (let s = 0; s < emitter.length; s++) {
+      if (frame > emitter[s].endFrame) emitter[s] = makeStream();
+    }
+    // Spawn from each active stream
+    for (const stream of emitter) {
+      for (let k = 0; k < CFG.SPAWN_RATE && particles.length < CFG.MAX_PARTICLES; k++) {
+        particles.push(makeParticle(stream));
+      }
+    }
+  }
+
+  for (let i = 0; i < particles.length; i++) stepParticle(particles[i]);
+
+  let i = 0;
+  while (i < particles.length) {
+    if (particles[i].life <= 0) { particles[i] = particles[particles.length-1]; particles.pop(); }
+    else i++;
+  }
+
+  if (frame & 1) {
+    for (let j = 0; j < water.length; j++) {
+      if (water[j] > 0.001) water[j] *= 0.952; else water[j] = 0;
+    }
+  }
+
+  if (frame % CFG.RELAX_EVERY === 0) relaxTerrain();
+  render();
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+window.addEventListener('resize', () => {
+  clearTimeout(window._rt);
+  window._rt = setTimeout(() => {
+    if (rafId) cancelAnimationFrame(rafId);
+    initSim();
+    rafId = requestAnimationFrame(loop);
+  }, 150);
+});
+
+initSim();
+rafId = requestAnimationFrame(loop);
+</script>
+</body>
+</html>
