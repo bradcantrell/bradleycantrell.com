@@ -79,8 +79,8 @@ const CFG = {
   // Sediment transport over distance — open water fading
   // Only ~5% of particles make it across at full brightness
   // As particles fade, deposit probability increases
-  FADE_START:       0.15,    // fraction of canvas width before fade begins
-  FADE_LENGTH:      0.72,    // fraction of canvas width over which full fade occurs (most gone by ~87%)
+  FADE_START:       0.12,    // fraction of canvas width before fade begins
+  FADE_LENGTH:      0.60,    // fraction of canvas width over which full fade occurs (most gone by ~72%)
   FADE_DEPOSIT_BOOST: 8.0,   // multiplier on drop rate at full fade (dim = dropping load)
   BASE_DROP_CHANCE: 0.05,    // 5% base deposit chance per frame at full brightness
 };
