@@ -354,16 +354,16 @@ function placeObstacles() {
 // â”€â”€ Particle Creation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function makeParticle(stream) {
   const life = CFG.LIFE_MIN + rand() * (CFG.LIFE_MAX - CFG.LIFE_MIN);
-  const spd  = CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD;
-  // Perpendicular to stream direction for lateral spread
-  const perpX = -stream.vy;
-  const perpY =  stream.vx;
-  const spread = randc() * CFG.EMITTER_SPREAD;
+  // Spawn at terminal velocity so drag never wins at birth
+  const terminalV = CFG.GRAVITY / (1 - CFG.BASE_DRAG);
+  const vx = terminalV + randc() * CFG.SPEED_SPREAD * 0.5;
+  const vy = randc() * CFG.SPEED_SPREAD * 0.2;
+  const spread = randc() * CFG.EMITTER_SPREAD * H;
   return {
-    x:    stream.x + perpX * spread * H,
-    y:    stream.y + perpY * spread * H,
-    vx:   stream.vx * (spd / CFG.SPEED_INIT) + randc() * 0.004,
-    vy:   stream.vy * (spd / CFG.SPEED_INIT) + randc() * 0.004,
+    x:    20,                              // start 20px in -- never on the actual edge
+    y:    clamp(stream.y + spread, 2, H - 2),
+    vx:   Math.max(terminalV * 0.8, vx),  // never below 80% of terminal
+    vy,
     load: CFG.SEDIMENT_INIT + randc() * 0.10,
     life, fullLife: life,
     tint: 0,
@@ -616,14 +616,26 @@ function loop() {
   updateCycle();
 
   if (phase === 'run') {
-    // Expire streams that have run their duration; replace with new random stream
+    // Continuously drift each stream Y toward its driftTarget
     for (let s = 0; s < emitter.length; s++) {
-      if (frame > emitter[s].endFrame) emitter[s] = makeStream();
+      const st = emitter[s];
+      const diff = st.driftTarget - st.y;
+      const step = CFG.DRIFT_SPEED * H;
+      if (Math.abs(diff) <= step) {
+        st.y = st.driftTarget;
+        st.driftTarget = H * (0.10 + rand() * 0.80);
+      } else {
+        st.y += Math.sign(diff) * step;
+      }
+      const slope = ((st.driftTarget - st.y) / W) * 0.25;
+      st.vy = CFG.SPEED_INIT * slope;
     }
-    // Spawn from each active stream
-    for (const stream of emitter) {
-      for (let k = 0; k < CFG.SPAWN_RATE && particles.length < CFG.MAX_PARTICLES; k++) {
-        particles.push(makeParticle(stream));
+    // Probabilistic spawn -- tapers smoothly as pool fills, no burst/drain cycle
+    const fillRatio = particles.length / CFG.MAX_PARTICLES;
+    const spawnP = Math.max(0, 1 - (fillRatio * fillRatio));
+    for (let s = 0; s < emitter.length; s++) {
+      if (rand() < spawnP) {
+        particles.push(makeParticle(emitter[s]));
       }
     }
   }
