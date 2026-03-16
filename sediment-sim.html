@@ -37,19 +37,17 @@ const CFG = {
   DRIFT_SPEED:      0.0015,   // how fast the stream Y drifts toward its target (per frame)
 
   // Particles
-  MAX_PARTICLES:    6000,     // larger pool prevents pool-drain bursts
-  SPAWN_RATE:       8,        // per frame per stream — steady constant rate
-  LIFE_MIN:         2200,
-  LIFE_MAX:         3000,
-  SPEED_INIT:       0.012,    // very slow initial push — barely moving at birth
-  SPEED_SPREAD:     0.006,    // tight variance
+  MAX_PARTICLES:    5000,
+  SPAWN_RATE:       5,        // per frame per stream — small constant rate, no surges
+  LIFE_MIN:         1800,
+  LIFE_MAX:         2400,
+  SPEED_INIT:       0.10,     // strong initial push — no stalling at left edge
+  SPEED_SPREAD:     0.02,     // variance around SPEED_INIT
 
-  // Physics — drag and gravity must balance so terminal velocity is slow but nonzero
-  // Terminal velocity ≈ GRAVITY / (1 - BASE_DRAG) = 0.012 / 0.018 ≈ 0.67 px/frame
-  // At 60fps that's ~40px/sec — slow enough to feel like mud, fast enough to cross screen
-  GRAVITY:          0.012,    // forward drive — enough to overcome drag at terminal
-  LATERAL_NOISE:    0.010,    // slightly more wander for broader coverage
-  BASE_DRAG:        0.982,    // friction — bleeds speed but gravity wins long-term
+  // Physics
+  GRAVITY:          0.004,    // gentle forward nudge on top of the initial speed
+  LATERAL_NOISE:    0.010,    // lateral wander
+  BASE_DRAG:        0.978,    // friction
   TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
 
   // Obstacle grid
@@ -127,7 +125,7 @@ function makeStream() {
     x:           -8,
     y:           oy,
     vx:          CFG.SPEED_INIT,
-    vy:          CFG.SPEED_INIT * slope,
+    vy:          CFG.SPEED_INIT * slope * 0.3,  // gentle lateral entry angle
     driftTarget: driftTarget,
   };
 }
@@ -177,16 +175,17 @@ function placeObstacles() {
 // ── Particle Creation ─────────────────────────────────────────────────────────
 function makeParticle(stream) {
   const life = CFG.LIFE_MIN + rand() * (CFG.LIFE_MAX - CFG.LIFE_MIN);
-  const spd  = CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD;
-  // Perpendicular to stream direction for lateral spread
-  const perpX = -stream.vy;
-  const perpY =  stream.vx;
-  const spread = randc() * CFG.EMITTER_SPREAD;
+  // vx always strongly positive — no stalling at left edge
+  const vx = Math.max(0.06, CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD);
+  // vy is a small lateral component based on stream angle
+  const vy = stream.vy + randc() * CFG.SPEED_SPREAD;
+  // Lateral spread perpendicular to flow
+  const spread = randc() * CFG.EMITTER_SPREAD * H;
   return {
-    x:    stream.x + perpX * spread * H,
-    y:    stream.y + perpY * spread * H,
-    vx:   stream.vx * (spd / CFG.SPEED_INIT) + randc() * 0.004,
-    vy:   stream.vy * (spd / CFG.SPEED_INIT) + randc() * 0.004,
+    x:    stream.x,
+    y:    stream.y + spread,
+    vx,
+    vy,
     load: CFG.SEDIMENT_INIT + randc() * 0.10,
     life, fullLife: life,
     tint: 0,
