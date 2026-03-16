@@ -75,6 +75,14 @@ const CFG = {
   SED_THICK: [255, 210, 240],  // thick deposit — near-white pink
   // Particle alpha — very transparent so they only show as hints
   PARTICLE_ALPHA_MAX: 0.22,
+
+  // Sediment transport over distance — open water fading
+  // Only ~5% of particles make it across at full brightness
+  // As particles fade, deposit probability increases
+  FADE_START:       0.10,    // fraction of canvas width before fade begins
+  FADE_LENGTH:      0.55,    // fraction of canvas width over which full fade occurs (most gone by 65%)
+  FADE_DEPOSIT_BOOST: 8.0,   // multiplier on drop rate at full fade (dim = dropping load)
+  BASE_DROP_CHANCE: 0.05,    // 5% base deposit chance per frame at full brightness
 };
 
 // ── State ─────────────────────────────────────────────────────────────────────
@@ -190,6 +198,7 @@ function makeParticle(stream) {
     tint: 0,
     size: 1.1 + rand() * 1.0,
     alpha: 0,
+    distAlpha: 1.0,   // fades with distance traveled — open water transport
   };
 }
 
@@ -197,6 +206,16 @@ function makeParticle(stream) {
 function stepParticle(p) {
   p.life -= 1;
   if (p.alpha < 1) p.alpha = Math.min(1, p.alpha + 0.07);
+
+  // Distance-based fade — open water sediment transport
+  // Particles dim as they travel, with most gone before 65% of canvas width
+  const fadeStart = W * CFG.FADE_START;
+  const fadeEnd   = W * (CFG.FADE_START + CFG.FADE_LENGTH);
+  if (p.x > fadeStart) {
+    const fadeProgress = clamp((p.x - fadeStart) / (fadeEnd - fadeStart), 0, 1);
+    // Exponential decay — rapid initial loss, long tail (only 5% survive to full)
+    p.distAlpha = Math.pow(1 - fadeProgress, 2.8);
+  }
 
   const gx = (p.x / CFG.GRID_SCALE) | 0;
   const gy = (p.y / CFG.GRID_SCALE) | 0;
@@ -239,13 +258,18 @@ function stepParticle(p) {
   if (p.y < 2)      { p.y = 2;     p.vy =  Math.abs(p.vy) * 0.6; }
   if (p.y > H - 2)  { p.y = H - 2; p.vy = -Math.abs(p.vy) * 0.6; }
   if (p.x > W + 20) { p.life = 0; return; }
+  // Kill particle when it has fully faded and deposited its load
+  if ((p.distAlpha ?? 1) < 0.01 && p.load < 0.02) { p.life = 0; return; }
 
   const sa = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
   const decel = Math.max(0, sb - sa);
 
   if (p.load > 0) {
     const mod  = 1 + th * CFG.TERRAIN_DROP_MOD;
-    const drop = Math.min(p.load, decel * CFG.DROP_RATE * mod + p.load * 0.0003);
+    // Fade boost: as particle dims, deposit probability increases dramatically
+    // At distAlpha=1.0 (bright): base rate. At distAlpha=0.0 (gone): FADE_DEPOSIT_BOOST * rate
+    const fadeMod = 1 + (1 - p.distAlpha) * CFG.FADE_DEPOSIT_BOOST;
+    const drop = Math.min(p.load, decel * CFG.DROP_RATE * mod * fadeMod + p.load * (0.0003 + (1 - p.distAlpha) * 0.004));
     terrain[gi] = Math.min(CFG.MAX_SEDIMENT, th + drop);
     p.load = Math.max(0, p.load - drop);
   }
@@ -337,7 +361,9 @@ function render() {
   for (let i = 0; i < particles.length; i++) {
     const p     = particles[i];
     const lifeT = clamp(p.life / p.fullLife, 0, 1);
-    const pa = p.alpha * CFG.PARTICLE_ALPHA_MAX * Math.min(1, lifeT * 6);
+    // distAlpha: fades particle with distance — only ~5% survive to far bank
+    const da = p.distAlpha ?? 1.0;
+    const pa = p.alpha * CFG.PARTICLE_ALPHA_MAX * Math.min(1, lifeT * 6) * da;
     if (pa < 0.01) continue;
     const sp = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
     const t  = clamp(1 - sp / 0.15, 0, 1);
