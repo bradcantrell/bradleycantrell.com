@@ -31,14 +31,14 @@ const CFG = {
   GRID_SCALE:       4,        // px per terrain cell
 
   // Emitter — continuous streams that slowly drift their Y origin over time
-  EMITTER_SPREAD:   0.06,     // perpendicular spread around the main vector
-  EMITTER_COUNT:    3,        // number of simultaneous streams
+  EMITTER_SPREAD:   0.08,     // perpendicular spread around the main vector
+  EMITTER_COUNT:    4,        // number of simultaneous streams
   // Streams never expire — they drift smoothly so emission is uninterrupted
-  DRIFT_SPEED:      0.00008,  // how fast the stream Y target drifts (fraction of H per frame)
+  DRIFT_SPEED:      0.0015,   // how fast the stream Y drifts toward its target (per frame)
 
   // Particles
-  MAX_PARTICLES:    3500,
-  SPAWN_RATE:       6,        // per frame from emitter
+  MAX_PARTICLES:    6000,     // larger pool prevents pool-drain bursts
+  SPAWN_RATE:       8,        // per frame per stream — steady constant rate
   LIFE_MIN:         2200,
   LIFE_MAX:         3000,
   SPEED_INIT:       0.012,    // very slow initial push — barely moving at birth
@@ -48,7 +48,7 @@ const CFG = {
   // Terminal velocity ≈ GRAVITY / (1 - BASE_DRAG) = 0.012 / 0.018 ≈ 0.67 px/frame
   // At 60fps that's ~40px/sec — slow enough to feel like mud, fast enough to cross screen
   GRAVITY:          0.012,    // forward drive — enough to overcome drag at terminal
-  LATERAL_NOISE:    0.008,    // low noise — mud doesn't wander much
+  LATERAL_NOISE:    0.010,    // slightly more wander for broader coverage
   BASE_DRAG:        0.982,    // friction — bleeds speed but gravity wins long-term
   TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
 
@@ -57,20 +57,20 @@ const CFG = {
   OBSTACLE_RADIUS:  18,       // pixel radius — influence zone (larger = softer approach)
   OBSTACLE_STRENGTH:0.28,     // gentle lateral nudge — water finding its way around a rock
   OBSTACLE_FORWARD_KILL: 0.88,// retain most forward momentum — mud oozes around, doesn't stop
-  OBSTACLE_DEPOSIT: 0.006,    // sediment deposited in obstacle wake per frame of contact
+  OBSTACLE_DEPOSIT: 0.012,    // doubled — more sediment builds in obstacle wakes
   // Obstacles placed in a staggered grid with noise, avoiding left 10% and right 5%
 
   // Sediment transport
-  SEDIMENT_INIT:    0.65,     // initial particle load
-  DROP_RATE:        0.22,     // fraction of load dropped per unit deceleration
-  TERRAIN_DROP_MOD: 3.0,      // extra drop rate when over existing sediment
-  PICKUP_SPEED:     0.22,     // min speed to erode terrain
-  PICKUP_RATE:      0.010,    // sediment picked up per frame when fast
-  MAX_SEDIMENT:     0.85,
+  SEDIMENT_INIT:    0.80,     // particles start heavier — more to deposit
+  DROP_RATE:        0.55,     // much higher — deposit aggressively on deceleration
+  TERRAIN_DROP_MOD: 4.0,      // strong positive feedback — sediment begets sediment
+  PICKUP_SPEED:     0.28,     // higher threshold — terrain harder to erode once built
+  PICKUP_RATE:      0.006,    // slower erosion — net deposition wins
+  MAX_SEDIMENT:     1.0,      // allow full saturation
 
-  // Terrain relaxation
-  RELAX_RATE:       0.0012,
-  RELAX_EVERY:      3,
+  // Terrain relaxation — slower so deposits hold their shape longer
+  RELAX_RATE:       0.0005,   // much slower spread — terrain builds visibly
+  RELAX_EVERY:      6,        // relax half as often
 
   // Cycle
   CYCLE_SECS:       240,
@@ -121,17 +121,14 @@ function slopeAt(gx, gy) {
 // Initial velocity vector is normalized toward the target.
 function makeStream() {
   const oy  = H * (0.10 + rand() * 0.80);  // origin Y on left edge
-  const ty  = H * (0.10 + rand() * 0.80);  // initial target Y on right edge
-  // Drift target: where the stream is slowly heading next
-  const driftTarget = H * (0.10 + rand() * 0.80);
-  const slope = ((ty - oy) / W) * 0.25;
+  const driftTarget = H * (0.10 + rand() * 0.80);  // initial drift destination
+  const slope = ((driftTarget - oy) / W) * 0.25;
   return {
     x:           -8,
     y:           oy,
     vx:          CFG.SPEED_INIT,
     vy:          CFG.SPEED_INIT * slope,
-    targetY:     ty,          // current aim point on right edge
-    driftTarget: driftTarget, // slowly drifting toward this Y
+    driftTarget: driftTarget,
   };
 }
 
@@ -441,18 +438,20 @@ function loop() {
   updateCycle();
 
   if (phase === 'run') {
-    // Continuously drift each stream's target Y toward its driftTarget;
+    // Continuously drift each stream's Y toward its driftTarget at a fixed pixel/frame rate;
     // when close, pick a new driftTarget — emission never stops, source just wanders
     for (let s = 0; s < emitter.length; s++) {
       const st = emitter[s];
-      // Ease targetY toward driftTarget
-      st.targetY += (st.driftTarget - st.targetY) * CFG.DRIFT_SPEED * 60;
-      // When close enough, choose a new drift target
-      if (Math.abs(st.driftTarget - st.targetY) < H * 0.01) {
+      const diff = st.driftTarget - st.y;
+      const step = CFG.DRIFT_SPEED * H;   // pixels per frame
+      if (Math.abs(diff) <= step) {
+        st.y = st.driftTarget;
         st.driftTarget = H * (0.10 + rand() * 0.80);
+      } else {
+        st.y += Math.sign(diff) * step;
       }
-      // Recompute vy from current slope
-      const slope = ((st.targetY - st.y) / W) * 0.25;
+      // Recompute vy from angle between current Y and target Y on right edge
+      const slope = ((st.driftTarget - st.y) / W) * 0.25;
       st.vy = CFG.SPEED_INIT * slope;
     }
     // Spawn from each stream — every frame, no gaps
