@@ -41,13 +41,14 @@ const CFG = {
   SPAWN_RATE:       5,        // per frame per stream — small constant rate, no surges
   LIFE_MIN:         1800,
   LIFE_MAX:         2400,
-  SPEED_INIT:       0.10,     // strong initial push — no stalling at left edge
-  SPEED_SPREAD:     0.02,     // variance around SPEED_INIT
+  SPEED_INIT:       1.5,      // pixels/frame at birth — crosses screen in ~500 frames
+  SPEED_SPREAD:     0.3,
 
-  // Physics
-  GRAVITY:          0.004,    // gentle forward nudge on top of the initial speed
-  LATERAL_NOISE:    0.010,    // lateral wander
-  BASE_DRAG:        0.978,    // friction
+  // Physics — terminal velocity = GRAVITY / (1 - BASE_DRAG)
+  // 0.08 / (1 - 0.95) = 1.6 px/frame — slow but always moving
+  GRAVITY:          0.08,     // forward drive per frame
+  LATERAL_NOISE:    0.06,     // lateral wander
+  BASE_DRAG:        0.95,     // friction — strong enough to slow in obstacles, not to stall
   TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
 
   // Obstacle grid
@@ -175,16 +176,15 @@ function placeObstacles() {
 // ── Particle Creation ─────────────────────────────────────────────────────────
 function makeParticle(stream) {
   const life = CFG.LIFE_MIN + rand() * (CFG.LIFE_MAX - CFG.LIFE_MIN);
-  // vx always strongly positive — no stalling at left edge
-  const vx = Math.max(0.06, CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD);
-  // vy is a small lateral component based on stream angle
-  const vy = stream.vy + randc() * CFG.SPEED_SPREAD;
-  // Lateral spread perpendicular to flow
+  const vx = CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD;
+  // Small lateral component — stream angle is gentle, wander does the rest
+  const vy = randc() * CFG.SPEED_SPREAD * 0.3;
+  // Y spread: small random offset around stream Y
   const spread = randc() * CFG.EMITTER_SPREAD * H;
   return {
     x:    stream.x,
-    y:    stream.y + spread,
-    vx,
+    y:    clamp(stream.y + spread, 2, H - 2),
+    vx:   Math.max(1.0, vx),   // always at least 1 px/frame rightward
     vy,
     load: CFG.SEDIMENT_INIT + randc() * 0.10,
     life, fullLife: life,
