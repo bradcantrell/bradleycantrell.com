@@ -30,14 +30,11 @@ const CFG = {
   FLOW_DIR:         'right',
   GRID_SCALE:       4,        // px per terrain cell
 
-  // Emitter — random origin on left edge, aimed at random target on right edge
-  // New origin + target chosen each cycle
+  // Emitter — continuous streams that slowly drift their Y origin over time
   EMITTER_SPREAD:   0.06,     // perpendicular spread around the main vector
-  EMITTER_COUNT:    3,        // number of simultaneous streams per cycle
-  // Each stream: random Y on left [0.1..0.9], aimed at random Y on right [0.1..0.9]
-  // Emission duration: random within range (seconds)
-  EMIT_DUR_MIN:     40,       // shortest stream lifetime (secs)
-  EMIT_DUR_MAX:     140,      // longest stream lifetime (secs)
+  EMITTER_COUNT:    3,        // number of simultaneous streams
+  // Streams never expire — they drift smoothly so emission is uninterrupted
+  DRIFT_SPEED:      0.00008,  // how fast the stream Y target drifts (fraction of H per frame)
 
   // Particles
   MAX_PARTICLES:    3500,
@@ -124,17 +121,17 @@ function slopeAt(gx, gy) {
 // Initial velocity vector is normalized toward the target.
 function makeStream() {
   const oy  = H * (0.10 + rand() * 0.80);  // origin Y on left edge
-  const ty  = H * (0.10 + rand() * 0.80);  // target Y on right edge
-  const dur = CFG.EMIT_DUR_MIN + rand() * (CFG.EMIT_DUR_MAX - CFG.EMIT_DUR_MIN);
-  // Initial vy is a fraction of vx — subtle entry angle, gravity straightens it out
-  // dy/W gives the full diagonal slope; we dampen it to 0.25 so it's a gentle bias
+  const ty  = H * (0.10 + rand() * 0.80);  // initial target Y on right edge
+  // Drift target: where the stream is slowly heading next
+  const driftTarget = H * (0.10 + rand() * 0.80);
   const slope = ((ty - oy) / W) * 0.25;
   return {
-    x:        -8,
-    y:        oy,
-    vx:       CFG.SPEED_INIT,
-    vy:       CFG.SPEED_INIT * slope,       // small vertical component at birth
-    endFrame: frame + dur * 60,
+    x:           -8,
+    y:           oy,
+    vx:          CFG.SPEED_INIT,
+    vy:          CFG.SPEED_INIT * slope,
+    targetY:     ty,          // current aim point on right edge
+    driftTarget: driftTarget, // slowly drifting toward this Y
   };
 }
 
@@ -444,11 +441,21 @@ function loop() {
   updateCycle();
 
   if (phase === 'run') {
-    // Expire streams that have run their duration; replace with new random stream
+    // Continuously drift each stream's target Y toward its driftTarget;
+    // when close, pick a new driftTarget — emission never stops, source just wanders
     for (let s = 0; s < emitter.length; s++) {
-      if (frame > emitter[s].endFrame) emitter[s] = makeStream();
+      const st = emitter[s];
+      // Ease targetY toward driftTarget
+      st.targetY += (st.driftTarget - st.targetY) * CFG.DRIFT_SPEED * 60;
+      // When close enough, choose a new drift target
+      if (Math.abs(st.driftTarget - st.targetY) < H * 0.01) {
+        st.driftTarget = H * (0.10 + rand() * 0.80);
+      }
+      // Recompute vy from current slope
+      const slope = ((st.targetY - st.y) / W) * 0.25;
+      st.vy = CFG.SPEED_INIT * slope;
     }
-    // Spawn from each active stream
+    // Spawn from each stream — every frame, no gaps
     for (const stream of emitter) {
       for (let k = 0; k < CFG.SPAWN_RATE && particles.length < CFG.MAX_PARTICLES; k++) {
         particles.push(makeParticle(stream));
