@@ -204,26 +204,20 @@ const CFG = {
   // Emitter â€” random origin on left edge, aimed at random target on right edge
   // New origin + target chosen each cycle
   EMITTER_SPREAD:   0.06,     // perpendicular spread around the main vector
-  EMITTER_COUNT:    3,        // number of simultaneous streams per cycle
+  EMITTER_COUNT:    4,        // number of simultaneous streams
+  DRIFT_SPEED:      0.0015,   // how fast stream Y drifts toward its target
   // Each stream: random Y on left [0.1..0.9], aimed at random Y on right [0.1..0.9]
   // Emission duration: random within range (seconds)
-  EMIT_DUR_MIN:     40,       // shortest stream lifetime (secs)
-  EMIT_DUR_MAX:     140,      // longest stream lifetime (secs)
-
+  
   // Particles
-  MAX_PARTICLES:    3500,
-  SPAWN_RATE:       6,        // per frame from emitter
-  LIFE_MIN:         2200,
-  LIFE_MAX:         3000,
-  SPEED_INIT:       0.012,    // very slow initial push â€” barely moving at birth
-  SPEED_SPREAD:     0.006,    // tight variance
-
-  // Physics â€” drag and gravity must balance so terminal velocity is slow but nonzero
-  // Terminal velocity â‰ˆ GRAVITY / (1 - BASE_DRAG) = 0.012 / 0.018 â‰ˆ 0.67 px/frame
-  // At 60fps that's ~40px/sec â€” slow enough to feel like mud, fast enough to cross screen
-  GRAVITY:          0.012,    // forward drive â€” enough to overcome drag at terminal
-  LATERAL_NOISE:    0.008,    // low noise â€” mud doesn't wander much
-  BASE_DRAG:        0.982,    // friction â€” bleeds speed but gravity wins long-term
+  MAX_PARTICLES:    4000,     // soft ceiling
+    LIFE_MIN:         3500,
+  LIFE_MAX:         5000,
+    SPEED_INIT:       0.5,
+    SPEED_SPREAD:     0.1,
+  GRAVITY:          0.018,
+  LATERAL_NOISE:    0.015,
+  BASE_DRAG:        0.972,
   TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
 
   // Obstacle grid
@@ -231,20 +225,20 @@ const CFG = {
   OBSTACLE_RADIUS:  18,       // pixel radius â€” influence zone (larger = softer approach)
   OBSTACLE_STRENGTH:0.28,     // gentle lateral nudge â€” water finding its way around a rock
   OBSTACLE_FORWARD_KILL: 0.88,// retain most forward momentum â€” mud oozes around, doesn't stop
-  OBSTACLE_DEPOSIT: 0.006,    // sediment deposited in obstacle wake per frame of contact
+    OBSTACLE_DEPOSIT: 0.012,
   // Obstacles placed in a staggered grid with noise, avoiding left 10% and right 5%
 
   // Sediment transport
-  SEDIMENT_INIT:    0.65,     // initial particle load
-  DROP_RATE:        0.22,     // fraction of load dropped per unit deceleration
-  TERRAIN_DROP_MOD: 3.0,      // extra drop rate when over existing sediment
-  PICKUP_SPEED:     0.22,     // min speed to erode terrain
-  PICKUP_RATE:      0.010,    // sediment picked up per frame when fast
-  MAX_SEDIMENT:     0.85,
+    SEDIMENT_INIT:    0.80,
+    DROP_RATE:        0.55,
+    TERRAIN_DROP_MOD: 4.0,
+    PICKUP_SPEED:     0.28,
+    PICKUP_RATE:      0.006,
+  MAX_SEDIMENT:     1.0,
 
   // Terrain relaxation
-  RELAX_RATE:       0.0012,
-  RELAX_EVERY:      3,
+    RELAX_RATE:       0.0005,
+  RELAX_EVERY:      6,
 
   // Cycle
   CYCLE_SECS:       240,
@@ -294,18 +288,15 @@ function slopeAt(gx, gy) {
 // Each stream: origin on left edge â†’ aimed at target on right edge.
 // Initial velocity vector is normalized toward the target.
 function makeStream() {
-  const oy  = H * (0.10 + rand() * 0.80);  // origin Y on left edge
-  const ty  = H * (0.10 + rand() * 0.80);  // target Y on right edge
-  const dur = CFG.EMIT_DUR_MIN + rand() * (CFG.EMIT_DUR_MAX - CFG.EMIT_DUR_MIN);
-  // Initial vy is a fraction of vx â€” subtle entry angle, gravity straightens it out
-  // dy/W gives the full diagonal slope; we dampen it to 0.25 so it's a gentle bias
-  const slope = ((ty - oy) / W) * 0.25;
+  const oy  = H * (0.10 + rand() * 0.80);
+  const driftTarget = H * (0.10 + rand() * 0.80);
+  const slope = ((driftTarget - oy) / W) * 0.25;
   return {
-    x:        -8,
-    y:        oy,
-    vx:       CFG.SPEED_INIT,
-    vy:       CFG.SPEED_INIT * slope,       // small vertical component at birth
-    endFrame: frame + dur * 60,
+    x:           -8,
+    y:           oy,
+    vx:          CFG.SPEED_INIT,
+    vy:          CFG.SPEED_INIT * slope * 0.3,
+    driftTarget: driftTarget,
   };
 }
 
