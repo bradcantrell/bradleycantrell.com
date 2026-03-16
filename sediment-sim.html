@@ -37,9 +37,7 @@ const CFG = {
   DRIFT_SPEED:      0.0015,   // how fast the stream Y drifts toward its target (per frame)
 
   // Particles
-  MAX_PARTICLES:    4000,
-  // No fixed SPAWN_RATE — instead we maintain a target pool size (see loop)
-  POOL_TARGET:      3000,     // steady-state particle count — no burst/drain cycle
+  MAX_PARTICLES:    4000,     // soft ceiling — spawn probability tapers as pool fills
   LIFE_MIN:         3500,     // long life — slow particles need time to cross
   LIFE_MAX:         5000,
 
@@ -455,14 +453,16 @@ function loop() {
       const slope = ((st.driftTarget - st.y) / W) * 0.25;
       st.vy = CFG.SPEED_INIT * slope;
     }
-    // Steady-state spawn — add only as many particles as needed to maintain POOL_TARGET
-    // This eliminates burst/drain cycles: pool never overfills, never runs dry
-    const deficit = CFG.POOL_TARGET - particles.length;
-    if (deficit > 0) {
-      const toSpawn = Math.min(deficit, 4);  // max 4 new particles per frame — smooth trickle
-      for (let k = 0; k < toSpawn; k++) {
-        const stream = emitter[k % emitter.length];
-        particles.push(makeParticle(stream));
+    // Probabilistic spawn — probability falls smoothly from 1 → 0 as pool fills.
+    // No hard cutoff: emission tapers off gradually, so there's never a burst when
+    // the pool drains. Each stream gets its own independent coin flip each frame.
+    const fillRatio = particles.length / CFG.MAX_PARTICLES;  // 0 = empty, 1 = full
+    // Spawn probability per stream per frame: full rate when empty, zero at max
+    // Use a gentle curve so it feels like natural tapering, not a sudden stop
+    const spawnP = Math.max(0, 1 - (fillRatio * fillRatio));
+    for (let s = 0; s < emitter.length; s++) {
+      if (rand() < spawnP) {
+        particles.push(makeParticle(emitter[s]));
       }
     }
   }
