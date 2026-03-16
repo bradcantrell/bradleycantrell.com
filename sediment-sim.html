@@ -177,15 +177,16 @@ function placeObstacles() {
 // ── Particle Creation ─────────────────────────────────────────────────────────
 function makeParticle(stream) {
   const life = CFG.LIFE_MIN + rand() * (CFG.LIFE_MAX - CFG.LIFE_MIN);
-  const vx = CFG.SPEED_INIT + randc() * CFG.SPEED_SPREAD;
-  // Small lateral component — stream angle is gentle, wander does the rest
-  const vy = randc() * CFG.SPEED_SPREAD * 0.3;
-  // Y spread: small random offset around stream Y
+  // Spawn at terminal velocity so drag never wins at birth
+  // Terminal velocity = GRAVITY / (1 - BASE_DRAG) = 0.018 / 0.028 ≈ 0.64
+  const terminalV = CFG.GRAVITY / (1 - CFG.BASE_DRAG);
+  const vx = terminalV + randc() * CFG.SPEED_SPREAD * 0.5;
+  const vy = randc() * CFG.SPEED_SPREAD * 0.2;
   const spread = randc() * CFG.EMITTER_SPREAD * H;
   return {
-    x:    stream.x,
+    x:    20,                              // start 20px in — never on the actual edge
     y:    clamp(stream.y + spread, 2, H - 2),
-    vx:   Math.max(0.3, vx),   // minimum 0.3 px/frame — slow but always moving
+    vx:   Math.max(terminalV * 0.8, vx),  // never below 80% of terminal
     vy,
     load: CFG.SEDIMENT_INIT + randc() * 0.10,
     life, fullLife: life,
