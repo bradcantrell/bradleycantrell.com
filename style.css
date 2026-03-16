@@ -102,7 +102,7 @@ nav {
   margin-bottom: 1.5rem;
 }
 
-.hero h1 { margin-bottom: 1.5rem; }
+.hero h1 { margin-bottom: 1.5rem; white-space: nowrap; }
 
 .hero-sub {
   font-size: clamp(0.9rem, 1.5vw, 1rem);
