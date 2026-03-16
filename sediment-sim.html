@@ -37,18 +37,19 @@ const CFG = {
   DRIFT_SPEED:      0.0015,   // how fast the stream Y drifts toward its target (per frame)
 
   // Particles
-  MAX_PARTICLES:    5000,
-  SPAWN_RATE:       5,        // per frame per stream — small constant rate, no surges
-  LIFE_MIN:         1800,
-  LIFE_MAX:         2400,
-  SPEED_INIT:       1.5,      // pixels/frame at birth — crosses screen in ~500 frames
-  SPEED_SPREAD:     0.3,
+  MAX_PARTICLES:    4000,
+  // No fixed SPAWN_RATE — instead we maintain a target pool size (see loop)
+  POOL_TARGET:      3000,     // steady-state particle count — no burst/drain cycle
+  LIFE_MIN:         3500,     // long life — slow particles need time to cross
+  LIFE_MAX:         5000,
 
-  // Physics — terminal velocity = GRAVITY / (1 - BASE_DRAG)
-  // 0.08 / (1 - 0.95) = 1.6 px/frame — slow but always moving
-  GRAVITY:          0.08,     // forward drive per frame
-  LATERAL_NOISE:    0.06,     // lateral wander
-  BASE_DRAG:        0.95,     // friction — strong enough to slow in obstacles, not to stall
+  // Viscous physics — terminal velocity = GRAVITY / (1 - BASE_DRAG)
+  // 0.018 / (1 - 0.972) = 0.64 px/frame → ~38px/sec at 60fps — thick, slow
+  SPEED_INIT:       0.5,      // gentle birth push — immediately feels viscous
+  SPEED_SPREAD:     0.1,
+  GRAVITY:          0.018,    // forward drive — just enough to win over drag
+  LATERAL_NOISE:    0.015,    // slow lateral wander
+  BASE_DRAG:        0.972,    // high friction — viscous medium
   TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
 
   // Obstacle grid
@@ -184,7 +185,7 @@ function makeParticle(stream) {
   return {
     x:    stream.x,
     y:    clamp(stream.y + spread, 2, H - 2),
-    vx:   Math.max(1.0, vx),   // always at least 1 px/frame rightward
+    vx:   Math.max(0.3, vx),   // minimum 0.3 px/frame — slow but always moving
     vy,
     load: CFG.SEDIMENT_INIT + randc() * 0.10,
     life, fullLife: life,
@@ -453,9 +454,13 @@ function loop() {
       const slope = ((st.driftTarget - st.y) / W) * 0.25;
       st.vy = CFG.SPEED_INIT * slope;
     }
-    // Spawn from each stream — every frame, no gaps
-    for (const stream of emitter) {
-      for (let k = 0; k < CFG.SPAWN_RATE && particles.length < CFG.MAX_PARTICLES; k++) {
+    // Steady-state spawn — add only as many particles as needed to maintain POOL_TARGET
+    // This eliminates burst/drain cycles: pool never overfills, never runs dry
+    const deficit = CFG.POOL_TARGET - particles.length;
+    if (deficit > 0) {
+      const toSpawn = Math.min(deficit, 4);  // max 4 new particles per frame — smooth trickle
+      for (let k = 0; k < toSpawn; k++) {
+        const stream = emitter[k % emitter.length];
         particles.push(makeParticle(stream));
       }
     }
