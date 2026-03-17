@@ -33,6 +33,19 @@
     .concept-card {
       background: var(--bg2);
       padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .concept-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-img);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+      filter: grayscale(100%);
     }
     .concept-card h4 {
       font-size: 0.85rem;
@@ -77,36 +90,55 @@
   </p>
 
   <p class="about-text">
-    This dissertation argues that computation does not merely support adaptive design practice — it changes the nature of what adaptive design means. Drawing on a decade of practice engaging ecological complexity, embedded sensing, and generational robotics, it develops a theory of adaptive epistemology: the proposition that design operates as a form of knowledge production conducted through iterative, feedback-based, in-situ inquiry rather than predictive control.
+    This dissertation develops a theory of adaptive epistemology for landscape architecture operating at territorial scales under conditions of irreducible uncertainty. Drawing on twenty years of practice engaging ecological complexity, embedded sensing, and generational robotics, it proposes that design practice is itself a mode of knowledge production, conducted through iterative, feedback-based, in-situ inquiry rather than predictive control. Three contributions organize the argument: adaptive epistemology names the framework, the cultivant names the disposition, and refraction names the method through which both became legible.
   </p>
 
-  <!-- Core Concepts -->
+  <!-- Core Contributions -->
   <div style="margin-top: 4rem;">
-    <h3 style="margin-bottom: 0;">Core Concepts</h3>
+    <h3 style="margin-bottom: 0;">Core Contributions</h3>
     <div class="concept-grid">
-      <div class="concept-card">
+      <div class="concept-card" style="--bg-img: url('images/dissertation/adaptive-epistemology.jpg');">
         <h4>Adaptive Epistemology</h4>
-        <p>Design propositions as hypotheses tested in situ. Iterative, feedback-based knowledge production vs. predictive control.</p>
+        <p>The framework. Design propositions as hypotheses tested in situ. An Orphic project conducted with Promethean tools — attentive to what systems reveal rather than determined to enforce what models predict.</p>
       </div>
-      <div class="concept-card">
+      <div class="concept-card" style="--bg-img: url('images/dissertation/cultivant.jpg');">
+        <h4>The Cultivant</h4>
+        <p>The disposition. Ongoing negotiation between designed intention and biological agency. Maintenance as epistemological act. Plurality as constitutive of the design relationship from the outset.</p>
+      </div>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/refraction.jpg');">
+        <h4>Refraction</h4>
+        <p>The method. Systematic retelling of practice from vantage points its instrumental contexts never demanded. Developed through the Practice Research Symposia and continued across the dissertation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Six Frameworks -->
+  <div style="margin-top: 4rem;">
+    <h3 style="margin-bottom: 0;">Six Frameworks</h3>
+    <div class="concept-grid">
+      <div class="concept-card" style="--bg-img: url('images/dissertation/multiple-intelligences.jpg');">
+        <h4>Multiple Intelligences</h4>
+        <p>Human, machine, and biological cognition operating simultaneously as irreducibly different modes of knowing.</p>
+      </div>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/technogeographies.jpg');">
         <h4>Technogeographies of Sensing</h4>
-        <p>The political and spatial implications of sensing networks. Who and what gets measured determines who gets protected.</p>
+        <p>Sensing as design. The instrument constitutes what can be known, and what can be known determines what can be governed.</p>
       </div>
-      <div class="concept-card">
-        <h4>The Viridic</h4>
-        <p>Biological autonomy as a design medium. Maintenance and growth as agents rather than as managed outputs.</p>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/wetware.jpg');">
+        <h4>Wetware</h4>
+        <p>Biology coupled with computation as a knowledge-producing medium. Living systems generating responses that exceed what any sensor was calibrated to detect.</p>
       </div>
-      <div class="concept-card">
-        <h4>Synthetic Ground</h4>
-        <p>Territories as assemblages of biology, computation, and infrastructure. Cyborg ecologies and wetware coupling.</p>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/generational-robotics.jpg');">
+        <h4>Generational Robotics</h4>
+        <p>Learning loops across timescales exceeding human institutional memory. Knowledge distributed into infrastructure rather than held in the cognition of practitioners.</p>
       </div>
-      <div class="concept-card">
+      <div class="concept-card" style="--bg-img: url('images/dissertation/cyborg-ecologies.jpg');">
+        <h4>Cyborg Ecologies</h4>
+        <p>The territorial condition. Biology, computation, and infrastructure operating as a single entangled system producing a new category of landscape.</p>
+      </div>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/reflexive-stewardship.jpg');">
         <h4>Reflexive Stewardship</h4>
-        <p>A design disposition: provisional, adaptive, justice-conscious practice that stays accountable to what systems reveal over time.</p>
-      </div>
-      <div class="concept-card">
-        <h4>Neo-Wilds</h4>
-        <p>Territories that emerge from the intersection of biological autonomy and computational mediation — neither purely natural nor purely designed.</p>
+        <p>The ethical orientation. Provisional, adaptive practice that remains answerable to what landscapes are becoming and to whom the costs and benefits accrue.</p>
       </div>
     </div>
   </div>
@@ -116,59 +148,63 @@
     <h3>Chapter Structure</h3>
     <div class="chapter-list">
       <div class="chapter-item">
-        <div class="chapter-num">00</div>
-        <div><div class="chapter-title">Foreword</div></div>
-      </div>
-      <div class="chapter-item">
         <div class="chapter-num">01</div>
-        <div><div class="chapter-title">Territory: A Formed Condition</div><div class="chapter-sub">Overview of the dissertation's argument and structure</div></div>
+        <div><div class="chapter-title">Territory: A Formed Condition</div><div class="chapter-sub">The territory as infrastructural hybrid, the failure of prediction, sensing politics, and the stakes</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">02</div>
-        <div><div class="chapter-title">Ecology of Practice</div></div>
+        <div><div class="chapter-title">Adaptive Epistemologies: A Framework</div><div class="chapter-sub">The epistemological framework, six elements, Orphic/Promethean, Simondon, Kauffman, Bach</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">03</div>
-        <div><div class="chapter-title">Tools: Practices, Manifests, and Speculations</div></div>
+        <div><div class="chapter-title">Refractions: Practice-Based Research</div><div class="chapter-sub">Refraction as method, PRS process, research-through-design methodology</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">04</div>
-        <div><div class="chapter-title">Models: A History and Treatise</div><div class="chapter-sub">Bradley's own projects as primary research</div></div>
+        <div><div class="chapter-title">Ecology of Practice</div><div class="chapter-sub">Communities of practice, collaborative networks, disciplinary hybridity</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">05</div>
-        <div><div class="chapter-title">Landscape as Medium: The Model and the Site</div><div class="chapter-sub">Fluvial modeling history and the Mississippi Basin Model</div></div>
+        <div><div class="chapter-title">Tools: Practices, Manifests, and Speculations</div><div class="chapter-sub">Twenty years of practice across four phases: seeing, touching, coding, letting go</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">06</div>
-        <div><div class="chapter-title">A Shifting Model of Interactions</div></div>
+        <div><div class="chapter-title">Models: A History and Treatise</div><div class="chapter-sub">Fluvial modeling history and the departure from prediction</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">07</div>
-        <div><div class="chapter-title">Generational Robots</div></div>
+        <div><div class="chapter-title">Technogeographies of Sensing and Neo-Wilds</div><div class="chapter-sub">The politics of sensing, highly maintained wildness, landscapes in the gaps</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">08</div>
-        <div><div class="chapter-title">Co-Creation, Multi-Species Communications, and Authorship</div></div>
+        <div><div class="chapter-title">Landscape as Medium: The Model and the Site</div><div class="chapter-sub">The landscape as computational medium, embodied and distributed knowledge</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">09</div>
-        <div><div class="chapter-title">Technogeographies of Sensing and Neo-Wilds</div></div>
+        <div><div class="chapter-title">A Shifting Model of Interactions</div><div class="chapter-sub">Adaptive management enacted through wetware and cyborg ecologies</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">10</div>
-        <div><div class="chapter-title">Adaptive Epistemologies</div></div>
+        <div><div class="chapter-title">Generational Robots: Persistent Autonomy</div><div class="chapter-sub">Slowness, generational knowledge, the wildness creator</div></div>
       </div>
       <div class="chapter-item">
         <div class="chapter-num">11</div>
-        <div><div class="chapter-title">Synoptic View</div><div class="chapter-sub">Conclusions and synthesis</div></div>
+        <div><div class="chapter-title">Co-Creation: Multi-Species Communications and Authorship</div><div class="chapter-sub">Distributed intelligence, multi-species authorship, the Third Intelligence</div></div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">12</div>
+        <div><div class="chapter-title">Synoptic View: Relations and Trajectories</div><div class="chapter-sub">Synthesis, adaptive management vs. adaptive epistemology, contribution to the field</div></div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">13</div>
+        <div><div class="chapter-title">Vectors</div><div class="chapter-sub">The manifesto. Bold claims about where the discipline goes from here.</div></div>
       </div>
     </div>
   </div>
 
   <div style="margin-top: 3rem; padding: 1.5rem; border: 1px solid var(--border); display: inline-block;">
     <p style="font-size: 0.8rem; color: var(--text-dim); max-width: none;">
-      Pre-defense: March 13, 2026 · Final defense: April 24, 2026 · Virginia Polytechnic Institute and State University
+      Virginia Polytechnic Institute and State University
     </p>
   </div>
 
