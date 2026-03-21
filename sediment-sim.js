@@ -23,37 +23,37 @@ const CFG = {
   GRID_SCALE:       4,        // px per terrain cell
 
   // Emitter — continuous streams that slowly drift their Y origin over time
-  EMITTER_SPREAD:   0.08,     // perpendicular spread around the main vector
-  EMITTER_COUNT:    4,        // number of simultaneous streams
+  EMITTER_SPREAD:   0.06,     // perpendicular spread around the main vector
+  EMITTER_COUNT:    2,        // fewer streams — less clumping on left edge
   // Streams never expire — they drift smoothly so emission is uninterrupted
   DRIFT_SPEED:      0.0015,   // how fast the stream Y drifts toward its target (per frame)
 
   // Particles
-  MAX_PARTICLES:    4000,     // soft ceiling — spawn probability tapers as pool fills
-  LIFE_MIN:         3500,     // long life — slow particles need time to cross
-  LIFE_MAX:         5000,
+  MAX_PARTICLES:    1500,     // fewer particles — sparser, more legible
+  LIFE_MIN:         5000,     // longer life — slow particles need more time to cross
+  LIFE_MAX:         8000,
 
   // Viscous physics — terminal velocity = GRAVITY / (1 - BASE_DRAG)
-  // 0.018 / (1 - 0.972) = 0.64 px/frame → ~38px/sec at 60fps — thick, slow
-  SPEED_INIT:       0.5,      // gentle birth push — immediately feels viscous
-  SPEED_SPREAD:     0.1,
-  GRAVITY:          0.018,    // forward drive — just enough to win over drag
-  LATERAL_NOISE:    0.015,    // slow lateral wander
-  BASE_DRAG:        0.972,    // high friction — viscous medium
-  TERRAIN_FRICTION: 0.060,    // extra drag per unit terrain height
+  // 0.008 / (1 - 0.985) = 0.53 px/frame → ~32px/sec at 60fps — slower, more contemplative
+  SPEED_INIT:       0.3,      // gentler birth push
+  SPEED_SPREAD:     0.08,
+  GRAVITY:          0.008,    // much less forward drive — slow drift
+  LATERAL_NOISE:    0.010,    // less lateral noise — calmer flow
+  BASE_DRAG:        0.985,    // higher friction — thicker medium, slower movement
+  TERRAIN_FRICTION: 0.040,    // less terrain friction — won't pile as aggressively
 
   // Obstacle grid
   OBSTACLE_COUNT:   55,       // number of fixed obstacles
   OBSTACLE_RADIUS:  18,       // pixel radius — influence zone (larger = softer approach)
   OBSTACLE_STRENGTH:0.28,     // gentle lateral nudge — water finding its way around a rock
   OBSTACLE_FORWARD_KILL: 0.88,// retain most forward momentum — mud oozes around, doesn't stop
-  OBSTACLE_DEPOSIT: 0.012,    // sediment deposited in obstacle wake per frame of contact
+  OBSTACLE_DEPOSIT: 0.005,    // less sediment in obstacle wake — reduces clumping
   // Obstacles placed in a staggered grid with noise, avoiding left 10% and right 5%
 
   // Sediment transport
-  SEDIMENT_INIT:    0.80,     // particles start heavier — more to deposit
-  DROP_RATE:        0.55,     // deposit aggressively on deceleration
-  TERRAIN_DROP_MOD: 4.0,      // strong positive feedback — sediment begets sediment
+  SEDIMENT_INIT:    0.50,     // lighter load — less to deposit overall
+  DROP_RATE:        0.25,     // deposit more gently on deceleration
+  TERRAIN_DROP_MOD: 2.0,      // less positive feedback — builds slower
   PICKUP_SPEED:     0.28,     // higher threshold — terrain harder to erode once built
   PICKUP_RATE:      0.006,    // slower erosion — net deposition wins
   MAX_SEDIMENT:     1.0,      // allow full saturation
