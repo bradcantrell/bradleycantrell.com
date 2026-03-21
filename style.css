@@ -98,7 +98,7 @@ nav {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   margin-bottom: 1.5rem;
   white-space: nowrap;
 }
