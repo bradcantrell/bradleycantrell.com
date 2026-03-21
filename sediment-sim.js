@@ -45,8 +45,8 @@ const CFG = {
   // Obstacle grid
   OBSTACLE_COUNT:   55,       // number of fixed obstacles
   OBSTACLE_RADIUS:  18,       // pixel radius — influence zone (larger = softer approach)
-  OBSTACLE_STRENGTH:0.28,     // gentle lateral nudge — water finding its way around a rock
-  OBSTACLE_FORWARD_KILL: 0.88,// retain most forward momentum — mud oozes around, doesn't stop
+  OBSTACLE_STRENGTH:0.08,     // very gentle lateral spread — sediment oozes, doesn't ricochet
+  OBSTACLE_FORWARD_KILL: 0.45,// kill most forward momentum — particles slow dramatically at obstacles
   OBSTACLE_DEPOSIT: 0.005,    // less sediment in obstacle wake — reduces clumping
   // Obstacles placed in a staggered grid with noise, avoiding left 10% and right 5%
 
@@ -239,9 +239,10 @@ function stepParticle(p) {
     const d2 = dx*dx + dy*dy;
     const r2 = CFG.OBSTACLE_RADIUS * CFG.OBSTACLE_RADIUS;
     if (d2 < r2) {
-      const influence = 1 - Math.sqrt(d2) / CFG.OBSTACLE_RADIUS;
+      const dist = Math.sqrt(d2) / CFG.OBSTACLE_RADIUS;
+      const influence = (1 - dist) * (1 - dist);  // quadratic falloff — soft approach, strong center
       p.vx *= lerp(1, CFG.OBSTACLE_FORWARD_KILL, influence);
-      p.vy += o.ny * CFG.OBSTACLE_STRENGTH * influence;
+      p.vy += o.ny * CFG.OBSTACLE_STRENGTH * influence * Math.sign(dy || 0.001); // deflect away from center, not fixed direction
       const ogx = (o.x / CFG.GRID_SCALE) | 0;
       const ogy = (o.y / CFG.GRID_SCALE) | 0;
       const ogi = gIdx(ogx, ogy);
