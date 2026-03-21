@@ -165,18 +165,18 @@ function addTextObstacles(selectors) {
     const cr = canvas.getBoundingClientRect();
     const x0 = r.left - cr.left, y0 = r.top - cr.top;
     const x1 = r.right - cr.left, y1 = r.bottom - cr.top;
-    const pad = 6;
-    const stepsX = Math.max(4, Math.ceil((x1 - x0) / 16));
-    const stepsY = Math.max(2, Math.ceil((y1 - y0) / 16));
+    const pad = 40;
+    const stepsX = Math.max(6, Math.ceil((x1 - x0 + pad*2) / 14));
+    const stepsY = Math.max(4, Math.ceil((y1 - y0 + pad*2) / 14));
     for (let i = 0; i <= stepsX; i++) {
-      const x = x0 + (x1 - x0) * (i / stepsX);
-      obstacles.push({ x, y: y0 + pad, nx: 0, ny: -1 });
-      obstacles.push({ x, y: y1 - pad, nx: 0, ny:  1 });
+      const x = (x0 - pad) + (x1 - x0 + pad*2) * (i / stepsX);
+      obstacles.push({ x, y: y0 - pad, nx: 0, ny: -1 });
+      obstacles.push({ x, y: y1 + pad, nx: 0, ny:  1 });
     }
     for (let j = 0; j <= stepsY; j++) {
-      const y = y0 + (y1 - y0) * (j / stepsY);
-      obstacles.push({ x: x0 + pad, y, nx: -1, ny: 0 });
-      obstacles.push({ x: x1 - pad, y, nx:  1, ny: 0 });
+      const y = (y0 - pad) + (y1 - y0 + pad*2) * (j / stepsY);
+      obstacles.push({ x: x0 - pad, y, nx: -1, ny: 0 });
+      obstacles.push({ x: x1 + pad, y, nx:  1, ny: 0 });
     }
   }
 }
