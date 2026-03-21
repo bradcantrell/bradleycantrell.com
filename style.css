@@ -98,7 +98,8 @@ nav {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--accent);
+  opacity: 0.5;
   margin-bottom: 1.5rem;
   white-space: nowrap;
 }
