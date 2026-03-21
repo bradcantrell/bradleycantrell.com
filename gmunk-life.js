@@ -24,8 +24,8 @@ function setup() {
   
   colorMode(HSB, 360, 100, 100, 1);
   
-  pink = color(255, 100, 200);
-  cyan = color(100, 216, 255);
+  pink = color(180, 120, 80);   // warm copper
+  cyan = color(200, 184, 154);  // warm gold (matches site --accent)
   black = color(0, 0, 0);
   
   // Ensure black background
@@ -78,12 +78,12 @@ function draw() {
         let y = j * cellSize;
         
         // RGB split with Oblivion colors
-        drawCellWithAberration(x, y, -chromaticAberration, color(100, 216, 255)); // Cyan offset
-        drawCellWithAberration(x, y, chromaticAberration, color(255, 100, 200));  // Pink offset
+        drawCellWithAberration(x, y, -chromaticAberration, color(200, 184, 154)); // Gold offset
+        drawCellWithAberration(x, y, chromaticAberration, color(180, 120, 80));   // Copper offset
         drawCell(x, y, 0); // Cyan center
         
         // Wireframe grid lines for live cells
-        stroke(200, 80, 50, 30);
+        stroke(35, 60, 55, 30);  // warm amber wireframe
         strokeWeight(0.5);
         noFill();
         rect(x, y, cellSize, cellSize);
