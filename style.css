@@ -99,7 +99,7 @@ nav {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
-  opacity: 0.5;
+  opacity: 0.7;
   margin-bottom: 1.5rem;
   white-space: nowrap;
 }
