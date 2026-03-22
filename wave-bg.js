@@ -7,7 +7,7 @@
 (function() {
   const canvas = document.createElement('canvas');
   canvas.id = 'wave-canvas';
-  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.28;';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55;';
   document.body.insertBefore(canvas, document.body.firstChild);
 
   const ctx = canvas.getContext('2d');
@@ -103,12 +103,12 @@
     ctx.stroke();
   }
 
-  // Contour levels — 8 isolines at even intervals
-  const NUM_CONTOURS = 8;
+  // Contour levels — 16 isolines, tighter spacing
+  const NUM_CONTOURS = 16;
   const contours = Array.from({ length: NUM_CONTOURS }, (_, i) => ({
-    iso: 0.15 + (i / NUM_CONTOURS) * 0.7,
-    alpha: 0.12 + (i / NUM_CONTOURS) * 0.18,  // deeper = slightly brighter
-    width: 0.4 + (i / NUM_CONTOURS) * 0.4,
+    iso: 0.08 + (i / NUM_CONTOURS) * 0.84,
+    alpha: 0.18 + (i / NUM_CONTOURS) * 0.22,
+    width: 0.4 + (i / NUM_CONTOURS) * 0.35,
   }));
 
   function loop() {
