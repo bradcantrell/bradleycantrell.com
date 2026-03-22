@@ -13,7 +13,12 @@ const SCALE = 3; // pixel size — coarser = faster
 const DA = 1.0, DB = 0.5;
 const F = 0.055, K = 0.062;
 
+// Auto-start
+window.addEventListener('DOMContentLoaded', rdSetup);
+if (document.readyState !== 'loading') rdSetup();
+
 function rdSetup() {
+  if (canvas) return; // guard against double-init
   canvas = document.getElementById('rd-canvas');
   ctx = canvas.getContext('2d');
   rdResize();
