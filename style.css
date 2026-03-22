@@ -351,8 +351,8 @@ body:not(.page-dissertation) .writing-section,
 .project-full,
 body:not(.page-dissertation) footer {
   background: rgba(8, 8, 8, 0.52) !important;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 /* Cards and list items */
@@ -361,21 +361,21 @@ body:not(.page-dissertation) footer {
 .book-card,
 body:not(.page-dissertation) .cv-list li {
   background: rgba(15, 15, 15, 0.48) !important;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 /* Project full-width items */
 .project-full-item {
   background: rgba(12, 12, 12, 0.50) !important;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 /* Nav — frosted */
 nav {
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
   background: rgba(8, 8, 8, 0.72) !important;
 }
 
@@ -389,8 +389,8 @@ nav {
 /* Hero content wrapper */
 .hero-content {
   background: rgba(8, 8, 8, 0.38);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   padding: 1.5rem 2rem;
   border-radius: 2px;
   display: inline-block;
