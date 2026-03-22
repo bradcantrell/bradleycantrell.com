@@ -335,5 +335,64 @@ footer p { font-size: 0.8rem; color: var(--text-dimmer); max-width: none; }
   .dissertation-feature { padding: 1.5rem; }
 }
 
+/* ─── Generative background glass treatment ─────────────────────────────────
+   Content surfaces sit above the sim canvas. A subtle backdrop-filter lets
+   the animation bleed through without overwhelming the content.
+   Applied globally — only activates when a sim canvas is present underneath.
+────────────────────────────────────────────────────────────────────────────── */
+
+/* Primary content surfaces */
+section,
+.writing-section,
+.dissertation-feature,
+.book-grid,
+.project-full,
+footer {
+  background: rgba(8, 8, 8, 0.72) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Cards and list items */
+.project-card,
+.writing-item,
+.book-card,
+.cv-list li {
+  background: rgba(15, 15, 15, 0.68) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Project full-width items */
+.project-full-item {
+  background: rgba(12, 12, 12, 0.70) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Nav — already has gradient, just tighten it */
+nav {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(8, 8, 8, 0.80) !important;
+}
+
+/* About / CV text blocks */
+.about-text,
+.cv-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Inline content wrappers that need to breathe */
+.hero-content {
+  background: rgba(8, 8, 8, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
 /* Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');

@@ -38,13 +38,13 @@ function rdResize() {
     cells[i * 2]     = 1.0; // U
     cells[i * 2 + 1] = 0.0; // V
   }
-  // Seed several random patches with V=1
-  const numSeeds = Math.floor(uw * uh / 400);
+  // Seed just a few tiny patches — pattern grows in slowly from near-empty
+  const numSeeds = 6;
   for (let s = 0; s < numSeeds; s++) {
     const cx = Math.floor(Math.random() * uw);
     const cy = Math.floor(Math.random() * uh);
-    for (let dy = -3; dy <= 3; dy++) {
-      for (let dx = -3; dx <= 3; dx++) {
+    for (let dy = -2; dy <= 2; dy++) {
+      for (let dx = -2; dx <= 2; dx++) {
         const x = (cx + dx + uw) % uw;
         const y = (cy + dy + uh) % uh;
         const idx = (y * uw + x) * 2;
