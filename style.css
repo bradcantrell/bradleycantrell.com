@@ -341,40 +341,42 @@ footer p { font-size: 0.8rem; color: var(--text-dimmer); max-width: none; }
    Applied globally — only activates when a sim canvas is present underneath.
 ────────────────────────────────────────────────────────────────────────────── */
 
-/* Primary content surfaces */
-section,
-.writing-section,
+/* Primary content surfaces — glass treatment over generative backgrounds
+   Dissertation page is EXCLUDED — it has its own carefully tuned opacity.
+   Use :not([data-page="dissertation"]) by body class instead.        */
+body:not(.page-dissertation) section,
+body:not(.page-dissertation) .writing-section,
 .dissertation-feature,
 .book-grid,
 .project-full,
-footer {
-  background: rgba(8, 8, 8, 0.72) !important;
+body:not(.page-dissertation) footer {
+  background: rgba(8, 8, 8, 0.52) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Cards and list items — more transparent, more blur */
+.project-card,
+.writing-item,
+.book-card,
+body:not(.page-dissertation) .cv-list li {
+  background: rgba(15, 15, 15, 0.48) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Cards and list items */
-.project-card,
-.writing-item,
-.book-card,
-.cv-list li {
-  background: rgba(15, 15, 15, 0.68) !important;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
 /* Project full-width items */
 .project-full-item {
-  background: rgba(12, 12, 12, 0.70) !important;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(12, 12, 12, 0.50) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Nav — already has gradient, just tighten it */
+/* Nav — frosted */
 nav {
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  background: rgba(8, 8, 8, 0.80) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  background: rgba(8, 8, 8, 0.72) !important;
 }
 
 /* About / CV text blocks */
@@ -384,9 +386,9 @@ nav {
   z-index: 1;
 }
 
-/* Inline content wrappers that need to breathe */
+/* Hero content wrapper */
 .hero-content {
-  background: rgba(8, 8, 8, 0.45);
+  background: rgba(8, 8, 8, 0.38);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   padding: 1.5rem 2rem;
