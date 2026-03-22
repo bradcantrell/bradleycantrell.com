@@ -7,7 +7,7 @@
 (function() {
   const canvas = document.createElement('canvas');
   canvas.id = 'constellation-canvas';
-  canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.20;';
+  canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.45;';
   document.body.insertBefore(canvas, document.body.firstChild);
 
   const ctx = canvas.getContext('2d');
@@ -38,7 +38,9 @@
     requestAnimationFrame(loop);
     t += 0.01;
 
-    ctx.clearRect(0, 0, W, H);
+    // Dark fill so stars are visible on transparent canvas
+    ctx.fillStyle = 'rgba(8, 8, 8, 0.25)';
+    ctx.fillRect(0, 0, W, H);
 
     // Move stars
     for (const s of stars) {
@@ -58,7 +60,7 @@
         const dy = stars[i].y - stars[j].y;
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < CONNECT_DIST) {
-          const a = (1 - d / CONNECT_DIST) * 0.15;
+          const a = (1 - d / CONNECT_DIST) * 0.30;
           ctx.beginPath();
           ctx.moveTo(stars[i].x, stars[i].y);
           ctx.lineTo(stars[j].x, stars[j].y);
@@ -74,7 +76,7 @@
       const twinkle = 0.6 + 0.4 * Math.sin(s.twinkle);
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(220, 200, 160, ${s.alpha * twinkle})`;
+      ctx.fillStyle = `rgba(230, 210, 170, ${Math.min(1, s.alpha * twinkle * 1.8)})`;
       ctx.fill();
     }
   }
