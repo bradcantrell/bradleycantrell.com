@@ -24,7 +24,7 @@
   // Create canvas immediately
   canvas = document.createElement('canvas');
   canvas.id = 'flow-canvas';
-  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.22;';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55;';
   document.body.insertBefore(canvas, document.body.firstChild);
   ctx = canvas.getContext('2d');
 
@@ -87,7 +87,7 @@
       ctx.beginPath();
       ctx.moveTo(l.x, l.y);
       ctx.lineTo(nx, ny);
-      ctx.strokeStyle = `rgba(196, 172, 128, ${alpha})`;
+      ctx.strokeStyle = `rgba(220, 198, 152, ${alpha * 2.2})`;
       ctx.stroke();
 
       l.x = nx; l.y = ny;
