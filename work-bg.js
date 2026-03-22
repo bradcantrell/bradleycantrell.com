@@ -1,125 +1,105 @@
 /**
- * work-bg.js — Gray-Scott Reaction-Diffusion
- * Turing pattern formation: biological + computational aesthetic
- * Two-chemical system (U/V) producing organic spotted/striped patterns
- * Warm amber palette matching site accent colors
+ * work-bg.js — Scattered organic dot field (work.html)
+ * Slow-moving clusters of particles that breathe and drift
+ * Biological / computational aesthetic — fits "work" page
+ * Deliberately sparse: never floods the screen
  */
 
-let uw, uh, cells, next;
-let canvas, ctx;
-const SCALE = 3; // pixel size — coarser = faster
+(function() {
+  const canvas = document.getElementById('rd-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
 
-// Gray-Scott parameters — "coral" / spotted pattern
-const DA = 1.0, DB = 0.5;
-const F = 0.055, K = 0.062;
-
-// Auto-start
-window.addEventListener('DOMContentLoaded', rdSetup);
-if (document.readyState !== 'loading') rdSetup();
-
-function rdSetup() {
-  if (canvas) return; // guard against double-init
-  canvas = document.getElementById('rd-canvas');
-  ctx = canvas.getContext('2d');
-  rdResize();
-  window.addEventListener('resize', rdResize);
-  rdLoop();
-}
-
-function rdResize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  uw = Math.floor(canvas.width / SCALE);
-  uh = Math.floor(canvas.height / SCALE);
-  cells = new Float32Array(uw * uh * 2); // [u0,v0, u1,v1, ...]
-  next = new Float32Array(uw * uh * 2);
-  // Initialize: U=1 everywhere, V=0 except seed patches
-  for (let i = 0; i < uw * uh; i++) {
-    cells[i * 2]     = 1.0; // U
-    cells[i * 2 + 1] = 0.0; // V
+  // Minimal noise
+  function hash(n) { n = Math.sin(n) * 43758.5453; return n - Math.floor(n); }
+  function noise(x, y, t) {
+    const ix = Math.floor(x), iy = Math.floor(y);
+    const fx = x - ix, fy = y - iy;
+    const ux = fx*fx*(3-2*fx), uy = fy*fy*(3-2*fy);
+    const a = hash(ix + iy*57 + t*0.3);
+    const b = hash(ix+1 + iy*57 + t*0.3);
+    const c = hash(ix + (iy+1)*57 + t*0.3);
+    const d = hash(ix+1 + (iy+1)*57 + t*0.3);
+    return a+(b-a)*ux+(c-a)*uy+(d-b-c+a)*ux*uy;
   }
-  // Seed just a few tiny patches — pattern grows in slowly from near-empty
-  const numSeeds = 6;
-  for (let s = 0; s < numSeeds; s++) {
-    const cx = Math.floor(Math.random() * uw);
-    const cy = Math.floor(Math.random() * uh);
-    for (let dy = -2; dy <= 2; dy++) {
-      for (let dx = -2; dx <= 2; dx++) {
-        const x = (cx + dx + uw) % uw;
-        const y = (cy + dy + uh) % uh;
-        const idx = (y * uw + x) * 2;
-        cells[idx]     = 0.5;
-        cells[idx + 1] = 0.25;
+
+  // Particle clusters — each cluster has a center that drifts slowly
+  const NUM_CLUSTERS = 12;
+  const PER_CLUSTER = 18;
+  const CLUSTER_RADIUS = 60;
+  let clusters = [], t = 0;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initClusters();
+  }
+
+  function initClusters() {
+    clusters = [];
+    for (let i = 0; i < NUM_CLUSTERS; i++) {
+      const cx = 0.1 + Math.random() * 0.8;
+      const cy = 0.1 + Math.random() * 0.8;
+      clusters.push({
+        ox: cx, oy: cy,        // base position (normalized)
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.0002 + Math.random() * 0.0003,
+        particles: Array.from({ length: PER_CLUSTER }, () => ({
+          rx: (Math.random() - 0.5) * CLUSTER_RADIUS,
+          ry: (Math.random() - 0.5) * CLUSTER_RADIUS,
+          size: 1.2 + Math.random() * 2.8,
+          alpha: 0.12 + Math.random() * 0.28,
+          drift: Math.random() * Math.PI * 2,
+          driftSpeed: 0.002 + Math.random() * 0.004,
+        })),
+      });
+    }
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function loop() {
+    requestAnimationFrame(loop);
+    t += 0.008;
+
+    // Slow fade — trails but clears
+    ctx.fillStyle = 'rgba(8, 8, 8, 0.18)';
+    ctx.fillRect(0, 0, W, H);
+
+    for (const cl of clusters) {
+      // Cluster center drifts on noise field
+      const nx = cl.ox + 0.12 * (noise(cl.ox * 3, cl.oy * 3, t) - 0.5);
+      const ny = cl.oy + 0.08 * (noise(cl.ox * 3 + 7, cl.oy * 3 + 7, t) - 0.5);
+      const cx = nx * W;
+      const cy = ny * H;
+
+      for (const p of cl.particles) {
+        // Each particle orbits its cluster center
+        p.drift += p.driftSpeed;
+        const px = cx + p.rx * Math.cos(p.drift) * 0.4 + p.rx;
+        const py = cy + p.ry * Math.sin(p.drift) * 0.4 + p.ry;
+
+        // Skip if off-screen
+        if (px < 0 || px > W || py < 0 || py > H) continue;
+
+        // Pulse alpha
+        const pulse = 0.7 + 0.3 * Math.sin(t * 2 + p.drift);
+        const a = p.alpha * pulse;
+
+        ctx.beginPath();
+        ctx.arc(px, py, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(190, 168, 122, ${a})`;
+        ctx.fill();
       }
     }
   }
-}
 
-let frame = 0;
-function rdLoop() {
-  requestAnimationFrame(rdLoop);
-  // Run multiple simulation steps per frame for speed
-  for (let step = 0; step < 8; step++) {
-    rdStep();
+  // Wait for DOM ready since we reference an existing canvas element
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => { resize(); loop(); });
+  } else {
+    loop();
   }
-  // Only redraw every 2 frames
-  if (frame++ % 2 === 0) rdDraw();
-}
-
-function rdStep() {
-  for (let y = 0; y < uh; y++) {
-    for (let x = 0; x < uw; x++) {
-      const idx = (y * uw + x) * 2;
-      const u = cells[idx], v = cells[idx + 1];
-
-      // Laplacian (5-point stencil with wrapping)
-      const left  = cells[(y * uw + (x - 1 + uw) % uw) * 2];
-      const right = cells[(y * uw + (x + 1) % uw) * 2];
-      const up    = cells[((y - 1 + uh) % uh * uw + x) * 2];
-      const down  = cells[((y + 1) % uh * uw + x) * 2];
-      const lv_l  = cells[(y * uw + (x - 1 + uw) % uw) * 2 + 1];
-      const lv_r  = cells[(y * uw + (x + 1) % uw) * 2 + 1];
-      const lv_u  = cells[((y - 1 + uh) % uh * uw + x) * 2 + 1];
-      const lv_d  = cells[((y + 1) % uh * uw + x) * 2 + 1];
-
-      const lapU = (left + right + up + down - 4 * u);
-      const lapV = (lv_l + lv_r + lv_u + lv_d - 4 * v);
-
-      const uvv = u * v * v;
-      next[idx]     = Math.max(0, Math.min(1, u + DA * lapU - uvv + F * (1 - u)));
-      next[idx + 1] = Math.max(0, Math.min(1, v + DB * lapV + uvv - (K + F) * v));
-    }
-  }
-  [cells, next] = [next, cells];
-}
-
-function rdDraw() {
-  const imgData = ctx.createImageData(canvas.width, canvas.height);
-  const data = imgData.data;
-
-  for (let cy = 0; cy < uh; cy++) {
-    for (let cx = 0; cx < uw; cx++) {
-      const idx = (cy * uw + cx) * 2;
-      const v = cells[idx + 1]; // V concentration drives color
-      const t = Math.min(1, v * 4); // amplify for visibility
-
-      // Warm palette: dark background → amber highlight
-      // bg: #1a1614  accent: #c8b090  highlight: #e8e0d0
-      const r = Math.floor(26  + t * (232 - 26));
-      const g = Math.floor(22  + t * (176 - 22));
-      const b = Math.floor(20  + t * (144 - 20));
-      const a = Math.floor(30  + t * (180 - 30)); // semi-transparent
-
-      for (let py = 0; py < SCALE; py++) {
-        for (let px = 0; px < SCALE; px++) {
-          const pIdx = ((cy * SCALE + py) * canvas.width + (cx * SCALE + px)) * 4;
-          data[pIdx]     = r;
-          data[pIdx + 1] = g;
-          data[pIdx + 2] = b;
-          data[pIdx + 3] = a;
-        }
-      }
-    }
-  }
-  ctx.putImageData(imgData, 0, 0);
-}
+})();
