@@ -43,6 +43,7 @@ function setup() {
     }
   }
   
+  frameRate(8);  // ~8 generations/sec — contemplative, not frantic
   loop();
 }
 
