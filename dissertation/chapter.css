@@ -329,6 +329,11 @@ nav {
   filter: invert(1) brightness(0.88) contrast(1.05);
 }
 
+/* Photos used as inline figures — no inversion */
+.ch-inline-figure--photo img {
+  filter: brightness(0.85) saturate(0.85);
+}
+
 .ch-inline-figure figcaption {
   margin-top: 0.85rem;
   display: grid;
