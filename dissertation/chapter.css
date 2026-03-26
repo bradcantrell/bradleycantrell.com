@@ -325,54 +325,89 @@ nav {
 .ch-content blockquote p:last-child { margin-bottom: 0; }
 
 /* ── Atmospheric scroll backdrop sections ─────────────────────────────── */
-/* Full-width image sections that appear between paragraphs as you scroll.
-   Text continues below; the image fills the viewport height briefly. */
+/* ── Atmospheric scroll backdrop sections ─────────────────────────────────
+   Full-viewport-width image breaks between text sections.
+   The sidebar is fixed-positioned, so backdrops must break OUT of the
+   .ch-main column using a negative left margin equal to sidebar width.
+   Width must also add the sidebar back to reach full viewport.         */
 .ch-backdrop {
   position: relative;
+  /* Break out of the content column to true full viewport width */
   width: 100vw;
   margin-left: calc(-1 * var(--ch-sidebar));
-  height: 70vh;
-  min-height: 400px;
+  /* On mobile (sidebar hidden, --ch-sidebar = 0) this becomes margin-left:0 */
+  height: 85vh;
+  min-height: 480px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
+  /* Small vertical breathing room between text sections */
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .ch-backdrop__img {
   position: absolute;
   inset: -8%;
   background-size: cover;
-  background-position: center;
+  background-position: center 40%;
   background-repeat: no-repeat;
-  filter: brightness(0.4) saturate(0.75);
+  filter: brightness(0.38) saturate(0.72);
   will-change: transform;
 }
 
-/* Gradient so reading continues smoothly from text above and below */
+/* Fade edges so text above and below reads cleanly */
 .ch-backdrop::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(8,8,8,0.85) 0%,
-    rgba(8,8,8,0.1) 25%,
-    rgba(8,8,8,0.1) 75%,
-    rgba(8,8,8,0.85) 100%
+    rgba(8,8,8,0.92) 0%,
+    rgba(8,8,8,0.08) 18%,
+    rgba(8,8,8,0.05) 50%,
+    rgba(8,8,8,0.08) 82%,
+    rgba(8,8,8,0.92) 100%
   );
   z-index: 1;
 }
 
+/* Caption — bottom-left, small, restrained */
 .ch-backdrop__caption {
   position: relative;
   z-index: 2;
-  padding: 1.5rem clamp(2rem, 6vw, 5rem);
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  padding: 1.25rem clamp(2rem, 4vw, 4rem);
   width: 100%;
+}
+
+.ch-backdrop__caption-title {
+  font-family: var(--ch-serif);
+  font-size: 0.78rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,228,220,0.55);
+  line-height: 1.5;
+  margin-bottom: 0.2rem;
+}
+
+.ch-backdrop__caption-credit {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.22);
+  line-height: 1.5;
+}
+
+.ch-backdrop__caption-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(255,255,255,0.15);
+  transition: color 0.2s;
+}
+
+.ch-backdrop__caption-credit a:hover {
+  color: rgba(200,184,154,0.6);
 }
 
 /* ── Figures (inline diagrams) ────────────────────────────────────────── */
