@@ -372,11 +372,15 @@ nav {
   z-index: 1;
 }
 
-/* Caption — bottom-left, small, restrained */
+/* Caption — bottom, offset right of sidebar so it sits in the text column margin.
+   The backdrop breaks out of .ch-main with a negative margin-left equal to the
+   sidebar width, so to bring the caption back into alignment with the text we
+   add the same sidebar width as padding-left.                                 */
 .ch-backdrop__caption {
   position: relative;
   z-index: 2;
-  padding: 1.25rem clamp(2rem, 4vw, 4rem);
+  /* Left padding = sidebar + comfortable content inset */
+  padding: 1.25rem clamp(2rem, 4vw, 4rem) 1.25rem calc(var(--ch-sidebar) + clamp(1.5rem, 5vw, 3rem));
   width: 100%;
 }
 
@@ -408,6 +412,13 @@ nav {
 
 .ch-backdrop__caption-credit a:hover {
   color: rgba(200,184,154,0.6);
+}
+
+/* On mobile sidebar is hidden — caption goes back to simple left padding */
+@media (max-width: 1024px) {
+  .ch-backdrop__caption {
+    padding: 1.25rem clamp(1.5rem, 5vw, 3rem);
+  }
 }
 
 /* ── Figures (inline diagrams) ────────────────────────────────────────── */
