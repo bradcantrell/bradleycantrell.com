@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="chapter.css">
 </head>
-<body class="chapter-page">
+<body class="chapter-page" data-protected="true">
 
 <nav>
   <div class="nav-name"><a href="/">Bradley <span>Cantrell</span></a></div>
@@ -220,27 +220,27 @@
 </p>
 <p>Greenfield, Adam. 2013. <em>Against the Smart City</em>. Do Projects.
 </p>
-<p>Holling, C. S. 1973. `Resilience and Stability of Ecological Systems.'' <em>Annual Review of Ecology and Systematics</em> 4: 1--23.
+<p>Holling, C. S. 1973. `Resilience and Stability of Ecological Systems.'' <em>Annual Review of Ecology and Systematics</em> 4: 1&ndash;23.
 </p>
 <p>Holmes, Rob. 2020. \"The Problem with Solutions.\" <em>Places Journal</em> (July 2020).
 </p>
 <p>King, Tiffany Lethabo. 2019. <em>The Black Shoals: Offshore Formations of Black and Native Studies</em>. Durham, NC: Duke University Press.
 </p>
-<p>Kirwan, Matthew L., and J. Patrick Megonigal. 2013. \"Tidal Wetland Stability in the Face of Human Impacts and Sea-Level Rise.\" <em>Nature</em> 504 (7478): 53--60.
+<p>Kirwan, Matthew L., and J. Patrick Megonigal. 2013. \"Tidal Wetland Stability in the Face of Human Impacts and Sea-Level Rise.\" <em>Nature</em> 504 (7478): 53&ndash;60.
 </p>
-<p>Lister, Nina-Marie. 2007. \"Sustainable Large Parks: Ecological Design or Designer Ecology?\" In <em>Large Parks</em>, edited by Julia Czerniak and George Hargreaves, 35--57. New York: Princeton Architectural Press.
+<p>Lister, Nina-Marie. 2007. \"Sustainable Large Parks: Ecological Design or Designer Ecology?\" In <em>Large Parks</em>, edited by Julia Czerniak and George Hargreaves, 35&ndash;57. New York: Princeton Architectural Press.
 </p>
-<p>Mical, Thomas. 2012. \"Soft Infrastructures for a Neo-Metabolism.\" <em>Journal of Biourbanism</em> II (2): 61--76.
+<p>Mical, Thomas. 2012. \"Soft Infrastructures for a Neo-Metabolism.\" <em>Journal of Biourbanism</em> II (2): 61&ndash;76.
 </p>
 <p>Morozov, Evgeny. 2013. <em>To Save Everything, Click Here: The Folly of Technological Solutionism</em>. New York: PublicAffairs.
 </p>
 <p>Raxworthy, Julian. 2018. <em>Overgrown: Practices between Landscape Architecture and Gardening</em>. Cambridge, MA: MIT Press.
 </p>
-<p>Richter, Ina. 2015. \"Gone with(in) the Chesapeake Bay\'s Waters: Reflections on Society\'s Thresholds to Migration Given Island Sinking.\" <em>Global Environment</em> 8 (1): 120--51.
+<p>Richter, Ina. 2015. \"Gone with(in) the Chesapeake Bay\'s Waters: Reflections on Society\'s Thresholds to Migration Given Island Sinking.\" <em>Global Environment</em> 8 (1): 120&ndash;51.
 </p>
 <p>Robbins, Paul. 2012. <em>Political Ecology: A Critical Introduction</em>. 2nd ed. Malden, MA: Wiley-Blackwell.
 </p>
-<p>Robinson, Alexander, and Brian Davis. 2018. \"From Solution Space to Interface.\" In <em>Codify</em>, edited by Bradley Cantrell and Adam Mekies, 155--68. New York: Routledge.
+<p>Robinson, Alexander, and Brian Davis. 2018. \"From Solution Space to Interface.\" In <em>Codify</em>, edited by Bradley Cantrell and Adam Mekies, 155&ndash;68. New York: Routledge.
 </p>
 <p>Scott, James C. 1998. <em>Seeing Like a State: How Certain Schemes to Improve the Human Condition Have Failed</em>. New Haven: Yale University Press.
 </p>
@@ -252,11 +252,11 @@
 </p>
 <p>Swift, Earl. 2018. <em>Chesapeake Requiem: A Year With the Watermen of Vanishing Tangier Island</em>. New York: Dey St.
 </p>
-<p>Temmerman, Stijn, and Matthew L. Kirwan. 2015. \"Building Land with a Rising Sea.\" <em>Science</em> 349 (6248): 588--89.
+<p>Temmerman, Stijn, and Matthew L. Kirwan. 2015. \"Building Land with a Rising Sea.\" <em>Science</em> 349 (6248): 588&ndash;89.
 </p>
 <p>USGS. 1995. <em>Louisiana Coastal Wetlands: A Resource at Risk</em>. USGS Fact Sheet. Reston, VA: U.S. Geological Survey.
 </p>
-<p>Ye, Xinyue, et al. 2023. \"Developing Human-Centered Urban Digital Twins for Community Infrastructure Resilience: A Research Agenda.\" <em>Journal of Urban Planning and Development</em> 149 (2): 187--99.
+<p>Ye, Xinyue, et al. 2023. \"Developing Human-Centered Urban Digital Twins for Community Infrastructure Resilience: A Research Agenda.\" <em>Journal of Urban Planning and Development</em> 149 (2): 187&ndash;99.
 </p></aside>
     </div>
 
@@ -273,12 +273,70 @@
 </div>
 
 <script>
+// ── Password gate (live/draft pages only) ─────────────────────────────
 (function(){
-  // Parallax on hero and backdrop images
+  var PASS = 'neo-wilds';
+  var KEY  = 'diss_auth';
+  var isProtected = document.body.dataset.protected === 'true';
+  if (!isProtected) return;
+  if (sessionStorage.getItem(KEY) === '1') return;
+
+  // Build overlay
+  var overlay = document.createElement('div');
+  overlay.id = 'pw-gate';
+  overlay.innerHTML = [
+    '<div id="pw-box">',
+    '  <div id="pw-title">Adaptive Epistemologies<br>and Neo-Wilds</div>',
+    '  <div id="pw-sub">Draft — Access Restricted</div>',
+    '  <input id="pw-input" type="password" placeholder="Password" autocomplete="off" autofocus>',
+    '  <div id="pw-error"></div>',
+    '</div>'
+  ].join('');
+
+  var style = document.createElement('style');
+  style.textContent = [
+    '#pw-gate{position:fixed;inset:0;z-index:9999;background:#080808;display:flex;align-items:center;justify-content:center;}',
+    '#pw-box{text-align:center;max-width:320px;width:90%;}',
+    '#pw-title{font-family:"Cormorant Garamond","Georgia",serif;font-size:1.1rem;font-weight:300;letter-spacing:0.08em;color:#e8e4dc;line-height:1.5;margin-bottom:0.5rem;}',
+    '#pw-sub{font-family:"Space Grotesk","Helvetica Neue",sans-serif;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#3d3a35;margin-bottom:2.5rem;}',
+    '#pw-input{width:100%;background:transparent;border:none;border-bottom:1px solid #2a2a28;color:#e8e4dc;font-family:"Space Grotesk",sans-serif;font-size:0.85rem;letter-spacing:0.08em;padding:0.6rem 0.25rem;text-align:center;outline:none;transition:border-color 0.2s;}',
+    '#pw-input:focus{border-color:#c8b89a;}',
+    '#pw-error{font-family:"Space Grotesk",sans-serif;font-size:0.65rem;letter-spacing:0.1em;color:#8a4a3a;margin-top:1rem;min-height:1em;text-transform:uppercase;}',
+  ].join('');
+
+  document.head.appendChild(style);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+
+  function attempt() {
+    var val = document.getElementById('pw-input').value.trim().toLowerCase();
+    if (val === PASS) {
+      sessionStorage.setItem(KEY, '1');
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.4s';
+      document.body.style.overflow = '';
+      setTimeout(function(){ overlay.remove(); }, 400);
+    } else {
+      document.getElementById('pw-error').textContent = 'Incorrect';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').style.borderColor = '#8a4a3a';
+      setTimeout(function(){
+        document.getElementById('pw-error').textContent = '';
+        document.getElementById('pw-input').style.borderColor = '';
+      }, 1500);
+    }
+  }
+
+  document.getElementById('pw-input').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') attempt();
+  });
+})();
+
+// ── Parallax on hero and backdrop images ──────────────────────────────
+(function(){
   var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
   if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
   function onScroll() {
-    var scrollY = window.scrollY;
     bgs.forEach(function(bg) {
       var parent = bg.parentElement;
       var rect = parent.getBoundingClientRect();

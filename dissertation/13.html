@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="chapter.css">
 </head>
-<body class="chapter-page">
+<body class="chapter-page" data-protected="false">
 
 <nav>
   <div class="nav-name"><a href="/">Bradley <span>Cantrell</span></a></div>
@@ -86,12 +86,70 @@
 </div>
 
 <script>
+// ── Password gate (live/draft pages only) ─────────────────────────────
 (function(){
-  // Parallax on hero and backdrop images
+  var PASS = 'neo-wilds';
+  var KEY  = 'diss_auth';
+  var isProtected = document.body.dataset.protected === 'true';
+  if (!isProtected) return;
+  if (sessionStorage.getItem(KEY) === '1') return;
+
+  // Build overlay
+  var overlay = document.createElement('div');
+  overlay.id = 'pw-gate';
+  overlay.innerHTML = [
+    '<div id="pw-box">',
+    '  <div id="pw-title">Adaptive Epistemologies<br>and Neo-Wilds</div>',
+    '  <div id="pw-sub">Draft — Access Restricted</div>',
+    '  <input id="pw-input" type="password" placeholder="Password" autocomplete="off" autofocus>',
+    '  <div id="pw-error"></div>',
+    '</div>'
+  ].join('');
+
+  var style = document.createElement('style');
+  style.textContent = [
+    '#pw-gate{position:fixed;inset:0;z-index:9999;background:#080808;display:flex;align-items:center;justify-content:center;}',
+    '#pw-box{text-align:center;max-width:320px;width:90%;}',
+    '#pw-title{font-family:"Cormorant Garamond","Georgia",serif;font-size:1.1rem;font-weight:300;letter-spacing:0.08em;color:#e8e4dc;line-height:1.5;margin-bottom:0.5rem;}',
+    '#pw-sub{font-family:"Space Grotesk","Helvetica Neue",sans-serif;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#3d3a35;margin-bottom:2.5rem;}',
+    '#pw-input{width:100%;background:transparent;border:none;border-bottom:1px solid #2a2a28;color:#e8e4dc;font-family:"Space Grotesk",sans-serif;font-size:0.85rem;letter-spacing:0.08em;padding:0.6rem 0.25rem;text-align:center;outline:none;transition:border-color 0.2s;}',
+    '#pw-input:focus{border-color:#c8b89a;}',
+    '#pw-error{font-family:"Space Grotesk",sans-serif;font-size:0.65rem;letter-spacing:0.1em;color:#8a4a3a;margin-top:1rem;min-height:1em;text-transform:uppercase;}',
+  ].join('');
+
+  document.head.appendChild(style);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+
+  function attempt() {
+    var val = document.getElementById('pw-input').value.trim().toLowerCase();
+    if (val === PASS) {
+      sessionStorage.setItem(KEY, '1');
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.4s';
+      document.body.style.overflow = '';
+      setTimeout(function(){ overlay.remove(); }, 400);
+    } else {
+      document.getElementById('pw-error').textContent = 'Incorrect';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').style.borderColor = '#8a4a3a';
+      setTimeout(function(){
+        document.getElementById('pw-error').textContent = '';
+        document.getElementById('pw-input').style.borderColor = '';
+      }, 1500);
+    }
+  }
+
+  document.getElementById('pw-input').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') attempt();
+  });
+})();
+
+// ── Parallax on hero and backdrop images ──────────────────────────────
+(function(){
   var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
   if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
   function onScroll() {
-    var scrollY = window.scrollY;
     bgs.forEach(function(bg) {
       var parent = bg.parentElement;
       var rect = parent.getBoundingClientRect();
