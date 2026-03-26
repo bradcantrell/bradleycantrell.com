@@ -461,6 +461,65 @@ nav {
   font-weight: 500;
 }
 
+/* ── Glossary-specific styles ─────────────────────────────────────────── */
+.ch-content--glossary .glossary-letter {
+  font-family: var(--ch-serif);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--text-dimmer);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Term name (H3) */
+.ch-content--glossary h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0;
+}
+
+/* Definition text */
+.ch-content--glossary p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  margin-bottom: 0.5em;
+  line-height: 1.75;
+}
+
+/* Reference lines in italics */
+.ch-content--glossary p em {
+  color: var(--text-dimmer);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+/* Cross-reference section H2 */
+.ch-content--glossary h2:not(.glossary-letter) {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--text-dimmer);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cross-ref entries */
+.ch-content--glossary h2:not(.glossary-letter) + p,
+.ch-content--glossary h2:not(.glossary-letter) ~ p {
+  font-size: 0.82rem;
+  color: var(--text-dimmer);
+}
+
 /* ── References ───────────────────────────────────────────────────────── */
 .ch-references {
   margin-top: 5rem;
