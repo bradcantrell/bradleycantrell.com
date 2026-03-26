@@ -44,19 +44,21 @@
         <li><a href="11.html"><span class="ch-sidebar__num">11</span>Co-Creation</a></li>
         <li><a href="12.html"><span class="ch-sidebar__num">12</span>Synoptic View</a></li>
         <li><a href="13.html"><span class="ch-sidebar__num">13</span>Vectors</a></li>
+        <li style="height:1px;background:var(--border);margin:0.75rem 0.5rem;"></li>
+        <li><a href="glossary.html"><span class="ch-sidebar__num">—</span>Glossary</a></li>
+        <li><a href="appendix-a.html"><span class="ch-sidebar__num">—</span>Appendix A</a></li>
+        <li><a href="appendix-b.html"><span class="ch-sidebar__num">—</span>Appendix B</a></li>
     </ul>
   </aside>
-  
+
   <main class="ch-main">
-  
-    <!-- Running header -->
     <div class="ch-running">
       <span class="ch-running__text">Adaptive Epistemologies and Neo-Wilds &mdash; Chapter 04</span>
     </div>
-    
-    <!-- Hero -->
+
     <header class="ch-hero">
       <div class="ch-hero__bg ch-hero__bg--generated"></div>
+      <div class="ch-hero__watermark">Draft</div>
       <div class="ch-hero__content">
         <div class="ch-hero__label">Adaptive Epistemologies and Neo-Wilds</div>
         <div class="ch-hero__num">Chapter 04</div>
@@ -64,8 +66,8 @@
         
       </div>
     </header>
+
     
-    <!-- Body text -->
     <article class="ch-content">
       <p>This chapter maps the ecology of practice within which my research is situated and through which it has been produced. Rather than treating the subsequent project chapters as the work of a single, isolated author, I frame them as outcomes of an extended set of communities of practice that span landscape architecture, architecture, engineering, ecology, and environmental science (Lave and Wenger 1991; Wenger 1998). The chapter traces how collaborations with design academics, professional offices, scientists, engineers, and public institutions have provided not only sites and problems, but also methods, tools, and languages that condition what kinds of questions I can ask and what kinds of futures I propose. In doing so, it positions my practice-based PhD as emerging from a hybrid field in which dredging logistics, geomorphic modeling, responsive sensing, territorial design, and adaptive infrastructure are continuously negotiated. This ecology of practice is both empirical and methodological as it documents the networks through which the work travels and it establishes the transdisciplinary ground on which the later chapters that are focused on specific projects and key concepts should be read.
 </p>
@@ -255,8 +257,39 @@
 </p>
 <p><em>If the practice is the research instrument, then what exactly has the practice done? What is the accumulated body of work, and how does each project build on the one before it? What were the instruments, the provocations, the failures that redirected the inquiry? And what theory has the practice been enacting all along?</em>
 </p>
-      
-      
+    </article>
+    
+<div class="ch-backdrop">
+  <div class="ch-backdrop__img" style="background-image: url('img/04_ecology_practice/beach-renourishment-dredge-virginia-beach-2013.jpg')"></div>
+  <div class="ch-backdrop__caption">beach renourishment dredge virginia beach 2013</div>
+</div>
+
+<div class="ch-backdrop">
+  <div class="ch-backdrop__img" style="background-image: url('img/04_ecology_practice/cleveland-east-side-parkway-grading-plan.jpg')"></div>
+  <div class="ch-backdrop__caption">cleveland east side parkway grading plan</div>
+</div>
+
+<div class="ch-backdrop">
+  <div class="ch-backdrop__img" style="background-image: url('img/04_ecology_practice/dredge-bennetts-creek-usace-2013.jpg')"></div>
+  <div class="ch-backdrop__caption">dredge bennetts creek usace 2013</div>
+</div>
+
+<div class="ch-backdrop">
+  <div class="ch-backdrop__img" style="background-image: url('img/04_ecology_practice/olmsted-central-park-map-1868.jpg')"></div>
+  <div class="ch-backdrop__caption">olmsted central park map 1868</div>
+</div>
+
+<div class="ch-backdrop">
+  <div class="ch-backdrop__img" style="background-image: url('img/04_ecology_practice/owens-lake-alkali-dust-storm-california.jpg')"></div>
+  <div class="ch-backdrop__caption">owens lake alkali dust storm california</div>
+</div>
+
+<div class="ch-backdrop">
+  <div class="ch-backdrop__img" style="background-image: url('img/04_ecology_practice/owens-lake-california-historic-usgs.jpg')"></div>
+  <div class="ch-backdrop__caption">owens lake california historic usgs</div>
+</div>
+    
+    <div style="max-width:var(--ch-content);margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem);">
       <aside class="ch-references"><h2>References</h2><p>Adams, Tony E., Stacy Holman Jones, and Carolyn Ellis. 2015. <em>Autoethnography: Understanding Qualitative Research</em>. New York: Oxford University Press.
 </p>
 <p>Allen, Stan. 1999. <em>Points + Lines: Diagrams and Projects for the City</em>. New York: Princeton Architectural Press.
@@ -329,8 +362,8 @@
 </p>
 <p>Zimmerman, John, Erik Stolterman, and Jodi Forlizzi. 2010. \"An Analysis and Critique of Research through Design: Towards a Formalization of a Research Approach.\" In <em>Proceedings of the 8th ACM Conference on Designing Interactive Systems</em>, 310--319. New York: ACM.
 </p></aside>
-    </article>
-    
+    </div>
+
     <nav class="ch-nav"><a href="03.html" class="ch-nav__item ch-nav__item--prev">
       <span class="ch-nav__label">← Previous</span>
       <span class="ch-nav__title">Ch 03: Refractions</span>
@@ -338,25 +371,30 @@
       <span class="ch-nav__label">Next →</span>
       <span class="ch-nav__title">Ch 05: Tools</span>
     </a></nav>
-    
+
     <footer class="ch-footer">
       <p>Bradley Cantrell &middot; <a href="/">bradleycantrell.com</a></p>
       <p><a href="/dissertation.html">&larr; Dissertation overview</a></p>
     </footer>
-    
   </main>
 </div>
 
-
 <script>
 (function(){
-  var bg = document.querySelector('.ch-hero__bg');
-  if (!bg || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  // Parallax on hero and backdrop images
+  var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
+  if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
   function onScroll() {
-    var y = window.scrollY;
-    bg.style.transform = 'translateY(' + (y * 0.28) + 'px)';
+    var scrollY = window.scrollY;
+    bgs.forEach(function(bg) {
+      var parent = bg.parentElement;
+      var rect = parent.getBoundingClientRect();
+      var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+      bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
+    });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
 </script>
 </body>
