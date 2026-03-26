@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="1020" viewBox="0 0 3200 1020">
+<rect width="3200" height="1020" fill="#d5d4ca"/>
+<text x="260" y="44" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#2a2825" letter-spacing="0.5">CHAPTER 03 — TOOLS: PRACTICES, MANIFESTS, AND SPECULATIONS</text>
+<text x="260" y="64" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6b6860">Project Timeline 2005–2025  |  Updated March 8, 2026</text>
+<line x1="260" y1="74" x2="3080" y2="74" stroke="#b5b4b0" stroke-width="0.5"/>
+
+<!-- Year grid: 2005-2025, 20 years, 2820px / 20 = 141px per year -->
+<!-- x = 260 + (year-2005)*141 -->
+
+<!-- Grid lines and year labels -->
+<line x1="260" y1="90" x2="260" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.6"/>
+<text x="260" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2005</text>
+<line x1="401" y1="90" x2="401" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="542" y1="90" x2="542" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="683" y1="90" x2="683" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="683" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2008</text>
+<line x1="824" y1="90" x2="824" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="965" y1="90" x2="965" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="965" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2010</text>
+<line x1="1106" y1="90" x2="1106" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="1247" y1="90" x2="1247" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="1247" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2012</text>
+<line x1="1388" y1="90" x2="1388" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="1529" y1="90" x2="1529" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="1529" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2014</text>
+<line x1="1670" y1="90" x2="1670" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="1811" y1="90" x2="1811" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="1811" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2016</text>
+<line x1="1952" y1="90" x2="1952" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="2093" y1="90" x2="2093" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="2093" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2018</text>
+<line x1="2234" y1="90" x2="2234" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="2234" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2019</text>
+<line x1="2375" y1="90" x2="2375" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="2375" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2020</text>
+<line x1="2516" y1="90" x2="2516" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="2516" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2021</text>
+<line x1="2657" y1="90" x2="2657" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="2657" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2022</text>
+<line x1="2798" y1="90" x2="2798" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="2939" y1="90" x2="2939" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<line x1="3080" y1="90" x2="3080" y2="920" stroke="#b5b4b0" stroke-width="0.5" opacity="0.4"/>
+<text x="3080" y="940" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="middle">2025</text>
+
+<!-- Baseline -->
+<line x1="260" y1="924" x2="3080" y2="924" stroke="#2a2825" stroke-width="1"/>
+<polygon points="3083,924 3075,920 3075,928" fill="#2a2825"/>
+
+<!-- PHASE BANDS -->
+<!-- Phase I: Learning to See 2005-2012 (x=260 to x=1247) -->
+<rect x="260" y="150" width="987" height="80" fill="#2a2825" opacity="0.04" rx="2"/>
+<line x1="260" y1="195" x2="3060" y2="195" stroke="#6b6860" stroke-width="0.6" stroke-dasharray="3,5"/>
+<text x="246" y="189" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#2a2825" text-anchor="end">LEARNING TO SEE</text>
+<text x="246" y="204" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#6b6860" text-anchor="end">2005–2012</text>
+
+<!-- Phase II: Learning to Touch 2012-2016 -->
+<rect x="1247" y="350" width="564" height="80" fill="#2a2825" opacity="0.04" rx="2"/>
+<line x1="260" y1="395" x2="3060" y2="395" stroke="#6b6860" stroke-width="0.6" stroke-dasharray="3,5"/>
+<text x="246" y="389" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#2a2825" text-anchor="end">LEARNING TO TOUCH</text>
+<text x="246" y="404" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#6b6860" text-anchor="end">2012–2016</text>
+
+<!-- Phase III: Learning to Code 2016-2020 -->
+<rect x="1811" y="540" width="564" height="80" fill="#2a2825" opacity="0.04" rx="2"/>
+<line x1="260" y1="585" x2="3060" y2="585" stroke="#6b6860" stroke-width="0.6" stroke-dasharray="3,5"/>
+<text x="246" y="579" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#2a2825" text-anchor="end">LEARNING TO CODE</text>
+<text x="246" y="594" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#6b6860" text-anchor="end">2016–2020</text>
+
+<!-- Phase IV: Learning to Let Go 2017-2025 -->
+<rect x="1952" y="740" width="1128" height="80" fill="#2a2825" opacity="0.04" rx="2"/>
+<line x1="260" y1="785" x2="3060" y2="785" stroke="#6b6860" stroke-width="0.6" stroke-dasharray="3,5"/>
+<text x="246" y="779" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#2a2825" text-anchor="end">LEARNING TO LET GO</text>
+<text x="246" y="794" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#6b6860" text-anchor="end">2017–2025</text>
+
+<!-- ==================== PHASE I PROJECTS ==================== -->
+
+<!-- Surface Tension 2006 x=401 -->
+<circle cx="401" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="401" y1="185" x2="401" y2="140" stroke="#6b6860" stroke-width="0.75"/>
+<text x="405" y="137" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Surface Tension</text>
+<text x="405" y="122" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">hybrid model - LSU</text>
+
+<!-- Thresholds 2006 x=401 (slightly offset) -->
+<circle cx="420" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="420" y1="205" x2="420" y2="240" stroke="#6b6860" stroke-width="0.75"/>
+<text x="424" y="244" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Thresholds</text>
+<text x="424" y="258" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">installation - LSU</text>
+
+<!-- Ambient Space 2007 x=542 -->
+<circle cx="542" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="542" y1="185" x2="542" y2="110" stroke="#6b6860" stroke-width="0.75"/>
+<text x="546" y="107" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Ambient Space</text>
+<text x="546" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">ACADIA 2007</text>
+
+<!-- Cyclone Larry 2008 x=683 -->
+<circle cx="683" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="683" y1="205" x2="683" y2="270" stroke="#6b6860" stroke-width="0.75"/>
+<text x="687" y="274" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Cyclone Larry</text>
+<text x="687" y="288" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">ACADIA 2008</text>
+
+<!-- Landscapes of Fantasy 2008 x=683 -->
+<circle cx="700" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="700" y1="185" x2="700" y2="140" stroke="#6b6860" stroke-width="0.75"/>
+<text x="704" y="137" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Landscapes of Fantasy</text>
+<text x="704" y="122" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">seminar</text>
+
+<!-- Abstraction Language 2009 x=824 -->
+<circle cx="824" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="824" y1="205" x2="824" y2="310" stroke="#6b6860" stroke-width="0.75"/>
+<text x="828" y="314" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Abstraction Language</text>
+<text x="828" y="328" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">ACADIA 2009</text>
+
+<!-- PA Upriver 2009 x=824 -->
+<circle cx="845" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="845" y1="185" x2="845" y2="140" stroke="#6b6860" stroke-width="0.75"/>
+<text x="849" y="137" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Upriver / PA</text>
+<text x="849" y="122" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">Pamphlet Architecture</text>
+
+<!-- Over/Under 2009 x=824 -->
+<circle cx="824" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+
+<!-- Digital Drawing 2010 x=965 -->
+<circle cx="965" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="965" y1="185" x2="965" y2="110" stroke="#6b6860" stroke-width="0.75"/>
+<text x="969" y="107" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Digital Drawing for LA</text>
+<text x="969" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">book - ASLA 2012</text>
+
+<!-- Ecological Datascapes 2010 x=965 -->
+<circle cx="985" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="985" y1="205" x2="985" y2="270" stroke="#6b6860" stroke-width="0.75"/>
+<text x="989" y="274" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Ecological Datascapes</text>
+<text x="989" y="288" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">ACADIA 2010</text>
+
+<!-- CSS/TiKI 2010-2013 — span bar -->
+<line x1="965" y1="195" x2="1388" y2="195" stroke="#2a2825" stroke-width="2.5"/>
+<circle cx="1388" cy="195" r="4" fill="#d5d4ca" stroke="#2a2825" stroke-width="1.5"/>
+<line x1="965" y1="205" x2="965" y2="340" stroke="#6b6860" stroke-width="0.75"/>
+<text x="969" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">CSS / TiKI Lab</text>
+<text x="969" y="358" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">visualization studio - LSU</text>
+
+<!-- Modeling the Environment 2012 x=1247 -->
+<circle cx="1247" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1247" y1="185" x2="1247" y2="140" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1251" y="137" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Modeling the Environment</text>
+<text x="1251" y="122" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">book</text>
+
+<!-- Myrtle Grove 2011-2014 span — Phase I/II bridge -->
+<line x1="1106" y1="195" x2="1529" y2="195" stroke="#2a2825" stroke-width="2.5" stroke-dasharray="6,3"/>
+<circle cx="1106" cy="195" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<circle cx="1529" cy="195" r="4" fill="#d5d4ca" stroke="#2a2825" stroke-width="1.5"/>
+<line x1="1180" y1="205" x2="1180" y2="310" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1184" y="314" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Myrtle Grove</text>
+<text x="1184" y="328" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">visualization - NWF/ASLA</text>
+
+<!-- ==================== PHASE II PROJECTS ==================== -->
+
+<!-- Sedimachine 2012 x=1247 -->
+<circle cx="1247" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1247" y1="385" x2="1247" y2="350" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1251" y="347" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Sedimachine</text>
+<text x="1251" y="332" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">apparatus - LSU</text>
+
+<!-- Fort Proctor 2013 x=1388 -->
+<circle cx="1388" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1388" y1="405" x2="1388" y2="460" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1392" y="464" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Fort Proctor</text>
+<text x="1392" y="478" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">ARCC 2013 – Best Paper</text>
+
+<!-- DredgeFest 2014 — Phase II -->
+<circle cx="1529" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1500" y1="405" x2="1500" y2="510" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1504" y="514" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">DredgeFest</text>
+<text x="1504" y="528" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">workshop - DRC/LSU</text>
+
+<!-- Composite Landscapes 2013 x=1388 -->
+<circle cx="1408" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1408" y1="385" x2="1408" y2="330" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1412" y="327" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Composite Landscapes</text>
+<text x="1412" y="312" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">exhibition</text>
+
+<!-- REAL 2014-2017 span -->
+<line x1="1529" y1="395" x2="1952" y2="395" stroke="#2a2825" stroke-width="2.5"/>
+<circle cx="1952" cy="395" r="4" fill="#d5d4ca" stroke="#2a2825" stroke-width="1.5"/>
+<circle cx="1529" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1529" y1="405" x2="1529" y2="460" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1533" y="464" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">REAL</text>
+<text x="1533" y="478" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">lab - GSD</text>
+
+<!-- SensorScape 2015 x=1670 -->
+<circle cx="1670" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1670" y1="385" x2="1670" y2="320" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1674" y="317" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">SensorScape</text>
+<text x="1674" y="302" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">CELA panel</text>
+
+<!-- Branding Islands 2016 x=1811 -->
+<circle cx="1811" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1811" y1="385" x2="1811" y2="330" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1815" y="327" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Branding Islands</text>
+<text x="1815" y="312" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">Venice Biennale</text>
+
+<!-- Responsive Landscapes 2016 x=1811 -->
+<circle cx="1830" cy="395" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1830" y1="405" x2="1830" y2="470" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1834" y="474" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Responsive Landscapes</text>
+<text x="1834" y="488" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">book</text>
+
+<!-- ==================== PHASE III PROJECTS ==================== -->
+
+<!-- UVA Lab 2017-ongoing span -->
+<line x1="1952" y1="585" x2="3080" y2="585" stroke="#2a2825" stroke-width="2.5"/>
+<circle cx="3080" cy="585" r="4" fill="#d5d4ca" stroke="#2a2825" stroke-width="1.5"/>
+<circle cx="1952" cy="585" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1952" y1="575" x2="1952" y2="530" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1956" y="527" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">UVA Geomorphology Lab</text>
+<text x="1956" y="512" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">ongoing</text>
+
+<!-- Designing Autonomy 2017 x=1952 — Phase IV row -->
+<circle cx="1952" cy="785" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="1952" y1="775" x2="1952" y2="720" stroke="#6b6860" stroke-width="0.75"/>
+<text x="1956" y="717" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Designing Autonomy</text>
+<text x="1956" y="702" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">paper - Trends Ecol Evol</text>
+
+<!-- Codify 2018 x=2093 -->
+<circle cx="2093" cy="585" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="2093" y1="595" x2="2093" y2="650" stroke="#6b6860" stroke-width="0.75"/>
+<text x="2097" y="654" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Codify</text>
+<text x="2097" y="668" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">edited volume</text>
+
+<!-- Cyborg Ecology 2019 x=2234 -->
+<circle cx="2234" cy="585" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="2234" y1="575" x2="2234" y2="510" stroke="#6b6860" stroke-width="0.75"/>
+<text x="2238" y="507" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Cyborg Ecology</text>
+<text x="2238" y="492" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">essay - Ambiguous Territory</text>
+
+<!-- Algorithmic Cultivation 2019 x=2234 -->
+<circle cx="2254" cy="585" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="2254" y1="595" x2="2254" y2="660" stroke="#6b6860" stroke-width="0.75"/>
+<text x="2258" y="664" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Algorithmic Cultivation</text>
+<text x="2258" y="678" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">installation - UVA</text>
+
+<!-- Failure 2019 x=2234 -->
+<circle cx="2234" cy="785" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="2234" y1="795" x2="2234" y2="860" stroke="#6b6860" stroke-width="0.75"/>
+<text x="2238" y="864" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Failure</text>
+<text x="2238" y="878" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">drawing + film</text>
+
+<!-- ==================== PHASE IV PROJECTS ==================== -->
+
+<!-- Indeterminate Futures 2021 x=2516 -->
+<circle cx="2516" cy="785" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="2516" y1="775" x2="2516" y2="720" stroke="#6b6860" stroke-width="0.75"/>
+<text x="2520" y="717" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">Indeterminate Futures</text>
+<text x="2520" y="702" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">Venice Biennale</text>
+
+<!-- NEOM 2022-2025 span -->
+<line x1="2657" y1="785" x2="2939" y2="785" stroke="#2a2825" stroke-width="2.5"/>
+<circle cx="2939" cy="785" r="4" fill="#d5d4ca" stroke="#2a2825" stroke-width="1.5"/>
+<circle cx="2657" cy="785" r="5" fill="#d5d4ca" stroke="#2a2825" stroke-width="2"/>
+<line x1="2657" y1="775" x2="2657" y2="720" stroke="#6b6860" stroke-width="0.75"/>
+<text x="2661" y="717" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825">NEOM</text>
+<text x="2661" y="702" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860">territorial consultation</text>
+
+<!-- Prototyping the Bay 2021-2025 span -->
+<line x1="2516" y1="785" x2="3080" y2="785" stroke="#2a2825" stroke-width="1.5" stroke-dasharray="6,3"/>
+<circle cx="3080" cy="785" r="4" fill="#d5d4ca" stroke="#2a2825" stroke-width="1.5"/>
+<line x1="3060" y1="795" x2="3060" y2="860" stroke="#6b6860" stroke-width="0.75"/>
+<text x="3056" y="864" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2a2825" text-anchor="end">Prototyping the Bay</text>
+<text x="3056" y="878" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b6860" text-anchor="end">studio - Tulane Prize</text>
+
+<!-- Footer -->
+<text x="260" y="990" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#9b9a96">Bradley Cantrell — Adaptive Epistemologies and Neo-Wilds — Virginia Tech PhD 2026</text>
+</svg>

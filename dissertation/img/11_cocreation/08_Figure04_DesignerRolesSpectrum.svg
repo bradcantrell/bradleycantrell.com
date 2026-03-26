@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2550 1650" width="2550" height="1650">
+  <rect width="2550" height="1650" fill="#d5d4ca"/>
+
+  <!-- Title -->
+  <text x="1275" y="100" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="40" font-weight="700" fill="#2a2a2a" letter-spacing="1">Designer Roles Spectrum</text>
+  <text x="1275" y="142" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="300" fill="#5a5a5a" font-style="italic">From total authorship to ongoing relationship</text>
+
+  <!-- Axis labels -->
+  <text x="250" y="580" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="600" fill="#5a5a58" letter-spacing="1">Total control</text>
+  <text x="2300" y="580" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="600" fill="#5a5a58" letter-spacing="1">Distanced authorship</text>
+
+  <!-- Dashed line through middle (no arrow) -->
+  <line x1="300" y1="550" x2="2250" y2="550" stroke="#7a7870" stroke-width="1.5" stroke-dasharray="10,6"/>
+
+  <!-- Point 1: Author -->
+  <circle cx="420" cy="550" r="55" fill="#c8c5ba" stroke="#7a7870" stroke-width="1.5"/>
+  <text x="420" y="555" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="700" fill="#2a2a28">Author</text>
+  <text x="420" y="640" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">Specifies every element</text>
+  <text x="420" y="660" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">and relationship</text>
+  <text x="420" y="695" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="14" fill="#7a7a78" font-style="italic">Fixed Specifications</text>
+
+  <!-- Point 2: Orchestrator -->
+  <circle cx="870" cy="550" r="55" fill="#c8c5ba" stroke="#7a7870" stroke-width="1.5"/>
+  <text x="870" y="545" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#2a2a28">Orches-</text>
+  <text x="870" y="568" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#2a2a28">trator</text>
+  <text x="870" y="640" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">Sets conditions from</text>
+  <text x="870" y="660" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">which form emerges</text>
+  <text x="870" y="695" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="14" fill="#7a7a78" font-style="italic">Ecological design (McHarg)</text>
+
+  <!-- Point 3: Curator -->
+  <circle cx="1320" cy="550" r="55" fill="#c8c5ba" stroke="#7a7870" stroke-width="1.5"/>
+  <text x="1320" y="555" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="700" fill="#2a2a28">Curator</text>
+  <text x="1320" y="640" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">Selects from</text>
+  <text x="1320" y="660" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">emergent outcomes</text>
+  <text x="1320" y="695" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="14" fill="#7a7a78" font-style="italic">Clément, Third Landscape</text>
+
+  <!-- Point 4: Choreographer -->
+  <circle cx="1770" cy="550" r="55" fill="#c8c5ba" stroke="#7a7870" stroke-width="1.5"/>
+  <text x="1770" y="540" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" fill="#2a2a28">Choreo-</text>
+  <text x="1770" y="563" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" fill="#2a2a28">grapher</text>
+  <text x="1770" y="640" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">Writes rules that</text>
+  <text x="1770" y="660" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">generate the score</text>
+  <text x="1770" y="695" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="14" fill="#7a7a78" font-style="italic">Codify / REAL geomorphology</text>
+
+  <!-- Point 5: Interactions -->
+  <circle cx="2130" cy="550" r="55" fill="#c8c5ba" stroke="#7a7870" stroke-width="1.5"/>
+  <text x="2130" y="545" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" fill="#2a2a28">Inter-</text>
+  <text x="2130" y="568" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" fill="#2a2a28">actions</text>
+  <text x="2130" y="640" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">Ongoing relationship</text>
+  <text x="2130" y="660" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#5a5a58">with environment</text>
+  <text x="2130" y="695" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="14" fill="#7a7a78" font-style="italic">Designing Autonomy, Wildness Creator</text>
+
+  <!-- Figure label -->
+  <text x="150" y="1600" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="400" fill="#7a7a70">Fig 08-E2 — Cantrell 2026</text>
+</svg>

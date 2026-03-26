@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 750" width="800" height="750" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="750" fill="#d5d4ca"/>
+
+  <text x="400" y="44" text-anchor="middle" fill="#2a2825" font-size="20" font-weight="bold" letter-spacing="2">RELATIONAL INTELLIGENCES</text>
+  <text x="400" y="64" text-anchor="middle" fill="#6b6860" font-size="12" letter-spacing="1">Three Intelligences in Productive Tension</text>
+  <line x1="100" y1="74" x2="700" y2="74" stroke="#b5b4b0" stroke-width="0.5"/>
+
+  <!-- Circle fills use layered opacity to create darker overlaps naturally -->
+  
+  <!-- Circle 1: Human Intelligence (top left) -->
+  <circle cx="300" cy="300" r="160" fill="#b8b5aa" fill-opacity="0.55" stroke="#7a7870" stroke-width="1.5"/>
+
+  <!-- Circle 2: Machine Intelligence (top right) -->
+  <circle cx="500" cy="300" r="160" fill="#b8b5aa" fill-opacity="0.55" stroke="#7a7870" stroke-width="1.5"/>
+
+  <!-- Circle 3: Biological Intelligence (bottom center) -->
+  <circle cx="400" cy="470" r="160" fill="#b8b5aa" fill-opacity="0.55" stroke="#7a7870" stroke-width="1.5"/>
+
+  <!-- Labels: centered in their non-overlapping zone -->
+  
+  <!-- Human Intelligence — centered in upper-left lobe -->
+  <text x="220" y="235" text-anchor="middle" fill="#2a2825" font-size="13" font-weight="bold">HUMAN</text>
+  <text x="220" y="252" text-anchor="middle" fill="#2a2825" font-size="13" font-weight="bold">INTELLIGENCE</text>
+  <text x="220" y="275" text-anchor="middle" fill="#5a5a58" font-size="10">Intention, values,</text>
+  <text x="220" y="289" text-anchor="middle" fill="#5a5a58" font-size="10">ethical positioning,</text>
+  <text x="220" y="303" text-anchor="middle" fill="#5a5a58" font-size="10">cultural meaning</text>
+
+  <!-- Machine Intelligence — centered in upper-right lobe -->
+  <text x="580" y="235" text-anchor="middle" fill="#2a2825" font-size="13" font-weight="bold">MACHINE</text>
+  <text x="580" y="252" text-anchor="middle" fill="#2a2825" font-size="13" font-weight="bold">INTELLIGENCE</text>
+  <text x="580" y="275" text-anchor="middle" fill="#5a5a58" font-size="10">Sensing, processing,</text>
+  <text x="580" y="289" text-anchor="middle" fill="#5a5a58" font-size="10">pattern recognition,</text>
+  <text x="580" y="303" text-anchor="middle" fill="#5a5a58" font-size="10">adaptive response</text>
+
+  <!-- Biological Intelligence — centered in bottom lobe -->
+  <text x="400" y="540" text-anchor="middle" fill="#2a2825" font-size="13" font-weight="bold">BIOLOGICAL</text>
+  <text x="400" y="557" text-anchor="middle" fill="#2a2825" font-size="13" font-weight="bold">INTELLIGENCE</text>
+  <text x="400" y="578" text-anchor="middle" fill="#5a5a58" font-size="10">Growth, evolution,</text>
+  <text x="400" y="592" text-anchor="middle" fill="#5a5a58" font-size="10">ecological agency,</text>
+  <text x="400" y="606" text-anchor="middle" fill="#5a5a58" font-size="10">viridic autonomy</text>
+
+  <!-- Overlap labels -->
+  <text x="400" y="252" text-anchor="middle" fill="#2a2825" font-size="10" font-style="italic">Responsive Design</text>
+  <text x="306" y="428" text-anchor="middle" fill="#2a2825" font-size="10" font-style="italic">Traditional</text>
+  <text x="306" y="442" text-anchor="middle" fill="#2a2825" font-size="10" font-style="italic">Stewardship</text>
+  <text x="494" y="428" text-anchor="middle" fill="#2a2825" font-size="10" font-style="italic">Autonomous</text>
+  <text x="494" y="442" text-anchor="middle" fill="#2a2825" font-size="10" font-style="italic">Ecology</text>
+
+  <!-- Center: Adaptive Epistemology (no circle, just text, same weight as old "Third Intelligence") -->
+  <text x="400" y="365" text-anchor="middle" fill="#2a2825" font-size="11" font-weight="bold">ADAPTIVE</text>
+  <text x="400" y="380" text-anchor="middle" fill="#2a2825" font-size="11" font-weight="bold">EPISTEMOLOGY</text>
+
+  <text x="400" y="710" text-anchor="middle" fill="#9b9a96" font-size="10">Bradley Cantrell — Adaptive Epistemologies and Neo-Wilds — Virginia Tech PhD 2026</text>
+</svg>
