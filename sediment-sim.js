@@ -24,7 +24,7 @@ const CFG = {
 
   // Emitter — continuous streams that slowly drift their Y origin over time
   EMITTER_SPREAD:   0.06,     // perpendicular spread around the main vector
-  EMITTER_COUNT:    2,        // fewer streams — less clumping on left edge
+  EMITTER_COUNT:    5,        // fewer streams — less clumping on left edge
   // Streams never expire — they drift smoothly so emission is uninterrupted
   DRIFT_SPEED:      0.0015,   // how fast the stream Y drifts toward its target (per frame)
 
@@ -35,23 +35,23 @@ const CFG = {
 
   // Viscous physics — terminal velocity = GRAVITY / (1 - BASE_DRAG)
   // 0.008 / (1 - 0.985) = 0.53 px/frame → ~32px/sec at 60fps — slower, more contemplative
-  SPEED_INIT:       0.3,      // gentler birth push
-  SPEED_SPREAD:     0.08,
+  SPEED_INIT:       0.01,      // gentler birth push
+  SPEED_SPREAD:     0.01,
   GRAVITY:          0.008,    // much less forward drive — slow drift
   LATERAL_NOISE:    0.010,    // less lateral noise — calmer flow
   BASE_DRAG:        0.985,    // higher friction — thicker medium, slower movement
   TERRAIN_FRICTION: 0.040,    // less terrain friction — won't pile as aggressively
 
   // Obstacle grid
-  OBSTACLE_COUNT:   55,       // number of fixed obstacles
+  OBSTACLE_COUNT:   5,       // number of fixed obstacles
   OBSTACLE_RADIUS:  18,       // pixel radius — influence zone (larger = softer approach)
-  OBSTACLE_STRENGTH:0.08,     // very gentle lateral spread — sediment oozes, doesn't ricochet
-  OBSTACLE_FORWARD_KILL: 0.45,// kill most forward momentum — particles slow dramatically at obstacles
-  OBSTACLE_DEPOSIT: 0.005,    // less sediment in obstacle wake — reduces clumping
+  OBSTACLE_STRENGTH:0.11,     // very gentle lateral spread — sediment oozes, doesn't ricochet
+  OBSTACLE_FORWARD_KILL: 0.75,// kill most forward momentum — particles slow dramatically at obstacles
+  OBSTACLE_DEPOSIT: 0.05,    // less sediment in obstacle wake — reduces clumping
   // Obstacles placed in a staggered grid with noise, avoiding left 10% and right 5%
 
   // Sediment transport
-  SEDIMENT_INIT:    0.50,     // lighter load — less to deposit overall
+  SEDIMENT_INIT:    0.10,     // lighter load — less to deposit overall
   DROP_RATE:        0.25,     // deposit more gently on deceleration
   TERRAIN_DROP_MOD: 2.0,      // less positive feedback — builds slower
   PICKUP_SPEED:     0.28,     // higher threshold — terrain harder to erode once built
@@ -80,9 +80,9 @@ const CFG = {
   // Only ~5% of particles make it across at full brightness
   // As particles fade, deposit probability increases
   FADE_START:       0.12,    // fraction of canvas width before fade begins
-  FADE_LENGTH:      0.65,    // fraction of canvas width over which full fade occurs (most gone by ~77%)
-  FADE_DEPOSIT_BOOST: 8.0,   // multiplier on drop rate at full fade (dim = dropping load)
-  BASE_DROP_CHANCE: 0.05,    // 5% base deposit chance per frame at full brightness
+  FADE_LENGTH:      0.95,    // fraction of canvas width over which full fade occurs (most gone by ~77%)
+  FADE_DEPOSIT_BOOST: 3.0,   // multiplier on drop rate at full fade (dim = dropping load)
+  BASE_DROP_CHANCE: 0.15,    // 5% base deposit chance per frame at full brightness
 };
 
 // ── State ─────────────────────────────────────────────────────────────────────
