@@ -189,7 +189,7 @@ nav {
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
-  filter: brightness(0.35) saturate(0.7);
+  filter: brightness(0.52) saturate(0.82);
   will-change: transform;
 }
 
@@ -432,13 +432,7 @@ nav {
 }
 
 .ch-inline-figure__desc {
-  grid-column: 2;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  color: var(--text-dimmer);
-  line-height: 1.6;
-  margin-top: 0.3rem;
-  letter-spacing: 0.01em;
+  display: none;
 }
 
 .ch-inline-figure--simple figcaption {
@@ -550,30 +544,18 @@ nav {
   font-family: var(--ch-serif);
   font-size: 0.78rem;
   font-weight: 300;
-  font-style: italic;
   color: rgba(232,228,220,0.55);
   line-height: 1.5;
-  margin-bottom: 0.2rem;
+  display: flex;
+  gap: 0.65rem;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
-.ch-backdrop__caption-credit {
-  font-family: var(--font-sans);
-  font-size: 0.58rem;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.22);
-  line-height: 1.5;
-}
-
-.ch-backdrop__caption-credit a {
+.ch-backdrop__caption-title .ch-inline-figure__caption {
+  font-size: inherit;
+  font-style: italic;
   color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: rgba(255,255,255,0.15);
-  transition: color 0.2s;
-}
-
-.ch-backdrop__caption-credit a:hover {
-  color: rgba(200,184,154,0.6);
 }
 
 .ch-quote-panel {
