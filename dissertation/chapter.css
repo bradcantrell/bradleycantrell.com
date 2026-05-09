@@ -229,6 +229,23 @@ nav {
   line-height: 1.4;
 }
 
+.ch-hero__caption {
+  margin-top: 1.4rem;
+  max-width: 34rem;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: rgba(232,228,220,0.55);
+  line-height: 1.6;
+}
+
+.ch-hero__caption a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(255,255,255,0.2);
+}
+
 /* ── IN DEVELOPMENT page — shows only hero, no body ─────────────────── */
 .ch-in-development {
   max-width: var(--ch-content);
@@ -325,7 +342,11 @@ nav {
   width: 100%;
   display: block;
   border-radius: 1px;
-  /* Invert diagrams: white bg → dark, black lines → light */
+  filter: none;
+}
+
+/* Only invert vector diagrams that ship as SVG assets. */
+.ch-inline-figure img[src$=".svg"] {
   filter: invert(1) brightness(0.88) contrast(1.05);
 }
 
@@ -371,6 +392,41 @@ nav {
   line-height: 1.6;
   margin-top: 0.3rem;
   letter-spacing: 0.01em;
+}
+
+.ch-inline-figure--simple figcaption {
+  margin-top: 0.8rem;
+  display: block;
+}
+
+.ch-inline-figure--simple .ch-inline-figure__num {
+  display: block;
+  font-size: 0.56rem;
+  margin-bottom: 0.3rem;
+}
+
+.ch-inline-figure--simple .ch-inline-figure__caption {
+  display: block;
+  font-size: 0.82rem;
+  font-style: normal;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.ch-inline-figure__meta {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  color: var(--text-dimmer);
+  line-height: 1.55;
+}
+
+.ch-inline-figure__meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(255,255,255,0.16);
 }
 
 .ch-content blockquote {
@@ -473,10 +529,95 @@ nav {
   color: rgba(200,184,154,0.6);
 }
 
+.ch-quote-panel {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-1 * var(--ch-sidebar));
+  min-height: 78vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.ch-quote-panel__img {
+  position: absolute;
+  inset: -8%;
+  background-size: cover;
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  filter: brightness(0.42) saturate(0.72);
+  will-change: transform;
+}
+
+.ch-quote-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(8,8,8,0.84) 0%, rgba(8,8,8,0.18) 22%, rgba(8,8,8,0.24) 72%, rgba(8,8,8,0.9) 100%);
+  z-index: 1;
+}
+
+.ch-quote-panel__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: calc(var(--ch-content) + var(--ch-sidebar) + 8rem);
+  padding: 0 clamp(2rem, 4vw, 4rem) 8rem calc(var(--ch-sidebar) + clamp(1.5rem, 5vw, 3rem));
+}
+
+.ch-quote-panel__text {
+  max-width: 26ch;
+  font-family: var(--ch-serif);
+  font-size: clamp(1.45rem, 3vw, 2.45rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.25;
+  color: rgba(244,239,230,0.96);
+  text-wrap: balance;
+}
+
+.ch-quote-panel__caption {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 clamp(2rem, 4vw, 4rem) 1.4rem calc(var(--ch-sidebar) + clamp(1.5rem, 5vw, 3rem));
+  margin-top: auto;
+}
+
+.ch-quote-panel__caption-title {
+  font-family: var(--ch-serif);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: rgba(232,228,220,0.62);
+  line-height: 1.5;
+}
+
+.ch-quote-panel__caption-credit {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.24);
+  line-height: 1.55;
+  margin-top: 0.2rem;
+}
+
+.ch-quote-panel__caption-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(255,255,255,0.16);
+}
+
 /* On mobile sidebar is hidden — caption goes back to simple left padding */
 @media (max-width: 1024px) {
   .ch-backdrop__caption {
     padding: 1.25rem clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .ch-quote-panel__content,
+  .ch-quote-panel__caption {
+    padding-left: clamp(1.5rem, 5vw, 3rem);
+    padding-right: clamp(1.5rem, 5vw, 3rem);
   }
 }
 
@@ -510,7 +651,10 @@ nav {
   width: 100%;
   display: block;
   border-radius: 1px;
-  /* Invert diagrams for dark bg — white → dark, black lines → light */
+  filter: none;
+}
+
+.ch-figure-item img[src$=".svg"] {
   filter: invert(1) brightness(0.88) contrast(1.05);
 }
 
