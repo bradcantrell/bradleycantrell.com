@@ -236,6 +236,37 @@ nav {
   max-width: var(--ch-content);
 }
 
+.ch-hero__quote-box {
+  position: absolute;
+  right: clamp(1.5rem, 4vw, 3rem);
+  bottom: clamp(1.5rem, 4vh, 2.75rem);
+  z-index: 3;
+  max-width: min(36rem, 46vw);
+  padding: 1.1rem 1.2rem 1rem;
+  background: rgba(14, 14, 18, 0.62);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.2);
+}
+
+.ch-hero__quote-text {
+  font-family: var(--ch-serif);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: rgba(248,243,235,0.96);
+  margin-bottom: 0.75rem;
+}
+
+.ch-hero__quote-source {
+  font-family: var(--font-sans);
+  font-size: 0.67rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: rgba(235,229,220,0.78);
+}
+
 .ch-hero__label {
   font-family: var(--font-sans);
   font-size: 0.65rem;
@@ -647,6 +678,14 @@ nav {
   .ch-quote-panel__caption {
     padding-left: clamp(1.5rem, 5vw, 3rem);
     padding-right: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .ch-hero__quote-box {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 1.35rem clamp(1.5rem, 5vw, 3rem) 0;
+    max-width: 32rem;
   }
 }
 
