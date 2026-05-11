@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="chapter.css">
 </head>
-<body class="chapter-page" data-protected="false">
+<body class="chapter-page page-dissertation" data-protected="false">
 
 <nav>
   <div class="nav-name"><a href="/">Bradley <span>Cantrell</span></a></div>
@@ -472,12 +472,13 @@ their wetware functioning simultaneously as treatment, habitat, and
 civic space.</p>
 <h3 id="territorial-wetware">Territorial Wetware</h3>
 
-<div class="ch-backdrop">
-  <div class="ch-backdrop__img" style="background-image: url('img/09_interactions/09_Forestation_Regions_Processes.png')"></div>
-  <div class="ch-backdrop__caption">
-    <div class="ch-backdrop__caption-title"><span class="ch-inline-figure__num">Figure 09_03</span> <span class="ch-inline-figure__caption">NEOM Forestation Study Aerial Diagram | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers</span></div>
-  </div>
-</div>
+<figure class="ch-inline-figure ch-inline-figure--simple">
+  <img src="img/09_interactions/09_Forestation_Regions_Processes.png" alt="NEOM Forestation Study Aerial Diagram" loading="lazy">
+  <figcaption>
+    <span class="ch-inline-figure__num">Figure 09_03</span>
+    <span class="ch-inline-figure__caption">NEOM Forestation Study Aerial Diagram | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers</span>
+  </figcaption>
+</figure>
 <p>If living machines and constructed wetlands demonstrate wetware at
 the scale of the site, marshes and deltas reveal wetware potentials at
 territorial scales. In estuarine and coastal landscapes, vegetation and
@@ -948,6 +949,7 @@ Technogeographies + Coupled Ecologies | Bradley Cantrell</p>
 
 
 
+
     <nav class="ch-nav"><a href="08.html" class="ch-nav__item ch-nav__item--prev">
       <span class="ch-nav__label">← Previous</span>
       <span class="ch-nav__title">Ch 08: Landscape as Medium</span>
@@ -1023,21 +1025,6 @@ Technogeographies + Coupled Ecologies | Bradley Cantrell</p>
   });
 })();
 
-// ── Parallax on hero and backdrop images ──────────────────────────────
-(function(){
-  var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
-  if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  function onScroll() {
-    bgs.forEach(function(bg) {
-      var parent = bg.parentElement;
-      var rect = parent.getBoundingClientRect();
-      var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-      bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
 </script>
 <script src="chapter.js"></script>
 </body>

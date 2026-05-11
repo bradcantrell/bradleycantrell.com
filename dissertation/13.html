@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="chapter.css">
 </head>
-<body class="chapter-page" data-protected="false">
+<body class="chapter-page page-dissertation" data-protected="false">
 
 <nav>
   <div class="nav-name"><a href="/">Bradley <span>Cantrell</span></a></div>
@@ -759,6 +759,7 @@ Cantrell</p>
 
 
 
+
     <nav class="ch-nav"><a href="12.html" class="ch-nav__item ch-nav__item--prev">
       <span class="ch-nav__label">← Previous</span>
       <span class="ch-nav__title">Ch 12: Synoptic View</span>
@@ -771,23 +772,6 @@ Cantrell</p>
   </main>
 </div>
 
-<script>
-// ── Parallax on hero and backdrop images ──────────────────────────────
-(function(){
-  var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
-  if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  function onScroll() {
-    bgs.forEach(function(bg) {
-      var parent = bg.parentElement;
-      var rect = parent.getBoundingClientRect();
-      var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-      bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
 <script src="chapter.js"></script>
 </body>
 </html>

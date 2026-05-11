@@ -152,8 +152,17 @@ def insert_after_heading_id(html: str, heading_id: str, block: str) -> str:
 
 
 def apply_blocks(main_html: str, blocks: list[tuple[str, str]]) -> str:
+    grouped: dict[str, list[str]] = {}
+    ordered_ids: list[str] = []
     for heading_id, block in blocks:
-        main_html = insert_after_heading_id(main_html, heading_id, block)
+        if heading_id not in grouped:
+            grouped[heading_id] = []
+            ordered_ids.append(heading_id)
+        grouped[heading_id].append(block)
+
+    for heading_id in ordered_ids:
+        joined = "\n\n".join(grouped[heading_id])
+        main_html = insert_after_heading_id(main_html, heading_id, joined)
     return main_html
 
 
@@ -532,10 +541,12 @@ CHAPTER_BLOCKS = {
         ),
         (
             "territorial-wetware",
-            build_backdrop(
+            build_inline_figure(
                 "img/09_interactions/09_Forestation_Regions_Processes.png",
                 "Figure 09_03",
                 "NEOM Forestation Study Aerial Diagram | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers",
+                "NEOM Forestation Study Aerial Diagram",
+                extra_class="ch-inline-figure--simple",
             ),
         ),
         (

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="chapter.css">
 </head>
-<body class="chapter-page">
+<body class="chapter-page page-dissertation">
 
 <nav>
   <div class="nav-name"><a href="/">Bradley <span>Cantrell</span></a></div>
@@ -186,19 +186,19 @@ projects thinkable, testable, and publicly legible.</p>
 <h3 id="the-mississippi-river-basin-model-mrbm-field-to-the-lab">The
 Mississippi River Basin Model (MRBM): Field to the Lab</h3>
 
-<figure class="ch-inline-figure">
-  <img src="img/06_models/miss-river-basin-model-vicksburg-tower-upstream.jpg" alt="Mississippi River Basin Model tower view" loading="lazy">
-  <figcaption>
-    <span class="ch-inline-figure__num">Figure 06_06</span>
-    <span class="ch-inline-figure__caption">Mississippi River Basin Model, Tower View Downstream | United States Army Corps of Engineers, Library of Congress</span>
-  </figcaption>
-</figure>
-
 <figure class="ch-inline-figure ch-inline-figure--simple">
   <img src="img/06_models/250408_ArchD Landscape_Mississippi River Watershed.jpg" alt="Map of Mississippi River Watershed" loading="lazy">
   <figcaption>
     <span class="ch-inline-figure__num">Figure 06_02</span>
     <span class="ch-inline-figure__caption">Map of Mississippi River Watershed | Bradley Cantrell, Madhura Vaze</span>
+  </figcaption>
+</figure>
+
+<figure class="ch-inline-figure">
+  <img src="img/06_models/miss-river-basin-model-vicksburg-tower-upstream.jpg" alt="Mississippi River Basin Model tower view" loading="lazy">
+  <figcaption>
+    <span class="ch-inline-figure__num">Figure 06_06</span>
+    <span class="ch-inline-figure__caption">Mississippi River Basin Model, Tower View Downstream | United States Army Corps of Engineers, Library of Congress</span>
   </figcaption>
 </figure>
 <p>The Mississippi River Basin Model condensed several decades of
@@ -1062,6 +1062,7 @@ Bradley Cantrell</p>
 
 
 
+
     <nav class="ch-nav"><a href="05.html" class="ch-nav__item ch-nav__item--prev">
       <span class="ch-nav__label">← Previous</span>
       <span class="ch-nav__title">Ch 05: Tools</span>
@@ -1077,23 +1078,6 @@ Bradley Cantrell</p>
   </main>
 </div>
 
-<script>
-// ── Parallax on hero and backdrop images ──────────────────────────────
-(function(){
-  var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
-  if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  function onScroll() {
-    bgs.forEach(function(bg) {
-      var parent = bg.parentElement;
-      var rect = parent.getBoundingClientRect();
-      var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-      bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
 <script src="chapter.js"></script>
 </body>
 </html>
