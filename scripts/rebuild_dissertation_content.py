@@ -28,6 +28,8 @@ PAGE_MAP = {
     "GG_Glossary.docx": "glossary.html",
 }
 
+PROTECTED_PAGES = {"01.html", "02.html", "03.html"}
+
 
 def render_docx(docx_path: Path) -> str:
     result = subprocess.run(
@@ -311,20 +313,28 @@ CHAPTER_BLOCKS = {
         (
             "tracings",
             build_inline_figure(
+                "img/04_ecology_practice/dredge-bennetts-creek-usace-2013.jpg",
+                "Figure 04_02",
+                "USACE hopper dredge at Bennett's Creek, Virginia (2013) | U.S. Army Corps of Engineers (Public Affairs)",
+                "USACE hopper dredge at Bennett's Creek, Virginia",
+            ),
+        ),
+        (
+            "tracings",
+            build_inline_figure(
+                "img/04_ecology_practice/owens-lake-california-historic-usgs.jpg",
+                "Figure 04_03",
+                "Owens Lake, California (USGS aerial) | U.S. Geological Survey",
+                "Owens Lake, California USGS aerial view",
+            ),
+        ),
+        (
+            "tracings",
+            build_inline_figure(
                 "img/04_ecology_practice/04_CoreCollateralScaffolding.png",
                 "Figure 04_04",
                 "Core Collateral Scaffolding Diagram | Bradley Cantrell",
                 "Core Collateral Scaffolding Diagram",
-                extra_class="ch-inline-figure--simple",
-            ),
-        ),
-        (
-            "process-driven-urban-and-territorial-design",
-            build_inline_figure(
-                "img/04_ecology_practice/04_EcologyOfPracticeDiagram.png",
-                "Figure 04_06",
-                "Ecology of Practice Diagram | Bradley Cantrell",
-                "Ecology of Practice Diagram",
                 extra_class="ch-inline-figure--simple",
             ),
         ),
@@ -337,16 +347,70 @@ CHAPTER_BLOCKS = {
                 "USACE beach renourishment infrastructure in Virginia Beach",
             ),
         ),
+        (
+            "rivers-in-the-laboratory",
+            build_inline_figure(
+                "img/04_ecology_practice/04_EcologyOfPracticeDiagram.png",
+                "Figure 04_06",
+                "Ecology of Practice Diagram | Bradley Cantrell",
+                "Ecology of Practice Diagram",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
     ],
     "05.html": [
         (
             "the-practice-as-research-instrument-1",
             build_inline_figure(
-                "img/05_tools/03_Figure07_Timeline-v3.png",
-                "Figure 05_15",
-                "Project Timeline Diagram | Bradley Cantrell",
-                "Project Timeline Diagram",
-                extra_class="ch-inline-figure--simple",
+                "img/01_territory/01_Pseudo_Ecologies.png",
+                "Figure 05_01",
+                "Pseudo Ecologies | Bradley Cantrell",
+                "Pseudo Ecologies",
+            ),
+        ),
+        (
+            "the-practice-as-research-instrument-1",
+            build_inline_figure(
+                "img/07_technogeographies/synthetic_mudscapes.png",
+                "Figure 05_02",
+                "Synthetic Mudscapes | Liz Williams, Bradley Cantrell",
+                "Synthetic Mudscapes",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/tl_300.jpg",
+                "Figure 05_03",
+                "Thresholds Realtime Isoline Visualization | Bradley Cantrell",
+                "Thresholds realtime isoline visualization",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/tl_95250.jpg",
+                "Figure 05_04",
+                "Thresholds Realtime Isoline Visualization | Bradley Cantrell",
+                "Thresholds realtime isoline visualization",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/tl_95550.jpg",
+                "Figure 05_05",
+                "Thresholds Realtime Isoline Visualization | Bradley Cantrell",
+                "Thresholds realtime isoline visualization",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/tl_96300.jpg",
+                "Figure 05_06",
+                "Thresholds Realtime Isoline Visualization | Bradley Cantrell",
+                "Thresholds realtime isoline visualization",
             ),
         ),
         (
@@ -359,6 +423,133 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/thresholds_slides_Page_07.jpg",
+                "Figure 05_08",
+                "Thresholds Installation, Louisiana State University College of Art and Design | Bradley Cantrell",
+                "Thresholds Installation at Louisiana State University",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/thresholds_slides_Page_03.jpg",
+                "Figure 05_09",
+                "Thresholds Installation, Louisiana State University College of Art and Design | Bradley Cantrell",
+                "Thresholds Installation at Louisiana State University",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/thresholds_slides_Page_10.jpg",
+                "Figure 05_10",
+                "Thresholds Realtime Isoline Visualization | Bradley Cantrell",
+                "Thresholds realtime isoline visualization",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/device_layout_001.jpg",
+                "Figure 05_11",
+                "Surface Tension Model, Louisiana Delta Research, Louisiana State University | Bradley Cantrell, Kate Orff, Ryan Griffis",
+                "Surface Tension Model",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/device_layout_002.jpg",
+                "Figure 05_12",
+                "Surface Tension Model, Louisiana Delta Research, Louisiana State University | Bradley Cantrell, Kate Orff, Ryan Griffis",
+                "Surface Tension Model",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/device_layout_003.jpg",
+                "Figure 05_13",
+                "Surface Tension Model, Louisiana Delta Research, Louisiana State University | Bradley Cantrell, Kate Orff, Ryan Griffis",
+                "Surface Tension Model",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/section.jpg",
+                "Figure 05_14",
+                "Surface Tension Model, Louisiana Delta Research, Louisiana State University | Bradley Cantrell, Kate Orff, Ryan Griffis",
+                "Surface Tension Model section",
+            ),
+        ),
+        (
+            "learning-to-see-20052012",
+            build_inline_figure(
+                "img/05_tools/03_Figure07_Timeline-v3.png",
+                "Figure 05_15",
+                "Project Timeline Diagram | Bradley Cantrell",
+                "Project Timeline Diagram",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/pine_street.jpg",
+                "Figure 05_16",
+                "Pine Street Responsive Lighting | Bradley Cantrell",
+                "Pine Street Responsive Lighting",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/street_layout001.jpg",
+                "Figure 05_17",
+                "Pine Street Responsive Lighting | Bradley Cantrell",
+                "Pine Street Responsive Lighting",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/spatial_ceiling_001.jpg",
+                "Figure 05_18",
+                "Pine Street Responsive Lighting | Bradley Cantrell",
+                "Pine Street Responsive Lighting",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/street_pic.jpg",
+                "Figure 05_19",
+                "Pine Street Responsive Lighting | Bradley Cantrell",
+                "Pine Street Responsive Lighting",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/DredgeFest44.jpg",
+                "Figure 05_30",
+                "FIN, Tyler Mohr and Andrew Boyd | Bradley Cantrell",
+                "FIN by Tyler Mohr and Andrew Boyd",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/DredgeFest54.jpg",
+                "Figure 05_31",
+                "FIN, Tyler Mohr and Andrew Boyd | Bradley Cantrell",
+                "FIN by Tyler Mohr and Andrew Boyd",
+            ),
+        ),
+        (
             "learning-to-touch-20122016",
             build_inline_figure(
                 "img/05_tools/DredgeFest40.jpg",
@@ -368,12 +559,255 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/DredgeFest52.jpg",
+                "Figure 05_33",
+                "Robotic Sediment Gates Choreography | Bradley Cantrell, Justine Holzman, Prentiss Darden, David Merlin",
+                "Robotic Sediment Gates choreography",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/DredgeFest56.jpg",
+                "Figure 05_34",
+                "Robotic Sediment Gates Prototype | Bradley Cantrell, Justine Holzman, Prentiss Darden, David Merlin",
+                "Robotic Sediment Gates prototype",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/DredgeFest57.jpg",
+                "Figure 05_35",
+                "Dredgefest 2014 Workshop | Bradley Cantrell, Justine Holzman, Prentiss Darden, David Merlin",
+                "Dredgefest 2014 workshop",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/P1050199.jpg",
+                "Figure 05_36",
+                "Responsive Environments and Artifacts | Bradley Cantrell",
+                "Responsive Environments and Artifacts",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/P1050208.jpg",
+                "Figure 05_37",
+                "Responsive Environments and Artifacts | Bradley Cantrell",
+                "Responsive Environments and Artifacts",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/04_Figure02_Sedimachine.jpg",
+                "Figure 05_38",
+                "Responsive Environments and Artifacts | Bradley Cantrell",
+                "Responsive Environments and Artifacts",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/nyates_geo_001.jpg",
+                "Figure 05_39",
+                "Branding Islands Making Nations | Natalie Yates",
+                "Branding Islands Making Nations",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/jpablo_storyboard_001.jpg",
+                "Figure 05_40",
+                "Branding Islands Making Nations | Juan Pablo Rodriquez",
+                "Branding Islands Making Nations storyboard",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/04_Figure03_Sedimachine.jpg",
+                "Figure 05_41",
+                "Responsive Environments and Artifacts | Bradley Cantrell",
+                "Responsive Environments and Artifacts",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/spatial_ceiling_001.jpg",
+                "Figure 05_42",
+                "Experiments Wall Exhibition, Harvard University Graduate School of Design | Bradley Cantrell",
+                "Experiments Wall Exhibition",
+            ),
+        ),
+        (
+            "learning-to-touch-20122016",
+            build_inline_figure(
+                "img/05_tools/spatial_ceiling_002.jpg",
+                "Figure 05_43",
+                "Experiments Wall Exhibition, Harvard University Graduate School of Design | Bradley Cantrell",
+                "Experiments Wall Exhibition",
+            ),
+        ),
+        (
             "learning-to-code-20162020",
             build_inline_figure(
                 "img/05_tools/device_layout_003.jpg",
                 "Figure 05_20",
                 "Algorithmic Cultivation Section Layout | Bradley Cantrell, Robin Dripps, Lucia Phinney, Emma Mendel",
                 "Algorithmic Cultivation section layout",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/device_layout_002.jpg",
+                "Figure 05_21",
+                "Algorithmic Cultivation Lighting Logic | Bradley Cantrell, Robin Dripps, Lucia Phinney, Emma Mendel",
+                "Algorithmic Cultivation lighting logic",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/device_layout_001.jpg",
+                "Figure 05_22",
+                "Algorithmic Cultivation Robot Parts Iso | Bradley Cantrell, Robin Dripps, Lucia Phinney, Emma Mendel",
+                "Algorithmic Cultivation robot parts isometric",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/section.jpg",
+                "Figure 05_23",
+                "Algorithmic Cultivation Installation | Bradley Cantrell, Robin Dripps, Lucia Phinney, Emma Mendel",
+                "Algorithmic Cultivation installation",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/2015-09-15 15.51.19.jpg",
+                "Figure 05_24",
+                "Algorithmic Cultivation Installation | Bradley Cantrell, Robin Dripps, Lucia Phinney, Emma Mendel",
+                "Algorithmic Cultivation installation detail",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/Fig1_context.jpg",
+                "Figure 05_25",
+                "Mississippi River Delta Scale | Bradley Cantrell",
+                "Mississippi River Delta scale study",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/Fig2_StudyArea.jpg",
+                "Figure 05_26",
+                "Mississippi River River Scale | Bradley Cantrell",
+                "Mississippi River scale study",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/Fig8_TopographicEffects.jpg",
+                "Figure 05_27",
+                "Mississippi River Diversion Scale | Bradley Cantrell",
+                "Mississippi River diversion scale study",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/04_Figure01_REALLab.jpg",
+                "Figure 05_28",
+                "Geomorphology Table Sensing | Bradley Cantrell",
+                "Geomorphology Table sensing",
+            ),
+        ),
+        (
+            "learning-to-code-20162020",
+            build_inline_figure(
+                "img/05_tools/05.jpg",
+                "Figure 05_29",
+                "Geomorphology Table Sensing | Bradley Cantrell",
+                "Geomorphology Table sensing output",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/$$_composite_full (0-01-08-23).jpg",
+                "Figure 05_44",
+                "Indeterminate Futures NFT Archive | Bradley Cantrell",
+                "Indeterminate Futures NFT Archive",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/$$_composite_full (0-01-41-01).jpg",
+                "Figure 05_45",
+                "Indeterminate Futures NFT Archive | Bradley Cantrell",
+                "Indeterminate Futures NFT Archive",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/Fig4_CycloneFrequency.jpg",
+                "Figure 05_46",
+                "Fort Proctor Site Inventory | Bradley Cantrell",
+                "Fort Proctor Site Inventory",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/j_martinez_project_3_composite.jpg",
+                "Figure 05_47",
+                "Failure, layered drawing for Drawing Unresolvable Landscapes | José Martinez",
+                "Failure layered drawing",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/Fig6_HyperdisturbedEcosystems_Fire.jpg",
+                "Figure 05_48",
+                "Failure, animation for Storm Signals | Bradley Cantrell",
+                "Failure animation for Storm Signals",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/Fig5_HyperdisturbedEcosystems.jpg",
+                "Figure 05_49",
+                "Fort Proctor Site Inventory | Bradley Cantrell",
+                "Fort Proctor Site Inventory",
+            ),
+        ),
+        (
+            "learning-to-let-go-20172025",
+            build_inline_figure(
+                "img/05_tools/Fig7_TopographicEffects.jpg",
+                "Figure 05_50",
+                "Fort Proctor dynamic environment | Bradley Cantrell",
+                "Fort Proctor dynamic environment",
             ),
         ),
         (
@@ -400,10 +834,111 @@ CHAPTER_BLOCKS = {
         (
             "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
             build_inline_figure(
+                "img/06_models/miss-river-basin-model-ohio-river-section.jpg",
+                "Figure 06_03",
+                "Mississippi River Basin Model, Ohio River Section | U.S. Army Corps of Engineers",
+                "Mississippi River Basin Model Ohio River section",
+            ),
+        ),
+        (
+            "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
+            build_inline_figure(
+                "img/06_models/miss-river-basin-model-engineers-examining-model.jpg",
+                "Figure 06_04",
+                "Mississippi River Basin Model, engineers examining model | U.S. Army Corps of Engineers",
+                "Mississippi River Basin Model engineers examining the model",
+            ),
+        ),
+        (
+            "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
+            build_inline_figure(
+                "img/06_models/miss-river-basin-model-vicksburg-tower-downstream.jpg",
+                "Figure 06_05",
+                "Mississippi River Basin Model, Tower View Upstream | United States Army Corps of Engineers, Library of Congress",
+                "Mississippi River Basin Model tower view downstream",
+            ),
+        ),
+        (
+            "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
+            build_inline_figure(
                 "img/06_models/miss-river-basin-model-vicksburg-tower-upstream.jpg",
                 "Figure 06_06",
                 "Mississippi River Basin Model, Tower View Downstream | United States Army Corps of Engineers, Library of Congress",
                 "Mississippi River Basin Model tower view",
+            ),
+        ),
+        (
+            "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
+            build_inline_figure(
+                "img/06_models/miss-river-basin-model-data-computer-room.jpg",
+                "Figure 06_07",
+                "Mississippi River Basin Model, Panel and Computer Room | U.S. Army Corps of Engineers",
+                "Mississippi River Basin Model panel and computer room",
+            ),
+        ),
+        (
+            "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
+            build_inline_figure(
+                "img/06_models/miss-river-basin-model-vicksburg-color-ohio-confluence.jpg",
+                "Figure 06_08",
+                "Mississippi River Basin Model, Ohio River and Mississippi River Confluence | U.S. Army Corps of Engineers",
+                "Mississippi River Basin Model Ohio and Mississippi confluence",
+            ),
+        ),
+        (
+            "the-mississippi-river-basin-model-mrbm-field-to-the-lab",
+            build_inline_figure(
+                "img/06_models/250413_ArchD Landscape_Mississippi Delta.jpg",
+                "Figure 06_09",
+                "Map of Mississippi River Delta | Bradley Cantrell, Madhura Vaze",
+                "Map of Mississippi River Delta",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "the-seine-long-anthropogenic-histories",
+            build_inline_figure(
+                "img/06_models/250413_ArchD_Landscape_Seine River Estuary.jpg",
+                "Figure 06_10",
+                "Map of Seine River Delta | Bradley Cantrell, Madhura Vaze",
+                "Map of Seine River Delta",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "the-seine-long-anthropogenic-histories",
+            build_inline_figure(
+                "img/06_models/1940_Model of Isère at the Neyrpic workshops.jpg",
+                "Figure 06_11",
+                "Model of Isère at the Neyrpic workshops | Neyrpic",
+                "Model of Isère at the Neyrpic workshops",
+            ),
+        ),
+        (
+            "the-seine-long-anthropogenic-histories",
+            build_inline_figure(
+                "img/06_models/1969_Sogreah's laboratory in Beauvert Lab Model_2.jpg",
+                "Figure 06_12",
+                "Model at Sogreah’s Laboratory at Beauvert | Sogreah",
+                "Model at Sogreah laboratory at Beauvert",
+            ),
+        ),
+        (
+            "the-seine-long-anthropogenic-histories",
+            build_inline_figure(
+                "img/06_models/1960_The PEMBROKE in the Suez Canal.jpg",
+                "Figure 06_13",
+                "Pembroke in the Suez Canal Model | Sogreah",
+                "Pembroke in the Suez Canal model",
+            ),
+        ),
+        (
+            "the-seine-long-anthropogenic-histories",
+            build_inline_figure(
+                "img/06_models/1969-1_A model at the Sogréah laboratory in Beauvert -Pierre Danel.jpg",
+                "Figure 06_14",
+                "A model at the Sogréah laboratory in Beauvert | Pierre Danel",
+                "Model at the Sogréah laboratory in Beauvert",
             ),
         ),
         (
@@ -427,6 +962,52 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "the-rhine-hybrid-modeling-cultures",
+            build_inline_figure(
+                "img/06_models/Thijsse in the Hydraulics Research Laboratory in Delft.jpg",
+                "Figure 06_21",
+                "Thijsse in the Hydraulics Research Laboratory in Delft | Waterloopkundig Laboratorium",
+                "Thijsse in the Hydraulics Research Laboratory in Delft",
+            ),
+        ),
+        (
+            "the-rhine-hybrid-modeling-cultures",
+            build_inline_figure(
+                "img/06_models/1899-1901_Theodor Rehbock was appointed Professor of Hydraulic Engineering at the Technical University of Karlsruhe.jpg",
+                "Figure 06_22",
+                "1899-1901 Theodor Rehbock was appointed Professor of Hydraulic Engineering at the Technical University of Karlsruhe | Karlsruhe Institute of Technology",
+                "Theodor Rehbock at Karlsruhe",
+            ),
+        ),
+        (
+            "the-rhine-hybrid-modeling-cultures",
+            build_inline_figure(
+                "img/06_models/Thijsse (on the right) during the visit of Elizabeth II and Prince Philip, Duke of Edinburgh to the Hydraulics.png",
+                "Figure 06_23",
+                "Thijsse during the visit of Elizabeth II and Prince Philip, Duke of Edinburgh to the Hydraulics Laboratory | Waterloopkundig Laboratorium",
+                "Thijsse during the visit of Elizabeth II and Prince Philip",
+            ),
+        ),
+        (
+            "the-rhine-hybrid-modeling-cultures",
+            build_inline_figure(
+                "img/06_models/1930-1935_Scale model of the scour at the foot of the Jons dam.jpg",
+                "Figure 06_24",
+                "Scale model of the scour at the foot of the Jons dam | Sogreah",
+                "Scale model of scour at the foot of the Jons dam",
+            ),
+        ),
+        (
+            "the-rhine-hybrid-modeling-cultures",
+            build_inline_figure(
+                "img/06_models/250412_ArchD_Landscape_Rhine River Delta.jpg",
+                "Figure 06_25",
+                "Map of Rhine River Delta | Bradley Cantrell, Madhura Vaze",
+                "Map of Rhine River Delta",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
             "looking-forward-in-fluvial-modeling-and-for-design",
             build_inline_figure(
                 "img/06_models/04_Figure_FluvialModelingParadigms.png",
@@ -439,22 +1020,31 @@ CHAPTER_BLOCKS = {
     ],
     "07.html": [
         (
+            "a-case-for-highly-maintained-wildness",
+            build_inline_figure(
+                "img/07_technogeographies/230718_SherwoodEngineering_Neom_View04.jpg",
+                "Figure 07_02",
+                "NEOM Landscapes of the Line concepts | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers, Arqui 9",
+                "NEOM Landscapes of the Line concepts",
+            ),
+        ),
+        (
+            "from-situated-landscapes-to-datafied-territories",
+            build_inline_figure(
+                "img/07_technogeographies/07_Figure04_AutonomyGradient.png",
+                "Figure 07_03",
+                "The Autonomy Gradient Diagram | Bradley Cantrell",
+                "The Autonomy Gradient Diagram",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
             "from-situated-landscapes-to-datafied-territories",
             build_inline_figure(
                 "img/07_technogeographies/07_DatafiedTerritory.png",
                 "Figure 07_04",
                 "The Datafied Territory Diagram | Bradley Cantrell",
                 "The Datafied Territory Diagram",
-                extra_class="ch-inline-figure--simple",
-            ),
-        ),
-        (
-            "autonomy-through-infrastructure",
-            build_inline_figure(
-                "img/07_technogeographies/07_Figure04_AutonomyGradient.png",
-                "Figure 07_03",
-                "The Autonomy Gradient Diagram | Bradley Cantrell",
-                "The Autonomy Gradient Diagram",
                 extra_class="ch-inline-figure--simple",
             ),
         ),
@@ -469,16 +1059,6 @@ CHAPTER_BLOCKS = {
         (
             "technogeographies-1",
             build_inline_figure(
-                "img/07_technogeographies/07_SixFrameworks_Technogeographies.png",
-                "Figure 07_08",
-                "Six Frameworks Diagram, Technogeographies | Bradley Cantrell",
-                "Six Frameworks Diagram, Technogeographies",
-                extra_class="ch-inline-figure--simple",
-            ),
-        ),
-        (
-            "when-the-instruments-disagree",
-            build_inline_figure(
                 "img/07_technogeographies/07_Figure05_TemporalMismatch.png",
                 "Figure 07_06",
                 "Temporal Mismatch Diagram | Bradley Cantrell",
@@ -486,8 +1066,36 @@ CHAPTER_BLOCKS = {
                 extra_class="ch-inline-figure--simple",
             ),
         ),
+        (
+            "when-the-instruments-disagree",
+            build_inline_figure(
+                "img/07_technogeographies/synthetic_mudscapes.png",
+                "Figure 07_07",
+                "Synthetic Mudscapes | Liz Williams, Bradley Cantrell",
+                "Synthetic Mudscapes",
+            ),
+        ),
+        (
+            "wildness-through-maintenance",
+            build_inline_figure(
+                "img/07_technogeographies/07_SixFrameworks_Technogeographies.png",
+                "Figure 07_08",
+                "Six Frameworks Diagram, Technogeographies | Bradley Cantrell",
+                "Six Frameworks Diagram, Technogeographies",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
     ],
     "08.html": [
+        (
+            "mediums-water-soil-vegetation-climate",
+            build_inline_figure(
+                "img/08_landscape_medium/230223-NEOM LotL_hires_spreads_Page_020.jpg",
+                "Figure 08_02",
+                "NEOM Technical Study, Test Plots | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers, Arqui 9",
+                "NEOM Technical Study, Test Plots",
+            ),
+        ),
         (
             "physical-models-as-bounded-experiments",
             build_inline_figure(
@@ -505,6 +1113,43 @@ CHAPTER_BLOCKS = {
                 "Territory as Assemblage Diagram | Bradley Cantrell",
                 "Territory as Assemblage Diagram",
                 extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "distributed-monitoring-sensing-across-scales",
+            build_inline_figure(
+                "img/08_landscape_medium/vlcsnap-2026-03-08-22h40m31s674.png",
+                "Figure 08_05",
+                "Responsive Environments and Artifacts 2021, Harvard University Graduate School of Design | Bradley Cantrell",
+                "Responsive Environments and Artifacts study",
+            ),
+        ),
+        (
+            "distributed-monitoring-sensing-across-scales",
+            build_inline_figure(
+                "img/08_landscape_medium/08_DesignerRolesSpectrum.png",
+                "Figure 08_06",
+                "Designer Roles Spectrum Diagram | Bradley Cantrell",
+                "Designer Roles Spectrum Diagram",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "distributed-monitoring-sensing-across-scales",
+            build_inline_figure(
+                "img/11_cocreation/08_Figure01_AlgorithmicCultivation.jpg",
+                "Figure 08_07",
+                "Responsive Environments and Artifacts 2021, Harvard University Graduate School of Design | Bradley Cantrell",
+                "Responsive Environments and Artifacts exhibition",
+            ),
+        ),
+        (
+            "distributed-monitoring-sensing-across-scales",
+            build_inline_figure(
+                "img/08_landscape_medium/site two_diversion.jpg",
+                "Figure 08_08",
+                "NEOM Landscapes of the Line concepts | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers, Arqui 9",
+                "NEOM Landscapes of the Line concepts",
             ),
         ),
         (
@@ -550,6 +1195,15 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "territorial-wetware",
+            build_inline_figure(
+                "img/09_interactions/LAR7020_S25_Module_III_Team04_Final Board_reexport_Page_1.jpg",
+                "Figure 09_04",
+                "Almost an Island, Prototyping the Chesapeake Bay | Bradley Cantrell, Team 4, Module III",
+                "Almost an Island, Prototyping the Chesapeake Bay",
+            ),
+        ),
+        (
             "ethics-and-political-ecologies-of-wetware",
             build_inline_figure(
                 "img/09_interactions/SiteImage_01_SMALL_Map.jpg",
@@ -580,6 +1234,16 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "from-fast-agents-to-robot-ecologies",
+            build_inline_figure(
+                "img/10_generational_robots/10_SimondonEvolution.png",
+                "Figure 10_2",
+                "Abstract to Applied Diagram | Bradley Cantrell",
+                "Abstract to Applied Diagram",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
             "active-sensing-and-robot-ecologies",
             build_inline_figure(
                 "img/10_generational_robots/10_GenerationalKnowledge.png",
@@ -587,6 +1251,24 @@ CHAPTER_BLOCKS = {
                 "Generational Knowledge Diagram | Bradley Cantrell",
                 "Generational Knowledge Diagram",
                 extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "active-sensing-and-robot-ecologies",
+            build_inline_figure(
+                "img/07_technogeographies/240772_SherwoodEngineering_NeomTestPlots_View03.jpg",
+                "Figure 10_4",
+                "NEOM Technical Study, Test Plots | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers, Arqui 9",
+                "NEOM Technical Study, Test Plots",
+            ),
+        ),
+        (
+            "active-sensing-and-robot-ecologies",
+            build_inline_figure(
+                "img/07_technogeographies/230718_SherwoodEngineering_Neom_View04.jpg",
+                "Figure 10_5",
+                "NEOM Landscapes of the Line concepts | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers, Arqui 9",
+                "NEOM Landscapes of the Line concepts",
             ),
         ),
         (
@@ -599,18 +1281,17 @@ CHAPTER_BLOCKS = {
                 extra_class="ch-inline-figure--simple",
             ),
         ),
-        (
-            "robotic-companions-for-reflexive-stewardship",
-            build_inline_figure(
-                "img/10_generational_robots/10_SimondonEvolution.png",
-                "Figure 10_2",
-                "Abstract to Applied Diagram | Bradley Cantrell",
-                "Abstract to Applied Diagram",
-                extra_class="ch-inline-figure--simple",
-            ),
-        ),
     ],
     "11.html": [
+        (
+            "forms-of-intelligence-in-landscape-systems",
+            build_inline_figure(
+                "img/11_cocreation/slime-mold-badhamia-physarum.jpg",
+                "Figure 11_01",
+                "Coastal Paradox, Mold Studies | Fionn Byrne",
+                "Coastal Paradox, Mold Studies",
+            ),
+        ),
         (
             "forms-of-intelligence-in-landscape-systems",
             build_inline_figure(
@@ -622,6 +1303,15 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "multi-species-communication",
+            build_inline_figure(
+                "img/05_tools/nyates_geo_001.jpg",
+                "Figure 11_03",
+                "Branding Islands Making Nations | Natalie Yates",
+                "Branding Islands Making Nations",
+            ),
+        ),
+        (
             "distributed-authorship",
             build_inline_figure(
                 "img/11_cocreation/11_DistributedAuthorship.png",
@@ -629,6 +1319,15 @@ CHAPTER_BLOCKS = {
                 "Distributed Authorship Diagram | Bradley Cantrell",
                 "Distributed Authorship Diagram",
                 extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "distributed-authorship",
+            build_inline_figure(
+                "img/03_refractions/sedimachine_photo__DSC0183.jpg",
+                "Figure 11_05",
+                "Sedimachine Experiments | Bradley Cantrell",
+                "Sedimachine Experiments",
             ),
         ),
         (
@@ -648,6 +1347,25 @@ CHAPTER_BLOCKS = {
                 "Figure 11_07",
                 "Three Stances Toward AI in Design Practice | Bradley Cantrell",
                 "Three Stances Toward AI in Design Practice",
+                extra_class="ch-inline-figure--simple",
+            ),
+        ),
+        (
+            "intelligence-agency-and-the-futures",
+            build_inline_figure(
+                "img/11_cocreation/230718_SherwoodEngineering_Neom_View03.png",
+                "Figure 11_08",
+                "NEOM Landscapes of the Line concepts | Bradley Cantrell, Adam Mekies, Sherwood Design Engineers, Arqui 9",
+                "NEOM Landscapes of the Line concepts",
+            ),
+        ),
+        (
+            "intelligence-agency-and-the-futures",
+            build_inline_figure(
+                "img/11_cocreation/11_SixFrameworks_CoCreation.png",
+                "Figure 11_09",
+                "Six Frameworks Diagram | Bradley Cantrell",
+                "Six Frameworks Diagram, Co-Creation",
                 extra_class="ch-inline-figure--simple",
             ),
         ),
@@ -704,6 +1422,15 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
+            "what-the-frameworks-give-us",
+            build_inline_figure(
+                "img/13_vectors/river-delta-satellite-PRINT.jpg",
+                "Figure 13_02",
+                "Pseudo-Ecologies _ deltaic | Bradley Cantrell",
+                "Pseudo-Ecologies, Deltaic",
+            ),
+        ),
+        (
             "six-vectors-directions-not-conclusions",
             build_inline_figure(
                 "img/13_vectors/13_SixVectors.png",
@@ -714,7 +1441,16 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
-            "the-neo-wild",
+            "six-vectors-directions-not-conclusions",
+            build_inline_figure(
+                "img/13_vectors/desert-satellite-PRINT.jpg",
+                "Figure 13_04",
+                "Pseudo-Regions _arid | Bradley Cantrell",
+                "Pseudo-Regions, Arid",
+            ),
+        ),
+        (
+            "the-demand",
             build_inline_figure(
                 "img/13_vectors/13_SensingPolitics.png",
                 "Figure 13_05",
@@ -724,12 +1460,12 @@ CHAPTER_BLOCKS = {
             ),
         ),
         (
-            "what-the-place-knows",
+            "the-demand",
             build_inline_figure(
-                "img/13_vectors/desert-satellite-PRINT.jpg",
-                "Figure 13_04",
-                "Pseudo-Regions _arid | Bradley Cantrell",
-                "Pseudo-Regions, Arid",
+                "img/13_vectors/TECHGEO-03-4x.png",
+                "Figure 13_06",
+                "Pseudo-Regions _ campus | Bradley Cantrell",
+                "Pseudo-Regions, Campus",
             ),
         ),
     ],
@@ -790,6 +1526,9 @@ def replace_page_content(page_path: Path, body_html: str) -> None:
 
 def main() -> None:
     for docx_name, html_name in PAGE_MAP.items():
+        if html_name in PROTECTED_PAGES:
+            continue
+
         docx_path = DOCX_DIR / docx_name
         page_path = HTML_DIR / html_name
 
