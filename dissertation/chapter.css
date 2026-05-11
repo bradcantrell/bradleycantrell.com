@@ -591,7 +591,7 @@ nav {
 
 .ch-quote-panel {
   position: relative;
-  width: 100%;
+  width: calc(100vw - var(--ch-sidebar));
   margin-left: 0;
   height: var(--ch-hero-h);
   min-height: var(--ch-hero-min);
@@ -623,7 +623,7 @@ nav {
   right: clamp(1.5rem, 4vw, 3rem);
   bottom: clamp(4.25rem, 8vh, 5.75rem);
   z-index: 2;
-  width: min(36rem, 46vw);
+  width: min(32rem, 42vw);
   max-width: none;
   padding: 1.1rem 1.2rem 1rem;
   background: rgba(14, 14, 18, 0.62);
@@ -635,7 +635,7 @@ nav {
 
 .ch-quote-panel__text {
   font-family: var(--ch-serif);
-  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-size: clamp(0.8rem, 1.02vw, 0.98rem);
   font-style: italic;
   line-height: 1.55;
   color: rgba(244,239,230,0.96);
@@ -652,25 +652,27 @@ nav {
 
 .ch-quote-panel__caption {
   position: absolute;
-  left: calc(var(--ch-sidebar) + clamp(1.5rem, 5vw, 3rem));
-  right: clamp(1.5rem, 4vw, 3rem);
+  left: clamp(2rem, 6vw, 5rem);
+  right: auto;
   bottom: 1.4rem;
   z-index: 2;
-  max-width: 34rem;
+  width: min(30rem, calc(100% - clamp(4rem, 10vw, 8rem) - 32rem));
+  max-width: 30rem;
+  overflow-wrap: anywhere;
 }
 
 .ch-quote-panel__caption-title {
-  display: inline;
+  display: block;
   font-family: var(--font-sans);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   color: rgba(232,228,220,0.62);
   line-height: 1.6;
-  margin-right: 0.45rem;
+  margin-right: 0;
 }
 
 .ch-quote-panel__caption-credit {
-  display: inline;
+  display: block;
   font-family: var(--font-sans);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
@@ -709,6 +711,11 @@ nav {
     left: auto;
     bottom: 4.5rem;
     width: min(30rem, calc(100vw - 3rem));
+  }
+
+  .ch-quote-panel__caption {
+    width: min(24rem, calc(100vw - 3rem));
+    max-width: none;
   }
 
   .ch-hero__quote-box {
