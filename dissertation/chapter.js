@@ -19,6 +19,11 @@
     bg.insertAdjacentElement('afterend', img);
   }
 
+  function getCaptionText(node, selector, fallback) {
+    var el = node.querySelector(selector);
+    return el ? el.textContent.trim() : fallback;
+  }
+
   function initPrintImages() {
     var hero = document.querySelector('.ch-hero');
     if (hero) {
@@ -33,6 +38,16 @@
         '.ch-backdrop__img',
         'ch-backdrop__print-img',
         title ? title.textContent.trim() : 'Chapter figure'
+      );
+    });
+
+    document.querySelectorAll('.ch-quote-panel').forEach(function(panel) {
+      var title = getCaptionText(panel, '.ch-quote-panel__caption-title', 'Chapter figure');
+      addPrintImage(
+        panel,
+        '.ch-quote-panel__img',
+        'ch-quote-panel__print-img',
+        title
       );
     });
   }
