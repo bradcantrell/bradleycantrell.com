@@ -150,7 +150,41 @@
     });
   }
 
+  function initParallax() {
+    var backgrounds = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img, .ch-quote-panel__img');
+    if (!backgrounds.length) return;
+
+    var media = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    if (!media.matches) return;
+
+    var ticking = false;
+
+    function updateParallax() {
+      backgrounds.forEach(function(bg) {
+        var parent = bg.parentElement;
+        if (!parent) return;
+
+        var rect = parent.getBoundingClientRect();
+        var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+        bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
+      });
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateParallax);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateParallax();
+  }
+
   initPrintImages();
   initPrintButton();
   initImageModal();
+  initParallax();
 })();

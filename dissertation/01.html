@@ -826,23 +826,6 @@ Cantrell</p>
   </main>
 </div>
 
-<script>
-// ── Parallax on hero and backdrop images ──────────────────────────────
-(function(){
-  var bgs = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img');
-  if (!bgs.length || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  function onScroll() {
-    bgs.forEach(function(bg) {
-      var parent = bg.parentElement;
-      var rect = parent.getBoundingClientRect();
-      var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-      bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
 <script src="chapter.js"></script>
 </body>
 </html>
