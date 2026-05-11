@@ -592,9 +592,9 @@ nav {
 
 .ch-quote-panel {
   position: relative;
-  width: 100%;
+  width: 100vw;
   max-width: none;
-  margin-left: 0;
+  margin-left: calc(-1 * var(--ch-sidebar));
   margin-right: 0;
   height: var(--ch-hero-h);
   min-height: var(--ch-hero-min);
@@ -610,7 +610,7 @@ nav {
   position: absolute;
   inset: -10%;
   background-size: cover;
-  background-position: left 30%;
+  background-position: left center;
   background-repeat: no-repeat;
   filter: brightness(0.52) saturate(0.82);
   will-change: transform;
@@ -658,11 +658,11 @@ nav {
 
 .ch-quote-panel__caption {
   position: absolute;
-  left: clamp(2rem, 6vw, 5rem);
+  left: calc(var(--ch-sidebar) + clamp(1.5rem, 5vw, 3rem));
   right: auto;
   bottom: 1.4rem;
   z-index: 2;
-  width: min(30rem, calc(100% - clamp(4rem, 10vw, 8rem) - 32rem));
+  width: min(30rem, calc(100% - var(--ch-sidebar) - clamp(3rem, 8vw, 6rem) - 32rem));
   max-width: 30rem;
   overflow-wrap: anywhere;
 }
