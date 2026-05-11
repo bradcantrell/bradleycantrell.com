@@ -13,6 +13,7 @@ Each dissertation chapter HTML page should:
 - follow the Chapter 01 visual and interaction model
 - preserve the dissertation site aesthetic while using the PDF as the
   canonical source for figure placement, quote overlays, and pacing
+- keep all figures in PDF order and aligned with their figure numbers
 
 ## Source Hierarchy
 
@@ -69,10 +70,17 @@ PDF does not treat the image as a full-width quote plate.
 Rules:
 
 - include every figure listed in the DOCX figure list
+- keep figures in the same sequence they appear in the PDF and in figure
+  number order
 - do not generate descriptive captions
 - use only the official figure number and figure-list caption text
 - keep SVG inversion only for actual `.svg` assets
 - leave raster images un-inverted
+- if the figure name includes `diagram` or `map`, keep it in the text
+  flow as a standard inline figure rather than converting it to a
+  full-width plate
+- diagrams and maps should remain enlargeable through the shared figure
+  modal behavior
 
 ### Inline quote-image panels
 
@@ -100,6 +108,13 @@ Important structural rule:
   sections, not nested inside the text column when they are meant to
   read as full-width plates
 
+Behavior rule:
+
+- any figure shown in the PDF with a quote overlaid should be treated as
+  a full-width inline quote-image panel with parallax
+- quote-overlay figures should not be converted to standard text-column
+  figures unless the PDF clearly treats them that way
+
 If they remain nested inside the article flow, they visually collapse
 back toward the text column even when the CSS is otherwise correct.
 
@@ -109,10 +124,14 @@ For each chapter:
 
 1. Extract the figure list from the end of the DOCX.
 2. Confirm that every figure listed appears in the chapter HTML.
-3. Confirm that each figure uses the correct figure-list caption text.
-4. Confirm that figures shown as quote-overlay plates in the PDF are not
+3. Confirm that figures appear in the same order as the PDF and in
+   ascending figure-number order.
+4. Confirm that each figure uses the correct figure-list caption text.
+5. Confirm that figures shown as quote-overlay plates in the PDF are not
    rendered as standard column-width figures.
-5. Confirm that no unlisted figures are inserted unless there is a clear
+6. Confirm that figures with `diagram` or `map` in the figure name stay
+   in the text flow and can be enlarged.
+7. Confirm that no unlisted figures are inserted unless there is a clear
    chapter-specific reason and the user approves it.
 
 For Chapter 01, all figures `01_01` through `01_10` are now present.
@@ -242,6 +261,13 @@ Shared chapter interactions also include:
 - print-image fallbacks for background-image sections
 - image enlargement modal for non-hero inline figures
 
+This includes:
+
+- standard inline figures
+- diagrams and maps in the text flow
+- print fallbacks for quote-overlay panels, not just heroes and
+  backdrops
+
 These behaviors are already in `chapter.js` and should be preserved
 across chapters.
 
@@ -255,18 +281,24 @@ Use this sequence for each chapter:
    - hero image
    - any inline quote-image panels
    - any full-width figure pacing
+   - exact figure order through the chapter
 4. Stage the figure assets from the `Links` folder into the correct
    `dissertation/img/<chapter>/` folder.
 5. Optimize raster assets for web delivery.
 6. Replace the chapter HTML body content while keeping the dissertation
    page shell.
 7. Insert standard figures and quote-image panels according to the PDF.
-8. Use only official figure-list text for captions.
-9. Confirm `<body class="chapter-page page-dissertation">`.
-10. Confirm all required figures are present.
-11. Confirm quote-image panels are siblings of content articles when
+8. Keep all `diagram` and `map` figures in the text flow as standard
+   inline figures.
+9. Convert any figure with a PDF quote overlay into a full-width
+   `ch-quote-panel` with parallax.
+10. Check that figure order in the HTML matches the PDF sequence.
+11. Use only official figure-list text for captions.
+12. Confirm `<body class="chapter-page page-dissertation">`.
+13. Confirm all required figures are present.
+14. Confirm quote-image panels are siblings of content articles when
     they should read full-width.
-12. Confirm parallax works through the shared script, not inline custom
+15. Confirm parallax works through the shared script, not inline custom
     scripts.
 
 ## Chapter 01-Specific Notes
@@ -296,7 +328,12 @@ Before considering a chapter complete:
 
 - all figures from the DOCX figure list are present
 - no required images are missing
+- figure order matches the PDF and the figure numbering sequence
 - quote-image plates match the PDF treatment
+- any figure with a PDF quote overlay is a full-width quote-image panel
+  with parallax
+- any figure with `diagram` or `map` in its figure name remains in the
+  text flow
 - figure captions use only official figure-list text
 - large raster assets are optimized
 - SVG inversion applies only to SVG files
@@ -305,7 +342,10 @@ Before considering a chapter complete:
 - quote captions do not overlap the quote box
 - parallax motion applies to the opener and any inline quote-image
   panels
+- standard inline figures can be enlarged
+- diagrams and maps can be enlarged
 - print button and modal behavior still work
+- print preview includes quote-overlay panels, not just the first hero
 
 ## Files Changed During Chapter 01 Pattern Development
 
