@@ -591,7 +591,7 @@ nav {
 
 .ch-quote-panel {
   position: relative;
-  width: calc(100vw - var(--ch-sidebar));
+  width: 100%;
   margin-left: 0;
   height: var(--ch-hero-h);
   min-height: var(--ch-hero-min);
@@ -601,11 +601,11 @@ nav {
 
 .ch-quote-panel__img {
   position: absolute;
-  inset: 0;
+  inset: -10%;
   background-size: cover;
-  background-position: left center;
+  background-position: left 30%;
   background-repeat: no-repeat;
-  filter: brightness(0.42) saturate(0.72);
+  filter: brightness(0.52) saturate(0.82);
   will-change: transform;
 }
 
@@ -613,8 +613,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(8,8,8,0.84) 0%, rgba(8,8,8,0.18) 22%, rgba(8,8,8,0.24) 72%, rgba(8,8,8,0.9) 100%);
+  background: linear-gradient(to bottom, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0.1) 40%, rgba(8,8,8,0.72) 75%, rgba(8,8,8,0.97) 100%);
   z-index: 1;
 }
 
