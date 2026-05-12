@@ -92,6 +92,26 @@
     return '';
   }
 
+  function isSvgSrc(src) {
+    if (!src) return false;
+    return /\.svg(\?|#|$)/i.test(src);
+  }
+
+  var svgPanZoomPromise = null;
+  function loadSvgPanZoom() {
+    if (window.svgPanZoom) return Promise.resolve(window.svgPanZoom);
+    if (svgPanZoomPromise) return svgPanZoomPromise;
+    svgPanZoomPromise = new Promise(function(resolve, reject) {
+      var s = document.createElement('script');
+      s.src = 'svg-pan-zoom.min.js';
+      s.async = true;
+      s.onload = function() { resolve(window.svgPanZoom); };
+      s.onerror = function() { reject(new Error('failed to load svg-pan-zoom')); };
+      document.head.appendChild(s);
+    });
+    return svgPanZoomPromise;
+  }
+
   function initImageModal() {
     var images = document.querySelectorAll('.ch-inline-figure img, .ch-figure-item img');
     if (!images.length) return;
@@ -102,16 +122,43 @@
     modal.innerHTML = [
       '<div class="ch-image-modal__panel" role="dialog" aria-modal="true" aria-label="Expanded figure view">',
       '<button type="button" class="ch-image-modal__close" aria-label="Close expanded figure view">×</button>',
+      '<div class="ch-image-modal__svg-frame" hidden>',
+      '<div class="ch-image-modal__zoom-controls">',
+      '<button type="button" class="ch-image-modal__zoom-btn" data-zoom="in"  aria-label="Zoom in">+</button>',
+      '<button type="button" class="ch-image-modal__zoom-btn" data-zoom="out" aria-label="Zoom out">−</button>',
+      '<button type="button" class="ch-image-modal__zoom-btn" data-zoom="reset" aria-label="Reset zoom">⤾</button>',
+      '</div>',
+      '<button type="button" class="ch-image-modal__svg-close" aria-label="Close expanded figure view">×</button>',
+      '<div class="ch-image-modal__zoom-hint">Scroll to zoom · drag to pan · esc to close</div>',
+      '</div>',
       '<img class="ch-image-modal__img" alt="">',
       '<div class="ch-image-modal__caption"></div>',
       '</div>'
     ].join('');
     document.body.appendChild(modal);
 
+    var panel = modal.querySelector('.ch-image-modal__panel');
     var modalImg = modal.querySelector('.ch-image-modal__img');
     var modalCaption = modal.querySelector('.ch-image-modal__caption');
     var closeButton = modal.querySelector('.ch-image-modal__close');
+    var svgFrame = modal.querySelector('.ch-image-modal__svg-frame');
     var lastTrigger = null;
+    var activePanZoom = null;
+
+    function destroyPanZoom() {
+      if (activePanZoom && typeof activePanZoom.destroy === 'function') {
+        try { activePanZoom.destroy(); } catch (e) { /* noop */ }
+      }
+      activePanZoom = null;
+    }
+
+    function clearSvgFrame() {
+      destroyPanZoom();
+      // Remove any injected <svg> while preserving controls + hint.
+      Array.prototype.slice.call(svgFrame.querySelectorAll('svg')).forEach(function(node) {
+        node.parentNode.removeChild(node);
+      });
+    }
 
     function closeModal() {
       modal.classList.remove('is-open');
@@ -119,20 +166,90 @@
       document.body.classList.remove('ch-modal-open');
       modalImg.removeAttribute('src');
       modalCaption.innerHTML = '';
+      clearSvgFrame();
+      svgFrame.setAttribute('hidden', '');
+      panel.classList.remove('ch-image-modal__panel--svg');
       if (lastTrigger) lastTrigger.focus();
+    }
+
+    function openAsImage(image, figure) {
+      panel.classList.remove('ch-image-modal__panel--svg');
+      svgFrame.setAttribute('hidden', '');
+      modalImg.removeAttribute('hidden');
+      modalImg.src = image.currentSrc || image.src;
+      modalImg.alt = image.alt || '';
+      modalCaption.innerHTML = buildCaptionText(figure);
+    }
+
+    function openAsSvg(image, figure) {
+      panel.classList.add('ch-image-modal__panel--svg');
+      modalImg.removeAttribute('src');
+      svgFrame.removeAttribute('hidden');
+      modalCaption.innerHTML = buildCaptionText(figure);
+
+      var src = image.currentSrc || image.src;
+      clearSvgFrame();
+
+      Promise.all([
+        fetch(src).then(function(r) { return r.ok ? r.text() : Promise.reject(r.status); }),
+        loadSvgPanZoom()
+      ]).then(function(results) {
+        var markup = results[0];
+        var holder = document.createElement('div');
+        holder.innerHTML = markup;
+        var svgEl = holder.querySelector('svg');
+        if (!svgEl) throw new Error('no <svg> root');
+        svgEl.removeAttribute('width');
+        svgEl.removeAttribute('height');
+        svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svgFrame.appendChild(svgEl);
+        if (window.svgPanZoom) {
+          activePanZoom = window.svgPanZoom(svgEl, {
+            zoomEnabled: true,
+            controlIconsEnabled: false,
+            fit: true,
+            center: true,
+            minZoom: 0.5,
+            maxZoom: 20,
+            dblClickZoomEnabled: true,
+            mouseWheelZoomEnabled: true
+          });
+        }
+      }).catch(function() {
+        // Fallback: just show the SVG as an <img> with no zoom.
+        panel.classList.remove('ch-image-modal__panel--svg');
+        svgFrame.setAttribute('hidden', '');
+        modalImg.src = src;
+      });
     }
 
     function openModal(image) {
       var figure = image.closest('figure');
       lastTrigger = image;
-      modalImg.src = image.currentSrc || image.src;
-      modalImg.alt = image.alt || '';
-      modalCaption.innerHTML = buildCaptionText(figure);
+      var src = image.currentSrc || image.src;
+      if (isSvgSrc(src)) {
+        openAsSvg(image, figure);
+      } else {
+        openAsImage(image, figure);
+      }
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('ch-modal-open');
       closeButton.focus();
     }
+
+    svgFrame.addEventListener('click', function(event) {
+      if (event.target.closest('.ch-image-modal__svg-close')) {
+        closeModal();
+        return;
+      }
+      var btn = event.target.closest('[data-zoom]');
+      if (!btn || !activePanZoom) return;
+      var mode = btn.getAttribute('data-zoom');
+      if (mode === 'in') activePanZoom.zoomIn();
+      else if (mode === 'out') activePanZoom.zoomOut();
+      else if (mode === 'reset') { activePanZoom.resetZoom(); activePanZoom.resetPan(); }
+    });
 
     images.forEach(function(image) {
       image.tabIndex = 0;

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-family: Lato-Italic, Lato;
+        font-size: 21px;
+        font-style: italic;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6 {
+        isolation: isolate;
+      }
+
+      .st0, .st1, .st2, .st4, .st5, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st6 {
+        fill: #2a2825;
+      }
+
+      .st1 {
+        font-size: 16px;
+      }
+
+      .st1, .st5 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st2 {
+        font-size: 18px;
+        letter-spacing: .08em;
+      }
+
+      .st2, .st4 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+      }
+
+      .st2, .st4, .st6 {
+        font-weight: 700;
+      }
+
+      .st14, .st15, .st16, .st17, .st18, .st19 {
+        fill: #e8e5dc;
+      }
+
+      .st4 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st20 {
+        stroke-opacity: .2;
+      }
+
+      .st20, .st21, .st15, .st16, .st17, .st18, .st19, .st22 {
+        stroke: #2a2825;
+      }
+
+      .st20, .st21, .st22 {
+        fill: none;
+      }
+
+      .st21, .st22 {
+        stroke-opacity: .25;
+      }
+
+      .st15 {
+        stroke-opacity: .6;
+      }
+
+      .st15, .st16, .st17, .st18 {
+        stroke-width: 2px;
+      }
+
+      .st16 {
+        stroke-opacity: .5;
+      }
+
+      .st17 {
+        stroke-opacity: .55;
+      }
+
+      .st18 {
+        stroke-opacity: .65;
+      }
+
+      .st5 {
+        font-size: 20px;
+      }
+
+      .st7 {
+        fill-opacity: .09;
+      }
+
+      .st8 {
+        fill-opacity: .07;
+      }
+
+      .st9 {
+        fill-opacity: .05;
+      }
+
+      .st10 {
+        fill-opacity: .03;
+      }
+
+      .st11 {
+        fill-opacity: .25;
+      }
+
+      .st12 {
+        fill-opacity: .14;
+      }
+
+      .st13 {
+        fill-opacity: .11;
+      }
+
+      .st19 {
+        stroke-opacity: .75;
+        stroke-width: 3px;
+      }
+
+      .st6 {
+        font-family: Lato-Bold, Lato;
+        font-size: 22px;
+      }
+
+      .st22 {
+        stroke-width: .8px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st14" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <g class="st3">
+      <text class="st4" transform="translate(214.79 246.68)"><tspan x="0" y="0">The Autonomy Gradient</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st0" transform="translate(216.55 280.68)"><tspan x="0" y="0">From pre-programmed response to cultivated wildness</tspan></text>
+    </g>
+  </g>
+  <g id="layer-gradient-bar" inkscape:groupmode="layer" inkscape:label="Gradient Bar">
+    <rect class="st10" x="250" y="648" width="342" height="100"/>
+    <rect class="st9" x="592" y="648" width="342" height="100"/>
+    <rect class="st8" x="934" y="648" width="342" height="100"/>
+    <rect class="st7" x="1276" y="648" width="342" height="100"/>
+    <rect class="st13" x="1618" y="648" width="342" height="100"/>
+    <rect class="st12" x="1960" y="648" width="340" height="100"/>
+    <rect class="st20" x="250" y="648" width="2050" height="100" rx="4" ry="4"/>
+  </g>
+  <g id="layer-axis" inkscape:groupmode="layer" inkscape:label="Axis">
+    <line class="st21" x1="250" y1="608" x2="2300" y2="608"/>
+    <polygon class="st11" points="2308 608 2296 602 2296 614 2308 608"/>
+    <g class="st3">
+      <text class="st1" transform="translate(250 588)"><tspan x="0" y="0">High human control</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(2121.49 588)"><tspan x="0" y="0">High biological autonomy</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st2" transform="translate(250 788)"><tspan x="0" y="0">PRE-PROGRAMMED</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st2" transform="translate(2157.71 788)"><tspan x="0" y="0">AUTONOMOUS</tspan></text>
+    </g>
+  </g>
+  <g id="layer-point-markers" inkscape:groupmode="layer" inkscape:label="Point Markers">
+    <circle class="st16" cx="340" cy="698" r="12"/>
+    <circle class="st16" cx="590" cy="698" r="12"/>
+    <circle class="st17" cx="1000" cy="698" r="12"/>
+    <circle class="st15" cx="1410" cy="698" r="12"/>
+    <circle class="st18" cx="1820" cy="698" r="12"/>
+    <circle class="st19" cx="2210" cy="698" r="16"/>
+  </g>
+  <g id="layer-leader-lines" inkscape:groupmode="layer" inkscape:label="Leader Lines">
+    <line class="st22" x1="340" y1="748" x2="340" y2="838"/>
+    <line class="st22" x1="590" y1="748" x2="590" y2="838"/>
+    <line class="st22" x1="1000" y1="748" x2="1000" y2="838"/>
+    <line class="st22" x1="1410" y1="748" x2="1410" y2="838"/>
+    <line class="st22" x1="1820" y1="748" x2="1820" y2="838"/>
+    <line class="st22" x1="2210" y1="748" x2="2210" y2="838"/>
+  </g>
+  <g id="layer-point-labels" inkscape:groupmode="layer" inkscape:label="Point Labels">
+    <g class="st3">
+      <text class="st5" transform="translate(291.53 868)"><tspan x="0" y="0">Articulated</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(279.96 894)"><tspan x="0" y="0">Infrastructure</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(285.86 928)"><tspan x="0" y="0">Fixed threshold</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(299.87 950)"><tspan x="0" y="0">automation</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(534.94 868)"><tspan x="0" y="0">Thresholds /</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(524.22 894)"><tspan x="0" y="0">Ambient Space</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(531.99 928)"><tspan x="0" y="0">Reactive sensing</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(937.46 868)"><tspan x="0" y="0">Sedimachine /</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(958.09 894)"><tspan x="0" y="0">REAL Lab</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(949.28 928)"><tspan x="0" y="0">Programmable</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(957.66 950)"><tspan x="0" y="0">responsivity</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(1359.48 868)"><tspan x="0" y="0">Algorithmic</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(1362.29 894)"><tspan x="0" y="0">Cultivation</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(1333.8199 928)"><tspan x="0" y="0">Interspecies feedback</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(1726.45 868)"><tspan x="0" y="0">UVA Geomorphology</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st5" transform="translate(1765.39 894)"><tspan x="0" y="0">Experiments</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(1757.88 928)"><tspan x="0" y="0">Machine learning.</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(1747.91 950)"><tspan x="0" y="0">Learns from context.</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st6" transform="translate(2164.98 868)"><tspan x="0" y="0">Wildness</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st6" transform="translate(2172.95 896)"><tspan x="0" y="0">Creator</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(2141.1001 930)"><tspan x="0" y="0">Operations become</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(2148.1699 952)"><tspan x="0" y="0">incomprehensible</tspan></text>
+    </g>
+    <g class="st3">
+      <text class="st1" transform="translate(2173.1399 974)"><tspan x="0" y="0">to humans</tspan></text>
+    </g>
+  </g>
+</svg>
