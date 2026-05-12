@@ -43,11 +43,11 @@
       /* Darkened, semi-transparent panel with rounded corners and a soft
          backdrop blur over whatever sits behind it on the page. The text
          (h4 + p) keeps its current position; only the card shell changes. */
-      background: rgba(8, 8, 8, 0.62);
+      background: var(--surface-1);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
       padding: 1.5rem;
       position: relative;
       overflow: hidden;

@@ -12,6 +12,13 @@
   --accent: #c8b89a;
   --accent2: #8a9e8c;
   --border: #1e1c19;
+  /* Surface tokens — semi-transparent panels with blur backdrops, used
+     for cards / Under Development boxes / quote-panel content blocks. */
+  --surface-1: rgba(8, 8, 8, 0.62);
+  --surface-2: rgba(0, 0, 0, 0.50);
+  --border-soft: rgba(255, 255, 255, 0.06);
+  --radius-card: 10px;
+  --radius-pill: 999px;
   --font-sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Freight Text Pro', 'Georgia', serif;
   --max: 1400px;
