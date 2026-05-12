@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st4, .st6, .st7, .st8, .st11, .st9, .st10 {
+        isolation: isolate;
+      }
+
+      .st0, .st2, .st10 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st0, .st4 {
+        font-size: 20px;
+      }
+
+      .st0, .st7 {
+        opacity: .55;
+      }
+
+      .st1 {
+        font-size: 28px;
+        letter-spacing: .06em;
+      }
+
+      .st1, .st4, .st6, .st9 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st2 {
+        font-size: 21px;
+        opacity: .85;
+      }
+
+      .st3 {
+        fill-opacity: .05;
+      }
+
+      .st3, .st5, .st12, .st13, .st11 {
+        stroke: #2a2825;
+      }
+
+      .st3, .st13 {
+        stroke-opacity: .25;
+        stroke-width: 1.5px;
+      }
+
+      .st4 {
+        letter-spacing: .1em;
+        opacity: .4;
+      }
+
+      .st5 {
+        fill-opacity: .12;
+        stroke-opacity: .45;
+        stroke-width: 3.5px;
+      }
+
+      .st12 {
+        stroke-opacity: .4;
+        stroke-width: 2.5px;
+      }
+
+      .st12, .st13, .st11 {
+        fill: none;
+      }
+
+      .st14 {
+        fill: #e8e5dc;
+      }
+
+      .st6 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st7, .st8 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st7, .st10 {
+        font-size: 16px;
+      }
+
+      .st8 {
+        font-size: 14px;
+        opacity: .3;
+      }
+
+      .st13 {
+        stroke-dasharray: 8 6;
+      }
+
+      .st11 {
+        opacity: .18;
+        stroke-width: .6px;
+      }
+
+      .st9 {
+        font-size: 48px;
+        letter-spacing: .08em;
+      }
+
+      .st10 {
+        opacity: .5;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st14" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st6" transform="translate(215.98 244.98)"><tspan x="0" y="0">Wetware</tspan></text>
+    <text class="st2" transform="translate(215.98 278.98)"><tspan x="0" y="0">Biology as knowledge-producing medium, not technical object</tspan></text>
+  </g>
+  <g id="layer-biology-column" inkscape:groupmode="layer" inkscape:label="Biology Column">
+    <rect class="st3" x="289.38" y="395.87" width="750" height="488.25" rx="10" ry="10"/>
+    <text class="st1" transform="translate(506.11 465.87)"><tspan x="0" y="0">BIOLOGICAL AGENCY</tspan></text>
+    <text class="st10" transform="translate(526.84 505.87)"><tspan x="0" y="0">What the organism does on its own terms</tspan></text>
+    <line class="st11" x1="409.38" y1="535.87" x2="919.38" y2="535.87"/>
+    <text class="st7" transform="translate(585.66 585.87)"><tspan x="0" y="0">Growth configurations</tspan></text>
+    <text class="st7" transform="translate(597.92 615.87)"><tspan x="0" y="0">Branching patterns</tspan></text>
+    <text class="st7" transform="translate(585.48 645.87)"><tspan x="0" y="0">Root mat densification</tspan></text>
+    <text class="st7" transform="translate(559.81 675.87)"><tspan x="0" y="0">Species arrival and succession</tspan></text>
+    <text class="st7" transform="translate(586.91 705.87)"><tspan x="0" y="0">Sediment colonization</tspan></text>
+    <text class="st7" transform="translate(582.42 735.87)"><tspan x="0" y="0">Resistance and surprise</tspan></text>
+    <line class="st11" x1="409.38" y1="775.87" x2="919.38" y2="775.87"/>
+    <text class="st8" transform="translate(548.3 831.34)"><tspan x="0" y="0">Temporal register: seasons to decades</tspan></text>
+  </g>
+  <g id="layer-computation-column" inkscape:groupmode="layer" inkscape:label="Computation Column">
+    <rect class="st3" x="1508.72" y="395.87" width="750" height="488.25" rx="10" ry="10"/>
+    <text class="st1" transform="translate(1685.6948 465.8742)"><tspan x="0" y="0">COMPUTATIONAL SENSING</tspan></text>
+    <text class="st10" transform="translate(1784.3881 505.8742)"><tspan x="0" y="0">What the instruments register</tspan></text>
+    <line class="st11" x1="1628.72" y1="535.87" x2="2138.72" y2="535.87"/>
+    <text class="st7" transform="translate(1806.7513 585.8742)"><tspan x="0" y="0">Soil moisture readings</tspan></text>
+    <text class="st7" transform="translate(1820.4351 615.8742)"><tspan x="0" y="0">Flow velocity data</tspan></text>
+    <text class="st7" transform="translate(1802.1949 645.8742)"><tspan x="0" y="0">Depth camera captures</tspan></text>
+    <text class="st7" transform="translate(1780.0999 675.8742)"><tspan x="0" y="0">Algorithmic pattern detection</tspan></text>
+    <text class="st7" transform="translate(1820.1951 705.8742)"><tspan x="0" y="0">Threshold triggers</tspan></text>
+    <text class="st7" transform="translate(1794.4033 735.8742)"><tspan x="0" y="0">Time-series accumulation</tspan></text>
+    <line class="st11" x1="1628.72" y1="775.87" x2="2138.72" y2="775.87"/>
+    <text class="st8" transform="translate(1763.5302 828.7867)"><tspan x="0" y="0">Temporal register: milliseconds to years</tspan></text>
+  </g>
+  <g id="layer-coupling" inkscape:groupmode="layer" inkscape:label="Coupling">
+    <text class="st4" transform="translate(1216.4407 735.8742)"><tspan x="0" y="0">COUPLING</tspan></text>
+    <line class="st13" x1="950" y1="655.87" x2="1600" y2="655.87"/>
+    <line class="st13" x1="950" y1="755.87" x2="1600" y2="755.87"/>
+    <line class="st13" x1="950" y1="855.87" x2="1600" y2="855.87"/>
+  </g>
+  <g id="layer-connectors" inkscape:groupmode="layer" inkscape:label="Connectors">
+    <line class="st12" x1="575" y1="884.13" x2="575" y2="974.13"/>
+    <line class="st12" x1="1975" y1="884.13" x2="1975" y2="974.13"/>
+  </g>
+  <g id="layer-hero-slab" inkscape:groupmode="layer" inkscape:label="Hero Slab">
+    <rect class="st5" x="333.12" y="974.13" width="1883.76" height="280" rx="12" ry="12"/>
+    <text class="st9" transform="translate(718.3746 1074.1258)"><tspan x="0" y="0">KNOWLEDGE PRODUCED IN THE COUPLING</tspan></text>
+    <text class="st0" transform="translate(1066.7078 1124.1258)"><tspan x="0" y="0">Neither purely ecological nor purely computational</tspan></text>
+    <text class="st0" transform="translate(990.7333 1164.1258)"><tspan x="0" y="0">Emerges from their ongoing interaction. Lost when the coupling ends.</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 20px;
+        letter-spacing: .14em;
+        opacity: .58;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15 {
+        isolation: isolate;
+      }
+
+      .st0, .st2, .st3, .st6, .st7, .st8, .st9, .st11 {
+        fill: #2a2825;
+      }
+
+      .st0, .st2, .st3, .st6, .st11 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st1 {
+        opacity: .25;
+      }
+
+      .st1, .st4, .st5, .st10, .st12, .st13, .st14, .st15 {
+        fill: none;
+        stroke: #2a2825;
+      }
+
+      .st1, .st14 {
+        stroke-width: .6px;
+      }
+
+      .st2 {
+        font-size: 28px;
+        letter-spacing: .05em;
+      }
+
+      .st3 {
+        font-size: 26px;
+        letter-spacing: .05em;
+      }
+
+      .st4 {
+        stroke-width: 1.2px;
+      }
+
+      .st4, .st5 {
+        opacity: .38;
+      }
+
+      .st5 {
+        stroke-width: .7px;
+      }
+
+      .st16 {
+        fill: #e8e5dc;
+      }
+
+      .st6 {
+        font-size: 44px;
+        letter-spacing: .09em;
+      }
+
+      .st7 {
+        font-size: 14px;
+        letter-spacing: .14em;
+      }
+
+      .st7, .st8 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st7, .st13 {
+        opacity: .42;
+      }
+
+      .st8 {
+        font-size: 16px;
+        opacity: .76;
+      }
+
+      .st17 {
+        fill: #c8c5ba;
+        stroke: #7a7870;
+        stroke-width: 1.5px;
+      }
+
+      .st9 {
+        font-family: Lato-Italic, Lato;
+        font-size: 17px;
+        font-style: italic;
+        opacity: .68;
+      }
+
+      .st10 {
+        opacity: .52;
+        stroke-width: 1.4px;
+      }
+
+      .st11 {
+        font-size: 18px;
+        letter-spacing: .03em;
+        opacity: .82;
+      }
+
+      .st12 {
+        opacity: .18;
+      }
+
+      .st12, .st13, .st15 {
+        stroke-width: .8px;
+      }
+
+      .st14, .st15 {
+        opacity: .28;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st16" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st6" transform="translate(215.38 248.02)"><tspan x="0" y="0">THREE STANCES TOWARD AI IN DESIGN PRACTICE</tspan></text>
+  </g>
+  <g id="layer-hero-frame" inkscape:groupmode="layer" inkscape:label="Hero Frame">
+    <rect class="st17" x="915" y="356.02" width="720" height="825.12" rx="10" ry="10"/>
+  </g>
+  <g id="layer-dividers" inkscape:groupmode="layer" inkscape:label="Column Dividers">
+    <line class="st12" x1="875" y1="386.02" x2="875" y2="1133.16"/>
+    <line class="st12" x1="1675" y1="386.02" x2="1675" y2="1133.16"/>
+  </g>
+  <g id="column-solutionism" inkscape:groupmode="layer" inkscape:label="Column 1 Solutionism">
+    <text class="st7" transform="translate(397.04 404.02)"><tspan x="0" y="0">FAILURE MODE ONE</tspan></text>
+    <line class="st4" x1="320" y1="428.02" x2="640" y2="428.02"/>
+    <text class="st3" transform="translate(385.37 484.02)"><tspan x="0" y="0">SOLUTIONISM</tspan></text>
+    <text class="st9" transform="translate(363.43 532.02)"><tspan x="0" y="0">AI extends prediction and control</tspan></text>
+    <line class="st1" x1="380" y1="576.02" x2="580" y2="576.02"/>
+    <text class="st8" transform="translate(360.71 646.02)"><tspan x="0" y="0">The designer specifies the optimal</tspan></text>
+    <text class="st8" transform="translate(372.26 674.02)"><tspan x="0" y="0">outcome and trains the system</tspan></text>
+    <text class="st8" transform="translate(446.48 702.02)"><tspan x="0" y="0">toward it.</tspan></text>
+    <text class="st8" transform="translate(369.95 766.02)"><tspan x="0" y="0">The territory is a solution space</tspan></text>
+    <text class="st8" transform="translate(428.33 794.02)"><tspan x="0" y="0">to be resolved.</tspan></text>
+    <text class="st8" transform="translate(370.79 858.02)"><tspan x="0" y="0">Surprise is filtered out as noise.</tspan></text>
+    <text class="st8" transform="translate(381.18 886.02)"><tspan x="0" y="0">Failure is read as error in the</tspan></text>
+    <text class="st8" transform="translate(439.94 914.02)"><tspan x="0" y="0">instrument.</tspan></text>
+    <line class="st14" x1="320" y1="1014.19" x2="640" y2="1014.19"/>
+    <text class="st11" transform="translate(405.8139 1074.1911)"><tspan x="0" y="0">Predict and control</tspan></text>
+    <text class="st11" transform="translate(420.6279 1104.1911)"><tspan x="0" y="0">at greater scale.</tspan></text>
+  </g>
+  <g id="column-ae" inkscape:groupmode="layer" inkscape:label="Column 2 Adaptive Epistemology">
+    <text class="st7" transform="translate(1186.713 404.0189)"><tspan x="0" y="0">THE THIRD POSITION</tspan></text>
+    <line class="st10" x1="1095" y1="428.02" x2="1455" y2="428.02"/>
+    <text class="st2" transform="translate(1201.1511 484.0189)"><tspan x="0" y="0">ADAPTIVE</tspan></text>
+    <text class="st2" transform="translate(1162.4274 518.0189)"><tspan x="0" y="0">EPISTEMOLOGY</tspan></text>
+    <text class="st9" transform="translate(1114.2163 566.0189)"><tspan x="0" y="0">AI as partner in mutual knowledge production</tspan></text>
+    <line class="st5" x1="1175" y1="610.02" x2="1375" y2="610.02"/>
+    <text class="st8" transform="translate(1157.2212 680.0189)"><tspan x="0" y="0">The designer specifies conditions.</tspan></text>
+    <text class="st8" transform="translate(1150.4688 708.0189)"><tspan x="0" y="0">Remains present with what unfolds.</tspan></text>
+    <text class="st8" transform="translate(1180.205 736.0189)"><tspan x="0" y="0">Is situated in the unfolding.</tspan></text>
+    <text class="st8" transform="translate(1161.8013 800.0189)"><tspan x="0" y="0">The territory is a co-author in an</tspan></text>
+    <text class="st8" transform="translate(1209.8687 828.0189)"><tspan x="0" y="0">ongoing exchange.</tspan></text>
+    <text class="st8" transform="translate(1167.1411 892.0189)"><tspan x="0" y="0">The AI&apos;s output opens the next</tspan></text>
+    <text class="st8" transform="translate(1163.7411 920.0189)"><tspan x="0" y="0">question rather than closing the</tspan></text>
+    <text class="st8" transform="translate(1241.2445 948.0189)"><tspan x="0" y="0">prior one.</tspan></text>
+    <line class="st13" x1="1095" y1="1017.76" x2="1455" y2="1017.76"/>
+    <text class="st11" transform="translate(1158.0378 1077.7558)"><tspan x="0" y="0">Surprise becomes information.</tspan></text>
+    <text class="st11" transform="translate(1168.7383 1107.7558)"><tspan x="0" y="0">Failure becomes knowledge.</tspan></text>
+  </g>
+  <g id="column-indeterminacy" inkscape:groupmode="layer" inkscape:label="Column 3 Pure Indeterminacy">
+    <text class="st7" transform="translate(1985.3354 404.0189)"><tspan x="0" y="0">FAILURE MODE TWO</tspan></text>
+    <line class="st4" x1="1910" y1="428.02" x2="2230" y2="428.02"/>
+    <text class="st3" transform="translate(1916.537 484.0189)"><tspan x="0" y="0">PURE INDETERMINACY</tspan></text>
+    <text class="st9" transform="translate(1978.686 532.0189)"><tspan x="0" y="0">AI as generative black box</tspan></text>
+    <line class="st1" x1="1970" y1="576.02" x2="2170" y2="576.02"/>
+    <text class="st8" transform="translate(1956.5688 646.0189)"><tspan x="0" y="0">The designer steps back and lets</tspan></text>
+    <text class="st8" transform="translate(2016.0443 674.0189)"><tspan x="0" y="0">the system run.</tspan></text>
+    <text class="st8" transform="translate(1967.3649 738.0189)"><tspan x="0" y="0">Outputs are taken as finished</tspan></text>
+    <text class="st8" transform="translate(2037.2524 766.0189)"><tspan x="0" y="0">products.</tspan></text>
+    <text class="st8" transform="translate(1970.0804 794.0189)"><tspan x="0" y="0">Emergence is read as design.</tspan></text>
+    <text class="st8" transform="translate(1970.465 858.0189)"><tspan x="0" y="0">Accountability exits with the</tspan></text>
+    <text class="st8" transform="translate(1956.4369 886.0189)"><tspan x="0" y="0">designer. Outcomes drift toward</tspan></text>
+    <text class="st8" transform="translate(1983.6445 914.0189)"><tspan x="0" y="0">whoever can steer them.</tspan></text>
+    <line class="st14" x1="1909.66" y1="1015.81" x2="2229.66" y2="1015.81"/>
+    <text class="st11" transform="translate(1971.377 1075.8056)"><tspan x="0" y="0">Responsibility abandoned</tspan></text>
+    <text class="st11" transform="translate(1972.1146 1105.8056)"><tspan x="0" y="0">at the moment it matters.</tspan></text>
+  </g>
+  <g id="layer-closing" inkscape:groupmode="layer" inkscape:label="Closing Claim">
+    <line class="st15" x1="760" y1="1213.56" x2="1790" y2="1213.56"/>
+    <text class="st0" transform="translate(1070.9924 1253.562)"><tspan x="0" y="0">THE DIFFERENCE IS OPERATIONAL</tspan></text>
+  </g>
+</svg>

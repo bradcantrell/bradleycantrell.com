@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 5100 3300">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        letter-spacing: .08em;
+      }
+
+      .st0, .st1 {
+        font-size: 22px;
+        opacity: .82;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14 {
+        isolation: isolate;
+      }
+
+      .st0, .st1, .st2, .st5, .st7, .st8, .st9, .st11, .st15, .st16, .st17, .st12, .st14 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st7, .st11, .st12 {
+        font-weight: 700;
+      }
+
+      .st0, .st1, .st2, .st11, .st12 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+      }
+
+      .st1 {
+        letter-spacing: .08em;
+      }
+
+      .st2 {
+        font-size: 20px;
+        letter-spacing: .14em;
+      }
+
+      .st2, .st9 {
+        opacity: .55;
+      }
+
+      .st3 {
+        opacity: .1;
+      }
+
+      .st3, .st4 {
+        stroke-width: .5px;
+      }
+
+      .st3, .st4, .st18, .st10, .st13, .st19 {
+        fill: none;
+        stroke: #2a2825;
+      }
+
+      .st4 {
+        opacity: .12;
+      }
+
+      .st5 {
+        font-family: Lato-Italic, Lato;
+      }
+
+      .st5, .st7 {
+        font-style: italic;
+      }
+
+      .st5, .st8, .st9 {
+        font-size: 14px;
+      }
+
+      .st5, .st14 {
+        opacity: .5;
+      }
+
+      .st20 {
+        fill: #b89080;
+        stroke: #7a5a48;
+        stroke-width: 1.4px;
+      }
+
+      .st21 {
+        fill: #e8e4db;
+      }
+
+      .st7 {
+        font-family: TimesNewRomanPS-BoldItalicMT, 'Times New Roman';
+        font-size: 21px;
+        letter-spacing: .02em;
+      }
+
+      .st18 {
+        stroke-opacity: .18;
+      }
+
+      .st8 {
+        opacity: .62;
+      }
+
+      .st8, .st9, .st14 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st10 {
+        opacity: .22;
+        stroke-width: .8px;
+      }
+
+      .st11 {
+        font-size: 66px;
+        letter-spacing: .09em;
+      }
+
+      .st15 {
+        fill-opacity: .85;
+      }
+
+      .st16 {
+        fill-opacity: .7;
+      }
+
+      .st17 {
+        fill-opacity: .03;
+      }
+
+      .st12 {
+        font-size: 15px;
+        letter-spacing: .14em;
+        opacity: .65;
+      }
+
+      .st13 {
+        opacity: .32;
+        stroke-width: .7px;
+      }
+
+      .st14 {
+        font-size: 13px;
+      }
+
+      .st19 {
+        stroke-opacity: .55;
+        stroke-width: 1.8px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st21" width="5100" height="3300"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st11" transform="translate(2167.1716 219.7826)"><tspan x="0" y="0">REFRACTIONS INDEX</tspan></text>
+    <line class="st18" x1="520" y1="256.58" x2="4580" y2="256.58"/>
+  </g>
+  <g id="layer-section-labels" inkscape:groupmode="layer" inkscape:label="Section Labels">
+    <text class="st2" transform="translate(2387.7605 374)"><tspan x="0" y="0">CHAPTERS</tspan></text>
+    <text class="st2" transform="translate(4257.3906 374)"><tspan x="0" y="0">FRAMEWORKS</tspan></text>
+    <text class="st2" transform="translate(621.8 374)"><tspan x="0" y="0">PROJECTS</tspan></text>
+  </g>
+  <g id="layer-chapter-headers" inkscape:groupmode="layer" inkscape:label="Chapter Headers">
+    <text class="st0" transform="translate(1211.6414 434)"><tspan x="0" y="0">01</tspan></text>
+    <text class="st9" transform="translate(1195.9138 460)"><tspan x="0" y="0">Territory</tspan></text>
+    <text class="st0" transform="translate(1415.4712 434)"><tspan x="0" y="0">02</tspan></text>
+    <text class="st9" transform="translate(1381.026 460)"><tspan x="0" y="0">Adaptive Epist.</tspan></text>
+    <text class="st0" transform="translate(1620.1592 434)"><tspan x="0" y="0">03</tspan></text>
+    <text class="st9" transform="translate(1596.8292 460)"><tspan x="0" y="0">Refractions</tspan></text>
+    <text class="st0" transform="translate(1824.1771 434)"><tspan x="0" y="0">04</tspan></text>
+    <text class="st9" transform="translate(1777.9639 460)"><tspan x="0" y="0">Ecology of Practice</tspan></text>
+    <text class="st0" transform="translate(2029.2942 434)"><tspan x="0" y="0">05</tspan></text>
+    <text class="st9" transform="translate(2024.8998 460)"><tspan x="0" y="0">Tools</tspan></text>
+    <text class="st0" transform="translate(2233.2781 434)"><tspan x="0" y="0">06</tspan></text>
+    <text class="st9" transform="translate(2222.741 460)"><tspan x="0" y="0">Models</tspan></text>
+    <text class="st0" transform="translate(2438.2742 434)"><tspan x="0" y="0">07</tspan></text>
+    <text class="st9" transform="translate(2390.8052 460)"><tspan x="0" y="0">Technogeographies</tspan></text>
+    <text class="st0" transform="translate(2642.2141 434)"><tspan x="0" y="0">08</tspan></text>
+    <text class="st9" transform="translate(2586.7881 460)"><tspan x="0" y="0">Landscape as Medium</tspan></text>
+    <text class="st0" transform="translate(2847.0781 434)"><tspan x="0" y="0">09</tspan></text>
+    <text class="st9" transform="translate(2822.8213 460)"><tspan x="0" y="0">Interactions</tspan></text>
+    <text class="st1" transform="translate(3053.1414 434)"><tspan x="0" y="0">10</tspan></text>
+    <text class="st9" transform="translate(3001.0244 460)"><tspan x="0" y="0">Generational Robots</tspan></text>
+    <text class="st1" transform="translate(3259.4363 434)"><tspan x="0" y="0">11</tspan></text>
+    <text class="st9" transform="translate(3231.0503 460)"><tspan x="0" y="0">Co-Creation</tspan></text>
+    <text class="st1" transform="translate(3463.2664 434)"><tspan x="0" y="0">12</tspan></text>
+    <text class="st9" transform="translate(3426.4841 460)"><tspan x="0" y="0">Synoptic Views</tspan></text>
+    <text class="st1" transform="translate(3667.9541 434)"><tspan x="0" y="0">13</tspan></text>
+    <text class="st9" transform="translate(3654.3901 460)"><tspan x="0" y="0">Vectors</tspan></text>
+  </g>
+  <g id="layer-framework-headers" inkscape:groupmode="layer" inkscape:label="Framework Headers">
+    <text class="st1" transform="translate(3941.751 434)"><tspan x="0" y="0">MI</tspan></text>
+    <text class="st9" transform="translate(3931.2483 460)"><tspan x="0" y="0">Multiple</tspan></text>
+    <text class="st9" transform="translate(3918.5537 478)"><tspan x="0" y="0">Intelligences</tspan></text>
+    <text class="st1" transform="translate(4095.5022 434)"><tspan x="0" y="0">TS</tspan></text>
+    <text class="st9" transform="translate(4050.8052 460)"><tspan x="0" y="0">Technogeographies</tspan></text>
+    <text class="st9" transform="translate(4078.3743 478)"><tspan x="0" y="0">of Sensing</tspan></text>
+    <text class="st1" transform="translate(4241.498 434)"><tspan x="0" y="0">WW</tspan></text>
+    <text class="st9" transform="translate(4235.2402 460)"><tspan x="0" y="0">Wetware</tspan></text>
+    <text class="st0" transform="translate(4399.2212 434)"><tspan x="0" y="0">GR</tspan></text>
+    <text class="st9" transform="translate(4377.21 460)"><tspan x="0" y="0">Generational</tspan></text>
+    <text class="st9" transform="translate(4390.1846 478)"><tspan x="0" y="0">Robotics</tspan></text>
+    <text class="st0" transform="translate(4554.6772 434)"><tspan x="0" y="0">CE</tspan></text>
+    <text class="st9" transform="translate(4544.3311 460)"><tspan x="0" y="0">Coupled</tspan></text>
+    <text class="st9" transform="translate(4541.2095 478)"><tspan x="0" y="0">Ecologies</tspan></text>
+    <text class="st1" transform="translate(4708.3945 434)"><tspan x="0" y="0">RS</tspan></text>
+    <text class="st9" transform="translate(4695.3594 460)"><tspan x="0" y="0">Reflexive</tspan></text>
+    <text class="st9" transform="translate(4685.689 478)"><tspan x="0" y="0">Stewardship</tspan></text>
+  </g>
+  <g id="layer-grid" inkscape:groupmode="layer" inkscape:label="Grid">
+    <rect class="st17" x="300" y="512" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="689" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="866.1" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="1043.1" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="1220.1" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="1397.2" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="1574.2" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="1751.3" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="1928.3" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="2105.3" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="2282.4" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="2459.4" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="2636.4" width="4500" height="88.5"/>
+    <rect class="st17" x="300" y="2813.5" width="4500" height="88.5"/>
+    <line class="st4" x1="300" y1="512" x2="4800" y2="512"/>
+    <line class="st4" x1="300" y1="600.5" x2="4800" y2="600.5"/>
+    <line class="st4" x1="300" y1="689" x2="4800" y2="689"/>
+    <line class="st4" x1="300" y1="777.6" x2="4800" y2="777.6"/>
+    <line class="st4" x1="300" y1="866.1" x2="4800" y2="866.1"/>
+    <line class="st4" x1="300" y1="954.6" x2="4800" y2="954.6"/>
+    <line class="st4" x1="300" y1="1043.1" x2="4800" y2="1043.1"/>
+    <line class="st4" x1="300" y1="1131.6" x2="4800" y2="1131.6"/>
+    <line class="st4" x1="300" y1="1220.1" x2="4800" y2="1220.1"/>
+    <line class="st4" x1="300" y1="1308.7" x2="4800" y2="1308.7"/>
+    <line class="st4" x1="300" y1="1397.2" x2="4800" y2="1397.2"/>
+    <line class="st4" x1="300" y1="1485.7" x2="4800" y2="1485.7"/>
+    <line class="st4" x1="300" y1="1574.2" x2="4800" y2="1574.2"/>
+    <line class="st4" x1="300" y1="1662.7" x2="4800" y2="1662.7"/>
+    <line class="st4" x1="300" y1="1751.3" x2="4800" y2="1751.3"/>
+    <line class="st4" x1="300" y1="1839.8" x2="4800" y2="1839.8"/>
+    <line class="st4" x1="300" y1="1928.3" x2="4800" y2="1928.3"/>
+    <line class="st4" x1="300" y1="2016.8" x2="4800" y2="2016.8"/>
+    <line class="st4" x1="300" y1="2105.3" x2="4800" y2="2105.3"/>
+    <line class="st4" x1="300" y1="2193.9" x2="4800" y2="2193.9"/>
+    <line class="st4" x1="300" y1="2282.4" x2="4800" y2="2282.4"/>
+    <line class="st4" x1="300" y1="2370.9" x2="4800" y2="2370.9"/>
+    <line class="st4" x1="300" y1="2459.4" x2="4800" y2="2459.4"/>
+    <line class="st4" x1="300" y1="2547.9" x2="4800" y2="2547.9"/>
+    <line class="st4" x1="300" y1="2636.4" x2="4800" y2="2636.4"/>
+    <line class="st4" x1="300" y1="2725" x2="4800" y2="2725"/>
+    <line class="st4" x1="300" y1="2813.5" x2="4800" y2="2813.5"/>
+    <line class="st4" x1="300" y1="2902" x2="4800" y2="2902"/>
+    <line class="st3" x1="1120" y1="508" x2="1120" y2="2906"/>
+    <line class="st3" x1="1324.6" y1="508" x2="1324.6" y2="2906"/>
+    <line class="st3" x1="1529.2" y1="508" x2="1529.2" y2="2906"/>
+    <line class="st3" x1="1733.8" y1="508" x2="1733.8" y2="2906"/>
+    <line class="st3" x1="1938.5" y1="508" x2="1938.5" y2="2906"/>
+    <line class="st3" x1="2143.1" y1="508" x2="2143.1" y2="2906"/>
+    <line class="st3" x1="2347.7" y1="508" x2="2347.7" y2="2906"/>
+    <line class="st3" x1="2552.3" y1="508" x2="2552.3" y2="2906"/>
+    <line class="st3" x1="2756.9" y1="508" x2="2756.9" y2="2906"/>
+    <line class="st3" x1="2961.5" y1="508" x2="2961.5" y2="2906"/>
+    <line class="st3" x1="3166.2" y1="508" x2="3166.2" y2="2906"/>
+    <line class="st3" x1="3370.8" y1="508" x2="3370.8" y2="2906"/>
+    <line class="st3" x1="3575.4" y1="508" x2="3575.4" y2="2906"/>
+    <line class="st3" x1="3780" y1="508" x2="3780" y2="2906"/>
+    <line class="st3" x1="3880" y1="508" x2="3880" y2="2906"/>
+    <line class="st3" x1="4033.3" y1="508" x2="4033.3" y2="2906"/>
+    <line class="st3" x1="4186.7" y1="508" x2="4186.7" y2="2906"/>
+    <line class="st3" x1="4340" y1="508" x2="4340" y2="2906"/>
+    <line class="st3" x1="4493.3" y1="508" x2="4493.3" y2="2906"/>
+    <line class="st3" x1="4646.7" y1="508" x2="4646.7" y2="2906"/>
+    <line class="st3" x1="4800" y1="508" x2="4800" y2="2906"/>
+    <line class="st10" x1="1090" y1="392" x2="1090" y2="2906"/>
+    <line class="st10" x1="3830" y1="392" x2="3830" y2="2906"/>
+  </g>
+  <g id="layer-project-labels" inkscape:groupmode="layer" inkscape:label="Project Labels">
+    <g class="st6">
+      <text class="st7" transform="translate(314 563.3)"><tspan x="0" y="0">Thresholds</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1014.1716 562.3)"><tspan x="0" y="0">2006</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 651.8)"><tspan x="0" y="0">Surface Tension</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.81 650.8)"><tspan x="0" y="0">2006–07</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 740.3)"><tspan x="0" y="0">Ambient Space</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 739.3)"><tspan x="0" y="0">2007</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 828.8)"><tspan x="0" y="0">Landscapes of Fantasy</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 827.8)"><tspan x="0" y="0">2008</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 917.3)"><tspan x="0" y="0">Cyclone Larry / Ecological Abstraction Layers</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 916.3)"><tspan x="0" y="0">2008</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1005.9)"><tspan x="0" y="0">Abstraction Language</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1004.9)"><tspan x="0" y="0">2009</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1094.4)"><tspan x="0" y="0">Over/Under / Lausanne Jardins</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1093.4)"><tspan x="0" y="0">2009</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1182.9)"><tspan x="0" y="0">Digital Drawing for Landscape Architecture</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1181.9)"><tspan x="0" y="0">2010</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1271.4)"><tspan x="0" y="0">Coastal Sustainability Studio</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.1613 1270.4)"><tspan x="0" y="0">2010–13</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1359.9)"><tspan x="0" y="0">Miss. River Sediment Diversion</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.1613 1358.9)"><tspan x="0" y="0">2011–14</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1448.4)"><tspan x="0" y="0">Synthetic Mudscapes</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1447.4)"><tspan x="0" y="0">2012</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1537)"><tspan x="0" y="0">Modeling the Environment</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1536)"><tspan x="0" y="0">2012</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1625.5)"><tspan x="0" y="0">Sedimachine</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1624.5)"><tspan x="0" y="0">2012</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1714)"><tspan x="0" y="0">Fort Proctor</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 1713)"><tspan x="0" y="0">2013</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1802.5)"><tspan x="0" y="0">DredgeFest / Adaptive Devices</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.1613 1801.5)"><tspan x="0" y="0">2013–14</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1891)"><tspan x="0" y="0">Responsive Environments and Artifacts Lab</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.1613 1890)"><tspan x="0" y="0">2014–17</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 1979.6)"><tspan x="0" y="0">Branding Islands Making Nations</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1014.1716 1978.6)"><tspan x="0" y="0">2016</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2068.1001)"><tspan x="0" y="0">Responsive Landscapes</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1014.1716 2067.1001)"><tspan x="0" y="0">2016</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2156.6001)"><tspan x="0" y="0">UVA Geomorphology Lab</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1005.4009 2155.6001)"><tspan x="0" y="0">2017–</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2245.1001)"><tspan x="0" y="0">Codify</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 2244.1001)"><tspan x="0" y="0">2018</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2333.6001)"><tspan x="0" y="0">Designing Autonomy</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 2332.6001)"><tspan x="0" y="0">2017</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2422.1001)"><tspan x="0" y="0">Algorithmic Cultivation</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 2421.1001)"><tspan x="0" y="0">2019</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2510.7)"><tspan x="0" y="0">Failure</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.1613 2509.7)"><tspan x="0" y="0">2019–20</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2599.2)"><tspan x="0" y="0">Cyborg Ecology</tspan></text>
+    </g>
+    <text class="st5" transform="translate(991.4291 2598.2)"><tspan x="0" y="0">2019/20</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2687.7)"><tspan x="0" y="0">Indeterminate Futures</tspan></text>
+    </g>
+    <text class="st5" transform="translate(1013.5208 2686.7)"><tspan x="0" y="0">2021</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2776.2)"><tspan x="0" y="0">Prototyping the Bay</tspan></text>
+    </g>
+    <text class="st5" transform="translate(975.1895 2775.2)"><tspan x="0" y="0">2019/2025</tspan></text>
+    <g class="st6">
+      <text class="st7" transform="translate(314 2864.7)"><tspan x="0" y="0">NEOM: Landscapes of The Line</tspan></text>
+    </g>
+    <text class="st5" transform="translate(989.1613 2863.7)"><tspan x="0" y="0">2022–25</tspan></text>
+  </g>
+  <g id="layer-cells-chapters" inkscape:groupmode="layer" inkscape:label="Chapter Cells">
+    <circle class="st15" cx="1426.9" cy="556.3" r="15"/>
+    <circle class="st15" cx="1631.5" cy="556.3" r="15"/>
+    <circle class="st19" cx="1836.2" cy="556.3" r="11"/>
+    <circle class="st15" cx="2040.8" cy="556.3" r="15"/>
+    <circle class="st15" cx="2450" cy="556.3" r="15"/>
+    <circle class="st19" cx="2654.6" cy="556.3" r="11"/>
+    <circle class="st15" cx="2040.8" cy="644.8" r="15"/>
+    <circle class="st15" cx="2040.8" cy="733.3" r="15"/>
+    <circle class="st19" cx="2040.8" cy="821.8" r="11"/>
+    <circle class="st19" cx="2040.8" cy="910.3" r="11"/>
+    <circle class="st19" cx="2040.8" cy="998.9" r="11"/>
+    <circle class="st19" cx="2040.8" cy="1087.4" r="11"/>
+    <circle class="st15" cx="2450" cy="1087.4" r="15"/>
+    <circle class="st15" cx="3268.5" cy="1087.4" r="15"/>
+    <polygon class="st20" points="3290.5 1061.4 3298.5 1069.4 3290.5 1077.4 3282.5 1069.4 3290.5 1061.4"/>
+    <circle class="st19" cx="1836.2" cy="1175.9" r="11"/>
+    <circle class="st15" cx="2040.8" cy="1175.9" r="15"/>
+    <circle class="st19" cx="3268.5" cy="1175.9" r="11"/>
+    <circle class="st19" cx="1836.2" cy="1264.4" r="11"/>
+    <circle class="st19" cx="2040.8" cy="1264.4" r="11"/>
+    <circle class="st15" cx="2859.2" cy="1441.4" r="15"/>
+    <circle class="st19" cx="2040.8" cy="1530" r="11"/>
+    <circle class="st15" cx="1836.2" cy="1618.5" r="15"/>
+    <circle class="st15" cx="2040.8" cy="1618.5" r="15"/>
+    <circle class="st15" cx="2245.4" cy="1618.5" r="15"/>
+    <circle class="st15" cx="2654.6" cy="1618.5" r="15"/>
+    <circle class="st15" cx="2859.2" cy="1618.5" r="15"/>
+    <circle class="st19" cx="3063.8" cy="1618.5" r="11"/>
+    <circle class="st19" cx="3268.5" cy="1618.5" r="11"/>
+    <circle class="st15" cx="2040.8" cy="1707" r="15"/>
+    <circle class="st15" cx="1836.2" cy="1795.5" r="15"/>
+    <circle class="st19" cx="3268.5" cy="1795.5" r="11"/>
+    <circle class="st15" cx="1836.2" cy="1884" r="15"/>
+    <circle class="st15" cx="2040.8" cy="1884" r="15"/>
+    <circle class="st15" cx="2245.4" cy="1884" r="15"/>
+    <circle class="st15" cx="2654.6" cy="1884" r="15"/>
+    <circle class="st15" cx="2859.2" cy="1884" r="15"/>
+    <circle class="st19" cx="1631.5" cy="1972.6" r="11"/>
+    <circle class="st15" cx="2040.8" cy="1972.6" r="15"/>
+    <circle class="st15" cx="2450" cy="1972.6" r="15"/>
+    <circle class="st15" cx="1836.2" cy="2061.1" r="15"/>
+    <circle class="st15" cx="2040.8" cy="2061.1" r="15"/>
+    <circle class="st15" cx="2450" cy="2061.1" r="15"/>
+    <circle class="st19" cx="3268.5" cy="2061.1" r="11"/>
+    <circle class="st15" cx="1836.2" cy="2149.6" r="15"/>
+    <circle class="st19" cx="2040.8" cy="2149.6" r="11"/>
+    <circle class="st15" cx="2245.4" cy="2149.6" r="15"/>
+    <circle class="st15" cx="2654.6" cy="2149.6" r="15"/>
+    <circle class="st15" cx="2859.2" cy="2149.6" r="15"/>
+    <circle class="st19" cx="3063.8" cy="2149.6" r="11"/>
+    <circle class="st19" cx="1426.9" cy="2238.1" r="11"/>
+    <circle class="st15" cx="1836.2" cy="2238.1" r="15"/>
+    <circle class="st15" cx="2040.8" cy="2238.1" r="15"/>
+    <circle class="st19" cx="3268.5" cy="2238.1" r="11"/>
+    <circle class="st19" cx="1836.2" cy="2326.6" r="11"/>
+    <circle class="st15" cx="2040.8" cy="2326.6" r="15"/>
+    <circle class="st15" cx="3063.8" cy="2326.6" r="15"/>
+    <circle class="st15" cx="1631.5" cy="2415.1" r="15"/>
+    <circle class="st15" cx="2040.8" cy="2415.1" r="15"/>
+    <polygon class="st20" points="2062.8 2389.1 2070.8 2397.1 2062.8 2405.1 2054.8 2397.1 2062.8 2389.1"/>
+    <circle class="st15" cx="2859.2" cy="2415.1" r="15"/>
+    <circle class="st15" cx="3063.8" cy="2415.1" r="15"/>
+    <circle class="st15" cx="3268.5" cy="2415.1" r="15"/>
+    <polygon class="st20" points="3290.5 2389.1 3298.5 2397.1 3290.5 2405.1 3282.5 2397.1 3290.5 2389.1"/>
+    <circle class="st19" cx="1631.5" cy="2503.7" r="11"/>
+    <circle class="st15" cx="2040.8" cy="2503.7" r="15"/>
+    <circle class="st19" cx="2040.8" cy="2592.2" r="11"/>
+    <circle class="st19" cx="1631.5" cy="2680.7" r="11"/>
+    <circle class="st15" cx="2040.8" cy="2680.7" r="15"/>
+    <circle class="st15" cx="2245.4" cy="2680.7" r="15"/>
+    <circle class="st15" cx="2450" cy="2680.7" r="15"/>
+    <circle class="st15" cx="1222.3" cy="2769.2" r="15"/>
+    <circle class="st19" cx="1631.5" cy="2769.2" r="11"/>
+    <circle class="st15" cx="2040.8" cy="2769.2" r="15"/>
+    <circle class="st15" cx="2859.2" cy="2769.2" r="15"/>
+    <circle class="st15" cx="3063.8" cy="2769.2" r="15"/>
+    <circle class="st15" cx="3268.5" cy="2769.2" r="15"/>
+    <polygon class="st20" points="3290.5 2743.2 3298.5 2751.2 3290.5 2759.2 3282.5 2751.2 3290.5 2743.2"/>
+    <circle class="st15" cx="3473.1" cy="2769.2" r="15"/>
+    <circle class="st15" cx="1222.3" cy="2857.7" r="15"/>
+    <circle class="st15" cx="1426.9" cy="2857.7" r="15"/>
+    <circle class="st15" cx="1836.2" cy="2857.7" r="15"/>
+    <circle class="st19" cx="2040.8" cy="2857.7" r="11"/>
+    <circle class="st15" cx="2245.4" cy="2857.7" r="15"/>
+    <circle class="st15" cx="2450" cy="2857.7" r="15"/>
+    <circle class="st15" cx="2654.6" cy="2857.7" r="15"/>
+    <circle class="st15" cx="2859.2" cy="2857.7" r="15"/>
+    <circle class="st15" cx="3063.8" cy="2857.7" r="15"/>
+    <circle class="st15" cx="3268.5" cy="2857.7" r="15"/>
+    <polygon class="st20" points="3290.5 2831.7 3298.5 2839.7 3290.5 2847.7 3282.5 2839.7 3290.5 2831.7"/>
+  </g>
+  <g id="layer-cells-frameworks" inkscape:groupmode="layer" inkscape:label="Framework Cells">
+    <rect class="st16" x="3912.2" y="551.3" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="551.3" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="639.8" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="728.3" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="816.8" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="905.3" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="993.9" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="993.9" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="1082.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="1082.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="1082.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="1170.9" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="1259.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="1259.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="1347.9" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="1436.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="1436.4" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="1525" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="1613.5" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="1613.5" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="1613.5" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="1702" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="1702" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="1790.5" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="1790.5" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="1879" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="1879" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="1879" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="1967.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="1967.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2056.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="2056.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="2056.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2144.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="2144.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4372.2" y="2144.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="2144.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2233.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="2233.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="2233.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="2233.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4372.2" y="2321.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="2321.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="2321.6" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2410.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="2410.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4372.2" y="2410.1" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2498.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="2498.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="2587.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="2587.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2675.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="2675.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2764.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="2764.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="2764.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="2764.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="2764.2" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="3912.2" y="2852.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4065.5" y="2852.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4218.9" y="2852.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4525.5" y="2852.7" width="88.9" height="10" rx="2" ry="2"/>
+    <rect class="st16" x="4678.9" y="2852.7" width="88.9" height="10" rx="2" ry="2"/>
+  </g>
+  <g id="layer-summary-bottom" inkscape:groupmode="layer" inkscape:label="Chapter Totals">
+    <text class="st14" transform="translate(931.7507 2932)"><tspan x="0" y="0">projects per chapter</tspan></text>
+    <text class="st14" transform="translate(1218.5302 2932)"><tspan x="0" y="0">2</tspan></text>
+    <text class="st14" transform="translate(1423.1301 2932)"><tspan x="0" y="0">3</tspan></text>
+    <text class="st14" transform="translate(1627.7301 2932)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st14" transform="translate(1828.6602 2932)"><tspan x="0" y="0">11</tspan></text>
+    <text class="st14" transform="translate(2033.2603 2932)"><tspan x="0" y="0">24</tspan></text>
+    <text class="st14" transform="translate(2241.6299 2932)"><tspan x="0" y="0">5</tspan></text>
+    <text class="st14" transform="translate(2446.23 2932)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st14" transform="translate(2650.8301 2932)"><tspan x="0" y="0">5</tspan></text>
+    <text class="st14" transform="translate(2855.4299 2932)"><tspan x="0" y="0">7</tspan></text>
+    <text class="st14" transform="translate(3060.03 2932)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st14" transform="translate(3264.73 2932)"><tspan x="0" y="0">9</tspan></text>
+    <text class="st14" transform="translate(3469.3301 2932)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st14" transform="translate(3673.9299 2932)"><tspan x="0" y="0">0</tspan></text>
+  </g>
+  <g id="layer-legend" inkscape:groupmode="layer" inkscape:label="Legend">
+    <rect class="st13" x="340" y="2981" width="2381.5" height="110" rx="6" ry="6"/>
+    <text class="st12" transform="translate(370 3013)"><tspan x="0" y="0">ENCODING</tspan></text>
+    <circle class="st15" cx="550" cy="3033" r="14"/>
+    <text class="st8" transform="translate(580 3039)"><tspan x="0" y="0">Primary refraction: extended treatment of the project through the chapter&apos;s vantage</tspan></text>
+    <circle class="st19" cx="550" cy="3065" r="10"/>
+    <text class="st8" transform="translate(580 3071)"><tspan x="0" y="0">Secondary mention: briefer reference, listing, or supporting citation within the chapter</tspan></text>
+    <polygon class="st20" points="2040 3025 2048 3033 2040 3041 2032 3033 2040 3025"/>
+    <text class="st8" transform="translate(2060 3039)"><tspan x="0" y="0">Cultivant advanced: project site where the cultivant concept is specifically developed</tspan></text>
+    <rect class="st16" x="2020" y="3061" width="40" height="8" rx="2" ry="2"/>
+    <text class="st8" transform="translate(2070 3071)"><tspan x="0" y="0">Framework contribution: project advances the conceptual development of this framework</tspan></text>
+  </g>
+</svg>

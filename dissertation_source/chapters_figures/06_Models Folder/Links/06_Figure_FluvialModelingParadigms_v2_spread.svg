@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 5100 3300">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        opacity: .4;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st18, .st12, .st13, .st14, .st15, .st16, .st17 {
+        isolation: isolate;
+      }
+
+      .st0, .st1, .st6 {
+        font-size: 20px;
+      }
+
+      .st0, .st1, .st7 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st1 {
+        opacity: .45;
+      }
+
+      .st2 {
+        letter-spacing: .08em;
+      }
+
+      .st2, .st3, .st8, .st9, .st10 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st2, .st5 {
+        font-size: 22px;
+      }
+
+      .st2, .st6, .st18, .st17 {
+        opacity: .5;
+      }
+
+      .st3 {
+        font-size: 28px;
+      }
+
+      .st4 {
+        font-size: 15px;
+        opacity: .2;
+      }
+
+      .st4, .st5, .st6 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st19 {
+        stroke-dasharray: 10 8;
+        stroke-opacity: .35;
+        stroke-width: 1.5px;
+      }
+
+      .st19, .st18 {
+        fill: none;
+        stroke: #2a2825;
+      }
+
+      .st20 {
+        fill: #e8e5dc;
+      }
+
+      .st7 {
+        opacity: .7;
+      }
+
+      .st7, .st9, .st10 {
+        font-size: 26px;
+      }
+
+      .st8 {
+        font-size: 66px;
+        letter-spacing: .06em;
+      }
+
+      .st9 {
+        letter-spacing: .08em;
+      }
+
+      .st9, .st10 {
+        opacity: .55;
+      }
+
+      .st10 {
+        letter-spacing: .08em;
+      }
+
+      .st11 {
+        fill-opacity: .6;
+      }
+
+      .st18 {
+        stroke-width: 3px;
+      }
+
+      .st12 {
+        opacity: .05;
+      }
+
+      .st13 {
+        opacity: .06;
+      }
+
+      .st14 {
+        opacity: .08;
+      }
+
+      .st15 {
+        opacity: .07;
+      }
+
+      .st16 {
+        opacity: .04;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st20" width="5100" height="3300"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st8" transform="translate(213.92 260.25)"><tspan x="0" y="0">Fluvial Modeling Paradigms</tspan></text>
+    <text class="st7" transform="translate(215.96 310.25)"><tspan x="0" y="0">From physical surrogacy to computational simulation to adaptive epistemology</tspan></text>
+  </g>
+  <g id="layer-phase-bands" inkscape:groupmode="layer" inkscape:label="Phase Bands">
+    <rect class="st13" x="400" y="1040" width="1040" height="920" rx="8" ry="8"/>
+    <text class="st10" transform="translate(757.8004 1120)"><tspan x="0" y="0">PHYSICAL SURROGACY</tspan></text>
+    <rect class="st12" x="1440" y="1040" width="840" height="920" rx="8" ry="8"/>
+    <text class="st9" transform="translate(1655.5255 1120)"><tspan x="0" y="0">QUANTITATIVE REVOLUTION</tspan></text>
+    <rect class="st16" x="2280" y="1040" width="840" height="920" rx="8" ry="8"/>
+    <text class="st10" transform="translate(2534.4338 1120)"><tspan x="0" y="0">NUMERICAL MODELING</tspan></text>
+    <rect class="st12" x="3120" y="1040" width="800" height="920" rx="8" ry="8"/>
+    <text class="st10" transform="translate(3301.9402 1120)"><tspan x="0" y="0">COMPUTATIONAL SIMULATION</tspan></text>
+    <rect class="st15" x="3920" y="1040" width="780" height="920" rx="8" ry="8"/>
+    <text class="st10" transform="translate(4169.9009 1120)"><tspan x="0" y="0">ADAPTIVE / HYBRID</tspan></text>
+  </g>
+  <g id="layer-axis" inkscape:groupmode="layer" inkscape:label="Axis">
+    <line class="st18" x1="400" y1="1500" x2="4700" y2="1500"/>
+    <polygon class="st17" points="4720 1500 4690 1484 4690 1516 4720 1500"/>
+  </g>
+  <g id="layer-date-markers" inkscape:groupmode="layer" inkscape:label="Date Markers">
+    <circle class="st11" cx="560" cy="1500" r="14"/>
+    <circle class="st11" cx="1120" cy="1500" r="18"/>
+    <circle class="st11" cx="1600" cy="1500" r="14"/>
+    <circle class="st11" cx="2040" cy="1500" r="14"/>
+    <circle class="st11" cx="2440" cy="1500" r="14"/>
+    <circle class="st11" cx="2800" cy="1500" r="14"/>
+    <circle class="st11" cx="3240" cy="1500" r="14"/>
+    <circle class="st11" cx="3640" cy="1500" r="14"/>
+    <circle class="st11" cx="4200" cy="1500" r="18"/>
+  </g>
+  <g id="layer-date-labels" inkscape:groupmode="layer" inkscape:label="Date Labels">
+    <text class="st3" transform="translate(531.1047 1450)"><tspan x="0" y="0">1870s</tspan></text>
+    <text class="st5" transform="translate(494.9906 1600)"><tspan x="0" y="0">Early physical</tspan></text>
+    <text class="st5" transform="translate(490.5795 1636)"><tspan x="0" y="0">hazard models</tspan></text>
+    <text class="st0" transform="translate(461.5514 1688)"><tspan x="0" y="0">European hydraulic labs</tspan></text>
+    <text class="st3" transform="translate(1096.9424 1450)"><tspan x="0" y="0">1943</tspan></text>
+    <text class="st5" transform="translate(1040.3224 1600)"><tspan x="0" y="0">Mississippi River</tspan></text>
+    <text class="st5" transform="translate(1060.3088 1636)"><tspan x="0" y="0">Basin Model</tspan></text>
+    <text class="st0" transform="translate(1045.5756 1688)"><tspan x="0" y="0">USACE, Vicksburg</tspan></text>
+    <text class="st3" transform="translate(1575.9484 1450)"><tspan x="0" y="0">1964</tspan></text>
+    <text class="st5" transform="translate(1518.3805 1600)"><tspan x="0" y="0">Fluvial Processes</tspan></text>
+    <text class="st5" transform="translate(1510.3403 1636)"><tspan x="0" y="0">in Geomorphology</tspan></text>
+    <text class="st0" transform="translate(1493.6316 1688)"><tspan x="0" y="0">Leopold, Wolman &amp; Miller</tspan></text>
+    <text class="st3" transform="translate(2016.3265 1450)"><tspan x="0" y="0">1976</tspan></text>
+    <text class="st5" transform="translate(1997.0398 1600)"><tspan x="0" y="0">Adaptive</tspan></text>
+    <text class="st5" transform="translate(1976.5798 1636)"><tspan x="0" y="0">Management</tspan></text>
+    <text class="st0" transform="translate(1974.1207 1688)"><tspan x="0" y="0">Holling; Walters</tspan></text>
+    <text class="st3" transform="translate(2415.6123 1450)"><tspan x="0" y="0">1984</tspan></text>
+    <text class="st5" transform="translate(2393.6794 1600)"><tspan x="0" y="0">HEC-RAS</tspan></text>
+    <text class="st0" transform="translate(2314.7312 1652)"><tspan x="0" y="0">Hydrologic Engineering Center</tspan></text>
+    <text class="st3" transform="translate(2776.8164 1450)"><tspan x="0" y="0">1993</tspan></text>
+    <text class="st5" transform="translate(2760.7634 1600)"><tspan x="0" y="0">Delft3D</tspan></text>
+    <text class="st0" transform="translate(2710.0566 1652)"><tspan x="0" y="0">Deltares, Netherlands</tspan></text>
+    <text class="st3" transform="translate(3214.1704 1450)"><tspan x="0" y="0">2008</tspan></text>
+    <text class="st5" transform="translate(3184.2583 1600)"><tspan x="0" y="0">Stationarity</tspan></text>
+    <text class="st5" transform="translate(3204.0576 1636)"><tspan x="0" y="0">is Dead</tspan></text>
+    <text class="st0" transform="translate(3197.3857 1688)"><tspan x="0" y="0">Milly et al.</tspan></text>
+    <text class="st3" transform="translate(3611.6506 1450)"><tspan x="0" y="0">2010s</tspan></text>
+    <text class="st5" transform="translate(3564.8269 1600)"><tspan x="0" y="0">High-resolution</tspan></text>
+    <text class="st5" transform="translate(3588.9714 1636)"><tspan x="0" y="0">GIS + CFD</tspan></text>
+    <text class="st0" transform="translate(3533.3262 1688)"><tspan x="0" y="0">USGS, NOAA, universities</tspan></text>
+    <text class="st3" transform="translate(4170.6704 1450)"><tspan x="0" y="0">2020s</tspan></text>
+    <text class="st5" transform="translate(4100.7593 1600)"><tspan x="0" y="0">Composite modeling</tspan></text>
+    <text class="st5" transform="translate(4117.8916 1636)"><tspan x="0" y="0">Physical + Digital</tspan></text>
+    <text class="st0" transform="translate(4095.3018 1688)"><tspan x="0" y="0">Landscape as model (1:1)</tspan></text>
+  </g>
+  <g id="layer-shift-line" inkscape:groupmode="layer" inkscape:label="Epistemological Shift">
+    <line class="st19" x1="3040" y1="1080" x2="3040" y2="2120"/>
+    <text class="st1" transform="translate(3060 1140)"><tspan x="0" y="0">epistemological shift</tspan></text>
+  </g>
+  <g id="layer-institutions" inkscape:groupmode="layer" inkscape:label="Institutions">
+    <text class="st2" transform="translate(400 1840)"><tspan x="0" y="0">INSTITUTIONS</tspan></text>
+    <rect class="st14" x="760" y="1880" width="1800" height="44" rx="6" ry="6"/>
+    <text class="st6" transform="translate(1386.5369 1910)"><tspan x="0" y="0">U.S. Army Corps of Engineers / Waterways Experiment Station</tspan></text>
+    <rect class="st13" x="2600" y="1880" width="800" height="44" rx="6" ry="6"/>
+    <text class="st6" transform="translate(2864.906 1910)"><tspan x="0" y="0">Deltares / WL Delft Hydraulics</tspan></text>
+    <rect class="st12" x="2200" y="1960" width="1600" height="44" rx="6" ry="6"/>
+    <text class="st6" transform="translate(2792.1367 1990)"><tspan x="0" y="0">USGS / NOAA / Hydrologic Engineering Center</tspan></text>
+    <rect class="st16" x="1400" y="2040" width="3300" height="44" rx="6" ry="6"/>
+    <text class="st6" transform="translate(2763.3774 2070)"><tspan x="0" y="0">University research (MIT, Imperial, Delft, LSU, Harvard GSD, UVA)</tspan></text>
+  </g>
+  <g id="layer-fig-label" inkscape:groupmode="layer" inkscape:label="Figure Label">
+    <text class="st4" transform="translate(300 3240)"><tspan x="0" y="0">Fig 04-E1 — Cantrell 2026</tspan></text>
+  </g>
+</svg>

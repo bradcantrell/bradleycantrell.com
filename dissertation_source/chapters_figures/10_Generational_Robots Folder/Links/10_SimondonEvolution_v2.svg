@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 28px;
+        letter-spacing: .06em;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st7, .st8, .st9, .st17, .st15, .st16 {
+        isolation: isolate;
+      }
+
+      .st0, .st4, .st8, .st9, .st15, .st16 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st1 {
+        font-size: 21px;
+        opacity: .85;
+      }
+
+      .st1, .st3, .st7 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st2 {
+        font-family: Lato-Regular, Lato;
+        font-size: 15px;
+      }
+
+      .st2, .st7 {
+        opacity: .5;
+      }
+
+      .st3 {
+        opacity: .4;
+      }
+
+      .st3, .st8, .st9 {
+        font-size: 14px;
+      }
+
+      .st18 {
+        fill: #e8e5dc;
+      }
+
+      .st4 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st5 {
+        fill-opacity: .08;
+        stroke-width: 2px;
+      }
+
+      .st5, .st6, .st10, .st17, .st11, .st14, .st19, .st20 {
+        stroke: #2a2825;
+      }
+
+      .st5, .st20 {
+        stroke-opacity: .35;
+      }
+
+      .st6 {
+        fill-opacity: .04;
+        stroke-opacity: .25;
+      }
+
+      .st6, .st10, .st19, .st20 {
+        stroke-width: 1.5px;
+      }
+
+      .st7 {
+        font-size: 17px;
+      }
+
+      .st8 {
+        opacity: .25;
+      }
+
+      .st8, .st9 {
+        letter-spacing: .14em;
+      }
+
+      .st9 {
+        opacity: .45;
+      }
+
+      .st10 {
+        fill-opacity: .06;
+      }
+
+      .st10, .st19 {
+        stroke-opacity: .3;
+      }
+
+      .st17 {
+        opacity: .18;
+        stroke-width: .6px;
+      }
+
+      .st17, .st19, .st20 {
+        fill: none;
+      }
+
+      .st11 {
+        fill-opacity: .14;
+        stroke-opacity: .45;
+        stroke-width: 3px;
+      }
+
+      .st12 {
+        fill-opacity: .35;
+      }
+
+      .st13 {
+        fill-opacity: .3;
+      }
+
+      .st14 {
+        fill-opacity: .1;
+        stroke-opacity: .4;
+        stroke-width: 2.5px;
+      }
+
+      .st15 {
+        letter-spacing: .04em;
+      }
+
+      .st15, .st16 {
+        font-size: 22px;
+      }
+
+      .st16 {
+        letter-spacing: .04em;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st18" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st4" transform="translate(217 249.51)"><tspan x="0" y="0">Abstract to Applied</tspan></text>
+    <text class="st1" transform="translate(220 283.51)"><tspan x="0" y="0">From abstract assemblage to technical object. After Simondon (1958).</tspan></text>
+  </g>
+  <g id="layer-stages" inkscape:groupmode="layer" inkscape:label="Stages">
+    <rect class="st6" x="244" y="411.51" width="320" height="520" rx="10" ry="10"/>
+    <text class="st15" transform="translate(324.92 501.51)"><tspan x="0" y="0">SEDIMACHINE</tspan></text>
+    <text class="st3" transform="translate(387.76 531.51)"><tspan x="0" y="0">2012</tspan></text>
+    <line class="st17" x1="274" y1="561.51" x2="534" y2="561.51"/>
+    <text class="st2" transform="translate(334.58 606.51)"><tspan x="0" y="0">Abstract assemblage.</tspan></text>
+    <text class="st2" transform="translate(304.7 636.51)"><tspan x="0" y="0">Separate components brought</tspan></text>
+    <text class="st2" transform="translate(340.11 661.51)"><tspan x="0" y="0">together externally.</tspan></text>
+    <line class="st19" x1="569" y1="671.51" x2="619" y2="671.51"/>
+    <polygon class="st13" points="624 671.51 612 665.51 612 677.51 624 671.51"/>
+    <rect class="st10" x="644" y="411.51" width="320" height="520" rx="10" ry="10"/>
+    <text class="st15" transform="translate(693.67 501.51)"><tspan x="0" y="0">DREDGEFEST TABLE</tspan></text>
+    <text class="st3" transform="translate(787.76 531.51)"><tspan x="0" y="0">2014</tspan></text>
+    <line class="st17" x1="674" y1="561.51" x2="934" y2="561.51"/>
+    <text class="st2" transform="translate(740.35 606.51)"><tspan x="0" y="0">Partially integrated.</tspan></text>
+    <text class="st2" transform="translate(701.66 636.51)"><tspan x="0" y="0">Water, sediment, sensors begin</tspan></text>
+    <text class="st2" transform="translate(755.92 661.51)"><tspan x="0" y="0">to co-produce.</tspan></text>
+    <line class="st19" x1="969" y1="671.51" x2="1019" y2="671.51"/>
+    <polygon class="st13" points="1024 671.51 1012 665.51 1012 677.51 1024 671.51"/>
+    <rect class="st5" x="1044" y="411.51" width="320" height="520" rx="10" ry="10"/>
+    <text class="st15" transform="translate(1140.2208 501.5054)"><tspan x="0" y="0">ALGO CULT</tspan></text>
+    <text class="st3" transform="translate(1189.6708 531.5054)"><tspan x="0" y="0">2019</tspan></text>
+    <line class="st17" x1="1074" y1="561.51" x2="1334" y2="561.51"/>
+    <text class="st2" transform="translate(1149.7593 606.5054)"><tspan x="0" y="0">Coupled system.</tspan></text>
+    <text class="st2" transform="translate(1137.2571 636.5054)"><tspan x="0" y="0">Robot, plant, data as</tspan></text>
+    <text class="st2" transform="translate(1149.7521 661.5054)"><tspan x="0" y="0">single operation.</tspan></text>
+    <line class="st19" x1="1369" y1="671.51" x2="1419" y2="671.51"/>
+    <polygon class="st13" points="1424 671.51 1412 665.51 1412 677.51 1424 671.51"/>
+    <rect class="st14" x="1444" y="411.51" width="320" height="520" rx="10" ry="10"/>
+    <text class="st16" transform="translate(1471.9087 501.5054)"><tspan x="0" y="0">GEOMORPHOLOGY LABS</tspan></text>
+    <text class="st3" transform="translate(1550.0983 531.5054)"><tspan x="0" y="0">LAB 2013-present</tspan></text>
+    <line class="st17" x1="1474" y1="561.51" x2="1734" y2="561.51"/>
+    <text class="st2" transform="translate(1536.1694 606.5054)"><tspan x="0" y="0">Hybrid environment.</tspan></text>
+    <text class="st2" transform="translate(1514.7197 636.5054)"><tspan x="0" y="0">Physical-digital system that</tspan></text>
+    <text class="st2" transform="translate(1517.3748 661.5054)"><tspan x="0" y="0">computes in two registers.</tspan></text>
+    <line class="st19" x1="1769" y1="671.51" x2="1819" y2="671.51"/>
+    <polygon class="st13" points="1824 671.51 1812 665.51 1812 677.51 1824 671.51"/>
+    <rect class="st11" x="1844" y="411.51" width="320" height="520" rx="10" ry="10"/>
+    <text class="st15" transform="translate(1940.6045 501.5054)"><tspan x="0" y="0">NEOM IOE</tspan></text>
+    <text class="st3" transform="translate(1954.0818 531.5054)"><tspan x="0" y="0" xml:space="preserve"> 2022–2025</tspan></text>
+    <line class="st17" x1="1874" y1="561.51" x2="2134" y2="561.51"/>
+    <text class="st2" transform="translate(1940.7972 606.5054)"><tspan x="0" y="0">Territorial coupling.</tspan></text>
+    <text class="st2" transform="translate(1917.5138 636.5054)"><tspan x="0" y="0">Sensing, biological agency,</tspan></text>
+    <text class="st2" transform="translate(1905.8285 661.5054)"><tspan x="0" y="0">infrastructure as one medium.</tspan></text>
+    <text class="st8" transform="translate(254 961.51)"><tspan x="0" y="0">ABSTRACT</tspan></text>
+    <text class="st9" transform="translate(2264.0039 961.5053)"><tspan x="0" y="0">APPLIED</tspan></text>
+    <line class="st20" x1="254" y1="971.51" x2="2354" y2="971.51"/>
+    <polygon class="st12" points="2362 971.51 2350 965.51 2350 977.51 2362 971.51"/>
+  </g>
+  <g id="layer-simondon-ground" inkscape:groupmode="layer" inkscape:label="Simondon Ground">
+    <rect class="st14" x="254" y="1063.89" width="2076.61" height="135.22" rx="10" ry="10"/>
+    <text class="st0" transform="translate(1145.4713 1121.5053)"><tspan x="0" y="0">THE ASSOCIATED MILIEU</tspan></text>
+    <text class="st7" transform="translate(979.6411 1166.5053)"><tspan x="0" y="0">The mixed technical-natural environment in which object and context become mutually constitutive</tspan></text>
+  </g>
+</svg>

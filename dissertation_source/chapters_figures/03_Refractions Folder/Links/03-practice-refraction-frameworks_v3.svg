@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 24px;
+        letter-spacing: .12em;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st8 {
+        isolation: isolate;
+      }
+
+      .st0, .st2, .st4 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st0, .st4 {
+        opacity: .85;
+      }
+
+      .st9 {
+        fill: #e8e5dc;
+      }
+
+      .st1 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: .06em;
+      }
+
+      .st2 {
+        font-size: 16px;
+        opacity: .5;
+      }
+
+      .st3 {
+        font-family: Lato-Italic, Lato;
+        font-size: 18px;
+        font-style: italic;
+        opacity: .75;
+      }
+
+      .st4 {
+        font-size: 21px;
+      }
+
+      .st5 {
+        fill-opacity: .06;
+        stroke-opacity: .35;
+        stroke-width: 2px;
+      }
+
+      .st5, .st8 {
+        stroke: #2a2825;
+      }
+
+      .st6 {
+        fill-opacity: .6;
+      }
+
+      .st7 {
+        fill-opacity: .3;
+      }
+
+      .st8 {
+        fill: none;
+        opacity: .32;
+        stroke-width: .8px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st9" y=".1" width="2550" height="1649.9"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st1" transform="translate(215.76 244.24)"><tspan x="0" y="0">Practice · Refraction · Framework</tspan></text>
+    <text class="st4" transform="translate(217.12 278.24)"><tspan x="0" y="0">A practice-based research methodology</tspan></text>
+    <line class="st8" x1="706.8" y1="758.1" x2="1030" y2="758.1"/>
+    <line class="st8" x1="1500" y1="758.1" x2="1823.2" y2="758.1"/>
+  </g>
+  <g id="layer-node-circles" inkscape:groupmode="layer" inkscape:label="Node Circles">
+    <circle class="st5" cx="480" cy="788.1" r="220"/>
+    <circle class="st5" cx="1275" cy="788.1" r="220"/>
+    <circle class="st5" cx="2070" cy="788.1" r="220"/>
+  </g>
+  <g id="layer-arrows" inkscape:groupmode="layer" inkscape:label="Arrows">
+    <polygon class="st6" points="1030 751.1 1050 758.1 1030 765.1 1030 751.1"/>
+    <path class="st6" d="M1048,758.1" marker-end="url(#arrowhead)"/>
+    <polygon class="st6" points="1825 751.1 1845 758.1 1825 765.1 1825 751.1"/>
+    <path class="st6" d="M1843,758.1" marker-end="url(#arrowhead)"/>
+    <polygon class="st7" points="490.46 1038.13 478.61 1027.53 494.48 1028.43 490.46 1038.13"/>
+    <path class="st7" d="M480-71.9" marker-end="url(#arrowhead-light)"/>
+  </g>
+  <g id="layer-arrow-labels" inkscape:groupmode="layer" inkscape:label="Arrow Labels">
+    <text class="st3" transform="translate(783.62 744.1)"><tspan x="0" y="0">generates material</tspan></text>
+    <text class="st3" transform="translate(1583.7827 744.1045)"><tspan x="0" y="0">reveals structure</tspan></text>
+    <text class="st3" transform="translate(1083.752 1105.5237)"><tspan x="0" y="0">reshapes what the practice is understood to be doing</tspan></text>
+  </g>
+  <g id="layer-node-labels" inkscape:groupmode="layer" inkscape:label="Node Labels">
+    <text class="st1" transform="translate(362.65 768.1)"><tspan x="0" y="0">PRACTICE</tspan></text>
+    <text class="st2" transform="translate(379.26 804.1)"><tspan x="0" y="0">Twenty years of propositions</tspan></text>
+    <text class="st2" transform="translate(384.98 826.1)"><tspan x="0" y="0">in material and spatial form</tspan></text>
+    <text class="st1" transform="translate(1122.2996 768.1045)"><tspan x="0" y="0">REFRACTION</tspan></text>
+    <text class="st2" transform="translate(1168.1165 804.1045)"><tspan x="0" y="0">Recovery of what instrumental</tspan></text>
+    <text class="st2" transform="translate(1203.2406 826.1045)"><tspan x="0" y="0">framings suppressed</tspan></text>
+    <text class="st1" transform="translate(1918.5092 768.1045)"><tspan x="0" y="0">FRAMEWORK</tspan></text>
+    <text class="st2" transform="translate(1990.4368 804.1045)"><tspan x="0" y="0">Six registers of a single</tspan></text>
+    <text class="st2" transform="translate(1967.9133 826.1045)"><tspan x="0" y="0">epistemological reorientation</tspan></text>
+  </g>
+  <g id="layer-sub-labels" inkscape:groupmode="layer" inkscape:label="Sub-Labels">
+    <text class="st0" transform="translate(371.1384 1058.1045)"><tspan x="0" y="0">THE INSTRUMENT</tspan></text>
+    <text class="st0" transform="translate(1183.3408 1058.1045)"><tspan x="0" y="0">THE METHOD</tspan></text>
+    <text class="st0" transform="translate(1951.5275 1058.1045)"><tspan x="0" y="0">THE CONTRIBUTION</tspan></text>
+  </g>
+</svg>

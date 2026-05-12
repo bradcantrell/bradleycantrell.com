@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 5100 3300">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st7, .st8, .st9 {
+        isolation: isolate;
+      }
+
+      .st0, .st2 {
+        opacity: .7;
+      }
+
+      .st0, .st3, .st4 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st0, .st9 {
+        font-size: 18px;
+      }
+
+      .st10 {
+        stroke-opacity: .15;
+        stroke-width: .5px;
+      }
+
+      .st10, .st11, .st12, .st13 {
+        fill: none;
+        stroke: #2a2825;
+      }
+
+      .st1 {
+        letter-spacing: .15em;
+      }
+
+      .st1, .st2 {
+        font-size: 22px;
+      }
+
+      .st1, .st4 {
+        opacity: .55;
+      }
+
+      .st1, .st5, .st7, .st8, .st9 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st11 {
+        stroke-opacity: .55;
+        stroke-width: 3px;
+      }
+
+      .st14 {
+        fill: #d5d4ca;
+      }
+
+      .st2 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st12 {
+        stroke-opacity: .18;
+      }
+
+      .st3 {
+        font-size: 24px;
+        opacity: .85;
+      }
+
+      .st4 {
+        font-size: 14px;
+        letter-spacing: .1em;
+      }
+
+      .st5 {
+        font-size: 66px;
+        letter-spacing: .09em;
+      }
+
+      .st6 {
+        fill-opacity: .9;
+      }
+
+      .st7 {
+        letter-spacing: .06em;
+      }
+
+      .st7, .st8 {
+        font-size: 20px;
+        opacity: .9;
+      }
+
+      .st8 {
+        letter-spacing: .06em;
+      }
+
+      .st9 {
+        letter-spacing: .12em;
+        opacity: .6;
+      }
+
+      .st13 {
+        stroke-opacity: .32;
+        stroke-width: .8px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st14" width="5100" height="3300"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st5" transform="translate(2011.7421 259)"><tspan x="0" y="0">DISSERTATION CHAPTER MAP</tspan></text>
+    <text class="st2" transform="translate(2353.7952 319)"><tspan x="0" y="0">Code projects and the chapters they inform</tspan></text>
+    <line class="st12" x1="520" y1="356" x2="4580" y2="356"/>
+  </g>
+  <g id="layer-section-label" inkscape:groupmode="layer" inkscape:label="Section Label">
+    <text class="st1" transform="translate(520 434)"><tspan x="0" y="0">CODE BY CHAPTER RELEVANCE</tspan></text>
+  </g>
+  <g id="layer-grid" inkscape:groupmode="layer" inkscape:label="Grid">
+    <line class="st10" x1="1340" y1="540" x2="4720" y2="540"/>
+    <line class="st10" x1="1340" y1="641" x2="4720" y2="641"/>
+    <line class="st10" x1="1340" y1="742" x2="4720" y2="742"/>
+    <line class="st10" x1="1340" y1="843" x2="4720" y2="843"/>
+    <line class="st10" x1="1340" y1="944" x2="4720" y2="944"/>
+    <line class="st10" x1="1340" y1="1045" x2="4720" y2="1045"/>
+    <line class="st10" x1="1340" y1="1146" x2="4720" y2="1146"/>
+    <line class="st10" x1="1340" y1="1247" x2="4720" y2="1247"/>
+    <line class="st10" x1="1340" y1="1348" x2="4720" y2="1348"/>
+    <line class="st10" x1="1340" y1="1449" x2="4720" y2="1449"/>
+    <line class="st10" x1="1340" y1="1550" x2="4720" y2="1550"/>
+    <line class="st10" x1="1340" y1="1651" x2="4720" y2="1651"/>
+    <line class="st10" x1="1340" y1="1752" x2="4720" y2="1752"/>
+    <line class="st10" x1="1340" y1="1853" x2="4720" y2="1853"/>
+    <line class="st10" x1="1340" y1="1954" x2="4720" y2="1954"/>
+    <line class="st10" x1="1340" y1="2055" x2="4720" y2="2055"/>
+    <line class="st10" x1="1340" y1="2156" x2="4720" y2="2156"/>
+    <line class="st10" x1="1340" y1="2257" x2="4720" y2="2257"/>
+    <line class="st10" x1="1340" y1="2358" x2="4720" y2="2358"/>
+    <line class="st10" x1="1340" y1="2459" x2="4720" y2="2459"/>
+    <line class="st10" x1="1340" y1="2560" x2="4720" y2="2560"/>
+    <line class="st10" x1="1340" y1="2661" x2="4720" y2="2661"/>
+    <line class="st10" x1="1340" y1="2762" x2="4720" y2="2762"/>
+  </g>
+  <g id="layer-chapter-headers" inkscape:groupmode="layer" inkscape:label="Chapter Headers">
+    <text class="st4" transform="translate(1446.5677 425)"><tspan x="0" y="0">CH 01</tspan></text>
+    <text class="st7" transform="translate(1428.2903 465)"><tspan x="0" y="0">Territory</tspan></text>
+    <text class="st4" transform="translate(1706.5677 425)"><tspan x="0" y="0">CH 02</tspan></text>
+    <text class="st7" transform="translate(1689.0308 465)"><tspan x="0" y="0">Adaptive</tspan></text>
+    <text class="st7" transform="translate(1691.1708 492)"><tspan x="0" y="0">Epistem.</tspan></text>
+    <text class="st4" transform="translate(1966.5677 425)"><tspan x="0" y="0">CH 03</tspan></text>
+    <text class="st7" transform="translate(1937.7306 465)"><tspan x="0" y="0">Refractions</tspan></text>
+    <text class="st4" transform="translate(2226.5679 425)"><tspan x="0" y="0">CH 04</tspan></text>
+    <text class="st7" transform="translate(2214.5007 465)"><tspan x="0" y="0">Ecology</tspan></text>
+    <text class="st7" transform="translate(2201.2207 492)"><tspan x="0" y="0">of Practice</tspan></text>
+    <text class="st4" transform="translate(2486.5679 425)"><tspan x="0" y="0">CH 05</tspan></text>
+    <text class="st7" transform="translate(2485.5601 465)"><tspan x="0" y="0">Tools</tspan></text>
+    <text class="st4" transform="translate(2746.5679 425)"><tspan x="0" y="0">CH 06</tspan></text>
+    <text class="st7" transform="translate(2737.6104 465)"><tspan x="0" y="0">Models</tspan></text>
+    <text class="st4" transform="translate(3006.5679 425)"><tspan x="0" y="0">CH 07</tspan></text>
+    <text class="st7" transform="translate(2993.3503 465)"><tspan x="0" y="0">Techno-</tspan></text>
+    <text class="st7" transform="translate(2977.2107 492)"><tspan x="0" y="0">geographies</tspan></text>
+    <text class="st4" transform="translate(3266.5679 425)"><tspan x="0" y="0">CH 08</tspan></text>
+    <text class="st7" transform="translate(3243.4607 465)"><tspan x="0" y="0">Landscape</tspan></text>
+    <text class="st8" transform="translate(3241.4407 492)"><tspan x="0" y="0">as Medium</tspan></text>
+    <text class="st4" transform="translate(3526.5679 425)"><tspan x="0" y="0">CH 09</tspan></text>
+    <text class="st7" transform="translate(3494.9409 465)"><tspan x="0" y="0">Interactions</tspan></text>
+    <text class="st4" transform="translate(3786.5679 425)"><tspan x="0" y="0">CH 10</tspan></text>
+    <text class="st7" transform="translate(3788.7805 465)"><tspan x="0" y="0">Gen.</tspan></text>
+    <text class="st7" transform="translate(3769.8503 492)"><tspan x="0" y="0">Robotics</tspan></text>
+    <text class="st4" transform="translate(4046.5679 425)"><tspan x="0" y="0">CH 11</tspan></text>
+    <text class="st8" transform="translate(4017.3103 465)"><tspan x="0" y="0">CoCreation</tspan></text>
+    <text class="st4" transform="translate(4306.5679 425)"><tspan x="0" y="0">CH 12</tspan></text>
+    <text class="st7" transform="translate(4290.2607 465)"><tspan x="0" y="0">Synoptic</tspan></text>
+    <text class="st7" transform="translate(4303.6602 492)"><tspan x="0" y="0">Views</tspan></text>
+    <text class="st4" transform="translate(4566.5679 425)"><tspan x="0" y="0">CH 13</tspan></text>
+    <text class="st7" transform="translate(4556.1802 465)"><tspan x="0" y="0">Vectors</tspan></text>
+  </g>
+  <g id="layer-project-labels" inkscape:groupmode="layer" inkscape:label="Project Labels">
+    <text class="st3" transform="translate(1157.7932 600)"><tspan x="0" y="0">Firefly Firmata</tspan></text>
+    <text class="st3" transform="translate(1170.3088 701)"><tspan x="0" y="0">QuadStepper</tspan></text>
+    <text class="st3" transform="translate(1160.7214 802)"><tspan x="0" y="0">Wii Nunchuck</tspan></text>
+    <text class="st3" transform="translate(1180.1251 903)"><tspan x="0" y="0">Dye Injector</tspan></text>
+    <text class="st3" transform="translate(1058.6493 1004)"><tspan x="0" y="0">Groundwater Controller</tspan></text>
+    <text class="st3" transform="translate(1165.4243 1105)"><tspan x="0" y="0">Media Feeder</tspan></text>
+    <text class="st3" transform="translate(1076.241 1206)"><tspan x="0" y="0">Magnetic Card Reader</tspan></text>
+    <text class="st3" transform="translate(1094.8529 1307)"><tspan x="0" y="0">Banner Sensor Array</tspan></text>
+    <text class="st3" transform="translate(955.3287 1408)"><tspan x="0" y="0">Sediment Interface / realInterface</tspan></text>
+    <text class="st3" transform="translate(1169.553 1509)"><tspan x="0" y="0">FluX Tracking</tspan></text>
+    <text class="st3" transform="translate(1170.1052 1610)"><tspan x="0" y="0">Contour Map</tspan></text>
+    <text class="st3" transform="translate(1149.7292 1711)"><tspan x="0" y="0">Sensor-Viz GUI</tspan></text>
+    <text class="st3" transform="translate(1122.2136 1812)"><tspan x="0" y="0">test_depth_kinect</tspan></text>
+    <text class="st3" transform="translate(1096.3661 1913)"><tspan x="0" y="0">GSD 2241 Exercises</tspan></text>
+    <text class="st3" transform="translate(1100.4695 2014)"><tspan x="0" y="0">rt_sense_viz archive</tspan></text>
+    <text class="st3" transform="translate(1083.407 2115)"><tspan x="0" y="0">Sedinnect001 / Unity</tspan></text>
+    <text class="st3" transform="translate(1072.3892 2216)"><tspan x="0" y="0">ISO Track / Thresholds</tspan></text>
+    <text class="st3" transform="translate(1056.4648 2317)"><tspan x="0" y="0">Sensing Research server</tspan></text>
+    <text class="st3" transform="translate(1080.2385 2418)"><tspan x="0" y="0">AAR Installation LEDs</tspan></text>
+    <text class="st3" transform="translate(1143.3817 2519)"><tspan x="0" y="0">Voronoi Pattern</tspan></text>
+    <text class="st3" transform="translate(1042.1866 2620)"><tspan x="0" y="0">Cyborg Coasts Workshop</tspan></text>
+    <text class="st3" transform="translate(1048.7631 2721)"><tspan x="0" y="0">GSD 2241 Analysis Suite</tspan></text>
+  </g>
+  <g id="layer-dots" inkscape:groupmode="layer" inkscape:label="Dots">
+    <circle class="st11" cx="1730" cy="590.5" r="18"/>
+    <circle class="st6" cx="2510" cy="590.5" r="20"/>
+    <circle class="st11" cx="3550" cy="590.5" r="18"/>
+    <circle class="st11" cx="3810" cy="590.5" r="18"/>
+    <circle class="st6" cx="2510" cy="691.5" r="20"/>
+    <circle class="st6" cx="3810" cy="691.5" r="20"/>
+    <circle class="st11" cx="2510" cy="792.5" r="18"/>
+    <circle class="st6" cx="3550" cy="792.5" r="20"/>
+    <circle class="st11" cx="3810" cy="792.5" r="18"/>
+    <circle class="st11" cx="1730" cy="893.5" r="18"/>
+    <circle class="st11" cx="2510" cy="893.5" r="18"/>
+    <circle class="st6" cx="2770" cy="893.5" r="20"/>
+    <circle class="st11" cx="3810" cy="893.5" r="18"/>
+    <circle class="st11" cx="1730" cy="994.5" r="18"/>
+    <circle class="st11" cx="2510" cy="994.5" r="18"/>
+    <circle class="st6" cx="2770" cy="994.5" r="20"/>
+    <circle class="st11" cx="3810" cy="994.5" r="18"/>
+    <circle class="st11" cx="2510" cy="1095.5" r="18"/>
+    <circle class="st6" cx="2770" cy="1095.5" r="20"/>
+    <circle class="st11" cx="3810" cy="1095.5" r="18"/>
+    <circle class="st11" cx="2510" cy="1196.5" r="18"/>
+    <circle class="st6" cx="3550" cy="1196.5" r="20"/>
+    <circle class="st11" cx="4070" cy="1196.5" r="18"/>
+    <circle class="st11" cx="1730" cy="1297.5" r="18"/>
+    <circle class="st11" cx="2510" cy="1297.5" r="18"/>
+    <circle class="st6" cx="2770" cy="1297.5" r="20"/>
+    <circle class="st11" cx="3030" cy="1297.5" r="18"/>
+    <circle class="st6" cx="3810" cy="1297.5" r="20"/>
+    <circle class="st11" cx="1470" cy="1398.5" r="18"/>
+    <circle class="st6" cx="1730" cy="1398.5" r="20"/>
+    <circle class="st6" cx="2770" cy="1398.5" r="20"/>
+    <circle class="st11" cx="3030" cy="1398.5" r="18"/>
+    <circle class="st11" cx="3550" cy="1398.5" r="18"/>
+    <circle class="st11" cx="3810" cy="1398.5" r="18"/>
+    <circle class="st11" cx="4330" cy="1398.5" r="18"/>
+    <circle class="st11" cx="1470" cy="1499.5" r="18"/>
+    <circle class="st6" cx="1730" cy="1499.5" r="20"/>
+    <circle class="st6" cx="2770" cy="1499.5" r="20"/>
+    <circle class="st11" cx="3030" cy="1499.5" r="18"/>
+    <circle class="st6" cx="3290" cy="1499.5" r="20"/>
+    <circle class="st11" cx="3550" cy="1499.5" r="18"/>
+    <circle class="st11" cx="4330" cy="1499.5" r="18"/>
+    <circle class="st11" cx="2510" cy="1600.5" r="18"/>
+    <circle class="st11" cx="2770" cy="1600.5" r="18"/>
+    <circle class="st6" cx="3030" cy="1600.5" r="20"/>
+    <circle class="st11" cx="1730" cy="1701.5" r="18"/>
+    <circle class="st6" cx="2510" cy="1701.5" r="20"/>
+    <circle class="st11" cx="2770" cy="1701.5" r="18"/>
+    <circle class="st11" cx="3030" cy="1701.5" r="18"/>
+    <circle class="st6" cx="3550" cy="1701.5" r="20"/>
+    <circle class="st11" cx="3810" cy="1701.5" r="18"/>
+    <circle class="st11" cx="2510" cy="1802.5" r="18"/>
+    <circle class="st11" cx="2770" cy="1802.5" r="18"/>
+    <circle class="st6" cx="3030" cy="1802.5" r="20"/>
+    <circle class="st11" cx="3810" cy="1802.5" r="18"/>
+    <circle class="st6" cx="2250" cy="1903.5" r="20"/>
+    <circle class="st6" cx="2510" cy="1903.5" r="20"/>
+    <circle class="st11" cx="2770" cy="1903.5" r="18"/>
+    <circle class="st11" cx="3290" cy="1903.5" r="18"/>
+    <circle class="st11" cx="3550" cy="1903.5" r="18"/>
+    <circle class="st11" cx="1470" cy="2004.5" r="18"/>
+    <circle class="st6" cx="2510" cy="2004.5" r="20"/>
+    <circle class="st11" cx="2770" cy="2004.5" r="18"/>
+    <circle class="st6" cx="3810" cy="2004.5" r="20"/>
+    <circle class="st11" cx="2510" cy="2105.5" r="18"/>
+    <circle class="st6" cx="3550" cy="2105.5" r="20"/>
+    <circle class="st11" cx="3810" cy="2105.5" r="18"/>
+    <circle class="st6" cx="4070" cy="2105.5" r="20"/>
+    <circle class="st6" cx="1470" cy="2206.5" r="20"/>
+    <circle class="st11" cx="2510" cy="2206.5" r="18"/>
+    <circle class="st6" cx="3030" cy="2206.5" r="20"/>
+    <circle class="st11" cx="3290" cy="2206.5" r="18"/>
+    <circle class="st11" cx="3550" cy="2206.5" r="18"/>
+    <circle class="st11" cx="4590" cy="2206.5" r="18"/>
+    <circle class="st6" cx="1730" cy="2307.5" r="20"/>
+    <circle class="st11" cx="2510" cy="2307.5" r="18"/>
+    <circle class="st6" cx="3030" cy="2307.5" r="20"/>
+    <circle class="st11" cx="3550" cy="2307.5" r="18"/>
+    <circle class="st11" cx="2510" cy="2408.5" r="18"/>
+    <circle class="st6" cx="3030" cy="2408.5" r="20"/>
+    <circle class="st6" cx="3290" cy="2408.5" r="20"/>
+    <circle class="st11" cx="3550" cy="2408.5" r="18"/>
+    <circle class="st11" cx="1470" cy="2509.5" r="18"/>
+    <circle class="st6" cx="1990" cy="2509.5" r="20"/>
+    <circle class="st11" cx="2250" cy="2509.5" r="18"/>
+    <circle class="st11" cx="2510" cy="2509.5" r="18"/>
+    <circle class="st11" cx="1730" cy="2610.5" r="18"/>
+    <circle class="st6" cx="2250" cy="2610.5" r="20"/>
+    <circle class="st6" cx="2510" cy="2610.5" r="20"/>
+    <circle class="st6" cx="3550" cy="2610.5" r="20"/>
+    <circle class="st6" cx="2250" cy="2711.5" r="20"/>
+    <circle class="st6" cx="2510" cy="2711.5" r="20"/>
+    <circle class="st6" cx="2770" cy="2711.5" r="20"/>
+    <circle class="st6" cx="3290" cy="2711.5" r="20"/>
+  </g>
+  <g id="layer-legend" inkscape:groupmode="layer" inkscape:label="Legend">
+    <line class="st13" x1="520" y1="2880" x2="4580" y2="2880"/>
+    <text class="st9" transform="translate(520 2945)"><tspan x="0" y="0">RELEVANCE</tspan></text>
+    <circle class="st6" cx="800" cy="3005" r="20"/>
+    <text class="st0" transform="translate(840 3015)"><tspan x="0" y="0">Primary relevance</tspan></text>
+    <circle class="st11" cx="1380" cy="3005" r="18"/>
+    <text class="st0" transform="translate(1420 3015)"><tspan x="0" y="0">Secondary relevance</tspan></text>
+  </g>
+</svg>

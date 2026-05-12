@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke-dasharray: 10 8;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7 {
+        stroke: #2a2825;
+      }
+
+      .st0, .st3, .st4, .st7 {
+        fill: none;
+      }
+
+      .st0, .st6 {
+        stroke-opacity: .15;
+      }
+
+      .st8, .st1, .st2, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st5, .st17, .st18, .st6, .st19, .st20 {
+        fill: #2a2825;
+      }
+
+      .st8, .st3, .st9, .st10, .st4, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st7, .st19, .st20 {
+        isolation: isolate;
+      }
+
+      .st8, .st9, .st10, .st11, .st12, .st19 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st8, .st10 {
+        font-size: 28px;
+        letter-spacing: .06em;
+      }
+
+      .st1 {
+        stroke-dasharray: 8 6;
+        stroke-opacity: .2;
+        stroke-width: 1.5px;
+      }
+
+      .st1, .st6 {
+        fill-opacity: .04;
+      }
+
+      .st2 {
+        fill-opacity: .08;
+        stroke-opacity: .4;
+        stroke-width: 2.5px;
+      }
+
+      .st3 {
+        opacity: .12;
+      }
+
+      .st3, .st4 {
+        stroke-width: .6px;
+      }
+
+      .st9 {
+        font-size: 22px;
+        letter-spacing: .04em;
+      }
+
+      .st9, .st14, .st17 {
+        opacity: .85;
+      }
+
+      .st10 {
+        opacity: .65;
+      }
+
+      .st4 {
+        opacity: .2;
+      }
+
+      .st21 {
+        fill: #e8e5dc;
+      }
+
+      .st11 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st12, .st19 {
+        font-size: 20px;
+        letter-spacing: .06em;
+      }
+
+      .st13, .st14 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st13, .st14, .st20 {
+        font-size: 16px;
+      }
+
+      .st13, .st16, .st18, .st19, .st20 {
+        opacity: .5;
+      }
+
+      .st15 {
+        opacity: .75;
+      }
+
+      .st15, .st16 {
+        font-size: 15px;
+      }
+
+      .st15, .st16, .st17, .st18, .st20 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st5 {
+        fill-opacity: .12;
+        stroke-opacity: .42;
+        stroke-width: 3px;
+      }
+
+      .st17, .st18 {
+        font-size: 17px;
+      }
+
+      .st7 {
+        opacity: .18;
+        stroke-width: .8px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st21" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st11" transform="translate(215.86 250.94)"><tspan x="0" y="0">Adaptive Management vs. Adaptive Epistemology</tspan></text>
+  </g>
+  <g id="layer-divider" inkscape:groupmode="layer" inkscape:label="Divider">
+    <line class="st0" x1="1275" y1="368.94" x2="1275" y2="1148.97"/>
+  </g>
+  <g id="layer-am-side" inkscape:groupmode="layer" inkscape:label="AM Side">
+    <text class="st10" transform="translate(443.37 418.94)"><tspan x="0" y="0">ADAPTIVE MANAGEMENT</tspan></text>
+    <text class="st20" transform="translate(552.15 453.94)"><tspan x="0" y="0">Holling, Walters, 1970s</tspan></text>
+    <rect class="st1" x="300" y="488.94" width="660" height="380" rx="10" ry="10"/>
+    <text class="st13" transform="translate(592.34 558.94)"><tspan x="0" y="0">Set targets</tspan></text>
+    <text class="st13" transform="translate(596.48 588.94)"><tspan x="0" y="0">Intervene</tspan></text>
+    <text class="st13" transform="translate(601.46 618.94)"><tspan x="0" y="0">Monitor</tspan></text>
+    <text class="st13" transform="translate(583.72 648.94)"><tspan x="0" y="0">Adjust model</tspan></text>
+    <line class="st3" x1="400" y1="698.94" x2="860" y2="698.94"/>
+    <text class="st16" transform="translate(531.6 748.94)"><tspan x="0" y="0">Goals: predetermined outcomes</tspan></text>
+    <text class="st16" transform="translate(547.23 776.94)"><tspan x="0" y="0">Uncertainty: to be reduced</tspan></text>
+    <text class="st16" transform="translate(517.99 804.94)"><tspan x="0" y="0">Design: implements prior knowledge</tspan></text>
+    <text class="st16" transform="translate(537.8 832.94)"><tspan x="0" y="0">Surprise: error to be corrected</tspan></text>
+    <rect class="st6" x="380" y="928.94" width="500" height="100" rx="8" ry="8"/>
+    <text class="st19" transform="translate(586.29 968.94)"><tspan x="0" y="0">OUTPUT</tspan></text>
+    <text class="st18" transform="translate(564.1386 1003.9442)"><tspan x="0" y="0">A better prediction</tspan></text>
+  </g>
+  <g id="layer-ae-side" inkscape:groupmode="layer" inkscape:label="AE Side">
+    <text class="st8" transform="translate(1726.6626 418.9442)"><tspan x="0" y="0">ADAPTIVE EPISTEMOLOGY</tspan></text>
+    <rect class="st2" x="1590" y="488.94" width="660" height="380" rx="10" ry="10"/>
+    <text class="st14" transform="translate(1851.3927 558.9442)"><tspan x="0" y="0">Propose hypothesis</tspan></text>
+    <text class="st14" transform="translate(1886.48 588.9442)"><tspan x="0" y="0">Intervene</tspan></text>
+    <text class="st14" transform="translate(1808.6726 618.9442)"><tspan x="0" y="0">Sense what the territory reveals</tspan></text>
+    <text class="st14" transform="translate(1851.3085 648.9442)"><tspan x="0" y="0">Revise the question</tspan></text>
+    <line class="st4" x1="1690" y1="698.94" x2="2150" y2="698.94"/>
+    <text class="st15" transform="translate(1830.0724 748.9442)"><tspan x="0" y="0">Goals: emergent from inquiry</tspan></text>
+    <text class="st15" transform="translate(1799.7614 776.9442)"><tspan x="0" y="0">Uncertainty: the medium of knowledge</tspan></text>
+    <text class="st15" transform="translate(1815.6014 804.9442)"><tspan x="0" y="0">Design: generates new knowledge</tspan></text>
+    <text class="st15" transform="translate(1797.767 832.9442)"><tspan x="0" y="0">Surprise: information the model needed</tspan></text>
+    <rect class="st5" x="1670" y="928.94" width="500" height="100" rx="8" ry="8"/>
+    <text class="st12" transform="translate(1876.2906 968.9442)"><tspan x="0" y="0">OUTPUT</tspan></text>
+    <text class="st17" transform="translate(1738.8506 1003.9442)"><tspan x="0" y="0">Knowledge that prediction could not have specified</tspan></text>
+  </g>
+  <g id="layer-closing" inkscape:groupmode="layer" inkscape:label="Closing">
+    <line class="st7" x1="500" y1="1128.94" x2="2050" y2="1128.94"/>
+    <text class="st9" transform="translate(956.7839 1198.9442)"><tspan x="0" y="0">Both iterate. Both learn. Rather than closing toward confirmation.</tspan></text>
+    <text class="st9" transform="translate(1032.0033 1238.9442)"><tspan x="0" y="0">we open into questions the last cycle could not ask.</tspan></text>
+  </g>
+</svg>

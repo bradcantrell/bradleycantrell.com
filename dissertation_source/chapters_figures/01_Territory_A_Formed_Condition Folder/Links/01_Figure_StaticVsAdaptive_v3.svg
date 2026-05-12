@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 32px;
+        letter-spacing: .12em;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12 {
+        isolation: isolate;
+      }
+
+      .st0, .st2 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st0, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st13, .st14, .st11, .st12 {
+        fill: #2a2825;
+      }
+
+      .st1 {
+        stroke-dasharray: 10 8;
+      }
+
+      .st1, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23 {
+        fill: none;
+        stroke: #2a2825;
+      }
+
+      .st1, .st7 {
+        opacity: .5;
+      }
+
+      .st1, .st23 {
+        stroke-width: .8px;
+      }
+
+      .st15, .st16 {
+        stroke-width: 2.5px;
+      }
+
+      .st15, .st24 {
+        stroke-opacity: .5;
+      }
+
+      .st16 {
+        stroke-opacity: .35;
+      }
+
+      .st25 {
+        fill: #e8e5dc;
+      }
+
+      .st2 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st3 {
+        opacity: .65;
+      }
+
+      .st3, .st7, .st8, .st10, .st11 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st3, .st12 {
+        font-size: 16px;
+      }
+
+      .st4 {
+        font-size: 22px;
+        opacity: .85;
+      }
+
+      .st4, .st5, .st6, .st9, .st12 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st5, .st6 {
+        font-size: 15px;
+      }
+
+      .st5, .st8, .st26, .st11 {
+        opacity: .75;
+      }
+
+      .st6, .st12 {
+        opacity: .45;
+      }
+
+      .st7, .st10 {
+        font-size: 20px;
+      }
+
+      .st27, .st24 {
+        fill: #c8c5ba;
+        stroke: #7a7870;
+      }
+
+      .st27, .st24, .st21, .st22 {
+        stroke-width: 1.5px;
+      }
+
+      .st24 {
+        stroke-dasharray: 6 4;
+      }
+
+      .st17 {
+        stroke-opacity: .2;
+      }
+
+      .st18 {
+        stroke-opacity: .18;
+      }
+
+      .st19 {
+        stroke-opacity: .28;
+      }
+
+      .st20 {
+        stroke-opacity: .12;
+      }
+
+      .st8 {
+        font-size: 14px;
+      }
+
+      .st9 {
+        font-size: 12px;
+        opacity: .22;
+      }
+
+      .st13 {
+        fill-opacity: .5;
+      }
+
+      .st14 {
+        fill-opacity: .4;
+      }
+
+      .st21 {
+        stroke-opacity: .25;
+      }
+
+      .st11 {
+        font-size: 13px;
+      }
+
+      .st22 {
+        stroke-opacity: .4;
+      }
+
+      .st23 {
+        stroke-opacity: .3;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st25" y=".39" width="2550" height="1649.61"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st2" transform="translate(250.95 247.47)"><tspan x="0" y="0">Static vs. Adaptive</tspan></text>
+    <text class="st4" transform="translate(254.21 281.47)"><tspan x="0" y="0">The fundamental reorientation from predict-and-control to learn-and-adjust</tspan></text>
+  </g>
+  <g id="layer-divider" inkscape:groupmode="layer" inkscape:label="Divider">
+    <line class="st1" x1="1275" y1="314.39" x2="1275" y2="1377.41"/>
+  </g>
+  <g id="layer-static-boxes" inkscape:groupmode="layer" inkscape:label="Static Boxes">
+    <rect class="st27" x="400" y="454.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="400" y="604.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="400" y="754.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="400" y="904.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st24" x="400" y="1054.39" width="400" height="85" rx="8" ry="8"/>
+  </g>
+  <g id="layer-static-arrows" inkscape:groupmode="layer" inkscape:label="Static Arrows">
+    <line class="st22" x1="600" y1="539.39" x2="600" y2="597.39"/>
+    <polygon class="st14" points="600 604.39 595 594.39 605 594.39 600 604.39"/>
+    <line class="st22" x1="600" y1="689.39" x2="600" y2="747.39"/>
+    <polygon class="st14" points="600 754.39 595 744.39 605 744.39 600 754.39"/>
+    <line class="st22" x1="600" y1="839.39" x2="600" y2="897.39"/>
+    <polygon class="st14" points="600 904.39 595 894.39 605 894.39 600 904.39"/>
+    <line class="st22" x1="600" y1="989.39" x2="600" y2="1047.39"/>
+    <polygon class="st14" points="600 1054.39 595 1044.39 605 1044.39 600 1054.39"/>
+    <line class="st21" x1="600" y1="1139.39" x2="600" y2="1204.39"/>
+    <line class="st16" x1="570" y1="1204.39" x2="630" y2="1204.39"/>
+  </g>
+  <g id="layer-adaptive-boxes" inkscape:groupmode="layer" inkscape:label="Adaptive Boxes">
+    <rect class="st27" x="1750" y="454.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="1750" y="604.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="1750" y="754.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="1750" y="904.39" width="400" height="85" rx="8" ry="8"/>
+    <rect class="st27" x="1750" y="1054.39" width="400" height="85" rx="8" ry="8"/>
+  </g>
+  <g id="layer-adaptive-arrows" inkscape:groupmode="layer" inkscape:label="Adaptive Arrows">
+    <line class="st22" x1="1950" y1="539.39" x2="1950" y2="597.39"/>
+    <polygon class="st14" points="1950 604.39 1945 594.39 1955 594.39 1950 604.39"/>
+    <line class="st22" x1="1950" y1="689.39" x2="1950" y2="747.39"/>
+    <polygon class="st14" points="1950 754.39 1945 744.39 1955 744.39 1950 754.39"/>
+    <line class="st22" x1="1950" y1="839.39" x2="1950" y2="897.39"/>
+    <polygon class="st14" points="1950 904.39 1945 894.39 1955 894.39 1950 904.39"/>
+    <line class="st22" x1="1950" y1="989.39" x2="1950" y2="1047.39"/>
+    <polygon class="st14" points="1950 1054.39 1945 1044.39 1955 1044.39 1950 1054.39"/>
+  </g>
+  <g id="layer-feedback-loop" inkscape:groupmode="layer" inkscape:label="Feedback Loop">
+    <line class="st15" x1="2160" y1="1139.39" x2="2160" y2="1214.39"/>
+    <line class="st15" x1="2160" y1="1214.39" x2="2260" y2="1214.39"/>
+    <line class="st15" x1="2260" y1="1214.39" x2="2260" y2="404.39"/>
+    <line class="st15" x1="2260" y1="404.39" x2="2160" y2="404.39"/>
+    <line class="st15" x1="2160" y1="404.39" x2="2160" y2="447.39"/>
+    <polygon class="st13" points="2160 454.39 2154 440.39 2166 440.39 2160 454.39"/>
+  </g>
+  <g id="layer-static-labels" inkscape:groupmode="layer" inkscape:label="Static Labels">
+    <text class="st0" transform="translate(534.08 384.39)"><tspan x="0" y="0">STATIC</tspan></text>
+    <text class="st10" transform="translate(507.38 504.39)"><tspan x="0" y="0">Survey and inventory</tspan></text>
+    <text class="st10" transform="translate(515.26 654.39)"><tspan x="0" y="0">Predict future state</tspan></text>
+    <text class="st10" transform="translate(513.16 804.39)"><tspan x="0" y="0">Specify fixed design</tspan></text>
+    <text class="st10" transform="translate(515.01 954.39)"><tspan x="0" y="0">Build and construct</tspan></text>
+    <text class="st7" transform="translate(502.6912 1099.3877)"><tspan x="0" y="0">Maintain in perpetuity</tspan></text>
+    <text class="st5" transform="translate(535.0023 1244.3877)"><tspan x="0" y="0">Assumes stationarity</tspan></text>
+    <text class="st5" transform="translate(516.7587 1266.3877)"><tspan x="0" y="0">No mechanism for learning</tspan></text>
+  </g>
+  <g id="layer-adaptive-labels" inkscape:groupmode="layer" inkscape:label="Adaptive Labels">
+    <text class="st0" transform="translate(1856.6412 384.3877)"><tspan x="0" y="0">ADAPTIVE</tspan></text>
+    <text class="st10" transform="translate(1867.1661 492.3877)"><tspan x="0" y="0">Design proposition</tspan></text>
+    <text class="st12" transform="translate(1905.4207 514.3877)"><tspan x="0" y="0">as hypothesis</tspan></text>
+    <text class="st10" transform="translate(1847.1156 654.3877)"><tspan x="0" y="0">Implement and observe</tspan></text>
+    <text class="st10" transform="translate(1868.1207 804.3877)"><tspan x="0" y="0">Sense and monitor</tspan></text>
+    <text class="st10" transform="translate(1870.1202 949.3877)"><tspan x="0" y="0">Interpret what the</tspan></text>
+    <text class="st10" transform="translate(1873.4054 972.3877)"><tspan x="0" y="0">landscape reveals</tspan></text>
+    <text class="st10" transform="translate(1873.9905 1104.3877)"><tspan x="0" y="0">Revise and adjust</tspan></text>
+  </g>
+  <g id="layer-feedback-label" inkscape:groupmode="layer" inkscape:label="Feedback Label">
+    <text class="st6" transform="translate(2238.4727 814.3877) rotate(90)"><tspan x="0" y="0">Territory responds. Knowledge accumulates.</tspan></text>
+  </g>
+  <g id="layer-column-descriptions" class="st26" inkscape:groupmode="layer" inkscape:label="Column Descriptions">
+    <text class="st8" transform="translate(541.7814 1293.9045)"><tspan x="0" y="0">Predict and control</tspan></text>
+    <text class="st8" transform="translate(1899.6215 1244.3253)"><tspan x="0" y="0">Learn and adjust</tspan></text>
+    <text class="st8" transform="translate(1782.803 1266.3253)"><tspan x="0" y="0">Each cycle produces aggregating knowledge</tspan></text>
+  </g>
+  <g id="layer-static-timescale" inkscape:groupmode="layer" inkscape:label="Static Time Scale">
+    <line class="st19" x1="310" y1="454.39" x2="340" y2="454.39"/>
+    <line class="st19" x1="310" y1="454.39" x2="310" y2="989.39"/>
+    <line class="st19" x1="310" y1="989.39" x2="340" y2="989.39"/>
+    <text class="st11" transform="translate(296 808.36) rotate(-90)"><tspan x="0" y="0">0.5–10 years</tspan></text>
+    <line class="st17" x1="310" y1="1054.39" x2="340" y2="1054.39"/>
+    <line class="st18" x1="310" y1="1054.39" x2="310" y2="1204.39"/>
+    <line class="st20" x1="310" y1="1204.39" x2="310" y2="1394.39"/>
+    <text class="st11" transform="translate(296 1276.4248) rotate(-90)"><tspan x="0" y="0">10–100+ years</tspan></text>
+  </g>
+  <g id="layer-adaptive-timescale" inkscape:groupmode="layer" inkscape:label="Adaptive Time Scale">
+    <line class="st23" x1="2260" y1="1134.39" x2="2300" y2="1134.39"/>
+    <text class="st3" transform="translate(2312 1138.3877)"><tspan x="0" y="0">Milliseconds</tspan></text>
+    <text class="st9" transform="translate(2312 1154.3877)"><tspan x="0" y="0">sensing</tspan></text>
+    <line class="st23" x1="2260" y1="994.39" x2="2300" y2="994.39"/>
+    <text class="st3" transform="translate(2312 998.3877)"><tspan x="0" y="0">Hours</tspan></text>
+    <text class="st9" transform="translate(2312 1014.3877)"><tspan x="0" y="0">adjusting</tspan></text>
+    <line class="st23" x1="2260" y1="834.39" x2="2300" y2="834.39"/>
+    <text class="st3" transform="translate(2312 838.3877)"><tspan x="0" y="0">Seasons</tspan></text>
+    <text class="st9" transform="translate(2312 854.3877)"><tspan x="0" y="0">calibrating</tspan></text>
+    <line class="st23" x1="2260" y1="674.39" x2="2300" y2="674.39"/>
+    <text class="st3" transform="translate(2312 678.3877)"><tspan x="0" y="0">Decades</tspan></text>
+    <text class="st9" transform="translate(2312 694.3877)"><tspan x="0" y="0">learning</tspan></text>
+    <line class="st23" x1="2260" y1="514.39" x2="2300" y2="514.39"/>
+    <text class="st3" transform="translate(2312 518.3877)"><tspan x="0" y="0">Centuries</tspan></text>
+    <text class="st9" transform="translate(2312 534.3877)"><tspan x="0" y="0">evolving</tspan></text>
+  </g>
+</svg>
