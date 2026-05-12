@@ -4,8 +4,11 @@
   --bg: #080808;
   --bg2: #0f0f0f;
   --text: #e8e4dc;
-  --text-dim: #7a756c;
-  --text-dimmer: #3d3a35;
+  /* Both dim tokens lifted for WCAG AA legibility on the very dark
+     background. --text-dim was #7a756c (4.39:1) -> 5.0:1; --text-dimmer
+     was #3d3a35 (1.77:1) -> 3.5:1 (passes AA large at 18px). */
+  --text-dim: #8a847a;
+  --text-dimmer: #6a665e;
   --accent: #c8b89a;
   --accent2: #8a9e8c;
   --border: #1e1c19;
@@ -17,7 +20,9 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 16px; scroll-behavior: smooth; }
+/* Unify root font size with the dissertation chapter pages so rem-based
+   sizing is consistent across the site. */
+html { font-size: 18px; scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
