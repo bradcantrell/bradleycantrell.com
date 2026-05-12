@@ -1270,8 +1270,19 @@ nav {
   .ch-nav__item--next { text-align: left; margin-left: 0; }
   .ch-nav__item { max-width: 100%; }
   .ch-backdrop { height: 50vh; min-height: 300px; }
-  .ch-tools { left: 1rem; right: 1rem; }
-  .ch-tool-button { width: 100%; justify-content: center; }
+  /* Keep the print button as a compact pill on mobile, anchored to the
+     top-right. The full-width treatment was covering the running
+     header's dissertation title on iPhone. */
+  .ch-tools {
+    top: 4.4rem;
+    right: 0.75rem;
+    left: auto;
+  }
+  .ch-tool-button {
+    width: auto;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.58rem;
+  }
 }
 
 @media print {
