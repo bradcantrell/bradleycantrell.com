@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 20px;
+        letter-spacing: .14em;
+        opacity: .58;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9 {
+        isolation: isolate;
+      }
+
+      .st0, .st1, .st2, .st4, .st5, .st6, .st7, .st8 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st4, .st7, .st8 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st1 {
+        font-size: 26px;
+        letter-spacing: .05em;
+      }
+
+      .st2 {
+        font-size: 21px;
+        opacity: .85;
+      }
+
+      .st2, .st6 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st3 {
+        opacity: .38;
+      }
+
+      .st3, .st9 {
+        fill: none;
+        stroke: #2a2825;
+      }
+
+      .st10 {
+        fill: #e8e5dc;
+      }
+
+      .st4 {
+        font-size: 44px;
+        letter-spacing: .09em;
+      }
+
+      .st5 {
+        font-family: Lato-Regular, Lato;
+        font-size: 14px;
+        letter-spacing: .14em;
+        opacity: .42;
+      }
+
+      .st11 {
+        fill: #c8c5ba;
+        stroke: #7a7870;
+        stroke-width: 1.5px;
+      }
+
+      .st6 {
+        font-size: 18px;
+        opacity: .78;
+      }
+
+      .st7 {
+        letter-spacing: .03em;
+      }
+
+      .st7, .st8 {
+        font-size: 22px;
+      }
+
+      .st8 {
+        letter-spacing: .03em;
+      }
+
+      .st9 {
+        opacity: .28;
+        stroke-width: .8px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st10" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st4" transform="translate(212.64 241.68)"><tspan x="0" y="0">Six Vectors</tspan></text>
+    <text class="st2" transform="translate(215.9 275.68)"><tspan x="0" y="0">Directions opened by the frameworks</tspan></text>
+  </g>
+  <g id="layer-cells" inkscape:groupmode="layer" inkscape:label="Vector Cells">
+    <g id="vector-01">
+      <rect class="st11" x="366.75" y="359.68" width="516.44" height="391.84" rx="12" ry="12"/>
+      <text class="st5" transform="translate(571.14 419.68)"><tspan x="0" y="0">VECTOR ONE</tspan></text>
+      <line class="st3" x1="504.97" y1="442.68" x2="744.97" y2="442.68"/>
+      <text class="st1" transform="translate(485.7 529.68)"><tspan x="0" y="0">THE INSTITUTIONAL</tspan></text>
+      <text class="st1" transform="translate(585.41 565.68)"><tspan x="0" y="0">FORM</tspan></text>
+      <text class="st6" transform="translate(510.73 679.68)"><tspan x="0" y="0">The territory requires stronger </tspan><tspan x="31.4" y="21.6">contractual structures</tspan></text>
+    </g>
+    <g id="vector-02">
+      <rect class="st11" x="1019.96" y="359.68" width="517.59" height="390.76" rx="12" ry="12"/>
+      <text class="st5" transform="translate(1223.2277 419.6829)"><tspan x="0" y="0">VECTOR TWO</tspan></text>
+      <line class="st3" x1="1158.76" y1="442.68" x2="1398.76" y2="442.68"/>
+      <text class="st1" transform="translate(1176.5538 529.6829)"><tspan x="0" y="0">THE ETHICS OF</tspan></text>
+      <text class="st1" transform="translate(1083.1365 565.6829)"><tspan x="0" y="0">IRREVERSIBLE COMMITMENT</tspan></text>
+      <text class="st6" transform="translate(1192.814 679.6829)"><tspan x="0" y="0">To initiate a coupling is</tspan><tspan x="-23.31" y="21.6">to make a promise to a place.</tspan></text>
+    </g>
+    <g id="vector-03">
+      <rect class="st11" x="1672.98" y="359.68" width="519.14" height="389.89" rx="12" ry="12"/>
+      <text class="st5" transform="translate(1871.9972 419.6829)"><tspan x="0" y="0">VECTOR THREE</tspan></text>
+      <line class="st3" x1="1814.53" y1="442.68" x2="2054.53" y2="442.68"/>
+      <text class="st1" transform="translate(1814.7543 529.6829)"><tspan x="0" y="0">THE TERRITORY&apos;S</tspan></text>
+      <text class="st1" transform="translate(1844.446 565.6829)"><tspan x="0" y="0">INTERIORITY</tspan></text>
+      <text class="st6" transform="translate(1864.3997 679.6829)"><tspan x="0" y="0">The neo-wild has a</tspan><tspan x="-45.08" y="21.6">developmental logic of its own.</tspan></text>
+    </g>
+    <g id="vector-04">
+      <rect class="st11" x="366.75" y="881.76" width="516.44" height="391.84" rx="12" ry="12"/>
+      <text class="st5" transform="translate(566.1 939.68)"><tspan x="0" y="0">VECTOR FOUR</tspan></text>
+      <line class="st3" x1="504.97" y1="962.68" x2="744.97" y2="962.68"/>
+      <text class="st1" transform="translate(461.5622 1049.6829)"><tspan x="0" y="0">THE EVOLUTION OF THE</tspan><tspan x="50.52" y="31.2">PRACTITIONER&apos;S</tspan></text>
+      <text class="st6" transform="translate(526.6734 1199.6828)"><tspan x="0" y="0">The long-term practitioner</tspan></text>
+      <text class="st6" transform="translate(504.1336 1227.6828)"><tspan x="0" y="0">as witness rather than specialist.</tspan></text>
+    </g>
+    <g id="vector-05">
+      <rect class="st11" x="1019.96" y="881.76" width="517.59" height="390.13" rx="12" ry="12"/>
+      <text class="st5" transform="translate(1224.2393 939.6829)"><tspan x="0" y="0">VECTOR FIVE</tspan></text>
+      <line class="st3" x1="1158.76" y1="962.68" x2="1398.76" y2="962.68"/>
+      <text class="st1" transform="translate(1151.1783 1049.6829)"><tspan x="0" y="0">THE PEDAGOGY OF</tspan></text>
+      <text class="st1" transform="translate(1169.7811 1085.6829)"><tspan x="0" y="0">ATTENTIVENESS</tspan></text>
+      <text class="st6" transform="translate(1156.6441 1199.6828)"><tspan x="0" y="0">Attentiveness is the primary skill.</tspan><tspan x="9.63" y="21.6">Technical knowledge serves it.</tspan></text>
+    </g>
+    <g id="vector-06">
+      <rect class="st11" x="1672.98" y="881.67" width="519.14" height="390.4" rx="12" ry="12"/>
+      <text class="st5" transform="translate(1885.3951 939.6829)"><tspan x="0" y="0">VECTOR SIX</tspan></text>
+      <line class="st3" x1="1814.53" y1="962.68" x2="2054.53" y2="962.68"/>
+      <text class="st1" transform="translate(1757.9189 1049.6829)"><tspan x="0" y="0">THE POLITICAL ECONOMY</tspan></text>
+      <text class="st1" transform="translate(1813.6755 1085.6829)"><tspan x="0" y="0">OF THE NEO-WILD</tspan></text>
+      <text class="st6" transform="translate(1827.2347 1199.6828)"><tspan x="0" y="0">New markets price territorial</tspan><tspan x="-51.17" y="21.6">conditions. The discipline can design them.</tspan></text>
+    </g>
+  </g>
+  <g id="layer-closing" inkscape:groupmode="layer" inkscape:label="Closing Claim">
+    <line class="st9" x1="760" y1="1314.3" x2="1790" y2="1314.3"/>
+    <text class="st0" transform="translate(1109.0514 1356.3049)"><tspan x="0" y="0">THE WORK POINTS TOWARD</tspan></text>
+    <text class="st7" transform="translate(1098.2424 1403.3049)"><tspan x="0" y="0">Custodianship rather than authorship.</tspan></text>
+    <text class="st8" transform="translate(1192.1379 1441.3049)"><tspan x="0" y="0">Processes as form.</tspan></text>
+    <text class="st7" transform="translate(1095.4064 1479.3049)"><tspan x="0" y="0">Relationality rather than specification.</tspan></text>
+  </g>
+</svg>

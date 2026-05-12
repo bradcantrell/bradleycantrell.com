@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 3300">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill-opacity: .05;
+        stroke-opacity: .2;
+        stroke-width: 2px;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10 {
+        fill: #2a2825;
+      }
+
+      .st0, .st3, .st11, .st8, .st12 {
+        stroke: #2a2825;
+      }
+
+      .st1 {
+        font-size: 36px;
+        letter-spacing: .06em;
+      }
+
+      .st1, .st2, .st13, .st4, .st5, .st6, .st7, .st11, .st9, .st10, .st12 {
+        isolation: isolate;
+      }
+
+      .st1, .st5, .st9 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st2 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st2, .st4 {
+        font-size: 13px;
+      }
+
+      .st3 {
+        fill-opacity: .03;
+        stroke-opacity: .25;
+        stroke-width: 2.8px;
+      }
+
+      .st14 {
+        fill: #e8e5dc;
+      }
+
+      .st4, .st6 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st5 {
+        font-size: 46px;
+        letter-spacing: .09em;
+      }
+
+      .st6 {
+        font-size: 15px;
+      }
+
+      .st7 {
+        font-family: CormorantGaramond-Regular, 'Cormorant Garamond';
+        font-size: 26px;
+        letter-spacing: .11em;
+      }
+
+      .st11 {
+        opacity: .32;
+        stroke-width: 1.5px;
+      }
+
+      .st11, .st12 {
+        fill: none;
+      }
+
+      .st8 {
+        fill-opacity: .04;
+        stroke-opacity: .32;
+        stroke-width: 3.5px;
+      }
+
+      .st9 {
+        font-size: 24px;
+        letter-spacing: .03em;
+      }
+
+      .st10 {
+        opacity: .48;
+      }
+
+      .st12 {
+        opacity: .28;
+        stroke-width: .7px;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st14" width="2550" height="3300"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <g class="st13">
+      <text class="st5" transform="translate(217.1 249.01)"><tspan x="0" y="0">FRAMEWORKS</tspan></text>
+    </g>
+    <g class="st13">
+      <text class="st7" transform="translate(218.52 303.01)"><tspan x="0" y="0">OF ADAPTIVE EPISTEMOLOGY</tspan></text>
+    </g>
+  </g>
+  <g id="layer-rings" inkscape:groupmode="layer" inkscape:label="Concentric Rings">
+    <circle class="st8" cx="1320" cy="1650" r="680"/>
+    <circle class="st3" cx="1320" cy="1650" r="490"/>
+  </g>
+  <g id="layer-venn" inkscape:groupmode="layer" inkscape:label="Inner Venn ‚Äî MI and Wetware">
+    <circle class="st0" cx="1530" cy="1650" r="230"/>
+  </g>
+  <g id="layer-labels" inkscape:groupmode="layer" inkscape:label="Framework Labels">
+    <g id="label-technogeographies">
+      <line class="st11" x1="1320" y1="938" x2="1320" y2="968"/>
+      <circle class="st10" cx="1320" cy="970" r="5"/>
+      <g class="st13">
+        <text class="st1" transform="translate(1003.9975 881)"><tspan x="0" y="0">TECHNOGEOGRAPHIES OF SENSING</tspan></text>
+      </g>
+      <g class="st13">
+        <text class="st6" transform="translate(1212.5699 913)"><tspan x="0" y="0">The politics of what gets measured</tspan></text>
+      </g>
+      <g class="st13">
+        <text class="st2" transform="translate(1280.64 933)"><tspan x="0" y="0">Ch 07</tspan></text>
+      </g>
+    </g>
+    <g id="label-wetware">
+      <g class="st13">
+        <text class="st9" transform="translate(1474.5967 1544)"><tspan x="0" y="0">WETWARE</tspan></text>
+      </g>
+      <line class="st12" x1="1454" y1="1560" x2="1606" y2="1560"/>
+      <g class="st13">
+        <text class="st4" transform="translate(1473.96 1582)"><tspan x="0" y="0">Biology + technology</tspan></text>
+      </g>
+      <g class="st13">
+        <text class="st4" transform="translate(1465.5601 1600)"><tspan x="0" y="0">constitutively entangled</tspan></text>
+      </g>
+      <g class="st13">
+        <text class="st2" transform="translate(1490.64 1776)"><tspan x="0" y="0">Ch 08 · Ch 09</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g id="layer-fig-label" inkscape:groupmode="layer" inkscape:label="Figure Label">
+    <g class="st13">
+      <text class="st2" transform="translate(310 3240)"><tspan x="0" y="0">Fig 08-F1 — Cantrell 2026</tspan></text>
+    </g>
+  </g>
+</svg>

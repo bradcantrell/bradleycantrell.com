@@ -1068,7 +1068,7 @@ nav {
   position: relative;
   width: 100%;
   height: min(78vh, 1200px);
-  background: rgba(248,246,239,0.96);
+  background: rgba(12,12,12,0.96);
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 18px 48px rgba(0,0,0,0.35);
@@ -1083,6 +1083,9 @@ nav {
   width: 100%;
   height: 100%;
   display: block;
+  /* Match the inline inversion treatment so dark-mode diagrams render the
+     same in the zoom viewer as they do in the text flow. */
+  filter: invert(1) brightness(0.88) contrast(1.05);
 }
 
 .ch-image-modal__zoom-controls {
@@ -1156,8 +1159,12 @@ nav {
   font-size: 0.6rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(8,8,8,0.46);
+  color: rgba(255,255,255,0.42);
   pointer-events: none;
+}
+
+.ch-image-modal__panel--raster-zoom .ch-image-modal__zoom-hint {
+  color: rgba(255,255,255,0.42);
 }
 
 /* In SVG mode, hide the raster image element so layout collapses cleanly. */
