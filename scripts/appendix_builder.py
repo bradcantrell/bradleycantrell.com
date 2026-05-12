@@ -31,7 +31,7 @@ CONFIGS = {
         'title': 'Appendix A',
         'subtitle': 'Project Catalog',
         'hero_img': 'img/AA_Appendix/AA.jpg',
-        'hero_caption': 'Project Catalog | Bradley Cantrell',
+        'hero_caption': 'Psuedo Ecologies . Salt Flats | Bradley Cantrell',
         'running': 'Adaptive Epistemologies and Neo-Wilds &mdash; Appendix A',
         'active_href': 'appendix-a.html',
         # Figures: list of (after_para_index, src, caption)
@@ -58,7 +58,7 @@ CONFIGS = {
         'title': 'Appendix B',
         'subtitle': 'Obstacles',
         'hero_img': 'img/BB_Appendix/BB.jpg',
-        'hero_caption': 'Obstacles | Bradley Cantrell',
+        'hero_caption': 'Psuedo Ecologies . Migrations | Bradley Cantrell',
         'running': 'Adaptive Epistemologies and Neo-Wilds &mdash; Appendix B',
         'active_href': 'appendix-b.html',
         'figures': [
@@ -76,7 +76,7 @@ CONFIGS = {
         'title': 'Glossary',
         'subtitle': 'Adaptive Epistemologies and Neo-Wilds',
         'hero_img': 'img/GG_Glossary/GG.jpg',
-        'hero_caption': 'Glossary | Bradley Cantrell',
+        'hero_caption': 'Psuedo Ecologies . Riparian Corridor | Bradley Cantrell',
         'running': 'Adaptive Epistemologies and Neo-Wilds &mdash; Glossary',
         'active_href': 'glossary.html',
         'figures': [],
