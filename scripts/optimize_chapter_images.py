@@ -30,7 +30,7 @@ from PIL import Image, ImageOps
 
 Image.MAX_IMAGE_PIXELS = 400_000_000  # allow large NEOM source plates
 
-REPO = Path("/Users/bcantrell/Documents/sites/bradleycantrell.com/.claude/worktrees/flamboyant-germain-427dfe")
+REPO = Path("/Users/bcantrell/Documents/sites/bradleycantrell.com")
 
 CHAPTER_FOLDERS = {
     "01": "01_territory",
