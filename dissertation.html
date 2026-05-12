@@ -29,9 +29,15 @@
     .chapter-sub { font-size: 0.8rem; color: var(--text-dim); }
     .concept-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.85rem;
       margin-top: 2rem;
+    }
+    @media (max-width: 900px) {
+      .concept-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .concept-grid { grid-template-columns: 1fr; }
     }
     .concept-card {
       /* Darkened, semi-transparent panel with rounded corners and a soft
@@ -127,17 +133,17 @@
         <h4>Wetware</h4>
         <p>Biology coupled with computation as a knowledge-producing medium. Living systems generating responses that exceed what any sensor was calibrated to detect.</p>
       </div>
-      <div class="concept-card" style="--bg-img: url('images/dissertation/generational-robotics.jpg');">
-        <h4>Generational Robotics</h4>
-        <p>Learning loops across timescales exceeding human institutional memory. Knowledge distributed into infrastructure rather than held in the cognition of practitioners.</p>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/reflexive-stewardship.jpg');">
+        <h4>Reflexive Stewardship</h4>
+        <p>The ethical orientation. Provisional, adaptive practice that remains answerable to what landscapes are becoming and to whom the costs and benefits accrue.</p>
       </div>
       <div class="concept-card" style="--bg-img: url('images/dissertation/coupled-ecologies.jpg');">
         <h4>Coupled Ecologies</h4>
         <p>The territorial condition. Biology, computation, and infrastructure operating as a single entangled system producing a new category of landscape.</p>
       </div>
-      <div class="concept-card" style="--bg-img: url('images/dissertation/reflexive-stewardship.jpg');">
-        <h4>Reflexive Stewardship</h4>
-        <p>The ethical orientation. Provisional, adaptive practice that remains answerable to what landscapes are becoming and to whom the costs and benefits accrue.</p>
+      <div class="concept-card" style="--bg-img: url('images/dissertation/generational-robotics.jpg');">
+        <h4>Generational Robotics</h4>
+        <p>Learning loops across timescales exceeding human institutional memory. Knowledge distributed into infrastructure rather than held in the cognition of practitioners.</p>
       </div>
     </div>
   </div>
