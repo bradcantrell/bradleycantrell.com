@@ -15,7 +15,7 @@
   /* Surface tokens — semi-transparent panels with blur backdrops, used
      for cards / Under Development boxes / quote-panel content blocks. */
   --surface-1: rgba(8, 8, 8, 0.62);
-  --surface-2: rgba(0, 0, 0, 0.50);
+  --surface-2: rgba(0, 0, 0, 0.55);
   --border-soft: rgba(255, 255, 255, 0.06);
   --radius-card: 10px;
   --radius-pill: 999px;
@@ -410,3 +410,63 @@ nav {
 
 /* Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+
+/* ── Print styles for the marketing pages ───────────────────────────────
+   Chapter pages have their own @media print block in chapter.css; this
+   handles index, work, writing, lectures, teaching, awards, about, and
+   dissertation overview. */
+@media print {
+  @page { margin: 0.7in; }
+
+  html { font-size: 12pt; }
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    line-height: 1.5;
+  }
+
+  /* Hide chrome that's not useful on paper. */
+  nav,
+  footer,
+  canvas,
+  #gol-canvas-container,
+  .visitor-readout,
+  .hero-nav,
+  .section-header .section-count { display: none !important; }
+
+  /* Surfaces become transparent / light. */
+  section,
+  .concept-card,
+  .under-dev,
+  .book-card,
+  .hero-content {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: #ccc !important;
+    color: #111 !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide the cover-as-backdrop image on book cards; the text alone
+     prints cleanly. */
+  .book-card__cover,
+  .book-card::after { display: none !important; }
+
+  a {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4 { color: #111 !important; page-break-after: avoid; }
+  p { color: #222 !important; }
+
+  /* Dim tokens become darker greys so they print legibly. */
+  .nav-name,
+  .nav-links a,
+  .section-header h3,
+  .writing-year,
+  .essay-meta,
+  .essay-co,
+  .book-meta { color: #555 !important; }
+}

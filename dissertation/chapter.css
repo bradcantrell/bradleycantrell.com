@@ -6,7 +6,9 @@
 
 /* ── Vars ─────────────────────────────────────────────────────────────── */
 :root {
-  --ch-sidebar: 220px;
+  /* Wide enough that the "Bradley Cantrell" wordmark in the site nav
+     (left edge of header) sits within the sidebar's column width. */
+  --ch-sidebar: 260px;
   --ch-content: 680px;
   --ch-figure: 820px;
   --ch-serif: 'Cormorant Garamond', 'Freight Text Pro', 'Georgia', serif;
@@ -89,7 +91,7 @@ nav {
   height: 100vh;
   background: rgba(8,8,8,0.88);
   border-right: 1px solid var(--border);
-  padding: 6rem 1.25rem 2rem;
+  padding: 6rem 1.5rem 2rem;
   overflow-y: auto;
   z-index: 100;
   display: flex;
@@ -98,34 +100,39 @@ nav {
 
 .ch-sidebar__diss {
   font-family: var(--ch-serif);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-dimmer);
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+  line-height: 1.45;
 }
 .ch-sidebar__divider { height: 1px; background: var(--border); margin-bottom: 1.25rem; }
 .ch-sidebar__nav { list-style: none; flex: 1; }
 .ch-sidebar__nav li { margin-bottom: 0; }
 .ch-sidebar__nav a {
   font-family: var(--ch-serif);
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 300;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   text-decoration: none;
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  padding: 0.3rem 0.5rem;
+  gap: 0.65rem;
+  padding: 0.36rem 0.5rem;
   border-radius: 2px;
   transition: color 0.15s, background 0.15s;
   line-height: 1.35;
 }
-.ch-sidebar__nav a:hover { color: var(--text-dim); background: rgba(255,255,255,0.03); }
+.ch-sidebar__nav a:hover { color: var(--text); background: rgba(255,255,255,0.03); }
 .ch-sidebar__nav a.active { color: var(--accent); background: rgba(200,184,154,0.06); }
-.ch-sidebar__num { font-size: 0.58rem; color: var(--text-dimmer); letter-spacing: 0.06em; flex-shrink: 0; }
-.ch-sidebar__nav a.active .ch-sidebar__num { color: var(--accent); opacity: 0.7; }
+.ch-sidebar__num {
+  font-size: 0.7rem;
+  color: var(--text-dimmer);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.ch-sidebar__nav a.active .ch-sidebar__num { color: var(--accent); opacity: 0.75; }
 
 /* ── Main ─────────────────────────────────────────────────────────────── */
 .ch-main {
@@ -1181,12 +1188,12 @@ nav {
   font-size: 0.6rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.62);
   pointer-events: none;
 }
 
 .ch-image-modal__panel--raster-zoom .ch-image-modal__zoom-hint {
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.62);
 }
 
 /* In SVG mode, hide the raster image element so layout collapses cleanly. */
