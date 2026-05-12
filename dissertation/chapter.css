@@ -647,7 +647,16 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0.1) 40%, rgba(8,8,8,0.72) 75%, rgba(8,8,8,0.97) 100%);
+  /* Symmetric top/bottom fade so the panel reads as fading in from the
+     page above and fading out into the figure-label strip below. */
+  background: linear-gradient(
+    to bottom,
+    rgba(8,8,8,0.97) 0%,
+    rgba(8,8,8,0.72) 25%,
+    rgba(8,8,8,0.10) 50%,
+    rgba(8,8,8,0.72) 75%,
+    rgba(8,8,8,0.97) 100%
+  );
   z-index: 1;
 }
 
