@@ -309,12 +309,25 @@ nav {
 
 .ch-hero__caption {
   margin-top: 1.4rem;
-  max-width: 34rem;
+  /* Resize the same way ch-quote-panel__caption does on full-width image
+     plates: bounded by 30rem, but shrinks to leave room for the right-side
+     hero quote box on wide viewports. */
+  width: min(30rem, calc(100vw - var(--ch-sidebar) - clamp(3rem, 8vw, 6rem) - 36rem));
+  max-width: 30rem;
   font-family: var(--font-sans);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   color: rgba(232,228,220,0.55);
   line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  /* On mobile the sidebar is hidden and the hero quote box reflows below,
+     so let the caption span normally. */
+  .ch-hero__caption {
+    width: auto;
+    max-width: min(30rem, calc(100vw - 3rem));
+  }
 }
 
 .ch-hero__caption a {
