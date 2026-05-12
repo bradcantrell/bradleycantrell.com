@@ -133,7 +133,13 @@ def build_body(cfg, paras):
             continue
         if style == 'Heading2' and text.strip() == cfg['subtitle']:
             continue
-        html = render_heading(style, text)
+        # The DOCX accidentally tags some "Reference: Ch. NN, ..." lines as
+        # headings; render them as body paragraphs to match every other
+        # reference line in the glossary.
+        if style.startswith('Heading') and re.match(r'\s*<?em>?Reference:\s', text):
+            html = f'<p>{text}</p>'
+        else:
+            html = render_heading(style, text)
         if html:
             parts.append(html)
         for src, caption in placements.get(n, []):
