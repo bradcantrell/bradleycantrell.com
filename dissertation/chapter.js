@@ -131,6 +131,16 @@
       '<button type="button" class="ch-image-modal__svg-close" aria-label="Close expanded figure view">×</button>',
       '<div class="ch-image-modal__zoom-hint">Scroll to zoom · drag to pan · esc to close</div>',
       '</div>',
+      '<div class="ch-image-modal__raster-frame" hidden>',
+      '<div class="ch-image-modal__raster-stage"><img class="ch-image-modal__raster-img" alt=""></div>',
+      '<div class="ch-image-modal__zoom-controls">',
+      '<button type="button" class="ch-image-modal__zoom-btn" data-rzoom="in"  aria-label="Zoom in">+</button>',
+      '<button type="button" class="ch-image-modal__zoom-btn" data-rzoom="out" aria-label="Zoom out">−</button>',
+      '<button type="button" class="ch-image-modal__zoom-btn" data-rzoom="reset" aria-label="Reset zoom">⤾</button>',
+      '</div>',
+      '<button type="button" class="ch-image-modal__svg-close" data-raster-close="1" aria-label="Close expanded figure view">×</button>',
+      '<div class="ch-image-modal__zoom-hint">Scroll to zoom · drag to pan · esc to close</div>',
+      '</div>',
       '<img class="ch-image-modal__img" alt="">',
       '<div class="ch-image-modal__caption"></div>',
       '</div>'
@@ -144,6 +154,7 @@
     var svgFrame = modal.querySelector('.ch-image-modal__svg-frame');
     var lastTrigger = null;
     var activePanZoom = null;
+    var activeRasterZoom = null;
 
     function destroyPanZoom() {
       if (activePanZoom && typeof activePanZoom.destroy === 'function') {
@@ -160,6 +171,99 @@
       });
     }
 
+    function destroyRasterZoom() {
+      if (activeRasterZoom && typeof activeRasterZoom.destroy === 'function') {
+        try { activeRasterZoom.destroy(); } catch (e) { /* noop */ }
+      }
+      activeRasterZoom = null;
+    }
+
+    function attachRasterPanZoom(stageEl, frameEl) {
+      // CSS transform pan/zoom for raster images. Mouse wheel zooms toward
+      // the cursor; click-and-drag pans. Double-click toggles between fit
+      // and 2x zoom. Touch is supported via simple drag (no pinch).
+      var state = { scale: 1, tx: 0, ty: 0, min: 1, max: 12 };
+      function apply() {
+        stageEl.style.transform =
+          'translate(' + state.tx + 'px,' + state.ty + 'px) scale(' + state.scale + ')';
+      }
+      function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+      function zoomAt(clientX, clientY, factor) {
+        var rect = frameEl.getBoundingClientRect();
+        var cx = clientX - rect.left - rect.width / 2;
+        var cy = clientY - rect.top - rect.height / 2;
+        var next = clamp(state.scale * factor, state.min, state.max);
+        var k = next / state.scale;
+        state.tx = cx - (cx - state.tx) * k;
+        state.ty = cy - (cy - state.ty) * k;
+        state.scale = next;
+        apply();
+      }
+      function reset() { state.scale = 1; state.tx = 0; state.ty = 0; apply(); }
+
+      function onWheel(e) {
+        e.preventDefault();
+        var factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+        zoomAt(e.clientX, e.clientY, factor);
+      }
+      var dragging = false;
+      var lastX = 0, lastY = 0;
+      function onPointerDown(e) {
+        if (e.button !== undefined && e.button !== 0) return;
+        dragging = true;
+        lastX = e.clientX; lastY = e.clientY;
+        frameEl.classList.add('is-grabbing');
+        frameEl.setPointerCapture && frameEl.setPointerCapture(e.pointerId || 0);
+      }
+      function onPointerMove(e) {
+        if (!dragging) return;
+        var dx = e.clientX - lastX;
+        var dy = e.clientY - lastY;
+        lastX = e.clientX; lastY = e.clientY;
+        state.tx += dx; state.ty += dy;
+        apply();
+      }
+      function onPointerUp() {
+        dragging = false;
+        frameEl.classList.remove('is-grabbing');
+      }
+      function onDblClick(e) {
+        if (state.scale > 1.05) reset();
+        else zoomAt(e.clientX, e.clientY, 2);
+      }
+
+      frameEl.addEventListener('wheel', onWheel, { passive: false });
+      frameEl.addEventListener('pointerdown', onPointerDown);
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      frameEl.addEventListener('dblclick', onDblClick);
+
+      reset();
+
+      function centerZoom(factor) {
+        var rect = frameEl.getBoundingClientRect();
+        zoomAt(rect.left + rect.width/2, rect.top + rect.height/2, factor);
+      }
+
+      return {
+        zoomIn: function() { centerZoom(1.4); },
+        zoomOut: function() { centerZoom(1/1.4); },
+        reset: reset,
+        destroy: function() {
+          frameEl.removeEventListener('wheel', onWheel);
+          frameEl.removeEventListener('pointerdown', onPointerDown);
+          window.removeEventListener('pointermove', onPointerMove);
+          window.removeEventListener('pointerup', onPointerUp);
+          frameEl.removeEventListener('dblclick', onDblClick);
+          stageEl.style.transform = '';
+        }
+      };
+    }
+
+    var rasterFrame = modal.querySelector('.ch-image-modal__raster-frame');
+    var rasterStage = modal.querySelector('.ch-image-modal__raster-stage');
+    var rasterImg = modal.querySelector('.ch-image-modal__raster-img');
+
     function closeModal() {
       modal.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');
@@ -167,18 +271,44 @@
       modalImg.removeAttribute('src');
       modalCaption.innerHTML = '';
       clearSvgFrame();
+      destroyRasterZoom();
+      rasterImg.removeAttribute('src');
+      rasterFrame.setAttribute('hidden', '');
       svgFrame.setAttribute('hidden', '');
       panel.classList.remove('ch-image-modal__panel--svg');
+      panel.classList.remove('ch-image-modal__panel--raster-zoom');
       if (lastTrigger) lastTrigger.focus();
     }
 
     function openAsImage(image, figure) {
       panel.classList.remove('ch-image-modal__panel--svg');
+      panel.classList.remove('ch-image-modal__panel--raster-zoom');
       svgFrame.setAttribute('hidden', '');
+      rasterFrame.setAttribute('hidden', '');
       modalImg.removeAttribute('hidden');
       modalImg.src = image.currentSrc || image.src;
       modalImg.alt = image.alt || '';
       modalCaption.innerHTML = buildCaptionText(figure);
+    }
+
+    function openAsZoomImage(image, figure) {
+      panel.classList.add('ch-image-modal__panel--raster-zoom');
+      svgFrame.setAttribute('hidden', '');
+      modalImg.removeAttribute('src');
+      rasterFrame.removeAttribute('hidden');
+      destroyRasterZoom();
+      rasterImg.src = image.currentSrc || image.src;
+      rasterImg.alt = image.alt || '';
+      modalCaption.innerHTML = buildCaptionText(figure);
+      // Wait until the image loads so layout is stable, then attach pan/zoom.
+      var attach = function() {
+        activeRasterZoom = attachRasterPanZoom(rasterStage, rasterFrame);
+      };
+      if (rasterImg.complete && rasterImg.naturalWidth) {
+        requestAnimationFrame(attach);
+      } else {
+        rasterImg.addEventListener('load', attach, { once: true });
+      }
     }
 
     function openAsSvg(image, figure) {
@@ -223,12 +353,21 @@
       });
     }
 
+    function shouldZoomRaster(figure) {
+      if (!figure) return false;
+      if (figure.classList.contains('ch-inline-figure--map')) return true;
+      if (figure.dataset && figure.dataset.zoomable === 'true') return true;
+      return false;
+    }
+
     function openModal(image) {
       var figure = image.closest('figure');
       lastTrigger = image;
       var src = image.currentSrc || image.src;
       if (isSvgSrc(src)) {
         openAsSvg(image, figure);
+      } else if (shouldZoomRaster(figure)) {
+        openAsZoomImage(image, figure);
       } else {
         openAsImage(image, figure);
       }
@@ -249,6 +388,19 @@
       if (mode === 'in') activePanZoom.zoomIn();
       else if (mode === 'out') activePanZoom.zoomOut();
       else if (mode === 'reset') { activePanZoom.resetZoom(); activePanZoom.resetPan(); }
+    });
+
+    rasterFrame.addEventListener('click', function(event) {
+      if (event.target.closest('[data-raster-close]')) {
+        closeModal();
+        return;
+      }
+      var btn = event.target.closest('[data-rzoom]');
+      if (!btn || !activeRasterZoom) return;
+      var mode = btn.getAttribute('data-rzoom');
+      if (mode === 'in') activeRasterZoom.zoomIn();
+      else if (mode === 'out') activeRasterZoom.zoomOut();
+      else if (mode === 'reset') activeRasterZoom.reset();
     });
 
     images.forEach(function(image) {

@@ -1163,6 +1163,50 @@ nav {
 /* In SVG mode, hide the raster image element so layout collapses cleanly. */
 .ch-image-modal__panel--svg .ch-image-modal__img { display: none; }
 
+/* ── Raster pan/zoom (used for maps and other zoom-flagged photo figures) ── */
+.ch-image-modal__panel--raster-zoom {
+  width: min(96vw, 1800px);
+  max-height: 92vh;
+}
+
+.ch-image-modal__panel--raster-zoom .ch-image-modal__img { display: none; }
+
+.ch-image-modal__raster-frame {
+  position: relative;
+  width: 100%;
+  height: min(78vh, 1200px);
+  background: rgba(8,8,8,0.92);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.35);
+  cursor: grab;
+}
+
+.ch-image-modal__raster-frame.is-grabbing { cursor: grabbing; }
+
+.ch-image-modal__raster-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.ch-image-modal__raster-img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* In raster-zoom mode, the corner × on the panel is hidden because the
+   frame has its own close button at the top-right. */
+.ch-image-modal__panel--raster-zoom > .ch-image-modal__close { display: none; }
+
 /* ── Scrollbar / selection ────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
