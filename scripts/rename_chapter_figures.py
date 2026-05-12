@@ -75,6 +75,7 @@ def parse_chapter_figures(html_path: Path, chapter: str):
     html = html_path.read_text()
     results = []
 
+    fignum_rx = re.compile(r'Figure (\d{1,2}_\d{1,2})')
     # 1) Hero
     m = re.search(
         r'<header class="ch-hero">.*?<div class="ch-hero__bg"[^>]*background-image:\s*url\(\'([^\']+)\'',
@@ -95,7 +96,7 @@ def parse_chapter_figures(html_path: Path, chapter: str):
     for panel_match in panel_rx.finditer(html):
         panel = panel_match.group(0)
         bg = re.search(r"ch-quote-panel__img[^>]*url\('([^']+)'", panel)
-        num = re.search(r'Figure (\d{2}_\d{2})', panel)
+        num = re.search(r'Figure (\d{1,2}_\d{1,2})', panel)
         if bg and num:
             results.append({
                 'label': num.group(1),
@@ -125,7 +126,7 @@ def parse_chapter_figures(html_path: Path, chapter: str):
         )
         block = html[start:next_boundary]
         bg = re.search(r"ch-backdrop__img[^>]*url\('([^']+)'", block)
-        num = re.search(r'Figure (\d{2}_\d{2})', block)
+        num = re.search(r'Figure (\d{1,2}_\d{1,2})', block)
         if bg and num:
             results.append({
                 'label': num.group(1),
@@ -138,7 +139,7 @@ def parse_chapter_figures(html_path: Path, chapter: str):
     for f_match in fig_rx.finditer(html):
         fig = f_match.group(0)
         src = re.search(r'<img[^>]*\bsrc="([^"]+)"', fig)
-        num = re.search(r'Figure (\d{2}_\d{2})', fig)
+        num = re.search(r'Figure (\d{1,2}_\d{1,2})', fig)
         if src and num:
             is_svg = src.group(1).lower().endswith('.svg')
             results.append({
@@ -147,13 +148,13 @@ def parse_chapter_figures(html_path: Path, chapter: str):
                 'role': 'diagram' if is_svg else 'inline',
             })
 
-    # De-dupe in case same figure appears multiple places, preferring
-    # first occurrence.
-    seen = {}
+    # Canonicalize labels: ensure two-digit chapter and minor (e.g. 10_1 -> 10_01)
     for r in results:
-        if r['label'] not in seen:
-            seen[r['label']] = r
-    return list(seen.values())
+        major, minor = r['label'].split('_')
+        r['label'] = f'{int(major):02d}_{int(minor):02d}'
+    # Return ALL occurrences (dedupe is done downstream when picking the
+    # canonical source for the optimizer).
+    return results
 
 
 EXT_ORDER = ['.svg', '.png', '.jpg', '.jpeg', '.tif', '.tiff']
@@ -191,7 +192,7 @@ def resolve_source(src_in_html: str, chapter: str) -> Path | None:
         candidates = []
         rx = re.compile(re.escape(stem) + r'_v\d+', re.IGNORECASE)
         for f in source_links.iterdir():
-            if f.is_file() and rx.match(f.stem):
+            if f.is_file() and rx.match(f.stem) and f.suffix.lower() != '.ai':
                 candidates.append(f)
         if candidates:
             # Prefer svg, then highest version number
@@ -217,42 +218,61 @@ def resolve_source(src_in_html: str, chapter: str) -> Path | None:
 
 
 def build_mapping(figures, chapter):
-    """Build optimizer mapping JSON."""
-    mapping = {}
-    unresolved = []
+    """Build optimizer mapping JSON.
+
+    For each figure label, pick the canonical source by priority:
+       inline/diagram > quote-spread > hero
+    Inline figures generally point at the real figure asset, while heroes
+    sometimes point at a decorative hero-quote image.
+    """
     # Already-renamed pattern (idempotent re-runs should skip these).
     already_pat = re.compile(r'^figure_\d{2}_\d{2}(\@2x)?\.[a-z]+$', re.I)
+    ROLE_PRIORITY = {'inline': 3, 'diagram': 3, 'quote-spread': 2, 'hero': 1}
+
+    by_label: dict[str, list[dict]] = {}
     for fig in figures:
         if already_pat.match(Path(fig['src']).name):
-            # already in new convention; skip optimizer (would copy file onto itself)
             continue
-        src = resolve_source(fig['src'], chapter)
-        role = fig['role']
-        if src is None:
-            unresolved.append((fig['label'], fig['src']))
-            continue
-        # If we resolved a .svg source, force diagram role.
-        if src.suffix.lower() == '.svg':
-            role = 'diagram'
-        mapping[fig['label']] = {'src': str(src), 'role': role}
+        by_label.setdefault(fig['label'], []).append(fig)
+
+    mapping = {}
+    unresolved = []
+    for label, items in by_label.items():
+        # Order by descending priority, then by parse order
+        items.sort(key=lambda f: -ROLE_PRIORITY.get(f['role'], 0))
+        for fig in items:
+            src = resolve_source(fig['src'], chapter)
+            if src is None:
+                continue
+            role = fig['role']
+            if src.suffix.lower() == '.svg':
+                role = 'diagram'
+            mapping[label] = {'src': str(src), 'role': role}
+            break
+        else:
+            unresolved.append((label, items[0]['src']))
     return mapping, unresolved
 
 
 def rewrite_html(html_path: Path, figures, chapter):
-    """Replace each fig['src'] in the HTML with the new figure_NN_NN.* path.
+    """Replace every fig['src'] in the HTML with the new figure_NN_NN.* path.
 
-    Choose the new extension by what was actually written: prefer .svg if
-    the source was svg/diagram, otherwise .jpg.
+    Iterates ALL parsed figure occurrences (not just deduped). Each unique
+    old src gets replaced once. Chooses the new extension based on which
+    output file exists in the chapter image folder.
     """
     html = html_path.read_text()
     chapter_folder = CHAPTER_FOLDERS[chapter]
     folder_url = f'img/{chapter_folder}/'
+    out_dir = REPO / 'dissertation' / 'img' / chapter_folder
 
+    seen_old: set[str] = set()
     for fig in figures:
         label = fig['label']
         old_src = fig['src']
-        # Determine new ext based on what's in the output folder
-        out_dir = REPO / 'dissertation' / 'img' / chapter_folder
+        if old_src in seen_old:
+            continue
+        seen_old.add(old_src)
         new_svg = out_dir / f'figure_{label}.svg'
         new_jpg = out_dir / f'figure_{label}.jpg'
         if new_svg.exists():
@@ -262,7 +282,6 @@ def rewrite_html(html_path: Path, figures, chapter):
         else:
             continue
         new_src = f'{folder_url}{new_name}'
-        # Replace all instances of the old src in the HTML
         html = html.replace(old_src, new_src)
     html_path.write_text(html)
 

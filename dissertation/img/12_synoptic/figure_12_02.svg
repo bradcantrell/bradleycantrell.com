@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 18.29px;
+        opacity: .55;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10 {
+        fill: #2a2825;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st6, .st7, .st9, .st10 {
+        isolation: isolate;
+      }
+
+      .st0, .st3, .st4 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st1 {
+        letter-spacing: .04em;
+      }
+
+      .st1, .st2 {
+        font-size: 21.03px;
+      }
+
+      .st1, .st2, .st6, .st7, .st10 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st2 {
+        letter-spacing: .04em;
+      }
+
+      .st3 {
+        font-size: 21px;
+        opacity: .85;
+      }
+
+      .st4 {
+        font-size: 11.89px;
+        opacity: .3;
+      }
+
+      .st5 {
+        fill-opacity: .06;
+        stroke-opacity: .35;
+      }
+
+      .st5, .st11 {
+        stroke-width: 2.5px;
+      }
+
+      .st5, .st11, .st8 {
+        stroke: #2a2825;
+      }
+
+      .st11 {
+        fill: none;
+        stroke-opacity: .4;
+      }
+
+      .st12 {
+        fill: #e8e5dc;
+      }
+
+      .st6 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st7 {
+        font-size: 23.77px;
+        letter-spacing: .04em;
+      }
+
+      .st8 {
+        fill-opacity: .14;
+        stroke-opacity: .45;
+        stroke-width: 3.5px;
+      }
+
+      .st9 {
+        font-family: Lato-Regular, Lato;
+        font-size: 13.72px;
+        opacity: .5;
+      }
+
+      .st10 {
+        font-size: 47.55px;
+        letter-spacing: .08em;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st12" width="2550" height="1650"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st6" transform="translate(211.43 243.01)"><tspan x="0" y="0">Adaptive Epistemology at the Territorial Scale</tspan></text>
+    <text class="st3" transform="translate(211.43 286.26)"><tspan x="0" y="0">Six frameworks sharing a single epistemological ground</tspan></text>
+  </g>
+  <g id="layer-interlocking-lines" inkscape:groupmode="layer" inkscape:label="Interlocking Lines">
+    <line class="st11" x1="483" y1="630.26" x2="513" y2="630.26"/>
+    <line class="st11" x1="871" y1="630.26" x2="901" y2="630.26"/>
+    <line class="st11" x1="1259" y1="630.26" x2="1289" y2="630.26"/>
+    <line class="st11" x1="1647" y1="630.26" x2="1677" y2="630.26"/>
+    <line class="st11" x1="2035" y1="630.26" x2="2065" y2="630.26"/>
+  </g>
+  <g id="layer-vertical-connectors" inkscape:groupmode="layer" inkscape:label="Vertical Connectors">
+    <line class="st11" x1="388.05" y1="746.28" x2="388.05" y2="929.16"/>
+    <line class="st11" x1="742.83" y1="746.28" x2="742.83" y2="929.16"/>
+    <line class="st11" x1="1097.61" y1="746.28" x2="1097.61" y2="929.16"/>
+    <line class="st11" x1="1452.39" y1="746.28" x2="1452.39" y2="929.16"/>
+    <line class="st11" x1="1807.17" y1="746.28" x2="1807.17" y2="929.16"/>
+    <line class="st11" x1="2161.95" y1="746.28" x2="2161.95" y2="929.16"/>
+  </g>
+  <g id="layer-framework-blocks" inkscape:groupmode="layer" inkscape:label="Framework Blocks">
+    <rect class="st5" x="224.38" y="490.26" width="327.35" height="256.03" rx="12" ry="12"/>
+    <text class="st2" transform="translate(264.6 581.69)"><tspan x="0" y="0">TECHNOGEOGRAPHIES</tspan></text>
+    <text class="st2" transform="translate(324.47 609.13)"><tspan x="0" y="0">OF SENSING</tspan></text>
+    <text class="st9" transform="translate(317.85 650.27)"><tspan x="0" y="0">Distributed monitoring.</tspan></text>
+    <text class="st9" transform="translate(302.15 671.3)"><tspan x="0" y="0">Makes propositions testable.</tspan></text>
+    <text class="st4" transform="translate(372.91 709.71)"><tspan x="0" y="0">Ch 07</tspan></text>
+    <rect class="st5" x="579.16" y="490.26" width="327.35" height="256.03" rx="12" ry="12"/>
+    <text class="st2" transform="translate(689.87 581.69)"><tspan x="0" y="0">MULTIPLE</tspan></text>
+    <text class="st2" transform="translate(658.82 609.13)"><tspan x="0" y="0">INTELLIGENCES</tspan></text>
+    <text class="st9" transform="translate(659.08 650.27)"><tspan x="0" y="0">Human, machine, biological.</tspan></text>
+    <text class="st9" transform="translate(677.55 671.3)"><tspan x="0" y="0">Distributed cognition.</tspan></text>
+    <text class="st4" transform="translate(727.69 709.71)"><tspan x="0" y="0">Ch 11</tspan></text>
+    <rect class="st5" x="933.94" y="490.26" width="327.35" height="256.03" rx="12" ry="12"/>
+    <text class="st7" transform="translate(1036.228 595.4097)"><tspan x="0" y="0">WETWARE</tspan></text>
+    <text class="st9" transform="translate(1022.6392 650.2725)"><tspan x="0" y="0">Biology and computation</tspan></text>
+    <text class="st9" transform="translate(1039.4814 671.3027)"><tspan x="0" y="0">as a single medium.</tspan></text>
+    <text class="st4" transform="translate(1082.4673 709.7065)"><tspan x="0" y="0">Ch 09</tspan></text>
+    <rect class="st5" x="1288.72" y="490.26" width="327.35" height="256.03" rx="12" ry="12"/>
+    <text class="st1" transform="translate(1402.0737 581.6938)"><tspan x="0" y="0">COUPLED</tspan></text>
+    <text class="st2" transform="translate(1391.2964 609.1255)"><tspan x="0" y="0">ECOLOGIES</tspan></text>
+    <text class="st9" transform="translate(1379.355 650.2725)"><tspan x="0" y="0">The territorial condition.</tspan></text>
+    <text class="st9" transform="translate(1399.6089 671.3027)"><tspan x="0" y="0">Synthetic ground.</tspan></text>
+    <text class="st4" transform="translate(1437.2456 709.7065)"><tspan x="0" y="0">Ch 08</tspan></text>
+    <rect class="st5" x="1643.49" y="490.26" width="327.35" height="256.03" rx="12" ry="12"/>
+    <text class="st2" transform="translate(1750.0698 581.6938)"><tspan x="0" y="0">REFLEXIVE</tspan></text>
+    <text class="st2" transform="translate(1730.8794 609.1255)"><tspan x="0" y="0">STEWARDSHIP</tspan></text>
+    <text class="st9" transform="translate(1728.8208 650.2725)"><tspan x="0" y="0">Practitioner in the system,</tspan></text>
+    <text class="st9" transform="translate(1765.5757 671.3027)"><tspan x="0" y="0">not outside it.</tspan></text>
+    <text class="st4" transform="translate(1771.6147 709.7065)"><tspan x="0" y="0">Ch 02 / Ch 11</tspan></text>
+    <rect class="st5" x="1998.27" y="490.26" width="327.35" height="256.03" rx="12" ry="12"/>
+    <text class="st2" transform="translate(2076.3413 581.6938)"><tspan x="0" y="0">GENERATIONAL</tspan></text>
+    <text class="st2" transform="translate(2106.7407 609.1255)"><tspan x="0" y="0">ROBOTICS</tspan></text>
+    <text class="st9" transform="translate(2096.6118 650.2725)"><tspan x="0" y="0">Temporal persistence.</tspan></text>
+    <text class="st9" transform="translate(2075.5718 671.3027)"><tspan x="0" y="0">Knowledge across platforms.</tspan></text>
+    <text class="st4" transform="translate(2146.8022 709.7065)"><tspan x="0" y="0">Ch 10</tspan></text>
+  </g>
+  <g id="layer-ae-bar" inkscape:groupmode="layer" inkscape:label="Adaptive Epistemology Bar">
+    <rect class="st8" x="224.38" y="929.16" width="2101.24" height="182.88" rx="12" ry="12"/>
+    <text class="st10" transform="translate(937.6182 1016.0225)"><tspan x="0" y="0">ADAPTIVE EPISTEMOLOGY</tspan></text>
+    <text class="st0" transform="translate(1022.1235 1061.7422)"><tspan x="0" y="0">The epistemological ground from which the six frameworks proceed</tspan></text>
+  </g>
+</svg>

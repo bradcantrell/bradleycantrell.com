@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 2550 1650">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke-opacity: .35;
+        stroke-width: 2px;
+      }
+
+      .st0, .st1, .st2, .st3 {
+        stroke: #2a2825;
+      }
+
+      .st0, .st3 {
+        fill: none;
+      }
+
+      .st4 {
+        font-size: 20px;
+        opacity: .55;
+      }
+
+      .st4, .st5, .st6, .st7, .st8, .st1, .st9, .st10, .st11, .st2, .st12 {
+        fill: #2a2825;
+      }
+
+      .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st3, .st12 {
+        isolation: isolate;
+      }
+
+      .st4, .st7, .st9 {
+        font-family: Lato-Italic, Lato;
+        font-style: italic;
+      }
+
+      .st5 {
+        letter-spacing: .04em;
+      }
+
+      .st5, .st6 {
+        font-size: 18px;
+      }
+
+      .st5, .st6, .st10, .st12 {
+        font-family: CormorantGaramond-Bold, 'Cormorant Garamond';
+        font-weight: 700;
+      }
+
+      .st6 {
+        letter-spacing: .04em;
+      }
+
+      .st7 {
+        font-size: 21px;
+        opacity: .85;
+      }
+
+      .st8 {
+        font-size: 15px;
+        opacity: .5;
+      }
+
+      .st8, .st11 {
+        font-family: Lato-Regular, Lato;
+      }
+
+      .st1 {
+        fill-opacity: .12;
+        stroke-opacity: .45;
+        stroke-width: 3.5px;
+      }
+
+      .st9 {
+        font-size: 13px;
+        opacity: .3;
+      }
+
+      .st13 {
+        fill: #e8e5dc;
+      }
+
+      .st10 {
+        font-size: 44px;
+        letter-spacing: .06em;
+      }
+
+      .st11 {
+        font-size: 16px;
+        opacity: .4;
+      }
+
+      .st2 {
+        fill-opacity: .06;
+        stroke-opacity: .28;
+        stroke-width: 1.5px;
+      }
+
+      .st3 {
+        opacity: .18;
+        stroke-width: .6px;
+      }
+
+      .st12 {
+        font-size: 48px;
+        letter-spacing: .08em;
+      }
+    </style>
+  </defs>
+  <g id="layer-background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect class="st13" y="2.5" width="2550" height="1647.5"/>
+  </g>
+  <g id="layer-header" inkscape:groupmode="layer" inkscape:label="Header">
+    <text class="st10" transform="translate(215.61 247.4)"><tspan x="0" y="0">Distributed Authorship</tspan></text>
+    <text class="st7" transform="translate(217.61 281.4)"><tspan x="0" y="0">Who authors a neo-wild landscape</tspan></text>
+  </g>
+  <g id="layer-author-columns" inkscape:groupmode="layer" inkscape:label="Author Columns">
+    <rect class="st2" x="227.05" y="405.4" width="300" height="320" rx="10" ry="10"/>
+    <text class="st6" transform="translate(292.46 475.4)"><tspan x="0" y="0">HUMAN DESIGNER</tspan></text>
+    <line class="st3" x1="297.05" y1="500.4" x2="457.05" y2="500.4"/>
+    <text class="st8" transform="translate(308.66 545.4)"><tspan x="0" y="0">Proposes. Calibrates.</tspan></text>
+    <text class="st8" transform="translate(275.47 570.4)"><tspan x="0" y="0">Does not determine outcomes.</tspan></text>
+    <text class="st9" transform="translate(362.67 610.4)"><tspan x="0" y="0">Years</tspan></text>
+    <line class="st0" x1="377.05" y1="725.4" x2="377.05" y2="865.4"/>
+    <rect class="st2" x="627.05" y="405.4" width="300" height="320" rx="10" ry="10"/>
+    <text class="st5" transform="translate(679.64 475.4)"><tspan x="0" y="0">BIOLOGICAL AGENTS</tspan></text>
+    <line class="st3" x1="697.05" y1="500.4" x2="857.05" y2="500.4"/>
+    <text class="st8" transform="translate(681.49 545.4)"><tspan x="0" y="0">Grow, evolve, resist, surprise.</tspan></text>
+    <text class="st8" transform="translate(722.08 570.4)"><tspan x="0" y="0">Author the form.</tspan></text>
+    <text class="st9" transform="translate(722.13 610.4)"><tspan x="0" y="0">Seasons to centuries</tspan></text>
+    <line class="st0" x1="777.05" y1="725.4" x2="777.05" y2="865.4"/>
+    <rect class="st2" x="1027.05" y="405.4" width="300" height="320" rx="10" ry="10"/>
+    <text class="st6" transform="translate(1075.7689 475.3969)"><tspan x="0" y="0">MATERIAL PROCESSES</tspan></text>
+    <line class="st3" x1="1097.05" y1="500.4" x2="1257.05" y2="500.4"/>
+    <text class="st8" transform="translate(1067.2758 545.3969)"><tspan x="0" y="0">Sediment sorts. Water finds level.</tspan></text>
+    <text class="st8" transform="translate(1132.8594 570.3969)"><tspan x="0" y="0">Geology acts.</tspan></text>
+    <text class="st9" transform="translate(1121.0386 610.3969)"><tspan x="0" y="0">Decades to millennia</tspan></text>
+    <line class="st0" x1="1177.05" y1="725.4" x2="1177.05" y2="865.4"/>
+    <rect class="st2" x="1427.05" y="405.4" width="300" height="320" rx="10" ry="10"/>
+    <text class="st6" transform="translate(1514.2526 475.3969)"><tspan x="0" y="0">ALGORITHMS</tspan></text>
+    <line class="st3" x1="1497.05" y1="500.4" x2="1657.05" y2="500.4"/>
+    <text class="st8" transform="translate(1462.8096 545.3969)"><tspan x="0" y="0">Detect patterns. Trigger responses.</tspan></text>
+    <text class="st8" transform="translate(1505.6606 570.3969)"><tspan x="0" y="0">Mediate the coupling.</tspan></text>
+    <text class="st9" transform="translate(1521.4055 610.3969)"><tspan x="0" y="0">Milliseconds to years</tspan></text>
+    <line class="st0" x1="1577.05" y1="725.4" x2="1577.05" y2="865.4"/>
+    <rect class="st2" x="1827.05" y="405.4" width="300" height="320" rx="10" ry="10"/>
+    <text class="st6" transform="translate(1910.1488 475.3969)"><tspan x="0" y="0">COMMUNITIES</tspan></text>
+    <line class="st3" x1="1897.05" y1="500.4" x2="2057.05" y2="500.4"/>
+    <text class="st8" transform="translate(1870.587 545.3969)"><tspan x="0" y="0">Inhabit. Observe. Carry memory.</tspan></text>
+    <text class="st8" transform="translate(1904.2584 570.3969)"><tspan x="0" y="0">Navigate the territory.</tspan></text>
+    <text class="st9" transform="translate(1944.4121 610.3969)"><tspan x="0" y="0">Generations</tspan></text>
+    <line class="st0" x1="1977.05" y1="725.4" x2="1977.05" y2="865.4"/>
+  </g>
+  <g id="layer-hero-slab" inkscape:groupmode="layer" inkscape:label="Hero Slab">
+    <rect class="st1" x="227.05" y="865.4" width="1964.77" height="250" rx="12" ry="12"/>
+    <text class="st12" transform="translate(831.68 955.4)"><tspan x="0" y="0">THE NEO-WILD LANDSCAPE</tspan></text>
+    <text class="st4" transform="translate(1003.1763 1005.3969)"><tspan x="0" y="0">Product of a relationship, not a specification</tspan></text>
+    <text class="st11" transform="translate(914.7504 1041.9073)"><tspan x="0" y="0">The designer&apos;s role shifts from singular author to orchestrator of intelligences.</tspan></text>
+  </g>
+</svg>
