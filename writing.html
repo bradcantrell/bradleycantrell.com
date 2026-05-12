@@ -35,33 +35,44 @@
     .book-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-      gap: 1px;
-      background: var(--border);
+      gap: 0.85rem;
       margin: 0 auto;
-      margin-bottom: 1px;
+      margin-bottom: 0.85rem;
       max-width: var(--max);
       padding: 0 var(--pad);
     }
     .book-card {
+      position: relative;
       background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
-    }
-    .book-cover {
-      width: 90px;
-      height: 124px;
-      background: var(--border);
       overflow: hidden;
-      margin-bottom: 0.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      isolation: isolate;
     }
-    .book-cover img {
+    .book-card__cover {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      z-index: -1;
+      /* Cover fills the card; we crush brightness + blur and apply a
+         dark veil so the text reads. The remaining color hint of the
+         cover bleeds through. */
+      filter: blur(10px) brightness(0.32) saturate(0.85);
+      transform: scale(1.18);
+    }
+    .book-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,8,0.32) 0%, rgba(8,8,8,0.58) 100%);
+      z-index: -1;
+      pointer-events: none;
     }
     .book-title { font-size: 1.2rem; font-weight: 300; font-style: italic; letter-spacing: -0.01em; }
     .book-meta { font-size: 0.8rem; color: var(--text-dim); }
@@ -118,8 +129,8 @@
 <!-- Books -->
 <div class="book-grid">
 
-  <div class="book-card" style="background: linear-gradient(135deg, var(--bg2) 0%, #0d100d 100%); border-left: 1px solid var(--accent2); border-color: var(--accent2);">
-    <div class="book-cover"><img src="images/books/adaptive_epistemologies.jpg" alt="Adaptive Epistemologies and Neo-Wilds"></div>
+  <div class="book-card">
+    <img class="book-card__cover" src="images/books/adaptive_epistemologies.jpg" alt="" aria-hidden="true">
     <div class="book-title">Adaptive Epistemologies and Neo-Wilds</div>
     <div class="book-meta">PhD Dissertation &middot; Virginia Tech, 2026</div>
     <p class="book-desc">
@@ -129,7 +140,7 @@
   </div>
 
   <div class="book-card">
-    <div class="book-cover"><img src="images/books/codify.jpg" alt="Codify: Parametric and Computational Design in Landscape Architecture"></div>
+    <img class="book-card__cover" src="images/books/codify.jpg" alt="" aria-hidden="true">
     <div class="book-title">Codify: Parametric and Computational Design in Landscape Architecture</div>
     <div class="book-meta">Routledge, 2018 &middot; Co-edited with Adam Mekies</div>
     <p class="book-desc">
@@ -138,7 +149,7 @@
   </div>
 
   <a href="responsive-landscapes.html" class="book-card" style="text-decoration:none;">
-    <div class="book-cover"><img src="images/books/responsive_landscapes.jpg" alt="Responsive Landscapes"></div>
+    <img class="book-card__cover" src="images/books/responsive_landscapes.jpg" alt="" aria-hidden="true">
     <div class="book-title">Responsive Landscapes</div>
     <div class="book-meta">Routledge, 2016 &middot; Co-authored with Justine Holzman</div>
     <p class="book-desc">
@@ -148,7 +159,7 @@
   </a>
 
   <div class="book-card">
-    <div class="book-cover"><img src="images/books/digital_drawing.jpg" alt="Digital Drawing for Landscape Architecture"></div>
+    <img class="book-card__cover" src="images/books/digital_drawing.jpg" alt="" aria-hidden="true">
     <div class="book-title">Digital Drawing for Landscape Architecture</div>
     <div class="book-meta">Wiley, 2010 &middot; Second edition 2014 &middot; Co-authored with Wes Michaels</div>
     <p class="book-desc">
@@ -157,7 +168,7 @@
   </div>
 
   <div class="book-card">
-    <div class="book-cover"><img src="images/books/modeling_the_environment.jpg" alt="Modeling the Environment"></div>
+    <img class="book-card__cover" src="images/books/modeling_the_environment.jpg" alt="" aria-hidden="true">
     <div class="book-title">Modeling the Environment</div>
     <div class="book-meta">Wiley, 2012 &middot; Co-authored with Natalie Yates</div>
     <p class="book-desc">
