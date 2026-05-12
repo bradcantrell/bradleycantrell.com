@@ -46,10 +46,11 @@
       background: var(--bg2);
       border: 1px solid rgba(255,255,255,0.05);
       border-radius: 10px;
-      padding: 2.5rem;
+      /* Padding becomes the gutter between the outer cover and the
+         inner dark reading panel. */
+      padding: 1.25rem;
+      min-height: 390px;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
       overflow: hidden;
       isolation: isolate;
     }
@@ -60,18 +61,43 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
-      /* Cover fills the card. Light blur + modest brightness reduction
-         leave the cover legible behind a thin dark veil. */
-      filter: blur(3px) brightness(0.55) saturate(0.95);
-      transform: scale(1.06);
+      filter: blur(1.5px) brightness(0.62) saturate(0.95);
+      transform: scale(1.04);
     }
     .book-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(8,8,8,0.20) 0%, rgba(8,8,8,0.36) 100%);
+      background: linear-gradient(180deg, rgba(8,8,8,0.16) 0%, rgba(8,8,8,0.28) 100%);
       z-index: -1;
       pointer-events: none;
+    }
+    .book-card__inner {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      padding: 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(0,0,0,0.48);
+      backdrop-filter: blur(8px) saturate(0.9);
+      -webkit-backdrop-filter: blur(8px) saturate(0.9);
+      border-radius: 8px;
+      /* Feather the inner panel's edges so it blends into the cover
+         rather than reading as a hard rectangle. */
+      -webkit-mask-image: radial-gradient(
+        140% 130% at 50% 50%,
+        #000 60%,
+        rgba(0,0,0,0.85) 80%,
+        rgba(0,0,0,0) 100%
+      );
+      mask-image: radial-gradient(
+        140% 130% at 50% 50%,
+        #000 60%,
+        rgba(0,0,0,0.85) 80%,
+        rgba(0,0,0,0) 100%
+      );
     }
     .book-title { font-size: 1.2rem; font-weight: 300; font-style: italic; letter-spacing: -0.01em; }
     .book-meta { font-size: 0.8rem; color: var(--text-dim); }
@@ -130,49 +156,59 @@
 
   <div class="book-card">
     <img class="book-card__cover" src="images/books/adaptive_epistemologies.jpg" alt="" aria-hidden="true">
-    <div class="book-title">Adaptive Epistemologies and Neo-Wilds</div>
-    <div class="book-meta">PhD Dissertation &middot; Virginia Tech, 2026</div>
-    <p class="book-desc">
-      A practice-based investigation into how computational technologies transform the epistemic conditions of landscape design. Argues that adaptive epistemology &mdash; design propositions tested in situ through iterative feedback-based knowledge production &mdash; is not merely supported by computation, but fundamentally reshaped by it.
-    </p>
-    <a href="dissertation.html" style="font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent2); margin-top:0.5rem;">Read more →</a>
+    <div class="book-card__inner">
+      <div class="book-title">Adaptive Epistemologies and Neo-Wilds</div>
+      <div class="book-meta">PhD Dissertation &middot; Virginia Tech, 2026</div>
+      <p class="book-desc">
+        A practice-based investigation into how computational technologies transform the epistemic conditions of landscape design. Argues that adaptive epistemology &mdash; design propositions tested in situ through iterative feedback-based knowledge production &mdash; is not merely supported by computation, but fundamentally reshaped by it.
+      </p>
+      <a href="dissertation.html" style="font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent2); margin-top:0.5rem;">Read more →</a>
+    </div>
   </div>
 
   <div class="book-card">
     <img class="book-card__cover" src="images/books/codify.jpg" alt="" aria-hidden="true">
-    <div class="book-title">Codify: Parametric and Computational Design in Landscape Architecture</div>
-    <div class="book-meta">Routledge, 2018 &middot; Co-edited with Adam Mekies</div>
-    <p class="book-desc">
-      An edited volume examining the role of computation in shaping contemporary landscape practice &mdash; from parametric modeling and simulation to algorithmic design processes and data-driven ecologies.
-    </p>
+    <div class="book-card__inner">
+      <div class="book-title">Codify: Parametric and Computational Design in Landscape Architecture</div>
+      <div class="book-meta">Routledge, 2018 &middot; Co-edited with Adam Mekies</div>
+      <p class="book-desc">
+        An edited volume examining the role of computation in shaping contemporary landscape practice &mdash; from parametric modeling and simulation to algorithmic design processes and data-driven ecologies.
+      </p>
+    </div>
   </div>
 
   <a href="responsive-landscapes.html" class="book-card" style="text-decoration:none;">
     <img class="book-card__cover" src="images/books/responsive_landscapes.jpg" alt="" aria-hidden="true">
-    <div class="book-title">Responsive Landscapes</div>
-    <div class="book-meta">Routledge, 2016 &middot; Co-authored with Justine Holzman</div>
-    <p class="book-desc">
-      On the potentials of interactive systems and adaptive design in landscape architecture. Treats responsiveness not as a technological feature but as a fundamental design disposition &mdash; landscape as a medium that senses, adapts, and produces knowledge.
-    </p>
-    <span style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-top:0.5rem;display:block;">Case studies, symposium, courses →</span>
+    <div class="book-card__inner">
+      <div class="book-title">Responsive Landscapes</div>
+      <div class="book-meta">Routledge, 2016 &middot; Co-authored with Justine Holzman</div>
+      <p class="book-desc">
+        On the potentials of interactive systems and adaptive design in landscape architecture. Treats responsiveness not as a technological feature but as a fundamental design disposition &mdash; landscape as a medium that senses, adapts, and produces knowledge.
+      </p>
+      <span style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-top:0.5rem;display:block;">Case studies, symposium, courses →</span>
+    </div>
   </a>
 
   <div class="book-card">
     <img class="book-card__cover" src="images/books/digital_drawing.jpg" alt="" aria-hidden="true">
-    <div class="book-title">Digital Drawing for Landscape Architecture</div>
-    <div class="book-meta">Wiley, 2010 &middot; Second edition 2014 &middot; Co-authored with Wes Michaels</div>
-    <p class="book-desc">
-      A comprehensive guide to digital tools and techniques for landscape architects &mdash; from representation to simulation. A cornerstone text in landscape architecture education, bridging computational methods and design practice.
-    </p>
+    <div class="book-card__inner">
+      <div class="book-title">Digital Drawing for Landscape Architecture</div>
+      <div class="book-meta">Wiley, 2010 &middot; Second edition 2014 &middot; Co-authored with Wes Michaels</div>
+      <p class="book-desc">
+        A comprehensive guide to digital tools and techniques for landscape architects &mdash; from representation to simulation. A cornerstone text in landscape architecture education, bridging computational methods and design practice.
+      </p>
+    </div>
   </div>
 
   <div class="book-card">
     <img class="book-card__cover" src="images/books/modeling_the_environment.jpg" alt="" aria-hidden="true">
-    <div class="book-title">Modeling the Environment</div>
-    <div class="book-meta">Wiley, 2012 &middot; Co-authored with Natalie Yates</div>
-    <p class="book-desc">
-      A practical guide to digital modeling techniques for environmental and landscape design, covering three-dimensional representation, simulation, and visualization for site-scale and territorial projects.
-    </p>
+    <div class="book-card__inner">
+      <div class="book-title">Modeling the Environment</div>
+      <div class="book-meta">Wiley, 2012 &middot; Co-authored with Natalie Yates</div>
+      <p class="book-desc">
+        A practical guide to digital modeling techniques for environmental and landscape design, covering three-dimensional representation, simulation, and visualization for site-scale and territorial projects.
+      </p>
+    </div>
   </div>
 
 </div>
