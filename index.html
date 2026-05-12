@@ -29,6 +29,24 @@
   gap: 1.2rem;
   align-items: baseline;
 }
+.under-dev {
+  background: rgba(8, 8, 8, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 3.5rem clamp(1.5rem, 5vw, 3rem);
+  margin-top: 2.5rem;
+  text-align: center;
+}
+.under-dev__label {
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.9;
+  margin: 0;
+}
 .readout-label {
   color: rgba(200, 184, 154, 0.62);
   min-width: 5.5rem;
@@ -88,51 +106,10 @@
 <section id="work">
   <div class="section-header">
     <h3>Selected Work</h3>
-    <span class="section-count">&rarr; <a href="work.html">All projects</a></span>
   </div>
 
-  <div class="project-grid">
-
-    <a href="work.html#louisiana" class="project-card">
-      <div class="project-card-placeholder" style="background: linear-gradient(135deg, #0d1a0e 0%, #0a1510 100%);">
-        <!-- image: Louisiana delta / ecological monitoring work -->
-      </div>
-      <div class="project-card-info">
-        <div class="project-card-title">Louisiana Ecological Infrastructures</div>
-        <div class="project-card-meta">Southern Louisiana &mdash; Modeling, Simulation, Embedded Computation</div>
-      </div>
-    </a>
-
-    <a href="work.html#mississippi" class="project-card">
-      <div class="project-card-placeholder" style="background: linear-gradient(135deg, #0d0f1a 0%, #0a0d15 100%);">
-        <!-- image: Mississippi Basin Model / fluvial systems -->
-      </div>
-      <div class="project-card-info">
-        <div class="project-card-title">Mississippi Basin Model</div>
-        <div class="project-card-meta">Vicksburg, MS &mdash; Fluvial Modeling &mdash; Adaptive Systems</div>
-      </div>
-    </a>
-
-    <a href="work.html#cultivant" class="project-card">
-      <div class="project-card-placeholder" style="background: linear-gradient(135deg, #0f1a0d 0%, #0a150a 100%);">
-        <!-- image: Cultivant / robotic vegetation management -->
-      </div>
-      <div class="project-card-info">
-        <div class="project-card-title">Cultivant</div>
-        <div class="project-card-meta">Generational Robotics &mdash; Multi-Species Co-Creation</div>
-      </div>
-    </a>
-
-    <a href="work.html#tangier" class="project-card">
-      <div class="project-card-placeholder" style="background: linear-gradient(135deg, #1a0d0d 0%, #150a0a 100%);">
-        <!-- image: Tangier Island / coastal land loss -->
-      </div>
-      <div class="project-card-info">
-        <div class="project-card-title">Tangier Island</div>
-        <div class="project-card-meta">Chesapeake Bay &mdash; Technogeographies of Sensing &mdash; Justice</div>
-      </div>
-    </a>
-
+  <div class="under-dev">
+    <div class="under-dev__label">Under Development</div>
   </div>
 </section>
 
