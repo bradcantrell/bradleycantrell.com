@@ -217,20 +217,55 @@ The chapter CSS also explicitly clears inherited section constraints on
 
 ## Image Asset Rules
 
-Raster images should be optimized for web use.
+Raster images are produced by `scripts/optimize_chapter_images.py` from a
+canonical source (either `dissertation_source/.../Links/<file>` or the
+existing legacy file). All chapter figures follow this naming and sizing
+convention:
 
-Rules:
+- filename: `figure_<chapter>_<NN>.<ext>` (e.g. `figure_07_03.svg`,
+  `figure_07_02.jpg`)
+- a `figure_<chapter>_<NN>@2x.<ext>` retina variant is produced
+  whenever the source is large enough to support a meaningfully larger
+  image
+- SVG diagrams are kept as SVG (single file, no @2x) and rendered with
+  an in-page pan/zoom viewer (see Modal rules)
 
-- keep SVG files as-is when they already load appropriately
-- resize large raster images for web delivery
-- keep enough resolution for full-width display
-- do not leave source-scale 10MB to 50MB assets in active use
+Target sizes:
+
+- hero / quote-spread (full-width raster): `2400px` @ 1x, `4800px` @ 2x,
+  JPG quality 82, progressive
+- inline / backdrop figures: `1600px` @ 1x, `3200px` @ 2x
 
 The active dissertation image folders live under:
 
 - `dissertation/img/<chapter folder>/`
 
-Use chapter-specific web image folders consistently.
+Use chapter-specific web image folders consistently. Do not commit
+source-scale (10–100 MB) PNGs into these folders; the optimizer reads
+the high-res source from `dissertation_source/` and writes only the
+web-ready assets.
+
+### Running the optimizer
+
+For a single chapter:
+
+```sh
+python scripts/rename_chapter_figures.py <NN>
+```
+
+This script:
+
+1. Parses the chapter HTML to find every figure reference (hero,
+   quote-panel, backdrop, inline)
+2. Resolves each ref's old src to the best available source — preferring
+   `dissertation_source/<chapter>/Links/<basename>`, then versioned
+   `<stem>_v<N>.svg` variants, then the legacy file
+3. Runs `optimize_chapter_images.py` to write the new figure_NN_NN.*
+   files
+4. Rewrites the HTML to use the new filenames
+
+The script is idempotent: re-running on a chapter that has already been
+processed only handles any newly-added figure refs.
 
 ## Motion / Parallax Rules
 
@@ -259,7 +294,13 @@ Shared chapter interactions also include:
 
 - print button injection
 - print-image fallbacks for background-image sections
-- image enlargement modal for non-hero inline figures
+- image enlargement modal for non-hero inline figures, with two modes:
+  - **raster figures** open in the standard `<img>` modal
+  - **SVG diagrams** open in a pan/zoom modal backed by
+    [`svg-pan-zoom`](dissertation/svg-pan-zoom.min.js), with `+ / − /
+    reset` controls, scroll-wheel zoom, click-and-drag pan, and a
+    dedicated close button. The SVG markup is fetched inline so labels
+    stay crisp at any zoom level.
 
 This includes:
 
@@ -269,37 +310,59 @@ This includes:
   backdrops
 
 These behaviors are already in `chapter.js` and should be preserved
-across chapters.
+across chapters. The `svg-pan-zoom` library is lazy-loaded the first
+time an SVG figure is enlarged, so no per-page `<script>` tag is needed.
 
 ## Workflow For Remaining Chapters
 
-Use this sequence for each chapter:
+There are two modes of chapter work:
 
-1. Open the chapter DOCX and extract the body text.
+### Mode A — restage figures only (idempotent)
+
+Use when the chapter body is already correct and only the figure
+references need to be brought in line with the new naming + sizing
+convention. This is what `rename_chapter_figures.py` automates:
+
+```sh
+python scripts/rename_chapter_figures.py <NN>
+```
+
+The script parses the chapter HTML, resolves each old image src against
+the canonical sources in `dissertation_source/`, runs the optimizer,
+and rewrites every reference (hero, quote panel, backdrop, inline,
+diagram) to `figure_NN_NN.{jpg,svg}`. It can be re-run safely.
+
+### Mode B — full DOCX-driven rebuild
+
+Use when the chapter body needs to be regenerated from the canonical
+DOCX (e.g. after content edits). Chapter 07 is the reference for this
+workflow:
+
+1. Open the chapter DOCX and extract the body text with heading levels.
 2. Extract the figure list from the end of the DOCX.
 3. Open the chapter PDF and identify:
    - hero image
-   - any inline quote-image panels
-   - any full-width figure pacing
+   - any quote-overlay spreads (full-width image + overlaid pull quote)
+   - any backdrop / inline diagram pacing
    - exact figure order through the chapter
-4. Stage the figure assets from the `Links` folder into the correct
-   `dissertation/img/<chapter>/` folder.
-5. Optimize raster assets for web delivery.
-6. Replace the chapter HTML body content while keeping the dissertation
-   page shell.
-7. Insert standard figures and quote-image panels according to the PDF.
-8. Keep all `diagram` and `map` figures in the text flow as standard
-   inline figures.
-9. Convert any figure with a PDF quote overlay into a full-width
-   `ch-quote-panel` with parallax.
-10. Check that figure order in the HTML matches the PDF sequence.
-11. Use only official figure-list text for captions.
-12. Confirm `<body class="chapter-page page-dissertation">`.
-13. Confirm all required figures are present.
-14. Confirm quote-image panels are siblings of content articles when
-    they should read full-width.
-15. Confirm parallax works through the shared script, not inline custom
-    scripts.
+4. Build a mapping JSON of `figure_label -> {src, role}` and run
+   `scripts/optimize_chapter_images.py <NN> mapping.json` to stage the
+   `figure_NN_NN.{jpg,svg}` assets.
+5. Author the chapter HTML body fresh:
+   - keep the existing page shell (`<head>`, `<nav>`, sidebar, password
+     gate, prev/next nav, footer)
+   - place `<figure class="ch-inline-figure">` blocks inline in the
+     correct paragraphs
+   - place `<section class="ch-quote-panel">` blocks as siblings of
+     `<article class="ch-content">` for quote-overlay spreads
+   - use `<section class="ch-quote-panel ch-quote-panel--no-quote">`
+     for full-bleed image plates with no overlaid quote
+   - keep `diagram` and `map` figures in the text flow; they will pick
+     up the SVG pan/zoom modal automatically
+6. Use only the official figure-list text for captions.
+7. Confirm `<body class="chapter-page page-dissertation">`.
+8. Confirm parallax works through the shared `chapter.js`, not inline
+   custom scripts.
 
 ## Chapter 01-Specific Notes
 
