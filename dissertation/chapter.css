@@ -590,6 +590,20 @@ nav {
   color: inherit;
 }
 
+.ch-backdrop--left .ch-backdrop__img {
+  background-position: left center;
+}
+
+.ch-backdrop--left .ch-backdrop__caption {
+  padding-left: calc(var(--ch-sidebar) + clamp(1.5rem, 5vw, 3rem));
+}
+
+.ch-backdrop--left .ch-backdrop__caption-title {
+  display: block;
+  max-width: 30rem;
+  overflow-wrap: anywhere;
+}
+
 .ch-quote-panel {
   position: relative;
   width: 100vw;
@@ -691,6 +705,10 @@ nav {
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-color: rgba(255,255,255,0.16);
+}
+
+.ch-quote-panel--no-quote .ch-quote-panel__content {
+  display: none;
 }
 
 /* On mobile sidebar is hidden — caption goes back to simple left padding */

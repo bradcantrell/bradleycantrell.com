@@ -28,7 +28,7 @@ PAGE_MAP = {
     "GG_Glossary.docx": "glossary.html",
 }
 
-PROTECTED_PAGES = {"01.html", "02.html", "03.html"}
+PROTECTED_PAGES = {"01.html", "02.html", "03.html", "04.html", "05.html", "06.html", "07.html"}
 
 
 def render_docx(docx_path: Path) -> str:
