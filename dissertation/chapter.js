@@ -438,19 +438,46 @@
     var backgrounds = document.querySelectorAll('.ch-hero__bg, .ch-backdrop__img, .ch-quote-panel__img');
     if (!backgrounds.length) return;
 
+    // Static darkening values (used at the edges of the viewport, or always
+    // for the hero so the chapter title overlay stays readable).
+    var DARK = {
+      'ch-hero__bg':         { brightness: 0.52, saturate: 0.82 },
+      'ch-backdrop__img':    { brightness: 0.38, saturate: 0.72 },
+      'ch-quote-panel__img': { brightness: 0.52, saturate: 0.82 },
+    };
+
+    function darkPreset(el) {
+      for (var k in DARK) if (el.classList.contains(k)) return DARK[k];
+      return DARK['ch-quote-panel__img'];
+    }
+
     var media = window.matchMedia('(prefers-reduced-motion: no-preference)');
     if (!media.matches) return;
 
     var ticking = false;
 
     function updateParallax() {
+      var viewportH = window.innerHeight;
       backgrounds.forEach(function(bg) {
         var parent = bg.parentElement;
         if (!parent) return;
 
         var rect = parent.getBoundingClientRect();
-        var centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+        var centerOffset = rect.top + rect.height / 2 - viewportH / 2;
         bg.style.transform = 'translateY(' + (centerOffset * 0.22) + 'px)';
+
+        // Quote panels and backdrops brighten to true color as they
+        // approach the viewport center; the hero stays darkened so the
+        // chapter title and opener quote remain legible.
+        if (bg.classList.contains('ch-hero__bg')) return;
+        var preset = darkPreset(bg);
+        var range = rect.height / 2 + viewportH / 2;
+        var t = range > 0 ? 1 - Math.min(1, Math.abs(centerOffset) / range) : 0;
+        // Ease so the bright window holds longer at center.
+        var eased = t * t * (3 - 2 * t); // smoothstep
+        var brightness = preset.brightness + (1 - preset.brightness) * eased;
+        var saturate   = preset.saturate   + (1 - preset.saturate)   * eased;
+        bg.style.filter = 'brightness(' + brightness.toFixed(3) + ') saturate(' + saturate.toFixed(3) + ')';
       });
 
       ticking = false;
