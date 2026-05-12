@@ -1,0 +1,26 @@
+{
+  "04_01": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/04_ecology_practice/figure_04_01.jpg",
+    "role": "hero"
+  },
+  "04_02": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/04_ecology_practice/figure_04_02.jpg",
+    "role": "quote-spread"
+  },
+  "04_03": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/04_ecology_practice/figure_04_03.jpg",
+    "role": "quote-spread"
+  },
+  "04_05": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/04_ecology_practice/figure_04_05.jpg",
+    "role": "quote-spread"
+  },
+  "04_04": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/04_ecology_practice/figure_04_04.jpg",
+    "role": "inline"
+  },
+  "04_06": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/04_ecology_practice/figure_04_06.jpg",
+    "role": "inline"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "diss-main",
+      "runtimeExecutable": "/tmp/diss_env/bin/python3",
+      "runtimeArgs": ["-m", "http.server", "8790", "--bind", "127.0.0.1", "--directory", "/Users/bcantrell/Documents/sites/bradleycantrell.com"],
+      "port": 8790
+    }
+  ]
+}

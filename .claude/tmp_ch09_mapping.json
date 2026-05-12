@@ -1,0 +1,26 @@
+{
+  "09_01": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/hero_quotes/09.jpg",
+    "role": "hero"
+  },
+  "09_02": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/09_Interactions Folder/Links/09_WetwareKnowledgeLoop_v2.svg",
+    "role": "diagram"
+  },
+  "09_03": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/09_interactions/09_Forestation_Regions_Processes.png",
+    "role": "inline"
+  },
+  "09_04": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/09_Interactions Folder/Links/LAR7020_S25_Module_III_Team04_Final Board_reexport_Page_1.jpg",
+    "role": "inline"
+  },
+  "09_05": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/09_Interactions Folder/Links/SiteImage_01_SMALL_Map.jpg",
+    "role": "inline"
+  },
+  "09_06": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/09_Interactions Folder/Links/09_SixFrameworks_Ch09_CoupledEcologies.svg",
+    "role": "diagram"
+  }
+}

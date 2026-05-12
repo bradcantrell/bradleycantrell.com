@@ -1,0 +1,22 @@
+{
+  "12_01": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/hero_quotes/12.jpg",
+    "role": "hero"
+  },
+  "12_02": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/12_Synoptic_Views Folder/Links/12_FrameworkCircuit_v2.svg",
+    "role": "diagram"
+  },
+  "12_03": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation/img/12_synoptic/12_UnevenTerrain.png",
+    "role": "inline"
+  },
+  "12_04": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/12_Synoptic_Views Folder/Links/temperate-forest-drone-PRINT.png",
+    "role": "inline"
+  },
+  "12_05": {
+    "src": "/Users/bcantrell/Documents/sites/bradleycantrell.com/dissertation_source/chapters_figures/12_Synoptic_Views Folder/Links/12_PluralityAsStructuralCommitment_v1.svg",
+    "role": "diagram"
+  }
+}
