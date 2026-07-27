@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -6,31 +6,21 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work &mdash; Bradley Cantrell</title>
+  <title>Work | Bradley Cantrell</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .under-dev {
-      background: var(--surface-1);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-card);
-      padding: 3.5rem clamp(1.5rem, 5vw, 3rem);
-      margin-top: 2.5rem;
-      text-align: center;
-    }
-    .under-dev__label {
-      font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.9;
-      margin: 0;
-    }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 0.85rem; margin: 0 auto 0.85rem; max-width: var(--max); padding: 0 var(--pad); }
+    .project-card { position: relative; background: var(--surface-2); border: 1px solid var(--border-soft); border-radius: var(--radius-card); padding: 2rem; min-height: 320px; display: flex; flex-direction: column; gap: 0.9rem; overflow: hidden; }
+    .project-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); opacity: 0.8; }
+    .project-title { font-size: 1.15rem; font-weight: 400; letter-spacing: -0.01em; line-height: 1.35; }
+    .project-type { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.04em; }
+    .project-desc { font-size: 0.82rem; color: var(--text-dimmer); line-height: 1.7; }
+    a.project-card { text-decoration: none; color: inherit; }
+    a.project-card:hover { border-color: var(--accent); opacity: 1; }
+    a.project-card:hover .project-title { color: var(--accent); }
   </style>
 </head>
 <body>
-<canvas id="rd-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
 
 <nav>
   <div class="nav-name"><a href="/">Bradley Cantrell</a></div>
@@ -49,19 +39,105 @@
   <div class="section-header">
     <h3>Work</h3>
   </div>
-
-  <div class="under-dev">
-    <div class="under-dev__label">Under Development</div>
-  </div>
 </section>
 
+<div class="project-grid">
+  <a href="projects/indeterminate-futures.html" class="project-card" style="text-decoration:none;">
+    <div class="project-year">2021</div>
+    <div class="project-title">Indeterminate Futures: Venice Architecture Biennale</div>
+    <div class="project-type">Digital Exhibition / NFT Archive</div>
+    <p class="project-desc">Translated years of geomorphology table documentation into a distributed digital archive, minting incremental snapshots of sediment flow experiments as NFTs throughout the 2021 Venice Architecture Biennale.</p>
+  </a>  <div class="project-card">
+    <div class="project-year">2019/2020</div>
+    <div class="project-title">Cyborg Ecology: Choreographing Landscape Resistance</div>
+    <div class="project-type">Manifest / Peer-Reviewed Essay</div>
+    <p class="project-desc">Proposed that the boundary between designed landscape and natural ecology had become theoretically and materially untenable, and that contemporary territorial conditions are better understood as cyborg ecologies.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2019-2020</div>
+    <div class="project-title">Failure</div>
+    <div class="project-type">Drawing / Exhibition / Film</div>
+    <p class="project-desc">A drawing and companion film exploring how landscape representation might engage indeterminacy, error, and the limits of prediction, exhibited at Drawing Codes (Pratt Institute) and Storm Signals (Chicago Architecture Biennial).</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2019</div>
+    <div class="project-title">Algorithmic Cultivation</div>
+    <div class="project-type">Installation / Manifest</div>
+    <p class="project-desc">An installation exploring the interrelationship of human, machine, and plant through a robotic pruning system that shaped living vegetation according to data streams external to the growing environment.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2017</div>
+    <div class="project-title">Designing Autonomy: Opportunities for New Wildness in the Anthropocene</div>
+    <div class="project-type">Publication / Theoretical Framework</div>
+    <p class="project-desc">Articulated a provocative proposition: that maintaining wild places in the Anthropocene increasingly requires intensive human intervention, and that this paradox might be resolved through systems capable of creating conditions for wildness to emerge.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2017-present</div>
+    <div class="project-title">UVA Geomorphology Lab and Adaptive Design Protocols</div>
+    <div class="project-type">Research Infrastructure / Pedagogical Platform</div>
+    <p class="project-desc">A multi-purpose platform supporting PhD student investigations, speculative advanced studios, and foundational instruction through physical simulation of fluvial and coastal processes.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2016</div>
+    <div class="project-title">Branding Islands Making Nations: Venice Architecture Biennale</div>
+    <div class="project-type">Speculative Exhibition / Film Installation</div>
+    <p class="project-desc">An exhibition developed with the Vertical Geopolitics Lab examining the relationship between physical land creation and the branding of territorial identity on constructed islands.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2014-2017</div>
+    <div class="project-title">Responsive Environments and Artifacts Lab (REAL)</div>
+    <div class="project-type">Research Infrastructure / Manifest</div>
+    <p class="project-desc">Co-directed with Allen Sayegh at the Harvard GSD, REAL investigated responsive environments at the intersection of embedded computation, material assembly, and environmental sensing.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2013-2014</div>
+    <div class="project-title">DredgeFest</div>
+    <div class="project-type">Public Program / Workshop / Field Investigation / Symposium</div>
+    <p class="project-desc">A series of public programs organized by the Dredge Research Collaborative treating dredging as a cultural, political, and ecological practice, with Cantrell leading the Adaptive Devices workshop.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2013</div>
+    <div class="project-title">Fort Proctor: A Conditional Preservation</div>
+    <div class="project-type">Practice / Design Research</div>
+    <p class="project-desc">A design research project engaging a Civil War-era fortification standing entirely surrounded by water in Lake Borgne, Louisiana, as a site for speculating on adaptive preservation in conditions of radical landscape change.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2012</div>
+    <div class="project-title">Sedimachine</div>
+    <div class="project-type">Manifest / Prototype</div>
+    <p class="project-desc">A prototype apparatus investigating the relationship between controlled water delivery, sediment deposition, and surface morphology, exploring how small modifications to flow conditions might choreograph sediment accretion.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2011-2014</div>
+    <div class="project-title">Mississippi River Sediment Diversion Visualizations</div>
+    <div class="project-type">Trans-disciplinary Research / Visualization</div>
+    <p class="project-desc">A trans-disciplinary academic studio effort commissioned by the National Wildlife Federation to explain coastal wetland loss and potential solutions for rebuilding Louisiana coast through large-scale sediment diversions.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2010-2013</div>
+    <div class="project-title">Coastal Sustainability Studio / TiKI Lab</div>
+    <div class="project-type">Practice / Trans-disciplinary Research Laboratory</div>
+    <p class="project-desc">Trans-disciplinary research centers at LSU dedicated to coastal resilience, community adaptation, and territorial design at the intersection of ecology, engineering, planning, and landscape architecture.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2009</div>
+    <div class="project-title">Over/Under: Lausanne Jardins Competition</div>
+    <div class="project-type">Speculative Design / Competition Entry</div>
+    <p class="project-desc">Proposed a vertical relationship between a surface-level garden and the underground subway station beneath it, using a single citrus tree as a living datum connecting the two realms.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2009</div>
+    <div class="project-title">Abstraction Language</div>
+    <div class="project-type">Manifest / Peer-Reviewed Paper</div>
+    <p class="project-desc">Proposed a systematic vocabulary for translating between ecological data and spatial design, developing abstraction layers as a methodology for engaging complex environmental systems.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2008</div>
+    <div class="project-title">Landscapes of Fantasy: Representational Pedagogy</div>
+    <div class="project-type">Pedagogical Research / Curriculum Development</div>
+    <p class="project-desc">A pedagogical framework introducing literary narrative as the structuring device for advanced digital representation instruction, displacing students from known landscapes into fictional territories to force invention.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2006-2007</div>
+    <div class="project-title">Surface Tension</div>
+    <div class="project-type">Speculative / Hybrid Model</div>
+    <p class="project-desc">Explored the boundary between physical landscape models and digital interactivity, producing cast landscape surfaces embedded with electronics, LEDs, and sensors that responded to environmental input.</p>
+  </div>  <div class="project-card">
+    <div class="project-year">2006</div>
+    <div class="project-title">Thresholds Installation</div>
+    <div class="project-type">Speculative Installation</div>
+    <p class="project-desc">An interactive installation that translated spatial occupation into topographic representation through a high-contrast mural and camera-based blob detection, reimagining the contour line as a dynamic notation.</p>
+  </div>
+</div>
+
 <footer>
-  <p>Bradley Cantrell · University of Virginia School of Architecture</p>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
 </footer>
 
-
-<script src="work-bg.js"></script>
 </body>
 </html>
-
-
