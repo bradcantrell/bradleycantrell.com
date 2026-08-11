@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700">
+<defs>
+<radialGradient id="bg" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="#0f1620"/><stop offset="100%" stop-color="#05080c"/></radialGradient>
+<pattern id="water" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="rgba(30,50,70,0.15)"/><line x1="0" y1="5" x2="20" y2="5" stroke="rgba(50,80,110,0.1)" stroke-width="0.3"/><line x1="0" y1="15" x2="20" y2="15" stroke="rgba(50,80,110,0.1)" stroke-width="0.3"/></pattern>
+</defs>
+<rect width="1600" height="700" fill="url(#bg)"/>
+<text x="800" y="32" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="4">ISLAND TYPOLOGY — FOUR ARCHETYPES OF THE LAGOON</text>
+<text x="800" y="47" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="7" letter-spacing="2.5">EVERY ISLAND IN THE VENETIAN LAGOON BELONGS TO ONE OF FOUR CONSTRUCTIONAL GENRES</text>
+<rect x="63" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="240" y="93" text-anchor="middle" fill="#c04040" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">CONSTRUCTED URBAN</text>
+<text x="240" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6">Venice · Murano · Burano</text>
+<rect x="150" y="165" width="180" height="180" fill="url(#water)" stroke="rgba(255,255,255,0.06)" stroke-width="0.4"/>
+<text x="240" y="159" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="4.5">~500 × 500 m</text>
+<rect x="168" y="192" width="144" height="126" rx="2" fill="rgba(180,130,100,0.25)" stroke="rgba(180,130,100,0.35)" stroke-width="0.6"/>
+<line x1="228" y1="232" x2="252" y2="333" stroke="#4488aa" stroke-width="0.8" opacity="0.5"/>
+<line x1="228" y1="237" x2="252" y2="338" stroke="#4488aa" stroke-width="0.8" opacity="0.5"/>
+<line x1="228" y1="242" x2="252" y2="343" stroke="#4488aa" stroke-width="0.8" opacity="0.5"/>
+<line x1="240" y1="201" x2="240" y2="309" stroke="#4488aa" stroke-width="1.0" opacity="0.7"/>
+<rect x="200" y="214" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="200" y="232" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="200" y="250" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="200" y="268" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="200" y="286" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="218" y="214" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="218" y="232" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="218" y="268" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="218" y="286" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="236" y="214" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="236" y="286" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="254" y="214" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="254" y="232" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="254" y="268" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="254" y="286" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="272" y="214" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="272" y="232" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="272" y="250" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="272" y="268" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<rect x="272" y="286" width="10" height="10" fill="rgba(200,150,120,0.2)"/>
+<line x1="338" y1="169" x2="338" y2="153" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<polygon points="338,151 336,157 342,157" fill="rgba(255,255,255,0.2)"/>
+<text x="338" y="149" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4">N</text>
+<text x="83" y="361" fill="#c04040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">AREA</text>
+<text x="83" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">400–700 ha</text>
+<text x="253" y="361" fill="#c04040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">POP.</text>
+<text x="253" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">50,000–260,000</text>
+<text x="83" y="389" fill="#c04040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">ELEV.</text>
+<text x="83" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">0.8–1.2 m</text>
+<text x="253" y="389" fill="#c04040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">SUBSTRATE</text>
+<text x="253" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">Timber piles on caranto</text>
+<text x="240" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Entirely built on timber</text>
+<text x="240" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">piles driven through</text>
+<text x="240" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">caranto clay. Canal</text>
+<text x="240" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">network is the primary</text>
+<text x="240" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">infrastructure. No soil.</text>
+<rect x="436" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="614" y="93" text-anchor="middle" fill="#80a040" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">CONSTRUCTED AGRICULTURAL</text>
+<text x="614" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6">Sant'Erasmo · Vignole · Mazzorbo</text>
+<rect x="524" y="165" width="180" height="180" fill="url(#water)" stroke="rgba(255,255,255,0.06)" stroke-width="0.4"/>
+<text x="614" y="159" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="4.5">~500 × 500 m</text>
+<polygon points="545,197 676,205 686,282 650,314 560,309 542,273" fill="rgba(120,160,80,0.20)" stroke="rgba(120,160,80,0.35)" stroke-width="0.6"/>
+<line x1="560" y1="230" x2="668" y2="230" stroke="rgba(80,140,160,0.4)" stroke-width="0.5"/>
+<line x1="560" y1="255" x2="668" y2="255" stroke="rgba(80,140,160,0.4)" stroke-width="0.5"/>
+<line x1="560" y1="280" x2="668" y2="280" stroke="rgba(80,140,160,0.4)" stroke-width="0.5"/>
+<line x1="576" y1="219" x2="576" y2="291" stroke="rgba(140,180,100,0.25)" stroke-width="0.4" stroke-dasharray="2,4"/>
+<line x1="590" y1="219" x2="590" y2="291" stroke="rgba(140,180,100,0.25)" stroke-width="0.4" stroke-dasharray="2,4"/>
+<line x1="604" y1="219" x2="604" y2="291" stroke="rgba(140,180,100,0.25)" stroke-width="0.4" stroke-dasharray="2,4"/>
+<line x1="618" y1="219" x2="618" y2="291" stroke="rgba(140,180,100,0.25)" stroke-width="0.4" stroke-dasharray="2,4"/>
+<line x1="632" y1="219" x2="632" y2="291" stroke="rgba(140,180,100,0.25)" stroke-width="0.4" stroke-dasharray="2,4"/>
+<polygon points="545,197 676,205 686,282 650,314 560,309 542,273" fill="none" stroke="rgba(160,200,120,0.4)" stroke-width="1.0" stroke-dasharray="4,2"/>
+<line x1="712" y1="169" x2="712" y2="153" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<polygon points="712,151 708,157 714,157" fill="rgba(255,255,255,0.2)"/>
+<text x="712" y="149" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4">N</text>
+<text x="456" y="361" fill="#80a040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">AREA</text>
+<text x="456" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">20–350 ha</text>
+<text x="626" y="361" fill="#80a040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">POP.</text>
+<text x="626" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">50–800</text>
+<text x="456" y="389" fill="#80a040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">ELEV.</text>
+<text x="456" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">0.5–1.5 m</text>
+<text x="626" y="389" fill="#80a040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">SUBSTRATE</text>
+<text x="626" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">Dredged fill on marsh</text>
+<text x="614" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Built from dredged</text>
+<text x="614" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">lagoon sediment, retained</text>
+<text x="614" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">by embankments. Active</text>
+<text x="614" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">drainage maintains the</text>
+<text x="614" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">freshwater lens.</text>
+<rect x="809" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="986" y="93" text-anchor="middle" fill="#a08040" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">ABANDONED</text>
+<text x="986" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6">Torcello · San Francesco del Deserto</text>
+<rect x="896" y="165" width="180" height="180" fill="url(#water)" stroke="rgba(255,255,255,0.06)" stroke-width="0.4"/>
+<text x="986" y="159" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="4.5">~500 × 500 m</text>
+<rect x="932" y="210" width="45" height="72" fill="rgba(140,110,80,0.15)" stroke="rgba(140,110,80,0.25)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<rect x="996" y="228" width="36" height="54" fill="rgba(140,110,80,0.12)" stroke="rgba(140,110,80,0.20)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<line x1="942" y1="273" x2="1014" y2="264" stroke="rgba(180,140,100,0.3)" stroke-width="0.8"/>
+<line x1="978" y1="219" x2="996" y2="246" stroke="rgba(180,140,100,0.25)" stroke-width="0.6"/>
+<path d="M942,282 Q968,309 1004,291" fill="none" stroke="rgba(60,120,100,0.3)" stroke-width="0.6" stroke-dasharray="2,3"/>
+<circle cx="932" cy="295" r="3" fill="rgba(60,120,100,0.15)"/>
+<circle cx="1022" cy="300" r="4" fill="rgba(60,120,100,0.12)"/>
+<line x1="1084" y1="169" x2="1084" y2="153" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<polygon points="1084,151 1082,157 1088,157" fill="rgba(255,255,255,0.2)"/>
+<text x="1084" y="149" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4">N</text>
+<text x="829" y="361" fill="#a08040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">AREA</text>
+<text x="829" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">5–50 ha</text>
+<text x="999" y="361" fill="#a08040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">POP.</text>
+<text x="999" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">0–20</text>
+<text x="829" y="389" fill="#a08040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">ELEV.</text>
+<text x="829" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">0.3–0.8 m</text>
+<text x="999" y="389" fill="#a08040" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">SUBSTRATE</text>
+<text x="999" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">Compacted ruins on marsh</text>
+<text x="986" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Formerly inhabited or</text>
+<text x="986" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">cultivated. Walls and</text>
+<text x="986" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">foundations persist.</text>
+<text x="986" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Returning to marsh as</text>
+<text x="986" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">maintenance ceases.</text>
+<rect x="1182" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="1360" y="93" text-anchor="middle" fill="#4080a0" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">NATURAL BARENA</text>
+<text x="1360" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6">Palude della Rosa · Palude Maggiore</text>
+<rect x="1270" y="165" width="180" height="180" fill="url(#water)" stroke="rgba(255,255,255,0.06)" stroke-width="0.4"/>
+<text x="1360" y="159" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="4.5">~500 × 500 m</text>
+<polygon points="1296,219 1332,201 1386,210 1414,246 1422,282 1386,309 1342,305 1306,273" fill="rgba(60,130,110,0.20)" stroke="rgba(60,130,110,0.35)" stroke-width="0.6"/>
+<path d="M1360,246 Q1378,264 1396,282" fill="none" stroke="rgba(50,100,130,0.4)" stroke-width="0.7"/>
+<path d="M1368,264 Q1360,282 1342,291" fill="none" stroke="rgba(50,100,130,0.3)" stroke-width="0.5"/>
+<path d="M1350,228 Q1332,246 1324,264" fill="none" stroke="rgba(50,100,130,0.3)" stroke-width="0.5"/>
+<line x1="1458" y1="169" x2="1458" y2="153" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+<polygon points="1458,151 1454,157 1460,157" fill="rgba(255,255,255,0.2)"/>
+<text x="1458" y="149" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4">N</text>
+<text x="1202" y="361" fill="#4080a0" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">AREA</text>
+<text x="1202" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">1–100 ha</text>
+<text x="1372" y="361" fill="#4080a0" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">POP.</text>
+<text x="1372" y="371" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">0</text>
+<text x="1202" y="389" fill="#4080a0" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">ELEV.</text>
+<text x="1202" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">0.1–0.5 m</text>
+<text x="1372" y="389" fill="#4080a0" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="600">SUBSTRATE</text>
+<text x="1372" y="399" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5.5">Silty clay over sand</text>
+<text x="1360" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Accretionary salt marsh.</text>
+<text x="1360" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Tidal channels deliver</text>
+<text x="1360" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">sediment. No permanent</text>
+<text x="1360" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">structures. Critical</text>
+<text x="1360" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">habitat and carbon sink.</text>
+<text x="800" y="623" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="1.5">ALL PLANS AT CONSISTENT SCALE (~500 × 500 m) · DOTTED = EMBANKMENT · DASHED = FORMER EXTENT · WATER = LAGOON</text>
+<text x="800" y="645" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="5" letter-spacing="1">DATA: ISPRA · CORILA · CALAON & CIANCIOSI (2020) · OSM ISLAND POLYGONS · FIELD OBSERVATION</text>
+</svg>

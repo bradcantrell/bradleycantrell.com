@@ -12,14 +12,25 @@
     .teaching-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
-      gap: 1px;
-      background: var(--border);
-      margin: 0 calc(-1 * var(--pad));
+      gap: 0.85rem;
     }
     .course-card {
-      background: var(--bg2);
-      padding: 2rem;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 1.75rem;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
+    .course-card:hover {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .course-card-link { display: block; }
     .course-code {
       font-size: 0.7rem;
       letter-spacing: 0.12em;
@@ -27,7 +38,7 @@
       color: var(--text-dimmer);
       margin-bottom: 0.5rem;
     }
-    .course-title { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .course-title { font-size: 0.95rem; font-weight: 400; margin-bottom: 0.4rem; color: var(--accent); }
     .course-years { font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
     .course-level { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.05em; margin-bottom: 0.75rem; }
     .course-desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.7; max-width: none; }
@@ -70,7 +81,7 @@
   </div>
 
   <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 3rem; max-width: 65ch;">
-    Teaching at the intersection of computation, ecology, and landscape design &mdash; developing new frameworks for how designers understand and engage complex systems.
+    Teaching at the intersection of computation, ecology, and landscape design, developing new frameworks for how designers understand and engage complex systems.
   </p>
 
   <!-- UVA -->
@@ -78,6 +89,27 @@
     <div class="institution-name">University of Virginia &middot; Department of Landscape Architecture</div>
     <div class="institution-role">Commonwealth Professor, 2025&ndash;present &middot; Professor and Chair, 2017&ndash;2025</div>
     <div class="teaching-grid">
+
+      <a href="teaching/venice-program/index.html" class="course-card course-card-link">
+        <div class="course-code">ALAR 8010 &middot; Fall 2026</div>
+        <div class="course-title">Productive Landscapes of the Lagoon</div>
+        <div class="course-years">Research Studio</div>
+        <p class="course-desc">A research studio investigating the northern Venice Lagoon as a productive landscape, exploring the design space between infrastructure and ecological process in a territory shaped by centuries of sediment choreography.</p>
+      </a>
+
+      <div class="course-card">
+        <div class="course-code">ALAR 5403 &middot; Fall 2026</div>
+        <div class="course-title">City and Landscape</div>
+        <div class="course-years">Seminar</div>
+        <p class="course-desc">[Description to be added]</p>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">LAR 7020 &middot; Spring 2019&ndash;2025</div>
+        <div class="course-title">Foundation Studio IV: Prototyping the Territory</div>
+        <div class="course-years">Graduate Design Studio</div>
+        <p class="course-desc">[Description to be added]</p>
+      </div>
 
       <div class="course-card">
         <div class="course-code">ALAR 8010 &middot; Fall 2024</div>
@@ -90,13 +122,6 @@
         <div class="course-code">ALAR 8100 &middot; Fall 2023&ndash;2024</div>
         <div class="course-title">Thesis I</div>
         <div class="course-years">Graduate Thesis</div>
-        <p class="course-desc">[Description to be added]</p>
-      </div>
-
-      <div class="course-card">
-        <div class="course-code">LAR 7020 &middot; Spring 2019&ndash;2025</div>
-        <div class="course-title">Foundation Studio IV: Prototyping the Territory</div>
-        <div class="course-years">Graduate Design Studio</div>
         <p class="course-desc">[Description to be added]</p>
       </div>
 

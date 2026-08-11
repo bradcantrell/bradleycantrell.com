@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sedimachine | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url('img/sedimachine-hero.jpg'); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .parallax-inline { position: relative; height: 50vh; min-height: 380px; overflow: hidden; margin: 2rem var(--pad); max-width: var(--max); margin-left: auto; margin-right: auto; border-radius: var(--radius-card); }
+    .parallax-inline .parallax-bg { position: absolute; inset: -20%; z-index: 0; background-size: cover; background-position: center; will-change: transform; }
+    .parallax-inline figcaption { position: absolute; bottom: 1rem; left: 1.5rem; z-index: 2; font-size: 0.72rem; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
+    .thumb-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.6rem; max-width: var(--max); margin: 3rem auto; padding: 0 var(--pad); }
+    @media (max-width: 900px) { .thumb-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 560px) { .thumb-grid { grid-template-columns: repeat(3, 1fr); } }
+    .thumb-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.25rem; }
+    .thumb-item { aspect-ratio: 1; overflow: hidden; border-radius: 4px; cursor: pointer; position: relative; border: 1px solid var(--border-soft); }
+    .thumb-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .thumb-item:hover img { transform: scale(1.05); }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 85vh; object-fit: contain; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2012</div>
+    <h2 class="hero-title">Sedimachine</h2>
+    <div class="hero-type">Manifest / Prototype</div>
+  </div>
+</div>
+<div class="meta-bar">
+  <a href="../work.html" class="back-link">All Projects</a>
+  <dl>
+    <div><dt><strong>Location</strong></dt><dd>Louisiana State University</dd></div>
+    <div><dt><strong>Collaborators</strong></dt><dd>Frank Melendez (Assistant Professor of Architecture)
+Research Assistant: Prentiss Darden</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Plexiglass surface, perforated copper tube water delivery system, Arduino-controlled robotic spillway, Microsoft Kinect depth sensing</dd></div>
+  </dl>
+</div>
+<div class="project-body">
+  <p>The Sedimachine was a prototype apparatus developed to investigate the relationship between controlled water delivery, sediment deposition, and surface morphology. The project explored how small modifications to flow conditions might choreograph sediment patterning,a question that would later scale to territorial concerns about land-building in coastal environments.</p>
+  <p>Phase One: Passive Flow System</p>
+  <p>The initial configuration consisted of a plexiglass surface positioned at an incline, with water delivered via a copper tube perforated at intervals along its length. Sand introduced into the flow would pattern across the transparent surface based on which perforations allowed water through, creating depositional geometries responsive to the specific configuration of openings. The plexiglass substrate was chosen deliberately: its smooth, transparent surface provided minimal disruption to flow dynamics and reduced variables when documenting sediment behavior. Researchers could observe patterning from both above and below the surface, capturing how particles organized under varying flow conditions.</p>
+  <p>The system also enabled testing of flow-disrupting objects. Fishing weights, washers, and other small elements could be placed on the surface to investigate how obstacles manipulate sediment deposition that were the early prototypes of the “flow enhancers, resistors, and redirectors” that would become a formal design vocabulary in later research.</p>
+  <p>Phase Two: Robotic Spillway</p>
+  <p>The second phase introduced active control through a robotic spillway with twelve operable gates. Each gate was actuated by a servo motor controlled through an Arduino microcontroller, enabling programmable sequences of opening and closing that choreographed water delivery across the surface. This configuration transformed the apparatus from a passive observation system into an active instrument capable of testing how temporal patterns of flow control might produce specific depositional outcomes.</p>
+  <p>The robotic spillway represented an early implementation of responsive infrastructure at model scale with gates that could be programmed to react to conditions or cycle through predetermined sequences, producing sediment patterns through choreographed water management rather than static channel geometry.</p>
+  <p>Sensing Experiments:</p>
+  <p>The project included initial tests using a Microsoft Kinect depth sensor to document surface morphology. These experiments were largely unsuccessful: the depositional layer proved too thin for the Kinect’s resolution to capture meaningful topographic variation. This limitation would inform subsequent research, driving the development of multi-modal sensing approaches and the adoption of physical modeling systems (like the EmRiver geomorphology table) capable of producing thicker, more legible stratigraphic deposits.</p>
+</div>
+<figure class="parallax-inline" id="inlinePara">
+  <div class="parallax-bg" style="background-image:url('img/sedimachine-hero.jpg')"></div>
+  <figcaption>Prototype apparatus investigating controlled water delivery and sediment deposition.</figcaption>
+</figure>
+<div class="project-body">
+  <h3>Fundamental Questions</h3>
+  <p>The Sedimachine established several foundational principles that would carry through subsequent research:</p>
+  <p>Choreography over Form: The project demonstrated that sediment patterning could be approached as a design problem,not by sculpting deposits directly but by controlling the flow conditions that produce them. The perforated copper tube and robotic spillway were instruments for choreographing process rather than specifying outcome. This distinction between designing forms and designing the operations that generate forms became central to later theoretical frameworks.</p>
+  <p>The Plexiglass: The choice of a smooth, transparent substrate reflected a methodological commitment to isolating variables. By eliminating surface friction and enabling observation from multiple vantage points, the plexiglass surface allowed researchers to study flow-sediment interaction with minimal confounding factors. This controlled simplicity enabled clear documentation of cause-and-effect relationships, even as it abstracted from the complexity of actual riverine or coastal environments.</p>
+  <p>Object as Flow Modifier: The testing of weights and washers as flow-disrupting elements introduced the concept of designed objects whose primary function is to modulate dynamic processes rather than to occupy space as static forms. These small-scale tests prefigured the responsive prototypes (sediment gates, sieves, disruptors) developed at REAL and UVA, establishing a design approach focused on intervention within flows rather than construction of fixed structures.</p>
+  <p>Sensing Limitations as Research Drivers: The unsuccessful Kinect experiments revealed the technical challenges of capturing thin depositional layers through depth sensing. Rather than abandoning digital documentation, this limitation motivated the search for modeling systems producing more substantial morphological change and the development of complementary sensing approaches (ultrasonic range-finding, image analysis) that could capture phenomena at different scales and resolutions. Failure became productive, directing subsequent technical development.</p>
+  <p>Programmable Hydrology: The Arduino-controlled spillway introduced programmability into the experimental apparatus. Flow was no longer a constant to be observed but a variable to be designed,sequences of gate operations could be scripted, repeated, and modified based on observed outcomes. This capacity for programmable hydrology enabled systematic experimentation and laid groundwork for the repeatable hydrographs that would become standard practice in later geomorphology table research.</p>
+</div>
+<div class="thumb-grid">
+  <h3>Documentation</h3>
+      <div class="thumb-item" data-full="img/sedimachine-hero.jpg" data-index="0"><img src="img/sedimachine-thumb.jpg" alt="" loading="lazy"></div>
+      <div class="thumb-item" data-full="img/sedimachine-hero.jpg" data-index="1"><img src="img/sedimachine-thumb.jpg" alt="" loading="lazy"></div>
+      <div class="thumb-item" data-full="img/sedimachine-hero.jpg" data-index="2"><img src="img/sedimachine-thumb.jpg" alt="" loading="lazy"></div>
+      <div class="thumb-item" data-full="img/sedimachine-hero.jpg" data-index="3"><img src="img/sedimachine-thumb.jpg" alt="" loading="lazy"></div>
+      <div class="thumb-item" data-full="img/sedimachine-hero.jpg" data-index="4"><img src="img/sedimachine-thumb.jpg" alt="" loading="lazy"></div>
+      <div class="thumb-item" data-full="img/sedimachine-hero.jpg" data-index="5"><img src="img/sedimachine-thumb.jpg" alt="" loading="lazy"></div>
+</div>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <img id="lbImage" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+<footer><p>Bradley Cantrell | University of Virginia School of Architecture</p></footer>
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  var inlinePara=document.getElementById('inlinePara');
+  var inlineBg=inlinePara?inlinePara.querySelector('.parallax-bg'):null;
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+    if(inlineBg){
+      var rect=inlinePara.getBoundingClientRect();
+      var center=rect.top+rect.height/2-window.innerHeight/2;
+      inlineBg.style.transform='translate3d(0,'+(center*-0.15)+'px,0)';
+    }
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImage'),lbCount=document.getElementById('lbCounter'),thumbs=document.querySelectorAll('.thumb-item'),items=[],curIdx=0;
+  thumbs.forEach(function(t,i){items.push({full:t.dataset.full});t.addEventListener('click',function(){curIdx=i;showLb(curIdx);lb.classList.add('active');});});
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);});
+  document.getElementById('lbNext').addEventListener('click',function(){curIdx=(curIdx+1)%items.length;showLb(curIdx);});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('active'))return;if(e.key==='Escape')lb.classList.remove('active');if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}});
+  function showLb(i){lbImg.src=items[i].full;lbCount.textContent=(i+1)+' / '+items.length;}
+})();
+</script>
+</body>
+</html>

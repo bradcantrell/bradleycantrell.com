@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City and Landscape — ALAR 5403 Fall 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--red:#9B1B1B;--black:#121212;--white:#FAFAFA;--dark-grey:#555;--light-grey:#CCC}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto','Helvetica Neue',sans-serif;font-size:10pt;line-height:1.5;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+.page{max-width:1120px;margin:0 auto;padding:48px 56px 42px;min-height:100vh;display:flex;flex-direction:column}
+.page.cover{justify-content:center;align-items:center;text-align:center}
+.display{font-family:'Play','Montserrat',sans-serif;font-weight:700;font-size:48px;line-height:.95;letter-spacing:.04em;color:var(--red);text-transform:uppercase}
+.section-header{font-family:'Roboto',sans-serif;font-weight:700;font-size:28px;letter-spacing:.02em;color:var(--red);margin-bottom:18px;margin-top:36px}
+.section-header:first-child{margin-top:0}
+.subheader{font-family:'Roboto',sans-serif;font-weight:700;font-size:16px;color:var(--black);margin-bottom:8px;margin-top:24px}
+.sub-subheader{font-family:'Roboto',sans-serif;font-weight:700;font-size:12px;color:var(--black);margin-bottom:4px;margin-top:14px}
+.metadata{font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.body-text{font-size:10pt;line-height:1.5;color:var(--black);margin-bottom:6px;max-width:65ch}
+.pull-quote{font-family:'Crimson Text',Georgia,serif;font-style:italic;font-size:15pt;line-height:1.35;color:var(--red);text-align:center;margin:28px auto;max-width:26em}
+.two-col{column-count:2;column-gap:36px;margin-top:12px}
+.two-col .body-text,.two-col .subheader,.two-col .sub-subheader{break-inside:avoid}
+hr.sep{border:none;border-top:1px solid var(--light-grey);margin:36px 0}
+.page-footer{margin-top:auto;padding-top:24px;font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em}
+
+nav.program-nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.96);border-bottom:1px solid var(--light-grey);padding:8px 24px;font-size:8pt;text-transform:uppercase;letter-spacing:.05em;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;overflow-x:auto}
+nav.program-nav a{color:var(--dark-grey);text-decoration:none;white-space:nowrap;padding:2px 0;border-bottom:1px solid transparent}
+nav.program-nav a:hover,nav.program-nav a.active{color:var(--red);border-bottom:1px solid var(--red)}
+nav.program-nav .nav-home{font-weight:700}
+nav.course-nav{position:sticky;top:36px;z-index:99;background:rgba(250,250,250,.92);border-bottom:1px solid #eee;padding:6px 24px;font-size:7.5pt;text-transform:uppercase;letter-spacing:.05em;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+nav.course-nav a{color:var(--dark-grey);text-decoration:none}
+nav.course-nav a:hover,nav.course-nav a.active{color:var(--red)}
+
+@media print{
+@page{size:A4 landscape;margin:18mm 15mm 15mm}
+body{font-size:10pt;color:#121212;background:#fff}
+nav.program-nav,nav.course-nav{display:none}
+.page{max-width:none;margin:0;padding:0;min-height:auto;page-break-after:always}
+.page:last-child{page-break-after:auto}
+.page.cover{min-height:100vh}
+.display{font-size:48pt}
+.section-header{font-size:24pt;margin-top:0}
+.subheader{font-size:14pt}
+.two-col{column-count:2;column-gap:24px}
+.page-footer{display:none}
+}
+@media(prefers-color-scheme:dark){
+body{background:var(--black);color:var(--white)}
+.body-text{color:var(--white)}
+.subheader,.sub-subheader{color:var(--white)}
+.section-header,.pull-quote{color:var(--red)}
+.metadata{color:#999}
+hr.sep{border-color:#333}
+nav.program-nav{background:rgba(18,18,18,.96);border-color:#333}
+nav.program-nav a{color:#999}
+nav.course-nav{background:rgba(18,18,18,.92);border-color:#333}
+}
+@media(max-width:800px){
+.display{font-size:28px}
+.two-col{column-count:1}
+.page{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="program-nav">
+<a href="../index.html" class="nav-home">Venice Program</a>
+<a href="../residency.html">Residency</a>
+<a href="../schedule.html">Schedule</a>
+<a href="../studio/">Studio</a>
+<a href="index.html" class="active">City &amp; Landscape</a>
+<a href="../building-venice/">Building Venice</a>
+<a href="../art-architecture/">Art &amp; Architecture</a> <a href="../map.html">Map</a> <a href="../student-work.html">Student Work</a>
+</nav>
+
+<nav class="course-nav">
+<a href="index.html" class="active">Syllabus</a>
+<a href="schedule.html">Schedule</a>
+</nav>
+
+<section class="page cover" id="cover">
+<div class="metadata">ALAR 5403 &middot; Fall 2026 &middot; University of Virginia</div>
+<h1 class="display">City &amp;<br>Landscape</h1>
+<div class="section-header" style="margin-top:8px">Venice Field Work</div>
+<div class="metadata" style="margin-top:24px">Bradley Cantrell, Commonwealth Professor of Landscape Architecture</div>
+<div class="metadata" style="margin-top:12px">Tuesdays, 9:30 AM–12:00 PM</div>
+</section>
+
+<section class="page" id="intro">
+<h2 class="section-header">Introduction</h2>
+<div class="two-col">
+<p class="body-text">The Venetian lagoon is a landscape that cannot be understood remotely. Its textures, its temporalities, its spatial logics, and its forms of life resist representation in any single medium. This course develops practices of attention necessary for reading territory directly: through drawing, through walking, through sustained observation, and through the structured field exercises that transform passive looking into active inquiry.</p>
+<p class="body-text">City and Landscape operates in close coordination with the Research Studio but has its own pedagogical logic. Where the studio develops design propositions for the lagoon's future, this course builds the observational and recording capacities that make those propositions possible. You cannot design for territory you cannot read.</p>
+<p class="body-text">During the Charlottesville weeks, the course establishes foundational methods: drawing as inquiry, mapping as argument, notation as evidence. During the Italy residency, these methods are deployed in the field, with each week organized around a specific field exercise that structures encounter with the lagoon. Students maintain field journals throughout the semester, accumulating a personal archive of observations that informs work across all four courses.</p>
+</div>
+</section>
+
+<section class="page">
+<h2 class="section-header">Objectives</h2>
+<div class="two-col">
+<p class="body-text"><strong>1.</strong> Develop practices of sustained observation that move beyond initial impression to register environmental dynamics, spatial relationships, and material conditions.</p>
+<p class="body-text"><strong>2.</strong> Build proficiency in field recording methods: drawing, photography, audio, notation, and sampling as instruments of inquiry rather than mere documentation.</p>
+<p class="body-text"><strong>3.</strong> Learn to read the lagoon as a constructed landscape whose forms index centuries of human and non-human agency.</p>
+<p class="body-text"><strong>4.</strong> Produce a field journal that serves as a personal archive of observations and a resource for design work throughout the semester.</p>
+<p class="body-text"><strong>5.</strong> Develop the capacity to translate field observations into design insights that inform studio propositions.</p>
+</div>
+
+<h2 class="section-header">Field Journal</h2>
+<div class="two-col">
+<p class="body-text">Each student maintains a field journal throughout the semester. This is the primary deliverable and the primary instrument of the course. The journal is not a sketchbook for polished drawings nor a diary for personal reflection. It is a working document: messy, iterative, accumulating observations across weeks and sites. It should contain drawings, diagrams, notes, measurements, photographs (pasted in), material samples (taped in), and the questions that arise from sustained attention.</p>
+<p class="body-text">The journal is reviewed at three points: before departure (Charlottesville methods demonstrated), mid-residency (Italy field content assessed), and at semester's end (comprehensive archive evaluated).</p>
+</div>
+
+<h2 class="section-header">Exercises</h2>
+<div class="two-col">
+<p class="body-text">Each week of the Italy residency includes a structured field exercise. These exercises are designed as encounters with specific dimensions of the lagoon and are led by different faculty across the program. The exercises are not graded individually but contribute to the field journal and inform design work in the studio.</p>
+<p class="body-text">Exercise themes include: reading tidal edges, drawing sound, mapping microclimates, sectioning the lagoon floor, transcribing agricultural calendars, tracing material flows, and notating vernacular hydraulics. Specific exercises will be developed over the summer and added to the schedule as they are finalized.</p>
+</div>
+</section>
+
+<section class="page">
+<div class="page-footer">
+<p>ALAR 5403 &middot; City and Landscape &middot; Fall 2026</p>
+<p>Bradley Cantrell &middot; University of Virginia</p>
+</div>
+</section>
+
+</body>
+</html>

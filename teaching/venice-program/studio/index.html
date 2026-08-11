@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productive Landscapes of the Lagoon — ALAR 4010/8010 Fall 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--red:#E61C1C;--black:#121212;--white:#FAFAFA;--dark-grey:#555;--light-grey:#CCC}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto','Helvetica Neue',sans-serif;font-size:10pt;line-height:1.5;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+.page{max-width:1120px;margin:0 auto;padding:48px 56px 42px;min-height:100vh;display:flex;flex-direction:column}
+.page.cover{justify-content:center;align-items:center;text-align:center}
+.display{font-family:'Play','Montserrat',sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.04em;color:var(--red);text-transform:uppercase}
+.section-header{font-family:'Roboto',sans-serif;font-weight:700;font-size:28px;letter-spacing:.02em;color:var(--red);margin-bottom:18px;margin-top:36px}
+.section-header:first-child{margin-top:0}
+.subheader{font-family:'Roboto',sans-serif;font-weight:700;font-size:16px;color:var(--black);margin-bottom:8px;margin-top:24px}
+.sub-subheader{font-family:'Roboto',sans-serif;font-weight:700;font-size:12px;color:var(--black);margin-bottom:4px;margin-top:14px}
+.metadata{font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.body-text{font-size:10pt;line-height:1.5;color:var(--black);margin-bottom:6px;max-width:65ch}
+.body-text.indent{text-indent:1.5em}
+.pull-quote{font-family:'Crimson Text',Georgia,serif;font-style:italic;font-size:15pt;line-height:1.35;color:var(--red);text-align:center;margin:28px auto;max-width:26em}
+.two-col{column-count:2;column-gap:36px;margin-top:12px}
+.two-col .body-text,.two-col .subheader,.two-col .sub-subheader{break-inside:avoid}
+hr.sep{border:none;border-top:1px solid var(--light-grey);margin:36px 0}
+.page-footer{margin-top:auto;padding-top:24px;font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em}
+
+/* PROGRAM NAV */
+nav.program-nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.96);border-bottom:1px solid var(--light-grey);padding:8px 24px;font-size:8pt;text-transform:uppercase;letter-spacing:.05em;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;overflow-x:auto}
+nav.program-nav a{color:var(--dark-grey);text-decoration:none;white-space:nowrap;padding:2px 0;border-bottom:1px solid transparent}
+nav.program-nav a:hover{color:var(--red);border-bottom:1px solid var(--red)}
+nav.program-nav .nav-home{font-weight:700}
+/* COURSE SUB-NAV */
+nav.course-nav{position:sticky;top:36px;z-index:99;background:rgba(250,250,250,.92);border-bottom:1px solid #eee;padding:6px 24px;font-size:7.5pt;text-transform:uppercase;letter-spacing:.05em;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+nav.course-nav a{color:var(--dark-grey);text-decoration:none}
+nav.course-nav a:hover,nav.course-nav a.active{color:var(--red)}
+
+@media print{
+@page{size:A4 landscape;margin:18mm 15mm 15mm}
+body{font-size:10pt;color:#121212;background:#fff}
+nav.program-nav,nav.course-nav{display:none}
+.page{max-width:none;margin:0;padding:0;min-height:auto;page-break-after:always}
+.page:last-child{page-break-after:auto}
+.page.cover{min-height:100vh}
+.display{font-size:64pt}
+.section-header{font-size:28pt;margin-top:0}
+.subheader{font-size:16pt}
+.pull-quote{font-size:15pt;margin:24px auto}
+.two-col{column-count:2;column-gap:24px}
+.page-footer{display:none}
+hr.sep{margin:24px 0}
+}
+@media(prefers-color-scheme:dark){
+body{background:var(--black);color:var(--white)}
+.body-text{color:var(--white)}
+.subheader,.sub-subheader{color:var(--white)}
+.section-header,.pull-quote{color:var(--red)}
+.metadata{color:#999}
+hr.sep{border-color:#333}
+nav.program-nav{background:rgba(18,18,18,.96);border-color:#333}
+nav.program-nav a{color:#999}
+nav.course-nav{background:rgba(18,18,18,.92);border-color:#333}
+}
+@media(max-width:800px){
+.display{font-size:32px}
+.two-col{column-count:1}
+.page{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="program-nav">
+<a href="../index.html" class="nav-home">Venice Program</a>
+<a href="../residency.html">Residency</a>
+<a href="../schedule.html">Schedule</a>
+<a href="index.html" class="active">Studio</a>
+<a href="../city-and-landscape/">City &amp; Landscape</a>
+<a href="../building-venice/">Building Venice</a>
+<a href="../art-architecture/">Art &amp; Architecture</a> <a href="../map.html">Map</a> <a href="../student-work.html">Student Work</a>
+</nav>
+
+<nav class="course-nav">
+<a href="index.html" class="active">Syllabus</a>
+<a href="schedule.html">Schedule</a>
+<a href="story.html">Lagoon Story</a>
+<a href="research.html">Research</a>
+<a href="readings.html">Readings</a>
+
+<a href="diagram-viewer.html">Diagrams</a>
+</nav>
+
+<!-- ====== COVER ====== -->
+<section class="page cover" id="cover">
+<div class="metadata">ALAR 4010 / 8010 &middot; Fall 2026 &middot; University of Virginia</div>
+<h1 class="display">Productive<br>Landscapes<br>of the Lagoon</h1>
+<div class="section-header" style="margin-top:8px">Venice Research Studio</div>
+<div class="metadata" style="margin-top:24px">
+Bradley Cantrell, Coordinator, Commonwealth Professor of Landscape Architecture<br>
+William Sherman, Valmarana Professor of Architecture<br>
+Sandro Bisa, Visiting Faculty
+</div>
+<div class="metadata" style="margin-top:12px">Tuesdays and Thursdays, 12:30&ndash;5:00 PM</div>
+</section>
+
+<!-- ====== INTRODUCTION ====== -->
+<section class="page" id="intro">
+<h2 class="section-header">Introduction</h2>
+<div class="two-col">
+<p class="body-text">The Venice Lagoon is a constructed landscape. Over fifteen centuries, its form has been shaped by deliberate interventions, with rivers diverted to prevent sedimentation, seawalls constructed against Adriatic storms, channels dredged, islands built from excavated mud. What appears as a base condition&mdash;a relationship between land and water, salt and fresh, city and marsh&mdash;is the accumulated result of an ongoing negotiation.</p>
+<p class="body-text">But the lagoon is also a constructed city. The same processes that shaped the territory shaped its settlements. Venice&rsquo;s urban form has emerged from the logic of island consolidation and canal excavation, its architecture developing techniques for building on saturated ground, and its public spaces calibrated to tidal fluctuation and seasonal flooding. The Piazza San Marco was a vineyard before it was a civic space. The <em>fondamenta</em> that edge canals are infrastructures that make urban life possible in an aqueous territory. To study the lagoon is to study the city, and to study the city is to understand the territorial systems that produced and sustain it.</p>
+<p class="body-text">This studio is the first year of a three-year research program examining the lagoon as a territory of ongoing adaptation. Our focus in the Fall of 2026 is on productive landscapes and architectures, with particular attention to viticulture as a practice that embeds environmental knowledge in cultivated form. Working from Torcello, the oldest settlement in the lagoon, now among its quietest, we will develop design propositions that operate at the scale of the site while reading outward to the lagoon, the Veneto plain, and the alpine watersheds that feed freshwater into this brackish territory.</p>
+<p class="body-text">The studio brings together students of landscape architecture, architecture, and urban planning&mdash;three disciplines whose boundaries dissolve in the lagoon&rsquo;s particular conditions. Here, landscape is infrastructure, architecture is territorial practice, and urban form is environmental response. The questions we engage&mdash;how productive systems shape settlement, how environmental dynamics constrain and enable building, and how governance structures territorial possibility&mdash;require perspectives that no single discipline can provide alone.</p>
+<p class="body-text">The studio is conducted in partnership with architect Sandro Bisa, whose work on the Venissa estate has revived Dorona di Venezia, an indigenous grape variety adapted to the lagoon&rsquo;s salt, tide, and periodic flooding. Venissa operates as a living laboratory: a two-acre vineyard with thirty distinct microclimates differentiated by inches of elevation, where drought, flood, and salinization are not problems to be solved but conditions to be learned from.</p>
+</div>
+</section>
+
+<section class="page">
+<h3 class="subheader">Three-Year Research Program</h3>
+<p class="body-text"><strong>001 (Fall 2026): Viticulture and Productive Landscapes</strong> examines the lagoon through cultivated systems, using Venissa&rsquo;s experimental vineyard and the revival of the Dorona grape as entry points for understanding how productive practices shape territorial dynamics, settlement patterns, and architectural form.</p>
+<p class="body-text"><strong>002 (Fall 2027): Mobility and Circulatory Systems</strong> investigates the infrastructural networks that enable movement through the lagoon&mdash;from historic navigation channels to contemporary water-bus routes, to species migration and hydrological flow&mdash;examining how circulation patterns structure territorial occupation and urban development.</p>
+<p class="body-text"><strong>003 (Fall 2028): Habitats and Multi-Species Territories</strong> focuses on the ecological dimensions of the lagoon as a shared territory, investigating how design might support cohabitation among human communities, migratory birds, fish populations, and emergent ecologies.</p>
+<p class="body-text">This studio syllabus takes viticulture and productive landscapes as its organizing theme while establishing methodological frameworks that will carry through the full sequence.</p>
+</section>
+
+<!-- ====== NARRATIVE ====== -->
+<section class="page" id="narrative">
+<h2 class="section-header">Narrative</h2>
+<div class="two-col">
+<p class="body-text">Before Venice became a monument to preservation, it was a working landscape. Salt pans, fish weirs, orchards, vineyards, and market gardens distributed across an archipelago with each island calibrated to specific conditions of salinity, tide, and soil. An 1812 survey documented three hundred hectares of vineyards throughout the lagoon and a vineyard occupied Piazza San Marco until 1100.</p>
+<p class="body-text">The city that emerged from this territory was shaped by this logic of productivity. Venice&rsquo;s urban density developed not despite but because of the conditions of the lagoon: the scarcity of stable ground concentrating settlement, the canal network enabling circulation where streets could not exist, and the architecture developing upward as horizontal expansion reached hydraulic limits. The <em>campo</em>, Venice&rsquo;s characteristic public space, originated as the open ground where wells collected rainwater for island communities. The <em>sotoportego</em>, the covered passage beneath buildings, emerged where urban fabric bridged between stable foundations. Every architectural and urban form indexes a negotiation with the territory that produced it.</p>
+<p class="body-text">Torcello exemplifies both the productive history and its collapse. Once the most populous island, the original seat of the bishopric, it now holds fewer than twenty permanent residents. The seventh-century cathedral remains, surrounded by artichoke fields reverting to reed marsh. This apparent decline is also a clearing&mdash;providing a space where a reimagined future may emerge.</p>
+<p class="body-text">In 2002, eighty-eight surviving Dorona vines were discovered in a walled garden near the cathedral at Torcello. The grape had persisted through four centuries of agricultural abandonment, adapting to conditions that would kill mainland varieties: roots growing horizontally to find freshwater thirty inches below the surface, thick golden skins resisting salt spray, and the entire organism calibrated to <em>acqua alta</em>&rsquo;s rhythm. The first contemporary vintage was bottled in 2010 and what had seemed like a remnant became resource.</p>
+<p class="body-text">The lagoon&rsquo;s productivity has never been stable. It has required constant attention&mdash;sensing conditions, adjusting practice, and learning from what worked and what failed. This is not a landscape to be restored to some prior state. It is a landscape to be continued, and the settlements, architectures, and public spaces that occupy it will continue with it, or not at all.</p>
+</div>
+</section>
+
+<!-- ====== THE LAGOON ====== -->
+<section class="page" id="lagoon">
+<h2 class="section-header">The Lagoon</h2>
+<div class="two-col">
+<p class="body-text">The Venetian lagoon presents a landscape that refuses categorical stability. Neither fully land nor water, the lagoon exists as a transitional medium where solid ground yields to saturated soils, where channels shift with sediment transport, and where islands emerge and dissolve across centuries of morphological change. This fundamental indeterminacy has shaped every aspect of human occupation, from the construction techniques of <em>palafitte</em> foundations to the agricultural practices that transform saline marshland into productive terrain.</p>
+<p class="body-text">For architects, landscape architects, and urban planners, this condition presents both challenge and opportunity. The lagoon demands design approaches that work with rather than against environmental dynamism&mdash;clear methods that understand intervention as participation in ongoing processes rather than imposition of fixed forms. Venice&rsquo;s architecture developed precisely such approaches: producing foundations that support settlement and urban patterns that treat water as circulation. These are not primitive adaptations superseded by contemporary engineering but sophisticated responses to conditions that persist.</p>
+<p class="body-text">The studio takes this condition as generative, developing methodologies for adaptive design that engage the lagoon&rsquo;s temporal complexity across nested scales&mdash;from tidal cycles to climatic trajectories, and from the individual building to the territorial watershed. The northern lagoon, centered on Torcello and its surrounding islands, offers a particularly rich site for investigation. Torcello now supports fewer than a dozen permanent residents yet retains traces of its Byzantine past in the cathedral of Santa Maria Assunta and the church of Santa Fosca. This dramatic population shift makes visible the contingent nature of settlement patterns and the ways environmental change shapes human presence, urban form, and architectural possibility.</p>
+</div>
+<blockquote class="pull-quote">The project of time-binding, which is &hellip; about living in place, should be understood aesthetically, through presence and experience. Time doesn&rsquo;t imply a linear relationship or continuity. Homes can be made, lives sustained, and a sense of place cultivated, even under conditions that are radically discontinuous. &mdash;Putalik and Davis, <em>Bay Migrations</em></blockquote>
+</section>
+
+<!-- ====== ADAPTATION ====== -->
+<section class="page" id="adaptation">
+<h2 class="section-header">Adaptation</h2>
+<div class="two-col">
+<p class="body-text"><em>Scomenzar</em>&mdash;to begin, to start&mdash;names a practice embedded in Venetian culture for centuries. When lagoon communities needed a new canal, they did not design its final form and then excavate. They started a small cut, a provocation, and allowed tidal scour to do the rest. The canal that emerged was not predetermined; it was the product of an initial gesture and the environmental forces that gesture set in motion.</p>
+<p class="body-text">This is an epistemology of incremental change through curation rather than control. Design does not fully predict the outcome but instead establishes conditions for outcomes to unfold. It requires a method: to watch, adjust, and to intervene again. The relationship between designer and designed is ongoing, recursive, open to revision.</p>
+<p class="body-text">Venetian architecture and urbanism developed through similar logics. The city was not planned and then built but accumulated through centuries of incremental adjustment. Buildings extended, canals redirected, <em>campi</em> consolidated as conditions changed and opportunities emerged. The Rialto market, the Arsenale, the Ghetto&mdash;each represents not a singular design decision but the crystallization of processes set in motion by earlier interventions. Urban planning in the lagoon has always been a practice of steering rather than determining, of creating conditions within which urban form could emerge.</p>
+<p class="body-text">Contemporary territorial management operates on different assumptions. MOSE, the mobile flood barrier system at the lagoon&rsquo;s three inlets, is predicated on the paradigm of prediction and control: it requires a precise model of future conditions, an engineered solution scaled to the prediction, and the deployment of infrastructure that forecloses other possibilities. Forty years in development, costing billions of euros, instantiating seventy-eight gates that seal the lagoon from the Adriatic when tide predictions exceed threshold values.</p>
+<p class="body-text">The studio does not reject infrastructure or modeling. We ask what it would mean to design architectures, landscapes, and urban systems that <em>learn</em>&mdash;producing systems capable of sensing conditions, responding in real time, and evolving through accumulated feedback. The Dorona vine does not predict where freshwater will be; it senses and grows toward it. The winemaker does not control the vintage; she observes what the season produces and adjusts her practice accordingly. The resulting wine encodes environmental knowledge with tasting notes that index drought years, flood years, and the slow salinization of a changing climate.</p>
+<p class="body-text">What would <em>scomenzar</em> look like for architecture, landscape, and urban form in the twenty-first century lagoon?</p>
+</div>
+</section>
+
+<!-- ====== PROTOTYPES ====== -->
+<section class="page" id="prototypes">
+<h2 class="section-header">Prototypes</h2>
+<div class="two-col">
+<p class="body-text">The studio is grounded in two living prototypes, each a constructed landscape that embodies a distinct relationship between cultivation, architecture, and territory. These sites are not merely case studies to be analyzed but active laboratories where designed interventions have set ecological and economic processes in motion. They demonstrate how a single catalytic gesture can reorganize a territory over decades, and how architecture participates in the life of productive landscapes.</p>
+<p class="body-text"><strong>Torcello</strong> was once the most populous island in the lagoon and the original seat of the bishopric, a thriving city of twenty thousand people sustained by salt production, fishing, and agriculture. Today it holds fewer than twenty permanent residents. The island is not abandoned so much as emptied into silence. But this vacancy is also a clearing, and the traces that remain&mdash;the seventh-century cathedral, the bell tower visible from across the lagoon, the artichoke fields, the overgrown canal edges, the walled garden where Dorona persisted through four centuries of neglect&mdash;make Torcello a uniquely legible site for reimagining what productive settlement in the lagoon might become.</p>
+<p class="body-text"><strong>Venissa</strong> occupies a walled vineyard on the island of Mazzorbo, across the canal from Burano. When the Bisol family acquired the property, they intended to restore a historic vineyard. What they discovered, with the help of agronomists and local knowledge, was a single surviving variety: Dorona di Venezia, a golden-skinned grape that had adapted to the lagoon&rsquo;s salt, tide, and periodic flooding over several centuries. The vineyard today contains fewer than four thousand vines across two acres, but within that modest footprint are thirty distinct microclimates differentiated by inches of elevation. Rootstocks are selected for tolerance to saline groundwater and periodic inundation. Vine spacing, trellising, and pruning are adjusted row by row in response to micro-variations in soil moisture and salt concentration. The wall that encloses the vineyard is not merely a boundary but a microclimate: it modulates wind, retains heat, and slows evaporation. The first contemporary vintage was bottled in 2010, and the wine produced each year is a unique index of the conditions that shaped it&mdash;drought years taste different from flood years, and the slow creep of salinization registers across vintages.</p>
+<p class="body-text">Together, Torcello and Venissa offer complementary models for design intervention in the lagoon. Torcello presents the longue dur&eacute;e: what persists when populations leave, what the ground retains, and how the capacity for reinvention accumulates across centuries. Venissa operates in generational time: what can be cultivated in a decade, what can be revived from near extinction, and how a single designed gesture can set new possibilities in motion.</p>
+</div>
+</section>
+
+<!-- ====== TEMPORALITY ====== -->
+<section class="page" id="temporality">
+<h2 class="section-header">Temporality</h2>
+<div class="two-col">
+<p class="body-text">The lagoon operates on multiple temporal registers simultaneously. There is the rhythm of the tide, the twice-daily pulse of water through the three inlets that raises and lowers the lagoon surface by up to a meter. There is the seasonal cycle: spring freshwater from alpine snowmelt, summer algal blooms in nutrient-rich shallows, autumn bird migrations that fill the barene with widgeon and teal, winter storms that drive seawater into the city. There is the generational scale at which sedimentation reshapes channels and the decadal scale at which climate change alters salinity gradients and species distributions. And there is the millennial scale at which the lagoon itself has existed, a temporary feature in geological time that will eventually become coastal plain, or open water, depending on sea level and sediment supply.</p>
+<p class="body-text">Design in the lagoon must operate across these temporal registers simultaneously. A vineyard that requires twenty years to reach full productivity must be planned alongside century-scale sea level rise projections. A building foundation designed for current <em>acqua alta</em> thresholds must anticipate conditions fifty years from now when those thresholds will be exceeded with increasing frequency. An intervention that structures sedimentation today will reshape channels for decades.</p>
+<p class="body-text">The Venetian concept of <em>tempo</em> is instructive. In the dialect of the lagoon, it refers not to abstract clock time but to the right moment: the tide that makes a channel navigable, the season that makes a fish species available, the weather window for planting or harvesting. Working with <em>tempo</em> means recognizing that design decisions are time-sensitive in ways that exceed conventional project schedules. The studio engages this temporal complexity not as a constraint to be managed but as a generative condition that produces richer, more adaptive proposals.</p>
+</div>
+<blockquote class="pull-quote">A landscape is not a picture but a process, and the processes that shape the lagoon operate across time scales that exceed the human lifespan. To design in this territory is to participate in conversations that began long before we arrived and will continue long after.</blockquote>
+</section>
+
+<!-- ====== EVOLUTION AND FEEDBACK ====== -->
+<section class="page" id="evolution">
+<h2 class="section-header">Evolution &amp; Feedback</h2>
+<div class="two-col">
+<p class="body-text">The lagoon does not respond to design; it absorbs it and continues, altered but not determined by any single intervention. This is the condition that makes Venice such a powerful laboratory: every building, every canal, every reclaimed island has been tested against tidal forces, sediment dynamics, and ecological succession for decades or centuries. The lagoon provides feedback, and the built environment records that feedback in its material condition.</p>
+<p class="body-text">Design in this context requires methods for registering feedback and adjusting in response. This is not iteration in the conventional design sense&mdash;which too often means generating alternatives and selecting among them&mdash;but rather a continuous process of observation, interpretation, and adjustment that persists beyond the project&rsquo;s initial implementation. The winemaker at Venissa does not design the wine; she observes what the season produces and adjusts her practices accordingly. The lagoon farmer who manages a <em>valle da pesca</em> does not control fish populations; she manages water quality, circulation, and harvest timing in response to what the system produces.</p>
+<p class="body-text">The studio adopts this feedback logic as a design methodology. Proposals are expected to articulate not only their initial form but their mechanisms for sensing conditions, registering change, and enabling future adjustment. These mechanisms may be material (foundations that can be raised, channels that self-scour), procedural (seasonal management calendars, harvest protocols), or technological (sensor networks, data platforms, visualization tools). What matters is that the proposal is not a fixed endpoint but an ongoing relationship with territory.</p>
+</div>
+</section>
+
+<!-- ====== STUDIO OBJECTIVES ====== -->
+<section class="page" id="objectives">
+<h2 class="section-header">Studio Objectives</h2>
+<div class="two-col">
+<p class="body-text"><strong>1. Read territory across scales.</strong> Develop the capacity to move between watershed, lagoon, archipelago, and site, understanding how processes at each scale shape conditions at the others. Mapping and representation are treated as primary forms of analysis, not secondary illustration.</p>
+<p class="body-text"><strong>2. Ground design in site-specific knowledge.</strong> Learn the lagoon directly through field observation, material engagement, and sustained attention to environmental conditions. Remote study and archival research are essential but insufficient. The residency is not a field trip; it is the condition of work.</p>
+<p class="body-text"><strong>3. Develop speculative interventions that test ideas.</strong> In the mode of <em>scomenzar</em>, generate proposals that provoke response rather than impose solutions. These interventions should be precise enough to be legible as propositions and open enough to absorb the feedback they generate.</p>
+<p class="body-text"><strong>4. Integrate disciplines at the point of production.</strong> Landscape architecture, architecture, and urban planning are not separate domains in the lagoon, and the studio treats them as integrated dimensions of territorial practice. Proposals should demonstrate fluency across productive systems, settlement patterns, environmental dynamics, and temporal frameworks.</p>
+<p class="body-text"><strong>5. Communicate through multiple media.</strong> Drawings, models, diagrams, maps, written arguments, and digital platforms are all valid forms of design communication. The studio emphasizes representational range: the capacity to select the medium appropriate to the argument being made.</p>
+</div>
+
+<!-- ====== RESEARCH LENSES ====== -->
+<h2 class="section-header" style="margin-top:36px" id="lenses">Research Lenses</h2>
+<div class="two-col">
+<p class="body-text">Teams select one lens from each of the following categories, constructing a focused but interconnected inquiry that traces relationships between the lagoon&rsquo;s environmental dynamics and its patterns of settlement and urban form.</p>
+</div>
+
+<h3 class="subheader">1. Productive Landscapes</h3>
+<div class="two-col">
+<p class="body-text"><strong>Viticulture.</strong> The cultivation of grapes and production of wine as a practice that registers site conditions with unusual precision. What can the Dorona vine teach us about the lagoon&rsquo;s soil, water, and climate? How do viticultural practices&mdash;rootstock selection, vine spacing, trellising, harvest timing&mdash;shape territory? How might the spatial and economic logics of vineyard production be extended to new forms of cultivation and inhabitation?</p>
+<p class="body-text"><strong>Aquaculture.</strong> The raising of fish, shellfish, and aquatic plants in managed water bodies. The lagoon&rsquo;s <em>valli da pesca</em> represent a sophisticated aquaculture tradition refined across centuries. How do managed fisheries interact with wild populations? What are the spatial requirements of different cultivation methods? How might aquaculture infrastructure generate habitat for other species?</p>
+<p class="body-text"><strong>Salt Production.</strong> The evaporation of seawater to produce salt, one of the lagoon&rsquo;s oldest industries. Salt pans are among the most legible productive landscapes: a sequence of basins at precisely calibrated elevations, connected by channels and regulated by sluices. What can salt production teach us about working with evaporation, salinity gradients, and the relationship between infrastructure and topography?</p>
+</div>
+
+<h3 class="subheader">2. Environmental Dynamics</h3>
+<div class="two-col">
+<p class="body-text"><strong>Hydrology and Sedimentation.</strong> Water movement through the lagoon&rsquo;s channel network, and the sediment it carries. The lagoon is a sediment trap, and the distribution of that sediment determines where islands grow, where channels shoal, and where the boundary between land and water shifts. How do interventions in circulation patterns affect sedimentation? What are the implications for site stability, navigation, and habitat?</p>
+<p class="body-text"><strong>Climate and Salinity.</strong> The lagoon&rsquo;s gradient from fresh to salt, shaped by river inputs, tidal exchange, and evaporation. Salinity determines what can grow where, and climate change is shifting this gradient. How is salinity distributed spatially and seasonally? What species and practices are sensitive to these shifts? How might design work with rather than against changing salinity regimes?</p>
+<p class="body-text"><strong>Biodiversity and Habitat.</strong> The lagoon supports remarkable biodiversity despite centuries of intense human use. Migratory birds depend on the barene for stopover habitat. Fish nurseries in the shallows support Adriatic fisheries. Endemic plant species have adapted to the specific conditions of the salt marsh. How do productive landscapes contribute to or compete with habitat provision? How might cultivation and conservation be mutually reinforcing?</p>
+</div>
+
+<h3 class="subheader">3. Territorial Systems</h3>
+<div class="two-col">
+<p class="body-text"><strong>Infrastructure and Networks.</strong> The physical systems that enable movement, communication, and resource distribution through the lagoon. Navigation channels, vaporetto routes, bridges, water supply, and waste management are infrastructures that structure territorial possibility. How do existing networks shape settlement patterns? What new infrastructures would different futures require?</p>
+<p class="body-text"><strong>Settlement and Urban Form.</strong> The patterns of human inhabitation in the lagoon, from the density of Venice to the dispersed fishing settlements of the northern lagoon to the near-abandonment of Torcello. How does urban form respond to environmental conditions? What patterns of settlement are viable under changing climate and economic conditions?</p>
+<p class="body-text"><strong>Governance and Policy.</strong> The institutional frameworks that regulate land use, water management, fishing rights, and environmental protection in the lagoon. Multiple authorities with overlapping jurisdictions shape what is possible. How do governance structures enable or constrain adaptation?</p>
+</div>
+
+<h3 class="subheader">4. Knowledge Practices</h3>
+<div class="two-col">
+<p class="body-text"><strong>Representation.</strong> How the lagoon is mapped and visualized shapes how it is understood and managed. Cartographic conventions, modeling platforms, data collection protocols, and visualization techniques all embed assumptions about what matters. What forms of representation are adequate to the lagoon&rsquo;s complexity? How might new representational methods reveal previously invisible dynamics?</p>
+<p class="body-text"><strong>Sensing and Monitoring.</strong> The technologies and practices through which environmental conditions are registered. From the manual tide gauges of the nineteenth century to contemporary satellite remote sensing and in-situ sensor networks, monitoring produces the data on which management decisions depend. What should be sensed, at what resolution, and for whom?</p>
+<p class="body-text"><strong>Temporal Frameworks.</strong> The ways in which time is conceptualized and operationalized in relation to the lagoon. Tidal calendars, agricultural seasons, generational cycles, and climate projections all encode different temporal frameworks. How do design proposals engage multiple temporal horizons simultaneously?</p>
+</div>
+
+<!-- ====== MODULE STRUCTURE ====== -->
+<h2 class="section-header" style="margin-top:36px" id="modules">Module Structure</h2>
+<div class="two-col">
+<p class="body-text">The semester is organized into three modules, each building on the previous while shifting emphasis from analysis to speculation to synthesis. See the <a href="schedule.html">studio schedule</a> for detailed week-by-week sessions and deliverables.</p>
+</div>
+
+<h3 class="subheader">Module 01: Reading the Territory</h3>
+<div class="metadata">Field Guides, Research Dossiers, and the Grounds of Inquiry &middot; Weeks 1&ndash;4 &middot; Review in Charlottesville</div>
+<div class="two-col">
+<p class="body-text">Module 01 establishes the investigative foundation for the semester. Working in teams, you will develop two complementary instruments for reading the lagoon and its watershed: <strong>Field Guides</strong> that are designed artifacts for use during site visits and will be exchanged between teams, and <strong>Research Dossiers</strong> that are multi-scalar atlases examining the territory through selected lenses spanning productive landscapes, environmental dynamics, territorial systems, and knowledge practices.</p>
+<p class="body-text">Research will operate across four scales: <strong>watershed</strong> (Dolomites to Veneto plain), <strong>lagoon</strong> (the 550 km&sup2; enclosed territory), <strong>archipelago</strong> (Torcello, Mazzorbo, and surrounding islands), and <strong>site</strong> (specific vineyards, settlements, edges, and landscape features). Each team selects one lens from three categories to construct a focused but interconnected inquiry. Investigations should attend to the relationships between territorial dynamics and urban form and how the lagoon&rsquo;s environmental systems have shaped Venice&rsquo;s architecture, public spaces, and patterns of settlement.</p>
+<p class="body-text"><strong>Field Guide Exchange:</strong> Before departure for Italy, each team exchanges their Field Guide with another team. During the residency you will use someone else&rsquo;s guide, bringing your own lens to their observation protocols. This exchange surfaces assumptions embedded in how we choose to observe.</p>
+<p class="body-text"><strong>Deliverables:</strong> Field Guide (physical artifact, designed for field use), Research Dossier (structured atlas across four scales), and Site Model (physical model at appropriate scale).</p>
+</div>
+
+<h3 class="subheader">Module 02: Scomenzar</h3>
+<div class="metadata">Speculative Interventions and Productive Provocations &middot; Weeks 5&ndash;8 &middot; Review in Vicenza</div>
+<div class="two-col">
+<p class="body-text">Module 02 shifts from analysis to speculation. Drawing on your research and fieldwork observations, you will develop speculative interventions for sites within the northern lagoon. These are propositions that test ideas about productive landscape and architecture, settlement and urban form, adaptation, and environmental learning.</p>
+<p class="body-text">The module takes its name from the Venetian practice of initiating change through catalytic gestures: the small cut provokes tidal scour, the planted vine reveals soil conditions, the sensing device makes invisible dynamics legible, the building tests new relationships between structure and ground. Your interventions should operate in this register&mdash;they are not comprehensive solutions but deliberate provocations intended to set processes in motion.</p>
+<p class="body-text"><strong>Deliverables:</strong> Speculative Intervention (drawings, models, and diagrams articulating proposition, site strategy, material logic, and temporal framework), Field Documentation (compiled observations from the residency informing the intervention), and revised Research Dossier incorporating site-specific findings.</p>
+</div>
+
+<h3 class="subheader">Module 03: Productive Futures</h3>
+<div class="metadata">Comprehensive Proposals for the Lagoon&rsquo;s Next Century &middot; Weeks 9&ndash;16 &middot; Mid-review on site (Week 11) &middot; Final Review Charlottesville</div>
+<div class="two-col">
+<p class="body-text">Module 03 synthesizes the semester&rsquo;s work into comprehensive design proposals for productive landscape and settlement in Torcello. Building on your speculative interventions, you will develop proposals that operate across scales, from the territorial (watershed dynamics, lagoon circulation) to the urban (settlement patterns, public space) to the architectural (building systems, material assemblies) to the intimate (cultivation practices, inhabitation patterns).</p>
+<p class="body-text">Proposals should articulate:</p>
+<p class="body-text"><strong>Productive Systems:</strong> What is cultivated? Under what conditions? By whom? At what scales? How do productive landscapes shape settlement and architecture?</p>
+<p class="body-text"><strong>Settlement and Urban Form:</strong> In what patterns should people live in this territory? What forms of public space are appropriate? How do buildings relate to ground and water?</p>
+<p class="body-text"><strong>Environmental Dynamics:</strong> How does the proposal engage hydrology, salinity, sedimentation, and habitat? What environmental processes are harnessed, mitigated, or redirected?</p>
+<p class="body-text"><strong>Temporal Frameworks:</strong> What happens in the first season? The first decade? The first century? How does the proposal learn from its own performance? What feedback mechanisms enable ongoing adjustment?</p>
+<p class="body-text"><strong>Deliverables:</strong> Comprehensive Proposal (drawings at multiple scales, physical models, process diagrams, temporal sequences), Process Book (documenting the semester&rsquo;s research, field work, speculation, and synthesis), and final Research Dossier updated through all three modules.</p>
+</div>
+</section>
+
+<div class="page-footer">
+<p>ALAR 4010 / 8010 &middot; Productive Landscapes of the Lagoon &middot; Fall 2026</p>
+<p>Bradley Cantrell, William Sherman, Sandro Bisa &middot; University of Virginia</p>
+<p style="margin-top:8px">This syllabus is the first year of a three-year research program: 001 Viticulture and Productive Landscapes &middot; 002 Mobility and Circulatory Systems &middot; 003 Habitats and Multi-Species Territories</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700">
+<defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0f1620"/>
+      <stop offset="100%" stop-color="#05080c"/>
+    </radialGradient>
+    <!-- Soft glow for water interface -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Atmospheric grain -->
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="3" result="noise"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.18  0 0 0 0 0.22  0 0 0 0 0.28  0 0 0 0.15 0" in="noise" result="colored"/>
+      <feBlend in="SourceGraphic" in2="colored" mode="multiply"/>
+    </filter>
+    <!-- Water interface blur -->
+    <filter id="waterBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <!-- Lens glow -->
+    <filter id="lensGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Freshwater gradient -->
+    <radialGradient id="freshGrad" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#7ec8f8" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#5aa0c0" stop-opacity="0.65"/>
+      <stop offset="55%" stop-color="#3a7088" stop-opacity="0.35"/>
+      <stop offset="80%" stop-color="#1a4058" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0a1a28" stop-opacity="0.03"/>
+    </radialGradient>
+    <!-- Saltwater gradient -->
+    <linearGradient id="saltGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a5a78"/>
+      <stop offset="40%" stop-color="#0a3050"/>
+      <stop offset="100%" stop-color="#041020"/>
+    </linearGradient>
+    <!-- Soil gradient -->
+    <linearGradient id="soilGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(60,45,30,0.7)"/>
+      <stop offset="100%" stop-color="rgba(25,18,10,0.4)"/>
+    </linearGradient>
+    <!-- Salt crystal pattern -->
+    <pattern id="saltCrystal" width="24" height="24" patternUnits="userSpaceOnUse">
+      <line x1="2" y1="12" x2="12" y2="2" stroke="#4a90c0" stroke-width="0.25" opacity="0.15"/>
+      <line x1="12" y1="2" x2="22" y2="12" stroke="#4a90c0" stroke-width="0.25" opacity="0.15"/>
+    </pattern>
+    <!-- Sand texture -->
+    <pattern id="sandTex" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="4" r="0.4" fill="#8a7a5a" opacity="0.2"/>
+      <circle cx="10" cy="8" r="0.3" fill="#9a8a6a" opacity="0.15"/>
+      <circle cx="6" cy="13" r="0.35" fill="#7a6a4a" opacity="0.18"/>
+    </pattern>
+    <!-- Caranto pattern (compacted paleosol) -->
+    <pattern id="carantoTex" width="20" height="8" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="20" height="3" fill="#806040" opacity="0.3"/>
+      <rect x="5" y="4" width="10" height="2" fill="#6a4a30" opacity="0.25"/>
+    </pattern>
+    <!-- Rain arrow marker -->
+    <marker id="arrowDown" markerWidth="6" markerHeight="6" refX="3" refY="0" orient="auto">
+      <path d="M0,0 L3,6 L6,0" fill="rgba(160,200,220,0.4)"/>
+    </marker>
+    <marker id="arrowUp" markerWidth="6" markerHeight="6" refX="3" refY="6" orient="auto">
+      <path d="M0,6 L3,0 L6,6" fill="rgba(200,80,60,0.4)"/>
+    </marker>
+  </defs>
+<rect width="1600" height="700" fill="url(#bg)"/>
+<rect width="1600" height="700" fill="none" filter="url(#grain)" opacity="0.5"/>
+<text x="800" y="32" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="4">FRESHWATER LENS — LAGOON ISLANDS</text>
+<text x="800" y="47" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2.5">GHYBEN-HERZBERG LENS DYNAMICS — THE FRESHWATER THAT FLOATS ON SALT</text>
+<text x="249" y="93" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">LENS FORMATION</text>
+<text x="249" y="105" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1.5">PRECIPITATION → INFILTRATION → BUOYANT LENS</text>
+<rect x="72" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<line x1="169" y1="119" x2="168" y2="131" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="139" x2="168" y2="151" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="159" x2="168" y2="171" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="179" x2="168" y2="191" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="199" x2="168" y2="211" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="219" x2="168" y2="231" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="239" x2="168" y2="251" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="169" y1="259" x2="168" y2="271" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="147" x2="196" y2="159" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="167" x2="196" y2="179" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="187" x2="196" y2="199" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="207" x2="196" y2="219" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="227" x2="196" y2="239" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="247" x2="196" y2="259" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="197" y1="267" x2="196" y2="279" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="135" x2="224" y2="147" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="155" x2="224" y2="167" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="175" x2="224" y2="187" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="195" x2="224" y2="207" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="215" x2="224" y2="227" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="235" x2="224" y2="247" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="255" x2="224" y2="267" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="225" y1="275" x2="224" y2="287" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="123" x2="252" y2="135" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="143" x2="252" y2="155" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="163" x2="252" y2="175" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="183" x2="252" y2="195" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="203" x2="252" y2="215" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="223" x2="252" y2="235" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="243" x2="252" y2="255" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="253" y1="263" x2="252" y2="275" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="111" x2="280" y2="123" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="131" x2="280" y2="143" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="151" x2="280" y2="163" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="171" x2="280" y2="183" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="191" x2="280" y2="203" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="211" x2="280" y2="223" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="231" x2="280" y2="243" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="281" y1="251" x2="280" y2="263" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="139" x2="308" y2="151" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="159" x2="308" y2="171" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="179" x2="308" y2="191" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="199" x2="308" y2="211" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="219" x2="308" y2="231" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="239" x2="308" y2="251" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="259" x2="308" y2="271" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<line x1="309" y1="279" x2="308" y2="291" stroke="rgba(160,200,230,0.25)" stroke-width="0.6"/>
+<ellipse cx="179" cy="105" rx="57" ry="8" fill="rgba(120,150,180,0.12)"/>
+<ellipse cx="191" cy="101" rx="39.9" ry="6" fill="rgba(140,170,200,0.10)"/>
+<ellipse cx="229" cy="105" rx="47" ry="8" fill="rgba(120,150,180,0.12)"/>
+<ellipse cx="241" cy="101" rx="32.9" ry="6" fill="rgba(140,170,200,0.10)"/>
+<ellipse cx="289" cy="105" rx="47" ry="8" fill="rgba(120,150,180,0.12)"/>
+<ellipse cx="301" cy="101" rx="32.9" ry="6" fill="rgba(140,170,200,0.10)"/>
+<text x="249" y="115" text-anchor="middle" fill="rgba(160,200,220,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="3" >PRECIPITATION</text>
+<text x="249" y="126" text-anchor="middle" fill="rgba(160,200,220,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >~750 mm/yr</text>
+<path d="M87,305 Q249,287 412,305" fill="none" stroke="rgba(180,160,120,0.5)" stroke-width="1.5"/>
+<text x="249" y="283" text-anchor="middle" fill="rgba(200,180,150,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="2" >GROUND SURFACE</text>
+<path d="M87,300 Q249,318 412,300 L412,365 L87,365 Z" fill="rgba(50,40,30,0.5)" opacity="0.6"/>
+<line x1="179" y1="307" x2="179" y2="350" stroke="rgba(160,200,230,0.3)" stroke-width="0.8" marker-end="url(#arrowDown)"/>
+<line x1="204" y1="307" x2="204" y2="350" stroke="rgba(160,200,230,0.3)" stroke-width="0.8" marker-end="url(#arrowDown)"/>
+<line x1="229" y1="307" x2="229" y2="350" stroke="rgba(160,200,230,0.3)" stroke-width="0.8" marker-end="url(#arrowDown)"/>
+<line x1="254" y1="307" x2="254" y2="350" stroke="rgba(160,200,230,0.3)" stroke-width="0.8" marker-end="url(#arrowDown)"/>
+<line x1="279" y1="307" x2="279" y2="350" stroke="rgba(160,200,230,0.3)" stroke-width="0.8" marker-end="url(#arrowDown)"/>
+<line x1="304" y1="307" x2="304" y2="350" stroke="rgba(160,200,230,0.3)" stroke-width="0.8" marker-end="url(#arrowDown)"/>
+<text x="249" y="363" text-anchor="middle" fill="rgba(160,200,220,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="2" >INFILTRATION</text>
+<ellipse cx="249" cy="420" rx="115" ry="45" fill="url(#freshGrad)" filter="url(#lensGlow)"/>
+<ellipse cx="249" cy="420" rx="115" ry="45" fill="none" stroke="rgba(126,200,248,0.4)" stroke-width="1" stroke-dasharray="6,3"/>
+<text x="249" y="368" text-anchor="middle" fill="#a0d8f8" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600" letter-spacing="3" >FRESHWATER LENS</text>
+<text x="249" y="380" text-anchor="middle" fill="rgba(160,216,248,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1" >ρ = 1.000 g/cm³</text>
+<rect x="87" y="460" width="325" height="95" fill="url(#saltGrad)"/>
+<rect x="87" y="460" width="325" height="95" fill="url(#saltCrystal)"/>
+<text x="249" y="500" text-anchor="middle" fill="rgba(90,160,190,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600" letter-spacing="4" >SALT WATER</text>
+<text x="249" y="515" text-anchor="middle" fill="rgba(90,160,190,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1" >ρ = 1.025 g/cm³  ·  ~35 g/L NaCl</text>
+<line x1="107" y1="335" x2="392" y2="335" stroke="rgba(126,200,248,0.3)" stroke-width="0.5" stroke-dasharray="8,4"/>
+<text x="387" y="332" text-anchor="end" fill="rgba(126,200,248,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >water table</text>
+<rect x="179" y="575" width="140" height="42" rx="2" fill="rgba(10,15,25,0.7)" stroke="rgba(255,255,255,0.08)" stroke-width="0.3"/>
+<text x="249" y="589" text-anchor="middle" fill="rgba(126,200,248,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="2" >GHYBEN-HERZBERG</text>
+<text x="249" y="603" text-anchor="middle" fill="#7ec8f8" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1" >h_fresh ≈ 40 × h_surface</text>
+<text x="617" y="93" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">TORCELLO CROSS-SECTION</text>
+<text x="617" y="105" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1.5">STRATIGRAPHY · ROOT ZONE · CARANTO AQUITARD</text>
+<rect x="440" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<line x1="448" y1="245" x2="787" y2="245" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" stroke-dasharray="10,4"/>
+<text x="456" y="242" text-anchor="start" fill="rgba(255,255,255,0.45)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="3" >MEAN SEA LEVEL</text>
+<path d="M452,217 Q617,202 783,217" fill="none" stroke="rgba(180,160,120,0.5)" stroke-width="1.5"/>
+<line x1="557" y1="212" x2="557" y2="195" stroke="#4a3a2a" stroke-width="2"/>
+<ellipse cx="557" cy="189" rx="9" ry="11" fill="rgba(30,50,20,0.5)"/>
+<ellipse cx="557" cy="185" rx="7" ry="8" fill="rgba(40,65,25,0.4)"/>
+<line x1="597" y1="212" x2="597" y2="195" stroke="#4a3a2a" stroke-width="2"/>
+<ellipse cx="597" cy="189" rx="9" ry="11" fill="rgba(30,50,20,0.5)"/>
+<ellipse cx="597" cy="185" rx="7" ry="8" fill="rgba(40,65,25,0.4)"/>
+<line x1="637" y1="212" x2="637" y2="195" stroke="#4a3a2a" stroke-width="2"/>
+<ellipse cx="637" cy="189" rx="9" ry="11" fill="rgba(30,50,20,0.5)"/>
+<ellipse cx="637" cy="185" rx="7" ry="8" fill="rgba(40,65,25,0.4)"/>
+<line x1="677" y1="212" x2="677" y2="195" stroke="#4a3a2a" stroke-width="2"/>
+<ellipse cx="677" cy="189" rx="9" ry="11" fill="rgba(30,50,20,0.5)"/>
+<ellipse cx="677" cy="185" rx="7" ry="8" fill="rgba(40,65,25,0.4)"/>
+<path d="M577,225 Q567,255 547,275" fill="none" stroke="rgba(160,140,100,0.4)" stroke-width="0.6"/>
+<path d="M637,225 Q647,255 667,275" fill="none" stroke="rgba(160,140,100,0.4)" stroke-width="0.6"/>
+<text x="557" y="280" text-anchor="end" fill="rgba(200,180,150,0.45)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >ROOT ZONE</text>
+<rect x="455" y="222" width="325" height="38" fill="url(#sandTex)" opacity="0.5"/>
+<rect x="455" y="222" width="325" height="38" fill="rgba(70,60,45,0.25)"/>
+<text x="775" y="234" text-anchor="end" fill="rgba(180,160,120,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >SAND / ANTHROPIC FILL</text>
+<rect x="455" y="260" width="325" height="55" fill="rgba(60,50,40,0.45)"/>
+<text x="775" y="278" text-anchor="end" fill="rgba(150,140,120,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >LAGOON CLAY / SILT</text>
+<rect x="455" y="315" width="325" height="18" fill="url(#carantoTex)"/>
+<rect x="455" y="315" width="325" height="18" fill="#806040" opacity="0.25"/>
+<text x="775" y="325" text-anchor="end" fill="#a08060" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="600" letter-spacing="3" >CARANTO</text>
+<text x="775" y="335" text-anchor="end" fill="rgba(160,128,96,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="1" font-style="italic" >compacted paleosol</text>
+<rect x="455" y="333" width="325" height="214" fill="rgba(50,55,60,0.35)"/>
+<rect x="455" y="333" width="325" height="214" fill="url(#saltCrystal)"/>
+<text x="775" y="353" text-anchor="end" fill="rgba(140,150,160,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >MARINE SAND/SILT</text>
+<ellipse cx="617" cy="267" rx="130" ry="38" fill="url(#freshGrad)" filter="url(#lensGlow)"/>
+<ellipse cx="617" cy="267" rx="130" ry="38" fill="none" stroke="rgba(126,200,248,0.35)" stroke-width="0.8" stroke-dasharray="5,3"/>
+<text x="617" y="264" text-anchor="middle" fill="#a0d8f8" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="600" letter-spacing="2" >FRESHWATER</text>
+<text x="617" y="275" text-anchor="middle" fill="#a0d8f8" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="600" letter-spacing="2" >LENS</text>
+<text x="490" y="398" text-anchor="middle" fill="rgba(90,160,190,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="2" >SALTWATER-SATURATED</text>
+<text x="490" y="411" text-anchor="middle" fill="rgba(90,160,190,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="2" >BELOW CARANTO</text>
+<line x1="783" y1="217" x2="783" y2="547" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+<line x1="779" y1="217" x2="783" y2="217" stroke="rgba(255,255,255,0.15)" stroke-width="0.3"/>
+<text x="777" y="220" text-anchor="end" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="400" letter-spacing="0" >0m</text>
+<line x1="779" y1="245" x2="783" y2="245" stroke="rgba(255,255,255,0.15)" stroke-width="0.3"/>
+<text x="777" y="248" text-anchor="end" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="400" letter-spacing="0" >0.3m</text>
+<line x1="779" y1="315" x2="783" y2="315" stroke="rgba(255,255,255,0.15)" stroke-width="0.3"/>
+<text x="777" y="318" text-anchor="end" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="400" letter-spacing="0" >1.2m</text>
+<line x1="779" y1="333" x2="783" y2="333" stroke="rgba(255,255,255,0.15)" stroke-width="0.3"/>
+<text x="777" y="336" text-anchor="end" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="400" letter-spacing="0" >1.5m</text>
+<line x1="779" y1="507" x2="783" y2="507" stroke="rgba(255,255,255,0.15)" stroke-width="0.3"/>
+<text x="777" y="510" text-anchor="end" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="4.5" font-weight="400" letter-spacing="0" >4m</text>
+<text x="985" y="93" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">WELL EXTRACTION</text>
+<text x="985" y="105" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1.5">DRAWDOWN · UPCONING · GHybEN-HERZBERG PRINCIPLE</text>
+<rect x="808" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<path d="M820,205 Q985,193 1151,205" fill="none" stroke="rgba(180,160,120,0.5)" stroke-width="1.5"/>
+<line x1="816" y1="225" x2="1155" y2="225" stroke="rgba(255,255,255,0.4)" stroke-width="0.7" stroke-dasharray="8,3"/>
+<text x="826" y="222" text-anchor="start" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >MSL</text>
+<ellipse cx="985" cy="275" rx="125" ry="55" fill="url(#freshGrad)" filter="url(#lensGlow)"/>
+<ellipse cx="985" cy="275" rx="125" ry="55" fill="none" stroke="rgba(126,200,248,0.35)" stroke-width="0.8" stroke-dasharray="5,3"/>
+<text x="985" y="267" text-anchor="middle" fill="#a0d8f8" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="2" >FRESHWATER LENS</text>
+<rect x="823" y="325" width="325" height="230" fill="url(#saltGrad)"/>
+<rect x="823" y="325" width="325" height="230" fill="url(#saltCrystal)"/>
+<text x="985" y="375" text-anchor="middle" fill="rgba(90,160,190,0.45)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600" letter-spacing="4" >SALT WATER</text>
+<rect x="980" y="175" width="10" height="30" rx="1" fill="rgba(80,70,60,0.6)" stroke="rgba(120,110,100,0.5)" stroke-width="0.5"/>
+<rect x="977" y="169" width="16" height="6" rx="1" fill="rgba(100,85,70,0.6)" stroke="rgba(140,125,110,0.5)" stroke-width="0.5"/>
+<line x1="985" y1="205" x2="985" y2="285" stroke="rgba(100,90,80,0.5)" stroke-width="3"/>
+<line x1="985" y1="205" x2="985" y2="285" stroke="rgba(140,130,120,0.3)" stroke-width="1"/>
+<line x1="979" y1="277" x2="991" y2="277" stroke="rgba(100,200,240,0.3)" stroke-width="0.8"/>
+<line x1="979" y1="281" x2="991" y2="281" stroke="rgba(100,200,240,0.3)" stroke-width="0.8"/>
+<line x1="979" y1="285" x2="991" y2="285" stroke="rgba(100,200,240,0.3)" stroke-width="0.8"/>
+<path d="M985,280 Q949.0,280.0 925,280" fill="none" stroke="rgba(126,200,248,0.2)" stroke-width="0.5" stroke-dasharray="3,4"/>
+<path d="M985,280 Q1021.0,280.0 1045,280" fill="none" stroke="rgba(126,200,248,0.2)" stroke-width="0.5" stroke-dasharray="3,4"/>
+<path d="M985,288 Q949.0,293.6 925,304" fill="none" stroke="rgba(126,200,248,0.2)" stroke-width="0.5" stroke-dasharray="3,4"/>
+<path d="M985,288 Q1021.0,293.6 1045,304" fill="none" stroke="rgba(126,200,248,0.2)" stroke-width="0.5" stroke-dasharray="3,4"/>
+<path d="M985,296 Q949.0,307.2 925,328" fill="none" stroke="rgba(126,200,248,0.2)" stroke-width="0.5" stroke-dasharray="3,4"/>
+<path d="M985,296 Q1021.0,307.2 1045,328" fill="none" stroke="rgba(126,200,248,0.2)" stroke-width="0.5" stroke-dasharray="3,4"/>
+<text x="915" y="247" text-anchor="middle" fill="rgba(126,200,248,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >DRAWDOWN CONE</text>
+<path d="M970,385 Q980,360 985,335" fill="none" stroke="rgba(200,80,60,0.3)" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arrowUp)"/>
+<path d="M1000,385 Q990,360 985,335" fill="none" stroke="rgba(200,80,60,0.3)" stroke-width="0.8" stroke-dasharray="4,3"/>
+<text x="1020" y="360" text-anchor="middle" fill="rgba(200,80,60,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >RISK OF</text>
+<text x="1020" y="372" text-anchor="middle" fill="rgba(200,80,60,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >UPCONING</text>
+<text x="985" y="157" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="1">PUMP RATE</text>
+<text x="985" y="167" text-anchor="middle" fill="rgba(126,200,248,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1">Q</text>
+<rect x="905" y="500" width="160" height="42" rx="2" fill="rgba(10,15,25,0.7)" stroke="rgba(255,255,255,0.08)" stroke-width="0.3"/>
+<text x="985" y="512" text-anchor="middle" fill="rgba(200,140,80,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1" >IF Q EXCEEDS RECHARGE:</text>
+<text x="985" y="526" text-anchor="middle" fill="#c87850" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="2" >SALTWATER UPCONING</text>
+<text x="985" y="538" text-anchor="middle" fill="rgba(200,100,60,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >LENS BREACH → WELL FAILURE</text>
+<text x="1353" y="93" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">FUTURE TRAJECTORIES</text>
+<text x="1353" y="105" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1.5">SEA LEVEL RISE · LENS THINNING · SALTWATER INTRUSION</text>
+<rect x="1176" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<path d="M1188,220 Q1353,210 1519,220" fill="none" stroke="rgba(180,160,120,0.5)" stroke-width="1.5"/>
+<line x1="1184" y1="238" x2="1523" y2="238" stroke="rgba(255,255,255,0.35)" stroke-width="0.7" stroke-dasharray="8,4"/>
+<text x="1194" y="235" text-anchor="start" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >PRESENT</text>
+<line x1="1184" y1="256" x2="1523" y2="256" stroke="rgba(200,160,80,0.35)" stroke-width="0.7" stroke-dasharray="6,3"/>
+<text x="1194" y="253" text-anchor="start" fill="rgba(200,160,80,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >2050 +30cm</text>
+<line x1="1184" y1="286" x2="1523" y2="286" stroke="rgba(200,80,60,0.35)" stroke-width="0.7" stroke-dasharray="4,2"/>
+<text x="1194" y="283" text-anchor="start" fill="rgba(200,80,60,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="2" >2100 +80cm</text>
+<ellipse cx="1353" cy="275" rx="120" ry="48" fill="url(#freshGrad)" opacity="0.25" filter="url(#lensGlow)"/>
+<ellipse cx="1353" cy="275" rx="120" ry="48" fill="none" stroke="rgba(126,200,248,0.25)" stroke-width="0.6" stroke-dasharray="4,3"/>
+<text x="1353" y="222" text-anchor="middle" fill="rgba(160,216,248,0.45)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="2" >PRESENT LENS</text>
+<ellipse cx="1353" cy="295" rx="95" ry="32" fill="url(#freshGrad)" opacity="0.18" filter="url(#lensGlow)"/>
+<ellipse cx="1353" cy="295" rx="95" ry="32" fill="none" stroke="rgba(180,140,60,0.3)" stroke-width="0.6" stroke-dasharray="3,2"/>
+<text x="1353" y="259" text-anchor="middle" fill="rgba(200,160,80,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="2" >2050</text>
+<ellipse cx="1353" cy="325" rx="60" ry="20" fill="url(#freshGrad)" opacity="0.12" filter="url(#lensGlow)"/>
+<ellipse cx="1353" cy="325" rx="60" ry="20" fill="none" stroke="rgba(200,80,60,0.3)" stroke-width="0.6" stroke-dasharray="2,2"/>
+<text x="1353" y="303" text-anchor="middle" fill="rgba(200,80,60,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="2" >2100</text>
+<rect x="1191" y="350" width="325" height="205" fill="url(#saltGrad)"/>
+<rect x="1191" y="350" width="325" height="205" fill="url(#saltCrystal)"/>
+<path d="M1323,395 L1323,355" fill="none" stroke="rgba(200,80,60,0.25)" stroke-width="0.7" marker-end="url(#arrowUp)"/>
+<path d="M1383,395 L1383,355" fill="none" stroke="rgba(200,80,60,0.25)" stroke-width="0.7" marker-end="url(#arrowUp)"/>
+<text x="1353" y="415" text-anchor="middle" fill="rgba(200,80,60,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="3" >SALTWATER</text>
+<text x="1353" y="428" text-anchor="middle" fill="rgba(200,80,60,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="3" >INTRUSION</text>
+<circle cx="1436" cy="315" r="2.5" fill="#a0d8f8" opacity="0.5"/>
+<text x="1444" y="312" text-anchor="start" fill="#a0d8f8" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="600" letter-spacing="1" >PRESENT</text>
+<text x="1444" y="323" text-anchor="start" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="0" >Lens thickness: ~2.5m</text>
+<text x="1444" y="333" text-anchor="start" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="0" >Cultivation viable</text>
+<circle cx="1436" cy="365" r="2.5" fill="#c8a050" opacity="0.5"/>
+<text x="1444" y="362" text-anchor="start" fill="#c8a050" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="600" letter-spacing="1" >2050</text>
+<text x="1444" y="373" text-anchor="start" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="0" >Lens thickness: ~1.2m</text>
+<text x="1444" y="383" text-anchor="start" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="0" >Root zone stressed</text>
+<circle cx="1436" cy="415" r="2.5" fill="#c8503c" opacity="0.5"/>
+<text x="1444" y="412" text-anchor="start" fill="#c8503c" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="600" letter-spacing="1" >2100</text>
+<text x="1444" y="423" text-anchor="start" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="0" >Lens thickness: ~0.4m</text>
+<text x="1444" y="433" text-anchor="start" fill="rgba(255,255,255,0.2)" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="0" >Cultivation failure</text>
+<rect x="1263" y="500" width="180" height="42" rx="2" fill="rgba(10,15,25,0.7)" stroke="rgba(200,80,60,0.15)" stroke-width="0.5"/>
+<text x="1353" y="512" text-anchor="middle" fill="rgba(200,80,60,0.55)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="600" letter-spacing="1" >RCP 8.5: +0.8–1.1m BY 2100</text>
+<text x="1353" y="526" text-anchor="middle" fill="rgba(200,160,80,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >ACQUA ALTA FREQUENCY: 5× → 200×/yr</text>
+<text x="1353" y="538" text-anchor="middle" fill="rgba(200,100,60,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >LENS RECOVERY TIME EXCEEDS FLOOD INTERVAL</text>
+<line x1="427" y1="315" x2="440" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+<line x1="795" y1="315" x2="808" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+<line x1="1163" y1="315" x2="1176" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+<polygon points="436,311 436,319 440,315" fill="rgba(255,255,255,0.06)"/>
+<polygon points="804,311 804,319 808,315" fill="rgba(255,255,255,0.06)"/>
+<polygon points="1172,311 1172,319 1176,315" fill="rgba(255,255,255,0.06)"/>
+<rect x="390" y="603" width="820" height="28" rx="3" fill="rgba(6,12,18,0.5)" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"/>
+<rect x="410" y="611" width="14" height="12" rx="1" fill="#5aa0c0" opacity="0.6"/>
+<text x="490" y="620" text-anchor="start" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >Freshwater</text>
+<rect x="590" y="611" width="14" height="12" rx="1" fill="#3a8090" opacity="0.6"/>
+<text x="665" y="620" text-anchor="start" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >Saltwater</text>
+<rect x="750" y="611" width="14" height="12" rx="1" fill="#806040" opacity="0.6"/>
+<text x="820" y="620" text-anchor="start" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >Caranto</text>
+<rect x="890" y="611" width="14" height="12" rx="1" fill="rgba(50,40,30,0.7)" opacity="0.6"/>
+<text x="985" y="620" text-anchor="start" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >Soil / Sediment</text>
+<rect x="1070" y="611" width="14" height="12" rx="1" fill="#c87850" opacity="0.6"/>
+<text x="1170" y="620" text-anchor="start" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="400" letter-spacing="1" >Upconing Risk</text>
+<text x="800" y="648" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="1">Data: Ghyben (1888) · Herzberg (1901) · CNR-ISMAR lagoon stratigraphy · IPCC AR6 RCP 8.5 projections · Venissa estate well logs</text>
+</svg>

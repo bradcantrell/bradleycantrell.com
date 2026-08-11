@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venice Program — University of Virginia Fall 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E61C1C;
+  --red-city:#9B1B1B;
+  --red-building:#C44A2A;
+  --red-art:#D4686A;
+  --black:#121212;
+  --white:#FAFAFA;
+  --dark-grey:#555;
+  --light-grey:#CCC
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto','Helvetica Neue',sans-serif;font-size:10pt;line-height:1.5;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+.page{max-width:1120px;margin:0 auto;padding:48px 56px 42px}
+.display{font-family:'Play','Montserrat',sans-serif;font-weight:700;font-size:48px;line-height:.95;letter-spacing:.04em;color:var(--red);text-transform:uppercase}
+.display-sub{font-family:'Play','Montserrat',sans-serif;font-weight:700;font-size:18px;color:var(--black);margin-bottom:4px}
+.metadata{font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.body-text{font-size:10pt;line-height:1.5;color:var(--black);margin-bottom:6px;max-width:65ch}
+.section-header{font-family:'Roboto',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--dark-grey);text-transform:uppercase;margin-bottom:12px;margin-top:42px;padding-bottom:6px;border-bottom:1px solid var(--light-grey)}
+.section-header:first-of-type{margin-top:0}
+.two-col{column-count:2;column-gap:36px;margin-top:8px}
+.two-col .body-text{break-inside:avoid}
+.page-footer{margin-top:48px;padding-top:18px;font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em;border-top:1px solid var(--light-grey)}
+
+/* NAV */
+nav.program-nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.96);border-bottom:1px solid var(--light-grey);padding:10px 24px;font-size:8pt;text-transform:uppercase;letter-spacing:.05em;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;overflow-x:auto}
+nav.program-nav a{color:var(--dark-grey);text-decoration:none;white-space:nowrap;padding:2px 0;border-bottom:1px solid transparent}
+nav.program-nav a:hover,nav.program-nav a.active{color:var(--red);border-bottom:1px solid var(--red)}
+nav.program-nav .nav-home{font-weight:700}
+
+/* COURSE CARDS */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:16px;margin-top:16px}
+.course-card{border:1px solid var(--light-grey);padding:24px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:border-color .2s}
+.course-card:hover{border-color:var(--dark-grey)}
+.course-card .course-code{font-size:7pt;text-transform:uppercase;letter-spacing:.08em;color:var(--dark-grey)}
+.course-card .course-title{font-size:14pt;font-weight:700;color:var(--black);line-height:1.2}
+.course-card .course-instructor{font-size:9pt;color:var(--dark-grey);margin-top:2px}
+.course-card .course-time{font-size:8pt;color:var(--dark-grey)}
+.course-card .course-desc{font-size:9pt;color:var(--black);line-height:1.55;margin-top:4px}
+.course-card .course-accent{height:3px;width:40px;margin-bottom:4px}
+.accent-studio{background:var(--red)}
+.accent-city{background:var(--red-city)}
+.accent-building{background:var(--red-building)}
+.accent-art{background:var(--red-art)}
+
+/* TIMELINE */
+.timeline{display:flex;gap:0;margin:18px 0;border:1px solid var(--light-grey);font-size:8pt;overflow:hidden}
+.timeline div{padding:12px 16px;text-align:center;text-transform:uppercase;letter-spacing:.04em;flex:1}
+.timeline .cville{background:var(--white);color:var(--dark-grey)}
+.timeline .italy{background:var(--red);color:var(--white);font-weight:700}
+.timeline .cville-return{background:var(--white);color:var(--dark-grey)}
+
+@media print{
+@page{size:letter portrait;margin:15mm}
+body{font-size:10pt;color:#121212;background:#fff}
+nav.program-nav{display:none}
+.page{max-width:none;padding:0}
+.display{font-size:36pt}
+.course-grid{grid-template-columns:1fr 1fr;gap:8px}
+.course-card{padding:16px;break-inside:avoid}
+.page-footer{display:none}
+}
+@media(prefers-color-scheme:dark){
+body{background:var(--black);color:var(--white)}
+.body-text{color:#ddd}
+.display-sub{color:var(--white)}
+.section-header{color:#999;border-color:#333}
+.course-card{border-color:#333;background:#151515}
+.course-card:hover{border-color:#555}
+.course-card .course-title{color:var(--white)}
+.course-card .course-desc{color:#ccc}
+.course-card .course-instructor,.course-card .course-time{color:#999}
+nav.program-nav{background:rgba(18,18,18,.96);border-color:#333}
+nav.program-nav a{color:#999}
+.page-footer{border-color:#333}
+.timeline{border-color:#333}
+.timeline .cville,.timeline .cville-return{background:var(--black);color:#999}
+}
+@media(max-width:800px){
+.page{padding:24px 20px}
+.display{font-size:30px}
+.course-grid{grid-template-columns:1fr}
+.two-col{column-count:1}
+.timeline{flex-direction:column;font-size:7pt}
+}
+</style>
+</head>
+<body>
+
+<nav class="program-nav">
+<a href="index.html" class="nav-home active">Venice Program</a>
+<a href="residency.html">Residency</a>
+<a href="schedule.html">Schedule</a>
+<a href="studio/">Studio</a>
+<a href="city-and-landscape/">City &amp; Landscape</a>
+<a href="building-venice/">Building Venice</a>
+<a href="art-architecture/">Art &amp; Architecture</a> <a href="map.html">Map</a> <a href="student-work.html">Student Work</a>
+</nav>
+
+<section class="page">
+
+<div class="metadata" style="margin-top:18px">University of Virginia &middot; Fall 2026 &middot; Charlottesville + Venice, Italy</div>
+<h1 class="display">Venice<br>Program</h1>
+<p class="body-text" style="margin-top:8px;font-size:11pt;color:#555">A semester-long program exploring the Venice Lagoon through landscape architecture, architecture, and art history. Four courses, six faculty, and a seven-week residency in the lagoon.</p>
+
+<div class="timeline">
+<div class="cville">Charlottesville<br>Aug 25 – Sep 17<br>4 weeks</div>
+<div class="italy">Italy Residency<br>Sep 19 – Nov 7<br>7 weeks</div>
+<div class="cville-return">Charlottesville<br>Nov 10 – Dec 8<br>5 weeks</div>
+</div>
+
+<h2 class="section-header">Courses</h2>
+<div class="course-grid">
+
+<a href="studio/" class="course-card">
+  <div class="course-accent accent-studio"></div>
+  <div class="course-code">ALAR 8010 / 4010 &middot; Research Studio</div>
+  <div class="course-title">Productive Landscapes of the Lagoon</div>
+  <div class="course-instructor">Bradley Cantrell, William Sherman, Sandro Bisa</div>
+  <div class="course-time">Tue + Thu &middot; 12:30–5:00 PM</div>
+  <div class="course-desc">A research studio examining the northern Venice Lagoon as a productive landscape, exploring the design space between infrastructure and ecological process in a territory shaped by centuries of sediment choreography.</div>
+</a>
+
+<a href="city-and-landscape/" class="course-card">
+  <div class="course-accent accent-city"></div>
+  <div class="course-code">ALAR 5403 &middot; Seminar</div>
+  <div class="course-title">City and Landscape</div>
+  <div class="course-instructor">Bradley Cantrell</div>
+  <div class="course-time">Tue &middot; 9:30 AM–12:00 PM</div>
+  <div class="course-desc">A field work course engaging the Venetian lagoon as a living laboratory for reading territory. Through direct observation, drawing, mapping, and structured field exercises, students develop practices of attention essential to working in complex landscapes.</div>
+</a>
+
+<a href="building-venice/" class="course-card">
+  <div class="course-accent accent-building"></div>
+  <div class="course-code">ALAR 5203 &middot; Seminar</div>
+  <div class="course-title">Building Venice</div>
+  <div class="course-instructor">William Sherman</div>
+  <div class="course-time">Fri &middot; 9:00–11:30 AM</div>
+  <div class="course-desc">An investigation of Venetian architecture as territorial practice, examining how the city's buildings, public spaces, and construction techniques emerged from and respond to the lagoon's particular environmental conditions.</div>
+</a>
+
+<a href="art-architecture/" class="course-card">
+  <div class="course-accent accent-art"></div>
+  <div class="course-code">ARH 5201 &middot; Seminar</div>
+  <div class="course-title">Art and Architecture of Venice</div>
+  <div class="course-instructor">Monica Shenouda</div>
+  <div class="course-time">Wed &middot; 9:00–11:30 AM</div>
+  <div class="course-desc">A survey of Venetian art and architecture from its Byzantine origins through the modern era, read through the city's buildings, paintings, mosaics, and public spaces as primary texts.</div>
+</a>
+
+</div>
+
+<h2 class="section-header">Key Dates</h2>
+<div class="two-col">
+<p class="body-text"><strong>Aug 25</strong> – Classes begin in Charlottesville<br>
+<strong>Sep 1</strong> – Labor Day (no classes)<br>
+<strong>Sep 15</strong> – Research Studio Module 01 Review<br>
+<strong>Sep 19</strong> – Depart for Italy<br>
+<strong>Sep 22 – Nov 5</strong> – Italy residency (Mazzorbo, Venice Lagoon)<br>
+<strong>Oct 12–13</strong> – Studio Module 02 Review (Vicenza)<br>
+<strong>Nov 5</strong> – Studio Mid-Module 03 Review (Torcello)<br>
+<strong>Nov 7</strong> – Depart Italy, return to Charlottesville<br>
+<strong>Nov 24–26</strong> – Thanksgiving Break<br>
+<strong>Dec 8</strong> – Final Reviews (Charlottesville)</p>
+</div>
+
+<h2 class="section-header">Faculty</h2>
+<div class="two-col">
+<p class="body-text"><strong>Bradley Cantrell</strong><br>Commonwealth Professor of Landscape Architecture<br>Program Coordinator</p>
+<p class="body-text"><strong>William Sherman</strong><br>Valmarana Professor of Architecture</p>
+<p class="body-text"><strong>Sandro Bisa</strong><br>Visiting Faculty<br>Architect, Venissa vineyard</p>
+<p class="body-text"><strong>Monica Shenouda</strong><br>Art History<br>[biography to come]</p>
+</div>
+
+<div class="page-footer">
+<p>University of Virginia &middot; Venice Program &middot; Fall 2026</p>
+</div>
+
+</section>
+
+</body>
+</html>

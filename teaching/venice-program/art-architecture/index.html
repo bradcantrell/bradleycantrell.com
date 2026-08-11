@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art and Architecture of Venice — ARH 5201 Fall 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--red:#D4686A;--black:#121212;--white:#FAFAFA;--dark-grey:#555;--light-grey:#CCC}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto','Helvetica Neue',sans-serif;font-size:10pt;line-height:1.5;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+.page{max-width:1120px;margin:0 auto;padding:48px 56px 42px;min-height:100vh;display:flex;flex-direction:column}
+.page.cover{justify-content:center;align-items:center;text-align:center}
+.display{font-family:'Play','Montserrat',sans-serif;font-weight:700;font-size:48px;line-height:.95;letter-spacing:.04em;color:var(--red);text-transform:uppercase}
+.section-header{font-family:'Roboto',sans-serif;font-weight:700;font-size:28px;letter-spacing:.02em;color:var(--red);margin-bottom:18px;margin-top:36px}
+.metadata{font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.body-text{font-size:10pt;line-height:1.5;color:var(--black);margin-bottom:6px;max-width:65ch}
+.two-col{column-count:2;column-gap:36px;margin-top:12px}
+.page-footer{margin-top:auto;padding-top:24px;font-size:7pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.06em}
+
+nav.program-nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.96);border-bottom:1px solid var(--light-grey);padding:8px 24px;font-size:8pt;text-transform:uppercase;letter-spacing:.05em;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;overflow-x:auto}
+nav.program-nav a{color:var(--dark-grey);text-decoration:none;white-space:nowrap;padding:2px 0;border-bottom:1px solid transparent}
+nav.program-nav a:hover,nav.program-nav a.active{color:var(--red);border-bottom:1px solid var(--red)}
+nav.program-nav .nav-home{font-weight:700}
+
+@media print{
+@page{size:A4 landscape;margin:15mm}
+body{font-size:10pt;background:#fff}
+nav.program-nav{display:none}
+.page{max-width:none;padding:0;min-height:auto}
+.display{font-size:48pt}
+.page-footer{display:none}
+}
+@media(prefers-color-scheme:dark){
+body{background:var(--black);color:var(--white)}
+.body-text{color:#ddd}
+.metadata{color:#999}
+nav.program-nav{background:rgba(18,18,18,.96);border-color:#333}
+nav.program-nav a{color:#999}
+}
+@media(max-width:800px){.display{font-size:28px}.page{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<nav class="program-nav">
+<a href="../index.html" class="nav-home">Venice Program</a>
+<a href="../residency.html">Residency</a>
+<a href="../schedule.html">Schedule</a>
+<a href="../studio/">Studio</a>
+<a href="../city-and-landscape/">City &amp; Landscape</a>
+<a href="../building-venice/">Building Venice</a>
+<a href="index.html" class="active">Art &amp; Architecture</a>
+</nav>
+
+<section class="page cover">
+<div class="metadata">ARH 5201 &middot; Fall 2026 &middot; University of Virginia</div>
+<h1 class="display">Art &amp;<br>Architecture<br>of Venice</h1>
+<div class="section-header" style="margin-top:8px">Art History Seminar</div>
+<div class="metadata" style="margin-top:24px">Monica Shenouda</div>
+<div class="metadata" style="margin-top:12px">Wednesdays, 9:00–11:30 AM</div>
+</section>
+
+<section class="page">
+<div class="two-col">
+<p class="body-text">A survey of Venetian art and architecture from its Byzantine origins through the modern era. The seminar reads the city's buildings, paintings, mosaics, and public spaces as primary texts, situating them within the political, economic, and environmental conditions that produced them. Venice's artistic and architectural traditions are understood not as autonomous cultural achievements but as integral dimensions of the city's territorial project.</p>
+<p class="body-text"><strong>Full syllabus, schedule, and readings coming soon.</strong></p>
+</div>
+<div class="page-footer" style="margin-top:48px">
+<p>ARH 5201 &middot; Art and Architecture of Venice &middot; Fall 2026 &middot; Monica Shenouda</p>
+</div>
+</section>
+
+</body>
+</html>

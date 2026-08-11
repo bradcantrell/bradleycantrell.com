@@ -54,8 +54,7 @@
       overflow: hidden;
       isolation: isolate;
     }
-    /* Cover image — semi-transparent, lightly blurred. Page background
-       (Game of Life) bleeds through it. */
+    /* Cover image — subtle backdrop, becomes prominent on hover */
     .book-card__cover {
       position: absolute;
       inset: 0;
@@ -63,22 +62,31 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      opacity: 0.42;
-      filter: blur(2px) saturate(0.95);
+      opacity: 0.08;
+      filter: blur(1px) saturate(0.95);
       transform: scale(1.04);
+      transition: opacity 0.5s ease, filter 0.5s ease;
     }
-    /* Dark veil — covers the full card edge-to-edge, slightly transparent,
-       and adds backdrop blur so the cover behind it is further softened
-       under the text. */
+    .book-card:hover .book-card__cover {
+      opacity: 0.48;
+      filter: blur(2px) saturate(0.95);
+    }
+    /* Dark veil — barely there, deepens on hover */
     .book-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--surface-2);
-      backdrop-filter: blur(8px) saturate(0.9);
-      -webkit-backdrop-filter: blur(8px) saturate(0.9);
+      background: rgba(8,8,8,0.18);
+      backdrop-filter: blur(2px) saturate(0.9);
+      -webkit-backdrop-filter: blur(2px) saturate(0.9);
       z-index: 1;
       pointer-events: none;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    .book-card:hover::after {
+      background: rgba(8,8,8,0.55);
+      backdrop-filter: blur(8px) saturate(0.9);
+      -webkit-backdrop-filter: blur(8px) saturate(0.9);
     }
     /* Text content sits above both the cover and the veil. */
     .book-card__inner {
@@ -144,7 +152,15 @@
 <!-- Books -->
 <div class="book-grid">
 
-  <div class="book-card">
+        <div class="book-card">
+        <img class="book-card__cover" src="images/books/computational_wilds.jpg" alt="" aria-hidden="true">
+        <div class="book-card__inner">
+          <div class="book-title">Computational Wilds</div>
+          <div class="book-meta">ORO Editions, Forthcoming 2027 &middot; Co-authored with Adam Mekies</div>
+          <p class="book-desc">A monograph extending the adaptive epistemology framework from the dissertation into a broader argument about computation and wildness in designed landscapes.</p>
+        </div>
+      </div>
+      <div class="book-card">
     <img class="book-card__cover" src="images/books/adaptive_epistemologies.jpg" alt="" aria-hidden="true">
     <div class="book-card__inner">
       <div class="book-title">Adaptive Epistemologies and Neo-Wilds</div>
@@ -159,8 +175,8 @@
   <div class="book-card">
     <img class="book-card__cover" src="images/books/codify.jpg" alt="" aria-hidden="true">
     <div class="book-card__inner">
-      <div class="book-title">Codify: Parametric and Computational Design in Landscape Architecture</div>
-      <div class="book-meta">Routledge, 2018 &middot; Co-edited with Adam Mekies</div>
+      <div class="book-title">Codify: Computation in Landscape Architecture</div>
+      <div class="book-meta">Routledge, 2019 &middot; Co-edited with Adam Mekies</div>
       <p class="book-desc">
         An edited volume examining the role of computation in shaping contemporary landscape practice &mdash; from parametric modeling and simulation to algorithmic design processes and data-driven ecologies.
       </p>
@@ -182,7 +198,7 @@
   <div class="book-card">
     <img class="book-card__cover" src="images/books/digital_drawing.jpg" alt="" aria-hidden="true">
     <div class="book-card__inner">
-      <div class="book-title">Digital Drawing for Landscape Architecture</div>
+      <div class="book-title">Digital Representation in Landscape Architecture</div>
       <div class="book-meta">Wiley, 2010 &middot; Second edition 2014 &middot; Co-authored with Wes Michaels</div>
       <p class="book-desc">
         A comprehensive guide to digital tools and techniques for landscape architects &mdash; from representation to simulation. A cornerstone text in landscape architecture education, bridging computational methods and design practice.

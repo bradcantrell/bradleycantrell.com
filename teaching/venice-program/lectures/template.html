@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venice Program — Lecture Template</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css">
+<style>
+/* ── Venice Program Theme ── */
+:root{--red:#E61C1C;--black:#121212;--white:#FAFAFA;--dark-grey:#555;--light-grey:#CCC}
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&display=swap');
+
+.reveal{font-family:'Roboto','Helvetica Neue',sans-serif;font-size:24pt;color:var(--white);background:var(--black)}
+.reveal h1,.reveal h2{font-family:'Play','Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--red)}
+.reveal h2{font-size:48pt;line-height:1.05;margin-bottom:.3em}
+.reveal h1{font-size:72pt;line-height:.95}
+.reveal p,.reveal li{line-height:1.45;color:var(--white)}
+.reveal strong{color:var(--red)}
+.reveal .subtitle{font-size:16pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.08em;margin-top:.3em}
+.reveal .pull{font-family:'Crimson Text',Georgia,serif;font-style:italic;font-size:28pt;color:var(--red);max-width:20em;margin:0 auto}
+.reveal .small{font-size:14pt;color:var(--dark-grey)}
+.reveal .metadata{font-size:9pt;color:var(--dark-grey);text-transform:uppercase;letter-spacing:.08em;margin-top:1em}
+.reveal section{text-align:left;padding:0 60px}
+.reveal section.center{text-align:center}
+.reveal section.image-full{padding:0}
+.reveal section.image-full img{width:100%;max-height:100vh;object-fit:cover}
+.reveal .col2{display:grid;grid-template-columns:1fr 1fr;gap:40px;font-size:18pt}
+.reveal .col2 p,.reveal .col2 li{font-size:18pt}
+.reveal ul{list-style:none;padding:0}
+.reveal ul li{margin-bottom:.4em}
+.reveal ul li::before{content:'— ';color:var(--red)}
+.reveal pre{font-size:14pt;background:#1a1a1a;padding:20px;border-radius:0;border-left:2px solid var(--red)}
+.reveal .notes{display:none}
+.reveal .progress{color:var(--red)}
+.reveal .controls{color:var(--red)}
+video{background:#000}
+video[data-autoplay]{opacity:0;transition:opacity .8s}
+video[data-autoplay].visible{opacity:1}
+
+/* ── Slide Types ── */
+.reveal section.cover{display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;height:100%}
+.reveal section.image-right{display:grid!important;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.reveal section.image-right img{width:100%;max-height:80vh;object-fit:contain}
+.reveal section.quote{display:flex!important;justify-content:center;align-items:center;text-align:center;height:100%}
+
+/* ── Print ── */
+@media print{
+@page{size:landscape;margin:0}
+.reveal .slide-background{display:block!important}
+.notes{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ====== COPY FROM HERE TO BUILD YOUR DECK ====== -->
+
+<!-- COVER -->
+<section class="cover center">
+<h2>Lecture Title</h2>
+<div class="subtitle">ALAR 4010 / 8010 &middot; Venice Research Studio</div>
+<div class="subtitle">Module 0X &middot; Week XX</div>
+<div class="metadata" style="margin-top:48px">Bradley Cantrell &middot; University of Virginia &middot; Fall 2026</div>
+</section>
+
+<!-- SECTION DIVIDER -->
+<section class="center">
+<h2>Section Title</h2>
+<div class="subtitle">Key concept or framing question</div>
+</section>
+
+<!-- BODY SLIDE -->
+<section>
+<h2>Slide Title</h2>
+<ul>
+<li>Point one. Keep it brief and specific.</li>
+<li>Point two. Let the spoken lecture carry the detail.</li>
+<li>Point three. Slides are anchors, not scripts.</li>
+</ul>
+</section>
+
+<!-- TWO-COLUMN -->
+<section>
+<h2>Two-Column Layout</h2>
+<div class="col2">
+<div>
+<ul>
+<li>Text content on the left</li>
+<li>Bulleted points stay clean</li>
+<li>Minimal words per line</li>
+</ul>
+</div>
+<div style="background:rgba(255,255,255,0.04);border:1px solid #333;display:flex;align-items:center;justify-content:center;min-height:300px">
+<p class="small" style="text-align:center">Image here<br><br>Replace this div with &lt;img src="..."&gt;</p>
+</div>
+</div>
+</section>
+
+<!-- FULL IMAGE -->
+<section class="image-full center" style="background:rgba(255,255,255,0.04);border:1px solid #333;display:flex;align-items:center;justify-content:center">
+<p class="small">Full-bleed image here<br><br>Replace with &lt;img src="..."&gt;</p>
+</section>
+
+<!-- VIDEO -->
+<section class="center">
+<h2>Video Slide</h2>
+<div style="margin-top:16px">
+<video controls preload="metadata" style="max-width:70%;max-height:60vh">
+<source src="video.mp4" type="video/mp4">
+</video>
+</div>
+<div class="metadata" style="margin-top:8px">Source: Description of video content</div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote center">
+<div class="pull">The lagoon does not respond to design. It absorbs it and continues.</div>
+<div class="metadata">— Venice Research Studio, Fall 2026</div>
+</section>
+
+<!-- CLOSING -->
+<section class="cover center">
+<h2>Next Session</h2>
+<div class="subtitle">Topic or deliverable due</div>
+<div class="metadata" style="margin-top:48px">Readings: Author (Year), Title</div>
+</section>
+
+<!-- ====== COPY ABOVE TO BUILD YOUR DECK ====== -->
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+hash: true,
+progress: true,
+controls: true,
+center: false,
+transition: 'none',
+width: 1920,
+height: 1080,
+margin: 0.04,
+plugins: []
+});
+</script>
+</body>
+</html>

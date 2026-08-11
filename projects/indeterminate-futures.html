@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indeterminate Futures | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/img/indeterminate-hero.jpg'); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    
+    .video-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .video-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+    .video-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .video-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .video-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-tile:hover { border-color: var(--accent2); }
+    
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2021</div>
+    <h2 class="hero-title">Indeterminate Futures</h2>
+    <div class="hero-type">Digital Exhibition, NFT Archive</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+    <a href="https://objkt.com/users/tz1gtTVJHBm5RXHPD6T38mfnGA6tcZGNhJHQ/created" target="_blank" rel="noopener" style="display: inline-block; margin-bottom: 1.5rem; margin-right: 2rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none;">View NFTs on Objkt</a>
+<a href="../work.html" class="back-link">All Projects</a>
+  <dl>
+    <div><dt><strong>Location</strong></dt><dd>Venice Architecture Biennale / Tezos Blockchain</dd></div>
+    <div><dt><strong>Collaborators</strong></dt><dd>Xun Liu, Assistant Professor, University of British Columbia</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>NFT, Video, Blockchain Archive</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+  <p>Indeterminate Futures translated years of geomorphology table documentation into a distributed digital archive, minting incremental snapshots of sediment flow experiments as NFTs throughout the 2021 Venice Architecture Biennale. Each NFT captured a single frame from the Geomorphology Lab's sediment table documentation: a moment in the continuous process of water moving sediment across a surface, the formation of channels, bars, and lobes frozen in a single image yet understood as part of an ongoing material negotiation.</p>
+  <p>The project treated the NFT not as a speculative asset but as an archival instrument: each minted token carried with it the timestamp, flow parameters, sediment composition, and water velocity of the frame it represented. The result was a distributed, immutable record of landscape process, a counter-archive to the institutional database, stored not on university servers but on a public blockchain where it could not be deleted or altered.</p>
+  <p>During the Biennale, these NFTs were released on a schedule that mirrored the pace of the sediment experiments themselves: slow, irregular, governed by the material constraints of the table rather than the calendar. Collectors received not just an image but coordinates within a larger temporal dataset, a single frame in a sequence that only resolved into legibility when viewed in aggregate. The project asked whether blockchain technologies might offer new models for landscape representation that privilege process over product, time over form, and distributed custody over singular authority.</p>
+
+  <h3>Fundamental Questions</h3>
+  <p>Indeterminate Futures addressed fundamental questions about the relationship between landscape representation and time: What does it mean to archive a process rather than a product? How might distributed ledger technologies offer new models for landscape representation that are inherently temporal, decentralized, and resistant to the institutional impulse to fix landscape in a single authoritative frame?</p>
+  <p>The project proposed that the NFT might function as a new kind of landscape document: not a representation of a finished condition but an attestation that a specific material event occurred at a specific moment under specific parameters. Each minted frame served as a witness to the ongoing work of the Geomorphology Lab, a public record of the sediment table's continuous production of form. In this model, the archive becomes not a repository of completed work but a live, growing, distributed ledger of landscape in formation.</p>
+</div>
+
+<div class="video-grid" id="videoGrid">
+  <h3>NFT Animations</h3>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/001_sequence_export_1.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/001_sequence_export_1.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/002_sequence_export_1.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/002_sequence_export_1.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/003_sequence_export_1.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/003_sequence_export_1.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/004_sequence_export_1.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/004_sequence_export_1.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/formation_shift_1.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/formation_shift_1.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/006.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/006.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/007.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/007.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/008.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/008.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/009.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/009.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/010.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/010.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/011.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/011.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/012.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/012.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/013.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/013.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/014.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/014.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/015.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/015.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/016.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/016.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/017.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/017.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/018.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/018.mp4" autoplay loop muted playsinline></video>
+  </div>
+  <div class="video-tile" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/019.mp4">
+    <video src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/indeterminate-futures/019.mp4" autoplay loop muted playsinline></video>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <video id="lbVideo" src="" autoplay loop muted playsinline></video>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbVideo=document.getElementById('lbVideo');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.video-tile');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t,i){
+    items.push({src: t.dataset.src});
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbVideo.src=items[i].src;
+    lbVideo.play();
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.video-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  // Retry on first user interaction
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.video-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>

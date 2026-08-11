@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700">
+<defs>
+<radialGradient id="bg" cx="50%" cy="50%" r="75%"><stop offset="0%" stop-color="#0f1620"/><stop offset="100%" stop-color="#05080c"/></radialGradient>
+<marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#8899aa"/></marker>
+<marker id="arrow_fresh" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#4a90d0"/></marker>
+</defs>
+<rect width="1600" height="700" fill="url(#bg)"/>
+<text x="800" y="32" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="4">SALINITY GRADIENTS — THE LAGOON'S SALT BALANCE</text>
+<text x="800" y="47" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="7" letter-spacing="2.5">FRESHWATER INPUTS · TIDAL EXCHANGE · CIRCULATION · 20–35 PSU GRADIENT ACROSS THE BASIN</text>
+<rect x="63" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="240" y="93" text-anchor="middle" fill="#4a90d0" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">SALINITY GRADIENT</text>
+<text x="240" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="2">SPATIAL FIELD</text>
+<path d="M 385.7,140.5 L 353.5,162.3 L 308.3,184.1 L 269.5,216.8 L 321.2,151.4 L 372.8,151.4 Z" fill="#2a6090" fill-opacity="0.35" stroke="#1a4060" stroke-width="0.5" stroke-opacity="0.4"/>
+<path d="M 308.3,184.1 L 269.5,216.8 L 243.7,238.6 L 224.4,260.5 L 256.6,293.2 L 288.9,260.5 L 321.2,227.7 L 308.3,184.1 Z" fill="#3a7888" fill-opacity="0.35" stroke="#2a5868" stroke-width="0.5" stroke-opacity="0.4"/>
+<path d="M 243.7,238.6 L 205.0,227.7 L 159.8,260.5 L 140.5,293.2 L 153.4,315.0 L 192.1,336.8 L 224.4,315.0 L 243.7,293.2 L 256.6,293.2 L 224.4,260.5 L 243.7,238.6 Z" fill="#5a8a7a" fill-opacity="0.35" stroke="#3a6a5a" stroke-width="0.5" stroke-opacity="0.4"/>
+<path d="M 140.5,293.2 L 114.6,336.8 L 95.3,391.4 L 127.5,445.9 L 153.4,489.5 L 179.2,500.5 L 217.9,489.5 L 224.4,445.9 L 230.8,424.1 L 192.1,369.5 L 153.4,315.0 L 140.5,293.2 Z" fill="#7a9060" fill-opacity="0.35" stroke="#5a7040" stroke-width="0.5" stroke-opacity="0.4"/>
+<path d="M 385.7,140.5 L 353.5,162.3 L 308.3,184.1 L 243.7,205.9 L 205.0,227.7 L 159.8,260.5 L 140.5,293.2 L 114.6,336.8 L 95.3,391.4 L 127.5,445.9 L 153.4,489.5 L 179.2,500.5 L 192.1,511.4 L 217.9,489.5 L 224.4,445.9 L 230.8,424.1 L 237.3,402.3 L 243.7,369.5 L 256.6,336.8 L 269.5,304.1 L 276.0,282.3 L 288.9,260.5 L 321.2,227.7 L 353.5,184.1 L 372.8,151.4 Z" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+<text x="321" y="206" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5">20 PSU</text>
+<text x="244" y="260" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5">25 PSU</text>
+<text x="192" y="337" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5">30 PSU</text>
+<text x="160" y="446" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="5.5">35 PSU</text>
+<circle cx="270" cy="293" r="2.5" fill="none" stroke="#ff8844" stroke-width="0.7"/>
+<circle cx="224" cy="424" r="2.5" fill="none" stroke="#ff8844" stroke-width="0.7"/>
+<circle cx="186" cy="500" r="2.5" fill="none" stroke="#ff8844" stroke-width="0.7"/>
+<circle cx="353" cy="162" r="2" fill="#4a90d0" opacity="0.8"/>
+<circle cx="308" cy="184" r="2" fill="#4a90d0" opacity="0.8"/>
+<circle cx="153" cy="293" r="2" fill="#4a90d0" opacity="0.8"/>
+<circle cx="173" cy="522" r="2" fill="#4a90d0" opacity="0.8"/>
+<text x="240" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Color-coded salinity zones</text>
+<text x="240" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">from freshest (north) to</text>
+<text x="240" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">most marine (south).</text>
+<text x="240" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Isohaline contours at</text>
+<text x="240" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">5 PSU intervals.</text>
+<rect x="436" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="614" y="93" text-anchor="middle" fill="#60b0d0" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">FRESHWATER INPUTS</text>
+<text x="614" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="2">RIVER DISCHARGE</text>
+<path d="M 758.7,140.5 L 726.5,162.3 L 681.3,184.1 L 616.7,205.9 L 578.0,227.7 L 532.8,260.5 L 513.5,293.2 L 487.6,336.8 L 468.3,391.4 L 500.5,445.9 L 526.4,489.5 L 552.2,500.5 L 565.1,511.4 L 590.9,489.5 L 597.4,445.9 L 603.8,424.1 L 610.3,402.3 L 616.7,369.5 L 629.6,336.8 L 642.5,304.1 L 649.0,282.3 L 661.9,260.5 L 694.2,227.7 L 726.5,184.1 L 745.8,151.4 Z" fill="rgba(30,50,70,0.25)" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+<circle cx="726" cy="162" r="30" fill="none" stroke="rgba(74,144,208,0.3)" stroke-width="0"/>
+<circle cx="726" cy="162" r="18" fill="none" stroke="rgba(74,144,208,0.5)" stroke-width="0.8"/>
+<circle cx="726" cy="162" r="15" fill="rgba(74,144,208,0.2)" stroke="rgba(74,144,208,0.6)" stroke-width="0.8"/>
+<text x="758" y="162" fill="rgba(74,144,208,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Piave</text>
+<circle cx="681" cy="184" r="25" fill="none" stroke="rgba(74,144,208,0.3)" stroke-width="0"/>
+<circle cx="681" cy="184" r="15" fill="none" stroke="rgba(74,144,208,0.5)" stroke-width="0.8"/>
+<circle cx="681" cy="184" r="12" fill="rgba(74,144,208,0.2)" stroke="rgba(74,144,208,0.6)" stroke-width="0.8"/>
+<text x="708" y="184" fill="rgba(74,144,208,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Sile</text>
+<circle cx="526" cy="293" r="20" fill="none" stroke="rgba(74,144,208,0.3)" stroke-width="0"/>
+<circle cx="526" cy="293" r="12" fill="none" stroke="rgba(74,144,208,0.5)" stroke-width="0.8"/>
+<circle cx="526" cy="293" r="10" fill="rgba(74,144,208,0.2)" stroke="rgba(74,144,208,0.6)" stroke-width="0.8"/>
+<text x="548" y="293" fill="rgba(74,144,208,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Brenta</text>
+<circle cx="546" cy="522" r="15" fill="none" stroke="rgba(74,144,208,0.3)" stroke-width="0"/>
+<circle cx="546" cy="522" r="9" fill="none" stroke="rgba(74,144,208,0.5)" stroke-width="0.8"/>
+<circle cx="546" cy="522" r="8" fill="rgba(74,144,208,0.2)" stroke="rgba(74,144,208,0.6)" stroke-width="0.8"/>
+<text x="563" y="522" fill="rgba(74,144,208,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Adige</text>
+<text x="736" y="127" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="5" text-anchor="middle">m³/s</text>
+<rect x="716" y="87" width="40" height="48" fill="rgba(74,144,208,0.4)" stroke="rgba(74,144,208,0.5)" stroke-width="0.4"/>
+<text x="736" y="139" fill="#7799aa" font-family="Helvetica,Arial,sans-serif" font-size="4.5" text-anchor="middle">Piave</text>
+<rect x="716" y="117" width="40" height="40" fill="rgba(74,144,208,0.4)" stroke="rgba(74,144,208,0.5)" stroke-width="0.4"/>
+<text x="736" y="161" fill="#7799aa" font-family="Helvetica,Arial,sans-serif" font-size="4.5" text-anchor="middle">Sile</text>
+<rect x="716" y="139" width="40" height="40" fill="rgba(74,144,208,0.4)" stroke="rgba(74,144,208,0.5)" stroke-width="0.4"/>
+<text x="736" y="183" fill="#7799aa" font-family="Helvetica,Arial,sans-serif" font-size="4.5" text-anchor="middle">Brenta</text>
+<rect x="716" y="173" width="40" height="28" fill="rgba(74,144,208,0.4)" stroke="rgba(74,144,208,0.5)" stroke-width="0.4"/>
+<text x="736" y="205" fill="#7799aa" font-family="Helvetica,Arial,sans-serif" font-size="4.5" text-anchor="middle">Adige</text>
+<text x="614" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Piave, Sile, Brenta, Adige</text>
+<text x="614" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">deliver freshwater to the</text>
+<text x="614" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">lagoon. Plume shapes show</text>
+<text x="614" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">mixing zones where salinity</text>
+<text x="614" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">drops sharply near mouths.</text>
+<rect x="809" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="986" y="93" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">TIDAL EXCHANGE</text>
+<text x="986" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="2">ADRIATIC INFLOW</text>
+<path d="M 1131.7,140.5 L 1099.5,162.3 L 1054.3,184.1 L 989.7,205.9 L 951.0,227.7 L 905.8,260.5 L 886.5,293.2 L 860.6,336.8 L 841.3,391.4 L 873.5,445.9 L 899.4,489.5 L 925.2,500.5 L 938.1,511.4 L 963.9,489.5 L 970.4,445.9 L 976.8,424.1 L 983.3,402.3 L 989.7,369.5 L 1002.6,336.8 L 1015.5,304.1 L 1022.0,282.3 L 1034.9,260.5 L 1067.2,227.7 L 1099.5,184.1 L 1118.8,151.4 Z" fill="rgba(30,50,70,0.25)" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+<line x1="1021" y1="293" x2="1004" y2="293" stroke="rgba(255,136,68,0.6)" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1019" y="287" fill="rgba(255,136,68,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Lido</text>
+<line x1="975" y1="424" x2="960" y2="426" stroke="rgba(255,136,68,0.6)" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="973" y="418" fill="rgba(255,136,68,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Malamocco</text>
+<line x1="937" y1="500" x2="924" y2="504" stroke="rgba(255,136,68,0.6)" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="935" y="494" fill="rgba(255,136,68,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="5">Chioggia</text>
+<line x1="1035" y1="228" x2="970" y2="250" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="2,3"/>
+<line x1="990" y1="337" x2="925" y2="359" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="2,3"/>
+<line x1="951" y1="402" x2="899" y2="424" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="2,3"/>
+<text x="986" y="525" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="5.5">TIDAL PRISM: ~350×10⁶ m³</text>
+<text x="986" y="535" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="4.5">EXCHANGES ~1/3 LAGOON VOLUME PER CYCLE</text>
+<text x="986" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Adriatic water (35–38 PSU)</text>
+<text x="986" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">enters at Lido, Malamocco,</text>
+<text x="986" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Chioggia inlets. Tidal</text>
+<text x="986" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">exchange flushes ~1/3 of</text>
+<text x="986" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">lagoon volume each cycle.</text>
+<rect x="1182" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<text x="1360" y="93" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="3">MOSE IMPACT</text>
+<text x="1360" y="105" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="2">GATE CLOSURE EFFECTS</text>
+<clipPath id="clip3_left"><rect x="1182" y="75" width="177.5" height="480"/></clipPath>
+<clipPath id="clip3_right"><rect x="1359.5" y="75" width="177.5" height="480"/></clipPath>
+<path d="M 1504.7,140.5 L 1472.5,162.3 L 1427.3,184.1 L 1388.5,216.8 L 1440.2,151.4 L 1491.8,151.4 Z" fill="#2a6090" fill-opacity="0.20" stroke="#1a4060" stroke-width="0.3" stroke-opacity="0.2" clip-path="url(#clip3_left)"/>
+<path d="M 1427.3,184.1 L 1388.5,216.8 L 1362.7,238.6 L 1343.4,260.5 L 1375.6,293.2 L 1407.9,260.5 L 1440.2,227.7 L 1427.3,184.1 Z" fill="#3a7888" fill-opacity="0.20" stroke="#2a5868" stroke-width="0.3" stroke-opacity="0.2" clip-path="url(#clip3_left)"/>
+<path d="M 1362.7,238.6 L 1324.0,227.7 L 1278.8,260.5 L 1259.5,293.2 L 1272.4,315.0 L 1311.1,336.8 L 1343.4,315.0 L 1362.7,293.2 L 1375.6,293.2 L 1343.4,260.5 L 1362.7,238.6 Z" fill="#5a8a7a" fill-opacity="0.20" stroke="#3a6a5a" stroke-width="0.3" stroke-opacity="0.2" clip-path="url(#clip3_left)"/>
+<path d="M 1259.5,293.2 L 1233.6,336.8 L 1214.3,391.4 L 1246.5,445.9 L 1272.4,489.5 L 1298.2,500.5 L 1336.9,489.5 L 1343.4,445.9 L 1349.8,424.1 L 1311.1,369.5 L 1272.4,315.0 L 1259.5,293.2 Z" fill="#7a9060" fill-opacity="0.20" stroke="#5a7040" stroke-width="0.3" stroke-opacity="0.2" clip-path="url(#clip3_left)"/>
+<path d="M 1504.7,140.5 L 1472.5,162.3 L 1427.3,184.1 L 1362.7,205.9 L 1324.0,227.7 L 1278.8,260.5 L 1259.5,293.2 L 1233.6,336.8 L 1214.3,391.4 L 1246.5,445.9 L 1272.4,489.5 L 1298.2,500.5 L 1311.1,511.4 L 1336.9,489.5 L 1343.4,445.9 L 1349.8,424.1 L 1356.3,402.3 L 1362.7,369.5 L 1375.6,336.8 L 1388.5,304.1 L 1395.0,282.3 L 1407.9,260.5 L 1440.2,227.7 L 1472.5,184.1 L 1491.8,151.4 Z" fill="rgba(80,60,40,0.3)" stroke="rgba(255,255,255,0.08)" stroke-width="0.6" clip-path="url(#clip3_right)"/>
+<path d="M 1311.1,260.5 L 1298.2,315.0 L 1278.8,336.8 L 1259.5,293.2 L 1278.8,260.5 L 1298.2,260.5 Z" fill="rgba(120,60,40,0.35)" stroke="rgba(200,100,60,0.4)" stroke-width="0.5" clip-path="url(#clip3_right)"/>
+<line x1="1360" y1="75" x2="1360" y2="555" stroke="rgba(255,255,255,0.15)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<text x="1271" y="105" text-anchor="middle" fill="rgba(74,144,208,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="6">GATES OPEN</text>
+<text x="1448" y="105" text-anchor="middle" fill="rgba(200,100,60,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="6">GATES CLOSED</text>
+<rect x="1385" y="291" width="8" height="4" rx="1" fill="none" stroke="#cc4422" stroke-width="0.8"/>
+<rect x="1339" y="422" width="8" height="4" rx="1" fill="none" stroke="#4488cc" stroke-width="0.8"/>
+<rect x="1301" y="498" width="8" height="4" rx="1" fill="none" stroke="#4488cc" stroke-width="0.8"/>
+<text x="1360" y="535" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="5">CLOSURE DURATION: 4–48 HOURS</text>
+<text x="1360" y="543" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="4.5">SALINITY STRATIFICATION · REDUCED FLUSHING · HYPOXIA RISK</text>
+<text x="1360" y="567" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">When MOSE gates close,</text>
+<text x="1360" y="576" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">tidal exchange stops.</text>
+<text x="1360" y="585" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Salinity stratifies.</text>
+<text x="1360" y="594" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">Stagnation zones form in</text>
+<text x="1360" y="603" text-anchor="middle" fill="#667788" font-family="Helvetica,Arial,sans-serif" font-size="6" letter-spacing="0.5">the inner lagoon.</text>
+<text x="800" y="623" text-anchor="middle" fill="#556677" font-family="Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="1.5">FRESH 20 PSU ← SALINITY GRADIENT → 35 PSU MARINE</text>
+<rect x="668" y="629" width="24" height="8" fill="#2a6090" fill-opacity="0.4" stroke="#2a6090" stroke-width="0.5" stroke-opacity="0.5"/>
+<text x="680" y="647" text-anchor="middle" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5">20–25 PSU</text>
+<rect x="733" y="629" width="24" height="8" fill="#3a7888" fill-opacity="0.4" stroke="#3a7888" stroke-width="0.5" stroke-opacity="0.5"/>
+<text x="745" y="647" text-anchor="middle" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5">25–28 PSU</text>
+<rect x="798" y="629" width="24" height="8" fill="#5a8a7a" fill-opacity="0.4" stroke="#5a8a7a" stroke-width="0.5" stroke-opacity="0.5"/>
+<text x="810" y="647" text-anchor="middle" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5">28–32 PSU</text>
+<rect x="863" y="629" width="24" height="8" fill="#7a9060" fill-opacity="0.4" stroke="#7a9060" stroke-width="0.5" stroke-opacity="0.5"/>
+<text x="875" y="647" text-anchor="middle" fill="#8899aa" font-family="Helvetica,Arial,sans-serif" font-size="5">32–35 PSU</text>
+<text x="800" y="663" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="5" letter-spacing="1">DATA: ISPRA MONITORING NETWORK · LAGOON BOUNDARY CONSTRUCTED FROM GEO_BOUNDARY.JSON · SALINITY ZONES INTERPOLATED FROM PUBLISHED GRADIENTS</text>
+</svg>
