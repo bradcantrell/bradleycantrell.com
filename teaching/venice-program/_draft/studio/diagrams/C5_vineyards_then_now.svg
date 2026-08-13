@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700">
+<defs>
+<radialGradient id="bg" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#0f1620"/><stop offset="100%" stop-color="#05080c"/></radialGradient>
+<linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a4a55"/><stop offset="100%" stop-color="#0a2530"/></linearGradient>
+</defs>
+<rect width="1600" height="700" fill="url(#bg)"/>
+<text x="800" y="32" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="4">LAGOON VITICULTURE — THEN AND NOW</text>
+<text x="800" y="47" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2.5">1812 NAPOLEONIC SURVEY: 300+ HECTARES ACROSS 10 ISLANDS · 2026: ~3 HECTARES AT 4 SITES</text>
+<rect x="72" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="440" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="808" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="1176" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="77" y="105" width="345" height="445" rx="2" fill="url(#waterGrad)" opacity="0.6"/>
+<polygon points="25874.7,41733.7 25873.6,41736.3 25872.3,41734.2 25870.9,41733.2 25869.7,41734.7 25867.8,41737.5 25866.1,41740.0 25865.3,41738.5 25863.8,41738.5 25863.7,41742.2 25865.5,41746.3 25864.6,41748.1 25863.4,41749.9 25862.0,41750.7 25860.2,41751.4 25859.2,41747.6 25857.4,41746.1 25855.4,41745.5 25853.9,41742.9 25853.0,41736.7 25851.6,41734.2 25850.4,41736.2 25848.9,41733.3 25847.7,41729.8 25846.1,41727.6 25845.2,41726.2 25843.8,41727.7 25842.3,41730.0 25838.8,41732.4 25831.5,41726.6 25825.3,41723.0 25830.5,41702.1 25841.3,41684.2 25850.8,41671.0 25862.3,41658.2 25864.0,41650.9 25865.2,41651.1 25865.4,41651.2 25865.6,41651.5 25866.1,41652.9 25866.2,41653.2 25866.4,41653.2 25866.9,41653.7 25867.4,41655.2 25869.1,41655.5 25871.1,41660.3 25871.6,41662.4 25873.3,41663.1 25873.9,41664.8 25874.5,41667.8 25874.9,41670.3 25874.1,41672.6 25874.7,41674.6 25874.6,41679.0 25876.2,41679.1 25877.6,41680.9 25878.7,41683.8 25878.4,41685.4 25876.8,41685.3 25875.3,41684.9 25874.4,41683.4 25873.7,41684.3 25874.4,41686.1 25875.1,41688.2 25875.2,41691.4 25874.8,41694.3 25874.5,41696.3 25874.3,41699.4 25873.7,41700.9 25873.3,41702.9 25873.0,41705.2 25874.0,41706.6 25874.7,41704.7 25875.8,41703.2 25877.4,41702.9 25876.9,41705.5 25875.5,41711.5 25875.2,41715.6 25874.3,41719.2 25873.6,41722.6 25873.7,41724.5 25874.2,41725.8 25874.1,41729.0 25874.4,41730.2 25874.5,41733.1 25874.7,41733.7" fill="rgba(58,128,144,0.15)" stroke="rgba(58,128,144,0.2)" stroke-width="0.5"/>
+<ellipse cx="274.2" cy="227.4" rx="12.0" ry="8.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="274.15454545454617" y="214.42857142857193" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Sant'Erasmo</text>
+<ellipse cx="249.5" cy="242.5" rx="9.0" ry="6.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="249.50000000000068" y="231.51428571428704" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Vignole</text>
+<ellipse cx="277.2" cy="173.4" rx="5.2" ry="3.5" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="277.23636363636405" y="164.8714285714291" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Torcello</text>
+<ellipse cx="271.1" cy="187.2" rx="6.8" ry="4.5" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="271.072727272727" y="177.69999999999533" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Mazzorbo</text>
+<ellipse cx="237.9" cy="296.6" rx="6.0" ry="4.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="237.94318181818204" y="287.57142857142986" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Lido</text>
+<ellipse cx="218.7" cy="447.4" rx="3.0" ry="2.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="218.6818181818181" y="440.42857142857196" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Pellestrina</text>
+<ellipse cx="207.1" cy="265.1" rx="3.0" ry="2.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="207.1249999999995" y="258.1428571428597" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Giudecca</text>
+<ellipse cx="228.7" cy="223.7" rx="3.0" ry="2.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="228.69772727272715" y="216.65714285714319" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Murano</text>
+<ellipse cx="278.0" cy="189.7" rx="3.0" ry="2.0" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="278.0068181818182" y="182.7142857142842" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Burano</text>
+<ellipse cx="384.3" cy="183.4" rx="3.8" ry="2.5" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4" stroke-opacity="0.5"/>
+<text x="384.3295454545455" y="175.92857142856656" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Cavallino</text>
+<text x="249" y="90" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">1812 — PEAK EXTENT</text>
+<text x="249" y="102" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1.5">10 islands · ~300 hectares</text>
+<rect x="445" y="105" width="345" height="445" rx="2" fill="url(#waterGrad)" opacity="0.6"/>
+<polygon points="26242.7,41733.7 26241.6,41736.3 26240.3,41734.2 26238.9,41733.2 26237.7,41734.7 26235.8,41737.5 26234.1,41740.0 26233.3,41738.5 26231.8,41738.5 26231.7,41742.2 26233.5,41746.3 26232.6,41748.1 26231.4,41749.9 26230.0,41750.7 26228.2,41751.4 26227.2,41747.6 26225.4,41746.1 26223.4,41745.5 26221.9,41742.9 26221.0,41736.7 26219.6,41734.2 26218.4,41736.2 26216.9,41733.3 26215.7,41729.8 26214.1,41727.6 26213.2,41726.2 26211.8,41727.7 26210.3,41730.0 26206.8,41732.4 26199.5,41726.6 26193.3,41723.0 26198.5,41702.1 26209.3,41684.2 26218.8,41671.0 26230.3,41658.2 26232.0,41650.9 26233.2,41651.1 26233.4,41651.2 26233.6,41651.5 26234.1,41652.9 26234.2,41653.2 26234.4,41653.2 26234.9,41653.7 26235.4,41655.2 26237.1,41655.5 26239.1,41660.3 26239.6,41662.4 26241.3,41663.1 26241.9,41664.8 26242.5,41667.8 26242.9,41670.3 26242.1,41672.6 26242.7,41674.6 26242.6,41679.0 26244.2,41679.1 26245.6,41680.9 26246.7,41683.8 26246.4,41685.4 26244.8,41685.3 26243.3,41684.9 26242.4,41683.4 26241.7,41684.3 26242.4,41686.1 26243.1,41688.2 26243.2,41691.4 26242.8,41694.3 26242.5,41696.3 26242.3,41699.4 26241.7,41700.9 26241.3,41702.9 26241.0,41705.2 26242.0,41706.6 26242.7,41704.7 26243.8,41703.2 26245.4,41702.9 26244.9,41705.5 26243.5,41711.5 26243.2,41715.6 26242.3,41719.2 26241.6,41722.6 26241.7,41724.5 26242.2,41725.8 26242.1,41729.0 26242.4,41730.2 26242.5,41733.1 26242.7,41733.7" fill="rgba(58,128,144,0.15)" stroke="rgba(58,128,144,0.2)" stroke-width="0.5"/>
+<ellipse cx="642.2" cy="227.4" rx="12.0" ry="8.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="617.5" cy="242.5" rx="9.0" ry="6.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="645.2" cy="173.4" rx="5.2" ry="3.5" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="639.1" cy="187.2" rx="6.8" ry="4.5" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="605.9" cy="296.6" rx="6.0" ry="4.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="586.7" cy="447.4" rx="3.0" ry="2.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="575.1" cy="265.1" rx="3.0" ry="2.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="596.7" cy="223.7" rx="3.0" ry="2.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="646.0" cy="189.7" rx="3.0" ry="2.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="752.3" cy="183.4" rx="3.8" ry="2.5" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<ellipse cx="639.1" cy="187.2" rx="4.0" ry="2.4" fill="#c05050" opacity="0.5" stroke="#c05050" stroke-width="0.6" stroke-opacity="0.7"/>
+<text x="639.072727272727" y="179.79999999999532" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1">Venissa
+(Mazzorbo)
+0.8ha</text>
+<ellipse cx="642.2" cy="227.4" rx="5.0" ry="3.0" fill="#c05050" opacity="0.5" stroke="#c05050" stroke-width="0.6" stroke-opacity="0.7"/>
+<text x="642.1545454545462" y="219.42857142857193" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1">Sant'Erasmo
+1.0ha</text>
+<ellipse cx="617.5" cy="242.5" rx="2.5" ry="1.5" fill="#c05050" opacity="0.5" stroke="#c05050" stroke-width="0.6" stroke-opacity="0.7"/>
+<text x="617.5000000000007" y="236.01428571428704" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1">Vignole
+0.5ha</text>
+<ellipse cx="645.2" cy="173.4" rx="2.0" ry="1.5" fill="#c05050" opacity="0.5" stroke="#c05050" stroke-width="0.6" stroke-opacity="0.7"/>
+<text x="645.2363636363641" y="166.8714285714291" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1">Torcello
+0.4ha</text>
+<line x1="429" y1="315" x2="438" y2="315" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<polygon points="433,312 433,318 438,315" fill="rgba(255,255,255,0.08)"/>
+<text x="617" y="90" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">2026 — REMNANT</text>
+<text x="617" y="102" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1.5">4 sites · ~3 hectares · 99% loss</text>
+<text x="985" y="90" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">THE LOSS — 99% DECLINE</text>
+<rect x="928" y="115" width="180" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="132" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Sant'Erasmo</text>
+<text x="1113.0" y="132" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">80 ha</text>
+<rect x="933" y="115" width="7" height="28" rx="2" fill="#c05050" opacity="0.5"/>
+<text x="942.75" y="132" text-anchor="start" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">1.0 ha</text>
+<rect x="928" y="153" width="135" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="170" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Vignole</text>
+<text x="1068.0" y="170" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">60 ha</text>
+<rect x="933" y="153" width="3" height="28" rx="2" fill="#c05050" opacity="0.5"/>
+<text x="939.375" y="170" text-anchor="start" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">0.5 ha</text>
+<rect x="928" y="191" width="101" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="208" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Mazzorbo</text>
+<text x="1034.25" y="208" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">45 ha</text>
+<rect x="933" y="191" width="5" height="28" rx="2" fill="#c05050" opacity="0.5"/>
+<text x="941.4" y="208" text-anchor="start" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">0.8 ha</text>
+<rect x="928" y="229" width="90" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="246" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Lido</text>
+<text x="1023.0" y="246" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">40 ha</text>
+<rect x="928" y="267" width="79" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="284" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Torcello</text>
+<text x="1011.75" y="284" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">35 ha</text>
+<rect x="933" y="267" width="3" height="28" rx="2" fill="#c05050" opacity="0.5"/>
+<text x="939" y="284" text-anchor="start" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">0.4 ha</text>
+<rect x="928" y="305" width="56" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="322" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Cavallino</text>
+<text x="989.25" y="322" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">25 ha</text>
+<rect x="928" y="343" width="45" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="360" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Burano</text>
+<text x="978.0" y="360" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">20 ha</text>
+<rect x="928" y="381" width="40" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="398" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Pellestrina</text>
+<text x="973.5" y="398" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">18 ha</text>
+<rect x="928" y="419" width="18" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="436" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Giudecca</text>
+<text x="951.0" y="436" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">8 ha</text>
+<rect x="928" y="457" width="11" height="28" rx="2" fill="#c09040" opacity="0.25"/>
+<text x="923" y="474" text-anchor="end" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">Murano</text>
+<text x="944.25" y="474" text-anchor="start" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1">5 ha</text>
+<text x="985" y="515" text-anchor="middle" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600" letter-spacing="2">Total loss: 300 ha → 3 ha</text>
+<text x="985" y="531" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Of 10 vineyard islands in 1812,</text>
+<text x="985" y="543" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">6 have zero viticulture remaining</text>
+<line x1="797" y1="315" x2="806" y2="315" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<polygon points="801,312 801,318 806,315" fill="rgba(255,255,255,0.08)"/>
+<text x="1353" y="90" text-anchor="middle" fill="#5aa0c0" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="3">REVIVAL — VENISSA</text>
+<text x="1353" y="102" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="1.5">Mazzorbo · Walled Garden · Dorona di Venezia</text>
+<rect x="1206" y="125" width="295" height="340" rx="4" fill="rgba(40,30,20,0.3)" stroke="#c09040" stroke-width="1.5" stroke-opacity="0.5"/>
+<rect x="1221" y="140" width="265" height="310" rx="2" fill="rgba(96,160,96,0.08)" stroke="rgba(96,160,96,0.15)" stroke-width="0.5"/>
+<line x1="1231" y1="160" x2="1476" y2="160" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1242.0" cy="160.5" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1262.4" cy="160.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1287.4" cy="160.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.7" cy="160.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1330.2" cy="159.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1353.9" cy="160.5" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1376.9" cy="160.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1398.0" cy="159.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1420.2" cy="160.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1443.4" cy="159.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1466.2" cy="159.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="195" x2="1476" y2="195" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1239.9" cy="194.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1263.7" cy="194.4" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1284.9" cy="195.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1309.9" cy="194.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1332.4" cy="195.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1354.6" cy="194.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1376.6" cy="195.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1397.7" cy="195.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1419.9" cy="195.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1442.8" cy="194.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1467.3" cy="194.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="230" x2="1476" y2="230" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1239.6" cy="229.4" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1262.2" cy="229.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1286.8" cy="230.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.3" cy="230.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1330.7" cy="229.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1353.3" cy="230.4" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1374.5" cy="229.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1398.5" cy="230.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1420.3" cy="230.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1443.7" cy="229.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1465.7" cy="230.4" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="265" x2="1476" y2="265" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1241.3" cy="264.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1263.2" cy="265.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1287.4" cy="265.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.1" cy="265.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1329.9" cy="264.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1352.5" cy="265.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1375.8" cy="265.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1398.9" cy="264.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1420.1" cy="265.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1442.2" cy="264.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1466.2" cy="264.4" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="300" x2="1476" y2="300" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1240.4" cy="299.5" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1263.5" cy="299.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1287.0" cy="299.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.7" cy="299.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1329.8" cy="299.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1352.1" cy="300.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1375.8" cy="299.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1399.0" cy="299.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1421.9" cy="299.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1444.5" cy="300.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1464.9" cy="300.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="335" x2="1476" y2="335" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1241.9" cy="335.9" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1263.9" cy="335.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1286.0" cy="334.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.5" cy="334.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1330.9" cy="335.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1352.4" cy="335.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1376.8" cy="335.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1398.4" cy="335.2" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1421.1" cy="335.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1444.1" cy="335.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1466.6" cy="335.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="370" x2="1476" y2="370" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1242.3" cy="369.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1262.6" cy="370.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1285.7" cy="369.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.5" cy="370.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1329.7" cy="370.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1352.5" cy="370.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1376.7" cy="369.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1399.1" cy="371.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1419.9" cy="370.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1443.9" cy="369.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1465.8" cy="369.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<line x1="1231" y1="405" x2="1476" y2="405" stroke="rgba(96,160,96,0.2)" stroke-width="0.8"/>
+<circle cx="1240.0" cy="404.4" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1264.2" cy="405.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1286.8" cy="405.6" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1307.2" cy="404.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1332.0" cy="404.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1354.3" cy="404.0" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1376.4" cy="405.8" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1397.1" cy="405.3" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1419.9" cy="405.7" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1443.6" cy="404.5" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<circle cx="1465.6" cy="405.1" r="3" fill="rgba(96,160,96,0.25)" stroke="rgba(96,160,96,0.3)" stroke-width="0.3"/>
+<text x="1353" y="117" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">BRICK WALL — 2.5m high</text>
+<text x="1353" y="481" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">88 Dorona vines · 11×8 grid · 0.8 hectares</text>
+<text x="1353" y="501" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Wind reduction: 70%</text>
+<text x="1353" y="515" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Soil temp: +2–4°C above ambient</text>
+<text x="1353" y="529" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">Humidity: +15% inside walls</text>
+<text x="1353" y="543" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">30 distinct microclimates</text>
+<text x="1353" y="565" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="300" letter-spacing="1" font-style="italic">"A vineyard occupied Piazza San Marco until 1100"</text>
+<line x1="1165" y1="315" x2="1174" y2="315" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<polygon points="1169,312 1169,318 1174,315" fill="rgba(255,255,255,0.08)"/>
+<rect x="680" y="623" width="240" height="40" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<ellipse cx="715" cy="637" rx="6" ry="4" fill="#c09040" opacity="0.35" stroke="#c09040" stroke-width="0.4"/>
+<text x="726" y="640" text-anchor="start" fill="rgba(255,255,255,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">1812 vineyards (300 ha)</text>
+<ellipse cx="845" cy="637" rx="6" ry="4" fill="#c05050" opacity="0.5" stroke="#c05050" stroke-width="0.6"/>
+<text x="856" y="640" text-anchor="start" fill="rgba(255,255,255,0.4)" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="1">2026 remnant (3 ha)</text>
+<rect x="715" y="652" width="12" height="6" rx="1" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3,3"/>
+<text x="732" y="658" text-anchor="start" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6" font-weight="400" letter-spacing="1">Historic extent (lost)</text>
+<text x="800" y="678" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="5" font-weight="400" letter-spacing="1">Data: Napoleonic Cadastral Survey (1812) · vineyard_data.json · Venissa estate records</text>
+</svg>

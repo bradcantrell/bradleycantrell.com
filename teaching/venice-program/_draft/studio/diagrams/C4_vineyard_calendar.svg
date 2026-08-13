@@ -1,0 +1,391 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700">
+<defs>
+<radialGradient id="bg" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#0f1620"/><stop offset="100%" stop-color="#05080c"/></radialGradient>
+<linearGradient id="springGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60a060" stop-opacity="0.25"/><stop offset="100%" stop-color="#60a060" stop-opacity="0.04"/></linearGradient>
+<linearGradient id="summerGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e08050" stop-opacity="0.25"/><stop offset="100%" stop-color="#e08050" stop-opacity="0.04"/></linearGradient>
+<linearGradient id="autumnGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c09040" stop-opacity="0.25"/><stop offset="100%" stop-color="#c09040" stop-opacity="0.04"/></linearGradient>
+<linearGradient id="winterGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5aa0c0" stop-opacity="0.25"/><stop offset="100%" stop-color="#5aa0c0" stop-opacity="0.04"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="1.5"/><feMerge><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1600" height="700" fill="url(#bg)"/>
+
+<!-- TITLE -->
+<text x="800" y="32" text-anchor="middle" fill="#c0d0e0" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="4">THE VINEYARD CALENDAR</text>
+<text x="800" y="47" text-anchor="middle" fill="#778899" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2.5">DORONA DI VENEZIA — A YEAR OF ATTENTION UNDER LAGOON CONDITIONS</text>
+
+<!-- PANEL BACKGROUNDS -->
+<rect x="72" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="440" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="808" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+<rect x="1176" y="75" width="355" height="480" rx="3" fill="rgba(6,12,18,0.6)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+
+<!-- ============================================ -->
+<!-- PANEL 1: SPRING (Mar–May) -->
+<!-- ============================================ -->
+
+<!-- Season gradient overlay -->
+<rect x="77" y="80" width="345" height="470" rx="2" fill="url(#springGrad)"/>
+
+<!-- Season header bar -->
+<rect x="77" y="80" width="345" height="3" rx="1" fill="#60a060"/>
+<text x="249" y="100" text-anchor="middle" fill="#60a060" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="4">SPRING</text>
+<text x="249" y="114" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2">MARCH — APRIL — MAY</text>
+
+<!-- Phenology label -->
+<text x="95" y="136" fill="#60a060" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">PHENOLOGY</text>
+<rect x="95" y="139" width="40" height="0.5" fill="#60a060" opacity="0.4"/>
+
+<!-- Phenology stages -->
+<text x="95" y="156" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">BUD BREAK</text>
+<text x="95" y="170" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Dormant buds swell and open</text>
+<text x="95" y="182" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Sap rises as soil warms above 10°C</text>
+
+<text x="95" y="204" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">SHOOT GROWTH</text>
+<text x="95" y="218" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Rapid elongation of new shoots</text>
+<text x="95" y="230" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Leaf expansion and tendril formation</text>
+
+<!-- Vine illustration: spring - bare cane with small buds -->
+<g transform="translate(280,135)">
+  <!-- Trunk -->
+  <line x1="30" y1="0" x2="30" y2="70" stroke="#60a060" stroke-width="2.5" opacity="0.7"/>
+  <!-- Horizontal cordon -->
+  <line x1="5" y1="15" x2="55" y2="15" stroke="#60a060" stroke-width="2" opacity="0.7"/>
+  <!-- Canes -->
+  <line x1="10" y1="15" x2="3" y2="40" stroke="#60a060" stroke-width="1.5" opacity="0.5"/>
+  <line x1="25" y1="15" x2="20" y2="45" stroke="#60a060" stroke-width="1.5" opacity="0.5"/>
+  <line x1="40" y1="15" x2="38" y2="42" stroke="#60a060" stroke-width="1.5" opacity="0.5"/>
+  <line x1="50" y1="15" x2="53" y2="40" stroke="#60a060" stroke-width="1.5" opacity="0.5"/>
+  <!-- Buds (small circles) -->
+  <circle cx="3" cy="40" r="2.5" fill="#60a060" opacity="0.8"/>
+  <circle cx="20" cy="45" r="2.5" fill="#60a060" opacity="0.8"/>
+  <circle cx="38" cy="42" r="2.5" fill="#60a060" opacity="0.8"/>
+  <circle cx="53" cy="40" r="2.5" fill="#60a060" opacity="0.8"/>
+  <!-- Small emerging leaves -->
+  <ellipse cx="1" cy="30" rx="4" ry="2" fill="#60a060" opacity="0.3" transform="rotate(-20,1,30)"/>
+  <ellipse cx="18" cy="33" rx="4" ry="2" fill="#60a060" opacity="0.3" transform="rotate(-15,18,33)"/>
+  <ellipse cx="36" cy="31" rx="4" ry="2" fill="#60a060" opacity="0.3" transform="rotate(-25,36,31)"/>
+  <ellipse cx="55" cy="30" rx="4" ry="2" fill="#60a060" opacity="0.3" transform="rotate(10,55,30)"/>
+</g>
+
+<!-- Key Tasks -->
+<text x="95" y="265" fill="#60a060" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">KEY TASKS</text>
+<rect x="95" y="268" width="40" height="0.5" fill="#60a060" opacity="0.4"/>
+
+<circle cx="100" cy="285" r="1.5" fill="#60a060" opacity="0.5"/>
+<text x="108" y="287" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Tie down canes after winter pruning</text>
+
+<circle cx="100" cy="300" r="1.5" fill="#60a060" opacity="0.5"/>
+<text x="108" y="302" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Apply compost / organic fertiliser</text>
+
+<circle cx="100" cy="315" r="1.5" fill="#60a060" opacity="0.5"/>
+<text x="108" y="317" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Weed control between rows</text>
+
+<circle cx="100" cy="330" r="1.5" fill="#60a060" opacity="0.5"/>
+<text x="108" y="332" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Monitor for fungal pathogens</text>
+
+<circle cx="100" cy="345" r="1.5" fill="#60a060" opacity="0.5"/>
+<text x="108" y="347" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Frost protection (straw mulching)</text>
+
+<!-- Environmental Conditions -->
+<text x="95" y="380" fill="#60a060" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">CONDITIONS</text>
+<rect x="95" y="383" width="40" height="0.5" fill="#60a060" opacity="0.4"/>
+
+<!-- Temperature bar -->
+<rect x="95" y="395" width="200" height="8" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+<rect x="95" y="395" width="80" height="8" rx="2" fill="#60a060" opacity="0.3"/>
+<text x="300" y="402" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">8–18°C</text>
+
+<!-- Risk indicator -->
+<text x="95" y="425" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Lagoon humidity</text>
+<rect x="200" y="419" width="100" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+<rect x="200" y="419" width="55" height="4" rx="1" fill="#60a060" opacity="0.4"/>
+
+<text x="95" y="445" fill="#c05050" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600">⚠ FROST RISK</text>
+<text x="95" y="458" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Late frost can kill emerging buds</text>
+<text x="95" y="470" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Salt-laden winds stress new growth</text>
+
+<!-- Soil temp indicator -->
+<rect x="95" y="485" width="180" height="10" rx="3" fill="rgba(60,128,144,0.1)"/>
+<text x="105" y="492" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6">Soil: 8→14°C · Daylight: 11→15h</text>
+
+<!-- ============================================ -->
+<!-- PANEL 2: SUMMER (Jun–Aug) -->
+<!-- ============================================ -->
+
+<rect x="445" y="80" width="345" height="470" rx="2" fill="url(#summerGrad)"/>
+
+<rect x="445" y="80" width="345" height="3" rx="1" fill="#e08050"/>
+<text x="617" y="100" text-anchor="middle" fill="#e08050" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="4">SUMMER</text>
+<text x="617" y="114" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2">JUNE — JULY — AUGUST</text>
+
+<text x="463" y="136" fill="#e08050" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">PHENOLOGY</text>
+<rect x="463" y="139" width="40" height="0.5" fill="#e08050" opacity="0.4"/>
+
+<text x="463" y="156" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">FLOWERING</text>
+<text x="463" y="170" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Self-pollinating clusters appear</text>
+<text x="463" y="182" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Wind-pollinated; dry weather critical</text>
+
+<text x="463" y="204" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">FRUIT SET</text>
+<text x="463" y="218" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Fertilised flowers develop into berries</text>
+<text x="463" y="230" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Green, hard, high acid — rapid cell division</text>
+
+<text x="463" y="252" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">VERAISON</text>
+<text x="463" y="266" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Berries soften and change colour</text>
+<text x="463" y="278" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Sugar accumulation begins</text>
+
+<!-- Vine illustration: summer - full canopy with clusters -->
+<g transform="translate(650,130)">
+  <line x1="30" y1="0" x2="30" y2="75" stroke="#e08050" stroke-width="3" opacity="0.7"/>
+  <line x1="8" y1="12" x2="52" y2="12" stroke="#e08050" stroke-width="2.5" opacity="0.7"/>
+  <line x1="12" y1="12" x2="0" y2="55" stroke="#e08050" stroke-width="1.8" opacity="0.6"/>
+  <line x1="28" y1="12" x2="20" y2="60" stroke="#e08050" stroke-width="1.8" opacity="0.6"/>
+  <line x1="40" y1="12" x2="42" y2="58" stroke="#e08050" stroke-width="1.8" opacity="0.6"/>
+  <line x1="48" y1="12" x2="60" y2="55" stroke="#e08050" stroke-width="1.8" opacity="0.6"/>
+  <!-- Leaf canopy - dense -->
+  <ellipse cx="15" cy="20" rx="8" ry="5" fill="#e08050" opacity="0.35" transform="rotate(-10,15,20)"/>
+  <ellipse cx="30" cy="17" rx="9" ry="5" fill="#e08050" opacity="0.4" transform="rotate(5,30,17)"/>
+  <ellipse cx="45" cy="20" rx="8" ry="5" fill="#e08050" opacity="0.35" transform="rotate(15,45,20)"/>
+  <ellipse cx="22" cy="32" rx="7" ry="4.5" fill="#e08050" opacity="0.3" transform="rotate(-5,22,32)"/>
+  <ellipse cx="38" cy="32" rx="7" ry="4.5" fill="#e08050" opacity="0.3" transform="rotate(8,38,32)"/>
+  <ellipse cx="12" cy="40" rx="6" ry="4" fill="#e08050" opacity="0.25" transform="rotate(-15,12,40)"/>
+  <ellipse cx="48" cy="40" rx="6" ry="4" fill="#e08050" opacity="0.25" transform="rotate(12,48,40)"/>
+  <!-- Grape clusters -->
+  <circle cx="0" cy="55" r="3" fill="#9050c0" opacity="0.6"/>
+  <circle cx="-2" cy="58" r="2.5" fill="#9050c0" opacity="0.55"/>
+  <circle cx="2" cy="58" r="2.5" fill="#9050c0" opacity="0.55"/>
+  <circle cx="20" cy="60" r="3" fill="#9050c0" opacity="0.6"/>
+  <circle cx="18" cy="63" r="2.5" fill="#9050c0" opacity="0.55"/>
+  <circle cx="22" cy="63" r="2.5" fill="#9050c0" opacity="0.55"/>
+  <circle cx="42" cy="58" r="3" fill="#9050c0" opacity="0.6"/>
+  <circle cx="40" cy="61" r="2.5" fill="#9050c0" opacity="0.55"/>
+  <circle cx="44" cy="61" r="2.5" fill="#9050c0" opacity="0.55"/>
+</g>
+
+<text x="463" y="308" fill="#e08050" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">KEY TASKS</text>
+<rect x="463" y="311" width="40" height="0.5" fill="#e08050" opacity="0.4"/>
+
+<circle cx="468" cy="326" r="1.5" fill="#e08050" opacity="0.5"/>
+<text x="476" y="328" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Canopy management (shoot thinning)</text>
+
+<circle cx="468" cy="341" r="1.5" fill="#e08050" opacity="0.5"/>
+<text x="476" y="343" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Leaf removal for cluster exposure</text>
+
+<circle cx="468" cy="356" r="1.5" fill="#e08050" opacity="0.5"/>
+<text x="476" y="358" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Green harvest / cluster thinning</text>
+
+<circle cx="468" cy="371" r="1.5" fill="#e08050" opacity="0.5"/>
+<text x="476" y="373" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Irrigation management</text>
+
+<circle cx="468" cy="386" r="1.5" fill="#e08050" opacity="0.5"/>
+<text x="476" y="388" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Disease scouting (mildew, rot)</text>
+
+<text x="463" y="418" fill="#e08050" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">CONDITIONS</text>
+<rect x="463" y="421" width="40" height="0.5" fill="#e08050" opacity="0.4"/>
+
+<rect x="463" y="433" width="200" height="8" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+<rect x="463" y="433" width="140" height="8" rx="2" fill="#e08050" opacity="0.3"/>
+<text x="668" y="440" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">18–30°C</text>
+
+<text x="463" y="463" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Lagoon evaporation rate</text>
+<rect x="568" y="457" width="100" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+<rect x="568" y="457" width="70" height="4" rx="1" fill="#e08050" opacity="0.4"/>
+
+<text x="463" y="483" fill="#3a8090" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600">⚠ ACQUA ALTA RISK</text>
+<text x="463" y="496" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Summer storms + sirocco winds</text>
+<text x="463" y="508" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Salt spray damage to foliage</text>
+
+<rect x="463" y="523" width="180" height="10" rx="3" fill="rgba(60,128,144,0.1)"/>
+<text x="473" y="530" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6">Soil: 18→25°C · Daylight: 15→13h</text>
+
+<!-- ============================================ -->
+<!-- PANEL 3: AUTUMN (Sep–Nov) -->
+<!-- ============================================ -->
+
+<rect x="813" y="80" width="345" height="470" rx="2" fill="url(#autumnGrad)"/>
+
+<rect x="813" y="80" width="345" height="3" rx="1" fill="#c09040"/>
+<text x="985" y="100" text-anchor="middle" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="4">AUTUMN</text>
+<text x="985" y="114" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2">SEPTEMBER — OCTOBER — NOVEMBER</text>
+
+<text x="831" y="136" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">PHENOLOGY</text>
+<rect x="831" y="139" width="40" height="0.5" fill="#c09040" opacity="0.4"/>
+
+<text x="831" y="156" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">RIPENING &amp; HARVEST</text>
+<text x="831" y="170" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Berry sugar reaches 22–25° Brix</text>
+<text x="831" y="182" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Hand-harvest into small crates</text>
+
+<text x="831" y="204" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">MACERATION</text>
+<text x="831" y="218" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Extended skin contact for colour &amp; tannin</text>
+<text x="831" y="230" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Dorona: 15–30 day maceration</text>
+
+<text x="831" y="252" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">FERMENTATION</text>
+<text x="831" y="266" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Wild yeast fermentation in terracotta</text>
+<text x="831" y="278" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Temperature-controlled; 18–28°C</text>
+
+<!-- Vine illustration: autumn - clusters, colour change -->
+<g transform="translate(650,130)">
+  <line x1="30" y1="0" x2="30" y2="75" stroke="#c09040" stroke-width="3" opacity="0.7"/>
+  <line x1="8" y1="14" x2="52" y2="14" stroke="#c09040" stroke-width="2.5" opacity="0.7"/>
+  <!-- Cane lines -->
+  <line x1="12" y1="14" x2="0" y2="58" stroke="#c09040" stroke-width="1.8" opacity="0.6"/>
+  <line x1="28" y1="14" x2="20" y2="62" stroke="#c09040" stroke-width="1.8" opacity="0.6"/>
+  <line x1="40" y1="14" x2="48" y2="60" stroke="#c09040" stroke-width="1.8" opacity="0.6"/>
+  <line x1="50" y1="14" x2="60" y2="58" stroke="#c09040" stroke-width="1.8" opacity="0.6"/>
+  <!-- Autumn leaves - sparse, colour shift -->
+  <ellipse cx="15" cy="22" rx="7" ry="4" fill="#c09040" opacity="0.3" transform="rotate(-15,15,22)"/>
+  <ellipse cx="30" cy="18" rx="8" ry="4.5" fill="#c09040" opacity="0.35" transform="rotate(5,30,18)"/>
+  <ellipse cx="44" cy="22" rx="7" ry="4" fill="#c09040" opacity="0.3" transform="rotate(12,44,22)"/>
+  <ellipse cx="22" cy="34" rx="6" ry="3.5" fill="#c09040" opacity="0.25" transform="rotate(-8,22,34)"/>
+  <ellipse cx="38" cy="34" rx="6" ry="3.5" fill="#c09040" opacity="0.25" transform="rotate(10,38,34)"/>
+  <!-- Ripe grape clusters - golden/purple -->
+  <circle cx="0" cy="58" r="3" fill="#c09040" opacity="0.7"/>
+  <circle cx="-2" cy="61" r="2.8" fill="#c09040" opacity="0.65"/>
+  <circle cx="2" cy="61" r="2.8" fill="#c09040" opacity="0.65"/>
+  <circle cx="0" cy="64" r="2.5" fill="#c09040" opacity="0.6"/>
+  <circle cx="20" cy="62" r="3" fill="#c09040" opacity="0.7"/>
+  <circle cx="18" cy="65" r="2.8" fill="#c09040" opacity="0.65"/>
+  <circle cx="22" cy="65" r="2.8" fill="#c09040" opacity="0.65"/>
+  <circle cx="20" cy="68" r="2.5" fill="#c09040" opacity="0.6"/>
+  <circle cx="48" cy="60" r="3" fill="#c09040" opacity="0.7"/>
+  <circle cx="46" cy="63" r="2.8" fill="#c09040" opacity="0.65"/>
+  <circle cx="50" cy="63" r="2.8" fill="#c09040" opacity="0.65"/>
+  <circle cx="48" cy="66" r="2.5" fill="#c09040" opacity="0.6"/>
+</g>
+
+<text x="831" y="310" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">KEY TASKS</text>
+<rect x="831" y="313" width="40" height="0.5" fill="#c09040" opacity="0.4"/>
+
+<circle cx="836" cy="328" r="1.5" fill="#c09040" opacity="0.5"/>
+<text x="844" y="330" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Harvest by hand; sort in vineyard</text>
+
+<circle cx="836" cy="343" r="1.5" fill="#c09040" opacity="0.5"/>
+<text x="844" y="345" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Destem and crush within hours</text>
+
+<circle cx="836" cy="358" r="1.5" fill="#c09040" opacity="0.5"/>
+<text x="844" y="360" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Punch down cap 2–3× daily</text>
+
+<circle cx="836" cy="373" r="1.5" fill="#c09040" opacity="0.5"/>
+<text x="844" y="375" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Monitor Brix, pH, temperature</text>
+
+<circle cx="836" cy="388" r="1.5" fill="#c09040" opacity="0.5"/>
+<text x="844" y="390" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Press and transfer to aging vessel</text>
+
+<text x="831" y="418" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">CONDITIONS</text>
+<rect x="831" y="421" width="40" height="0.5" fill="#c09040" opacity="0.4"/>
+
+<rect x="831" y="433" width="200" height="8" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+<rect x="831" y="433" width="110" height="8" rx="2" fill="#c09040" opacity="0.3"/>
+<text x="1036" y="440" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">14–22°C</text>
+
+<text x="831" y="463" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Diurnal shift (day/night)</text>
+<rect x="936" y="457" width="100" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+<rect x="936" y="457" width="78" height="4" rx="1" fill="#c09040" opacity="0.4"/>
+
+<text x="831" y="483" fill="#c09040" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600">⊙ HARVEST WINDOW</text>
+<text x="831" y="496" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Optimal: late Sep to mid Oct</text>
+<text x="831" y="508" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Rain risk forces early harvest</text>
+
+<rect x="831" y="523" width="180" height="10" rx="3" fill="rgba(60,128,144,0.1)"/>
+<text x="841" y="530" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6">Soil: 22→14°C · Daylight: 13→9h</text>
+
+<!-- ============================================ -->
+<!-- PANEL 4: WINTER (Dec–Feb) -->
+<!-- ============================================ -->
+
+<rect x="1181" y="80" width="345" height="470" rx="2" fill="url(#winterGrad)"/>
+
+<rect x="1181" y="80" width="345" height="3" rx="1" fill="#5aa0c0"/>
+<text x="1353" y="100" text-anchor="middle" fill="#5aa0c0" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="4">WINTER</text>
+<text x="1353" y="114" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="400" letter-spacing="2">DECEMBER — JANUARY — FEBRUARY</text>
+
+<text x="1199" y="136" fill="#5aa0c0" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">PHENOLOGY</text>
+<rect x="1199" y="139" width="40" height="0.5" fill="#5aa0c0" opacity="0.4"/>
+
+<text x="1199" y="156" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">LEAF FALL</text>
+<text x="1199" y="170" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Chlorophyll breaks down; abscission</text>
+<text x="1199" y="182" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Nutrients translocated to permanent wood</text>
+
+<text x="1199" y="204" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">DORMANCY</text>
+<text x="1199" y="218" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Metabolic activity minimal</text>
+<text x="1199" y="230" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Cold hardening increases frost resistance</text>
+
+<text x="1199" y="252" fill="rgba(255,255,255,0.7)" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="600">WINTER PRUNING</text>
+<text x="1199" y="266" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Select 1–2 canes for next season</text>
+<text x="1199" y="278" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Remove 80–90% of previous growth</text>
+
+<!-- Vine illustration: winter - bare canes, pruned -->
+<g transform="translate(650,130)">
+  <line x1="30" y1="0" x2="30" y2="70" stroke="#5aa0c0" stroke-width="3" opacity="0.6"/>
+  <line x1="8" y1="14" x2="52" y2="14" stroke="#5aa0c0" stroke-width="2.5" opacity="0.6"/>
+  <!-- Pruned canes - cut short -->
+  <line x1="10" y1="14" x2="3" y2="32" stroke="#5aa0c0" stroke-width="2" opacity="0.5"/>
+  <line x1="28" y1="14" x2="24" y2="36" stroke="#5aa0c0" stroke-width="2" opacity="0.5"/>
+  <line x1="40" y1="14" x2="43" y2="34" stroke="#5aa0c0" stroke-width="2" opacity="0.5"/>
+  <line x1="50" y1="14" x2="57" y2="32" stroke="#5aa0c0" stroke-width="2" opacity="0.5"/>
+  <!-- Pruning cuts (small marks) -->
+  <line x1="0" y1="32" x2="6" y2="32" stroke="#5aa0c0" stroke-width="1" opacity="0.7"/>
+  <line x1="22" y1="36" x2="27" y2="36" stroke="#5aa0c0" stroke-width="1" opacity="0.7"/>
+  <line x1="41" y1="34" x2="45" y2="34" stroke="#5aa0c0" stroke-width="1" opacity="0.7"/>
+  <line x1="55" y1="32" x2="60" y2="32" stroke="#5aa0c0" stroke-width="1" opacity="0.7"/>
+  <!-- Dormant buds -->
+  <circle cx="3" cy="32" r="1.8" fill="#5aa0c0" opacity="0.5"/>
+  <circle cx="24" cy="36" r="1.8" fill="#5aa0c0" opacity="0.5"/>
+  <circle cx="43" cy="34" r="1.8" fill="#5aa0c0" opacity="0.5"/>
+  <circle cx="57" cy="32" r="1.8" fill="#5aa0c0" opacity="0.5"/>
+  <!-- No leaves -->
+</g>
+
+<text x="1199" y="310" fill="#5aa0c0" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">KEY TASKS</text>
+<rect x="1199" y="313" width="40" height="0.5" fill="#5aa0c0" opacity="0.4"/>
+
+<circle cx="1204" cy="328" r="1.5" fill="#5aa0c0" opacity="0.5"/>
+<text x="1212" y="330" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Winter pruning (cane or spur)</text>
+
+<circle cx="1204" cy="343" r="1.5" fill="#5aa0c0" opacity="0.5"/>
+<text x="1212" y="345" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Tie down selected canes</text>
+
+<circle cx="1204" cy="358" r="1.5" fill="#5aa0c0" opacity="0.5"/>
+<text x="1212" y="360" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Rack and top up aging wine</text>
+
+<circle cx="1204" cy="373" r="1.5" fill="#5aa0c0" opacity="0.5"/>
+<text x="1212" y="375" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Repair trellis and infrastructure</text>
+
+<circle cx="1204" cy="388" r="1.5" fill="#5aa0c0" opacity="0.5"/>
+<text x="1212" y="390" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Soil amendment / cover crop</text>
+
+<text x="1199" y="418" fill="#5aa0c0" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600" letter-spacing="1.5">CONDITIONS</text>
+<rect x="1199" y="421" width="40" height="0.5" fill="#5aa0c0" opacity="0.4"/>
+
+<rect x="1199" y="433" width="200" height="8" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+<rect x="1199" y="433" width="50" height="8" rx="2" fill="#5aa0c0" opacity="0.3"/>
+<text x="1404" y="440" fill="rgba(255,255,255,0.35)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">2–8°C</text>
+
+<text x="1199" y="463" fill="rgba(255,255,255,0.5)" font-family="Helvetica,Arial,sans-serif" font-size="7">Cold accumulation (chill hours)</text>
+<rect x="1304" y="457" width="100" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+<rect x="1304" y="457" width="45" height="4" rx="1" fill="#5aa0c0" opacity="0.4"/>
+
+<text x="1199" y="483" fill="#3a8090" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="600">⚠ LAGOON FLOODING</text>
+<text x="1199" y="496" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Winter acqua alta events peak</text>
+<text x="1199" y="508" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6.5">Saltwater inundation of vineyard floor</text>
+
+<rect x="1199" y="523" width="180" height="10" rx="3" fill="rgba(60,128,144,0.1)"/>
+<text x="1209" y="530" fill="rgba(255,255,255,0.3)" font-family="Helvetica,Arial,sans-serif" font-size="6">Soil: 5→8°C · Daylight: 9→11h</text>
+
+<!-- ============================================ -->
+<!-- LEGEND -->
+<!-- ============================================ -->
+
+<text x="800" y="623" text-anchor="middle" fill="#445566" font-family="Helvetica,Arial,sans-serif" font-size="5" letter-spacing="1.5">PHENOLOGICAL DATA: DORONA DI VENEZIA CULTIVAR — ADAPTED FROM VENETIAN LAGOON VITICULTURAL PRACTICE, 1812 NAPOLEONIC CADASTRAL RECORDS, AND CONTEMPORARY VENISSA OBSERVATIONS</text>
+
+<!-- Connecting line between panels: subtle season transition -->
+<line x1="427" y1="315" x2="438" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+<polygon points="433,312 433,318 438,315" fill="rgba(255,255,255,0.06)"/>
+
+<line x1="795" y1="315" x2="806" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+<polygon points="801,312 801,318 806,315" fill="rgba(255,255,255,0.06)"/>
+
+<line x1="1163" y1="315" x2="1174" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+<polygon points="1169,312 1169,318 1174,315" fill="rgba(255,255,255,0.06)"/>
+
+</svg>
