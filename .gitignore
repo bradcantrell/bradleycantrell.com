@@ -1,5 +1,3 @@
-# Venice program: full content is local-only for review/editing.
-# Only the "coming soon" index.html is tracked (GitHub stays on coming-soon
-# until we're ready to launch). Everything else lives on disk, ignored by git.
-teaching/venice-program/*
-!teaching/venice-program/index.html
+# Venice program moved to its own site (veniceprogram.com, Cloudflare Pages).
+# Source now lives at /mnt/vault/infrastructure/www/veniceprogram/ and is
+# deployed from /mnt/vault/infrastructure/venice-program-production/.
