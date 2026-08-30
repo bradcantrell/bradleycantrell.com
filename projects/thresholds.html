@@ -65,6 +65,10 @@
     .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
     .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
     .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
     .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
     .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
     @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
@@ -74,7 +78,7 @@
 <body>
 
 <div class="hero">
-  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/hero.jpg')"></div>
+  <video class="hero-video" autoplay loop muted playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/hero.mp4"></video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-year">2006</div>
@@ -95,7 +99,28 @@
 
 <div class="project-body">
 <p>Thresholds was an interactive installation that translated spatial occupation into topographic representation. A high-contrast mural painted on the atrium wall served as a visual datum, a stable ground condition against which change could be measured. A camera trained on the mural performed continuous blob detection, an image analysis technique that identifies regions of contrast difference. Custom software written in Processing converted these contrast gradients into isolines (contour lines), displayed in real-time on an adjacent monitor. As lighting conditions shifted throughout the day and as pedestrians moved through the space, they disrupted the contrast field, generating new isoline configurations,effectively producing “automated landscapes” in continuous flux.</p>
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/thresholds-30fps.mp4"></video>
+  </figure>
+</div>
+
 <p>The project established a feedback loop between environmental condition, sensing apparatus, and representational output. The mural functioned as a calibrated field; the camera as a sensing instrument; the algorithm as an analytical engine; and the monitor as an interface rendering analysis legible. Occupants of the atrium became unwitting participants in landscape generation,their bodies registering as topographic events, their movement producing ephemeral landforms.</p>
+<div class="image-grid-natural">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/slide-03.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/slide-06.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/slide-07.jpg" alt="">
+</div>
+
+<div class="video-grid-2">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/thresholds-atrium.mp4"></video>
+  </figure>
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/thresholds/timelapse.mp4"></video>
+  </figure>
+</div>
+
 <h2>Fundamental Questions</h2>
 <p>Thresholds operated as an early prototype for concepts that would mature across subsequent projects: the notion that representation can be dynamic rather than static, responding to conditions rather than fixing them; that sensing and visualization can form a continuous circuit, collapsing the temporal gap between data collection and communication and that the landscape medium extends to phenomena beyond terrain, here, light, contrast, and human occupation become the “materials” from which topography is generated.</p>
 <p>The choice of isolines as the representational mode was deliberate. Contour lines are perhaps the most fundamental notation in landscape architecture, the convention through which three-dimensional terrain is translated into two-dimensional plan. By generating isolines algorithmically and in real-time, Thresholds defamiliarized this taken-for-granted convention, revealing the contour not as a neutral transcription of existing landform but as an active interpretation of gradient and threshold. The installation asked: What if contours responded to present conditions rather than recording past surveys? What if the landscape drawing was always being redrawn?</p>
