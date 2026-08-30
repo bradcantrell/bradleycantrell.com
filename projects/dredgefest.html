@@ -55,7 +55,13 @@
     .image-grid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
     .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
     .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
   </style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
@@ -83,18 +89,39 @@
 
 <div class="project-body">
 <p>DredgeFest was a series of public programs organized by the Dredge Research Collaborative that treated dredging, the mechanical excavation and relocation of sediment from waterways, as cultural, political, and designable infrastructure. For DredgeFest Louisiana (January 2014) at LSU, three workshops were hosted at the Robert Reich School of Landscape Architecture, each examining innovative methodologies of sediment manipulation at multiple scales. The “Adaptive Devices” workshop, led by Cantrell with Justine Holzman and David Merlin, explored how sensing and real-time feedback can alter the flow of sediment at localized sites. Participants used a small-scale fluvial model and physical computing, Arduino microcontrollers with the Firefly plugin for Grasshopper, servo motors, and shape memory alloys, to prototype responsive sedimentary infrastructures. The workshop staged a direct encounter between computational design tools and hydrological processes, prototyping at tabletop scale the kind of responsive infrastructure the dissertation theorizes at territorial scale.</p>
+<div class="image-grid-natural">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/01.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/02.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/03.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/04.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/05.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/06.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/07.jpg" alt="DredgeFest workshop" loading="lazy">
+<img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/08.jpg" alt="DredgeFest workshop" loading="lazy">
+</div>
+
+<div class="video-grid">
+<figure>
+<video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/sediment-devices.mp4"></video>
+<figcaption>Sediment devices</figcaption>
+</figure>
+<figure>
+<video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/sediment-printing.mp4"></video>
+<figcaption>Sediment printing</figcaption>
+</figure>
+<figure>
+<video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/timelapse.mp4"></video>
+<figcaption>Timelapse</figcaption>
+</figure>
+</div>
+
 <h2>Fundamental Questions</h2>
 <p>DredgeFest addressed fundamental questions about the relationship between infrastructure, culture, and design: What happens when a mundane industrial process — the mechanical relocation of sediment — is reframed as a cultural and design practice? How can public programming transform technical infrastructure into a subject of collective imagination and democratic deliberation?</p>
 <p>The Dredge Research Collaborative organized a series of public events that treated dredging as simultaneously a technical challenge, a political practice, and a design opportunity. By bringing together scientists, engineers, artists, and designers alongside community members and agency staff, DredgeFest demonstrated that the governance of sediment — the material that builds and erases coastlines — is not merely an engineering question but a cultural one.</p>
 <p>The project raised questions about the role of the designer in infrastructural discourse: Can public programming shift the terms of technical debate? And how might landscape architects position themselves not as form-givers but as conveners — building the social infrastructure through which territorial decisions are made?</p>
 </div>
 
-<div class="gallery-grid" id="galleryGrid">
-  <h3>Gallery</h3>
-  <div class="gallery-tile" data-type="image" data-src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/01.jpg">
-    <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/dredgefest/01.jpg" alt="" loading="lazy">
-  </div>
-</div>
+
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lbClose">&times;</button>
