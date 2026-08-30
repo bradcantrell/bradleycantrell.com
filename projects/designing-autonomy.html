@@ -45,6 +45,7 @@
     .lightbox-prev { left: 1.5rem; }
     .lightbox-next { right: 1.5rem; }
     .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
 
     .inline-figure { margin: 2.5rem 0; }
     .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
@@ -64,6 +65,8 @@
     .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
     .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
     .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
     @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
   </style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
@@ -128,6 +131,7 @@
   <button class="lightbox-close" id="lbClose">&times;</button>
   <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
   <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
   <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
   <div class="lightbox-counter" id="lbCounter"></div>
 </div>
@@ -148,14 +152,29 @@
 
   var lb=document.getElementById('lightbox');
   var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
   var lbCount=document.getElementById('lbCounter');
   var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
   var items=[],curIdx=0;
 
-  tiles.forEach(function(t,i){
+  tiles.forEach(function(t){
     items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
     t.addEventListener('click',function(){
       curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
     });
   });
 
@@ -176,6 +195,7 @@
 
   function showLb(i){
     lbMedia.innerHTML='';
+    lbCaption.textContent='';
     if(items[i].type==='video'){
       var v=document.createElement('video');
       v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
@@ -183,8 +203,10 @@
     } else {
       var img=document.createElement('img');
       img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
       lbMedia.appendChild(img);
     }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
     lbCount.textContent=(i+1)+' / '+items.length;
   }
 
