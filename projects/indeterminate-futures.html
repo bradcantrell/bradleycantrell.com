@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="../style.css">
   <style>
     .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/indeterminate-futures/hero.jpg'); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
     .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
     .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
@@ -52,6 +53,8 @@
     .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
     .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
     .image-grid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
   </style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
@@ -59,7 +62,7 @@
 <body>
 
 <div class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/indeterminate-futures/hero.jpg')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-year">2021</div>

@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="../style.css">
   <style>
     .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url(''); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
     .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
     .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
@@ -52,6 +53,8 @@
     .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
     .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
     .image-grid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
   </style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
@@ -59,7 +62,7 @@
 <body>
 
 <div class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <video class="hero-video" autoplay loop muted playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/failure-storm-signals/events.mp4"></video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-year">2019</div>
@@ -80,6 +83,10 @@
 
 <div class="project-body">
 <p>Failure was a video installation created for Storm Signals, an exhibition series that ran alongside the Chicago Architecture Biennial. The film extended the conceptual framework of the earlier Failure drawing into video format, cataloguing environmental failures across two centuries including infrastructural collapses, ecological disasters, and predictive errors, presenting failure not as aberration but as constituent element of environmental history. The chronological survey demonstrated that failure accompanies all human engagement with dynamic systems; the question is not whether failure will occur but how systems respond to and recover from it.</p>
+<div class="video-embed">
+<iframe src="https://www.youtube-nocookie.com/embed/ANzf1PjCHHQ" title="Failure, Storm Signals 2019" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+
 <h2>Fundamental Questions</h2>
 <p>Failure as Landscape Condition: The project statement proposed that "failure is, at the heart of landscape, environments inherently complex, multi-valent relationships in constant flux." This framing repositioned failure from design deficiency to system characteristic. Landscapes fail not because designers err but because complex systems exceed predictive capacity. "Complexity beguiles prediction, making it impossible to predict whether or not one unprecedented event is more likely to occur over another." Accepting this condition requires abandoning the pursuit of comprehensive prediction in favor of approaches that enhance recovery and adaptation.</p>
 <p>Anti-Fragility: Drawing on Nassim Taleb's concept of anti-fragility, the project asked how designers might develop "systems that more readily recover from disturbance, systems that lack fragility and have the ability to respond to unknown outcomes." This orientation shifts design focus from preventing failure (impossible in complex systems) to enabling recovery (achievable through redundancy, flexibility, and adaptive capacity). The paradigm shift moves from predict-and-control to learn-and-adjust, a framework that would become central to subsequent theoretical chapters.</p>
