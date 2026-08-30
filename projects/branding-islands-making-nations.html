@@ -61,14 +61,17 @@
     .video-grid figure { margin: 0; }
     .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
     .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
-    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
   </style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <video class="hero-video" autoplay loop muted playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/sequence-002.mp4"></video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-year">2016</div>
@@ -91,9 +94,30 @@
 <p>Branding Islands Making Nations was an exhibition and public program developed in collaboration with the Vertical Geopolitics Lab for the 2016 Venice Architecture Biennale. The project examined the relationship between physical land creation and the representational language deployed to legitimize it, exposing how branding, marketing, and visual communication extend the reach and power of nation-states through constructed territory.</p>
 <p>The contribution included a film exploring how the production of new land intersects with the production of meaning. Where the geomorphology table research investigated the material dynamics of sediment deposition and land-building, this project interrogated the parallel process by which territorial claims are constructed through representation. The large-format prints documented case studies of how branding and marketing operate as instruments of geopolitical power, transforming artificial landmasses into naturalized extensions of sovereign territory.</p>
 <p>The conceptual framework positioned representation as constitutive rather than solely descriptive and that the politics of representation determine the success of interventions in the built environment. Land that appears on maps, that receives names and flags, that circulates through media imagery, acquires a political reality that may precede or even substitute for material presence. The project asked how spatial practitioners (landscape architects, architects, designers, consultants) participate in this representational economy, whether consciously or not.</p>
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/vgl-real.mp4"></video>
+    <figcaption>Full film</figcaption>
+  </figure>
+</div>
+
 <p>Competition Format: The public program took the form of a satirical case study competition, inviting marketing experts, communication designers, and advertising professionals to speculate on the role of branding in place-making. Departing from ethical critique to satire, the competition employed a format foreign to academic architectural discourse, the sales pitch. Entrants were tasked with developing branding packages for artificial landmasses instrumental in legitimizing territorial claims, specifically within the contested geography of the South China Sea.</p>
 <p>The competition framework deliberately suspended moral evaluation, analyzing entries instead for their “rich interrogation of the role representation plays in its ability to distort, mislead, disguise, or reverse meaning.” By creating incongruity between reality and what is represented, successful entrants demonstrated how the negative might appear positive in legitimizing territorial claims. The goal was not to endorse such practices but to expose them, making visible the mechanisms by which representation manufactures political reality.</p>
 <p>Critical Intent: The project operated through strategic exposure rather than direct opposition. As the exhibition statement noted: “it is based on the firm belief in the necessity to expose the glitches, loopholes, and gray areas in systems as first step toward conflict resolution.” By staging the representational strategies of geopolitical land-making as design problems, the exhibition created discourse on the status spatial practitioners hold within societal decision-making structures that are caught between accountability and profitability, between ethical responsibility and technical capability.</p>
+<div class="media-grid">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/composite-00-22-02.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/composite-00-55-18.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/composite-01-08-23.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/composite-01-41-01.jpg" alt="">
+</div>
+
+<div class="media-grid">
+  <video autoplay muted loop playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/sequence-001.mp4"></video>
+  <video autoplay muted loop playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/sequence-002.mp4"></video>
+  <video autoplay muted loop playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/sequence-003.mp4"></video>
+  <video autoplay muted loop playsinline src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/branding-islands-making-nations/sequence-004.mp4"></video>
+</div>
+
 <h2>Fundamental Questions</h2>
 <p>Branding Islands Making Nations extended the land-making research into explicitly political territory, revealing that the choreography of sediment is inseparable from the choreography of meaning. Several key insights emerged:</p>
 <p>Representation as Territory: The project demonstrated that constructed land acquires political existence through representational practices as much as through material deposition. An artificial island becomes sovereign territory not merely when sand is dredged and piled but when it appears on official maps, when it receives a name, when satellite imagery circulates through news media, when it is branded with national identity. This insight complicated the technical optimism of the geomorphology research, suggesting that land-building is always already a political act embedded in systems of representation and power.</p>
