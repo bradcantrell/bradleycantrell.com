@@ -1263,7 +1263,17 @@ nav {
 
 @media (max-width: 768px) {
   html { font-size: 16px; }
-  .nav-links { display: none; }
+  .nav-name { display: none; }
+  nav { justify-content: flex-start; padding: 0.9rem var(--pad); }
+  .nav-links {
+    display: flex;
+    gap: 1.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .nav-links li { flex: 0 0 auto; }
+  .nav-links a { font-size: 0.7rem; }
   .ch-hero { height: 65vh; min-height: 420px; }
   .ch-content p { font-size: 1rem; }
   .ch-nav { flex-direction: column; gap: 1.5rem; }

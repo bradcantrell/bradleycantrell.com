@@ -341,7 +341,17 @@ footer p { font-size: 0.8rem; color: var(--text-dimmer); max-width: none; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .nav-name { display: none; }
+  nav { justify-content: flex-start; padding: 0.9rem var(--pad); }
+  .nav-links {
+    display: flex;
+    gap: 1.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .nav-links li { flex: 0 0 auto; }
+  .nav-links a { font-size: 0.7rem; }
   .project-grid { grid-template-columns: 1fr; }
   .writing-item { grid-template-columns: 1fr; gap: 0.25rem; }
   .dissertation-feature { padding: 1.5rem; }
