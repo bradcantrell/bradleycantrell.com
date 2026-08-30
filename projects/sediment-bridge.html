@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sediment Bridge | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url(''); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2025-present</div>
+    <h2 class="hero-title">Sediment Bridge</h2>
+    <div class="hero-type">Design Interface / Research Instrument</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+
+<a href="../work.html" class="back-link">All Projects</a>
+  <dl>
+    <div><dt><strong>Location</strong></dt><dd>University of Virginia School of Architecture</dd></div>
+    <div><dt><strong>Collaborators</strong></dt><dd>Bradley Cantrell</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Real-time fluvial simulation coupled to high-fidelity computational fluid dynamics</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>As the geomorphology modeling research matured from a physical instrument into a teachable methodology, the question of the model's relationship to precision remained open. The EmRiver table made sediment processes tangible and responsive, but the accuracy of its behavior was bounded by the material and by the resolution of its sensing. The Sediment Bridge extends the composite-modeling trajectory into a purely computational instrument: a real-time simulation that feels as immediate as sand and water, coupled to a high-fidelity solver that holds it accountable.</p>
+<p>The project is an interface, not a visualization. It is built to be played with — to be shaped, disrupted, and re-run — while keeping a line open to the precise physics that the play approximates. Where the physical table coupled material and measurement, the Sediment Bridge couples two numerical models of radically different fidelity, and in doing so it asks how a designer can iterate with the freedom of a sketch while still being answerable to the truth of a model.</p>
+<p>Simulation Environment: A browser-based two-dimensional fluid solver, built on Jos Stam's stable-fluids method, drives the flow field at interactive frame rates. Thousands of sediment particles are advected through the field, and through the competing processes of settling, erosion, and deposition they sort and organize themselves into recognizable landforms — bars, channels, deltas, and dunes — that emerge without being drawn.</p>
+<p>The sediment behaves as a population of particles whose fate is governed by local velocity. Where the flow slows, particles settle and accumulate into an aggrading bed; where it accelerates, the bed is eroded and re-entrained. The accumulated deposition forms a continuous heightfield that rises and falls over time, and the resulting surface is a record of the model's own history — an ancient deposit overlain by subsequent layers, rendered so that the age of every grain is legible as color.</p>
+<p>Control Parameters:</p>
+<p>Bed slope through a drawn longitudinal profile and cross-sections, which together sculpt the initial bedform</p>
+<p>Inflow velocity through a variable-speed analogue of the laboratory pump</p>
+<p>Settling and erosion thresholds and probabilities, which tune how readily sediment is deposited or re-entrained</p>
+<p>Obstacle placement — circles, rectangles, and freeform polygons — whose positions, sizes, and rotations can be choreographed over a looping timeline</p>
+<p>Sediment supply rate and grain behavior, adjustable in real time</p>
+<p>Flow and deposition rendering, from velocity color-mapping to age-graded deposition</p>
+<p>Sensing and State: Because the model is computational, its own state is already a continuous record. The aggrading bed, the spot elevations sampled across it, the cross-sections, and the velocity field are all read back from the same state that drives the simulation — there is no separate sensing layer, only the model observing itself. This self-documenting quality is what makes the bridge possible: the entire scene can be serialized at any instant and handed to a more precise model without translation.</p>
+<p>The Bridge: The defining operation of the interface is the bake. At any moment, the complete scene — bedform, obstacles, inflow, and sediment state — is packaged and sent to an OpenFOAM solver running separately. There the scene is re-meshed, the incompressible fluid equations are solved with a k-epsilon turbulence model, and the resulting velocity field returns into the same interface, rendered side-by-side against the real-time approximation.</p>
+<p>This is the methodological core of the project. A real-time solver is fast enough to be a sketch — hundreds of variations in minutes — but it achieves that speed by compromising on exactly the physics it purports to describe. A high-fidelity solver is the inverse: precise but slow and brittle, measured in minutes to hours per run, and therefore useless as an instrument of iteration. The Sediment Bridge holds both in a single loop, so that the fast model becomes a hypothesis and the slow model becomes its verification. Play is not abandoned at the threshold of rigor; it is calibrated by it.</p>
+<h2>Fundamental Questions</h2>
+<p>The interface does not resolve the tension between speed and precision; it makes that tension productive.</p>
+<p>Composite Numerical Modeling as Design Method: The geomorphology table established composite modeling as the simultaneous interaction of physical and numerical models. The Sediment Bridge extends the method into a composite of two numerical models — one approximate and immediate, one precise and deferred. The designer works within the fast model, but the fast model is never allowed to forget that it is an approximation; the precise model is always one gesture away.</p>
+<p>Play Validated by Precision: Design interfaces have traditionally forced a choice between fast-but-dumb physics and slow-but-smart analysis. The Sediment Bridge argues that this choice is false. Play is not the opposite of rigor but its precondition — the mechanism by which a designer develops intuition for a dynamic system — and validation is not the end of play but its correction. An interface that allows both to coexist turns iteration into a form of learning, in which each playful variation is checked against physics and the discrepancy itself becomes knowledge.</p>
+<p>Notation for Indeterminacy: Because the model records its own history, it produces representations that express flux as condition rather than stasis as fact. The age-graded deposition marks areas of stability and active change as gradients rather than boundaries; the evolving bed and the shifting velocity field are a graphic language for landscapes understood as dynamic systems rather than fixed forms.</p>
+<p>Collapsing Design Phases: The same state that is drawn, simulated, and observed is the state that is validated by the precise solver. Representation, analysis, and verification collapse into a single continuous loop, dissolving the boundary between making and measuring. Design becomes an ongoing negotiation with a dynamic system rather than a one-time specification of a fixed outcome.</p>
+<p>The Sediment Bridge advances the same argument the geomorphology table made in material form: that engaging highly dynamic systems — and using their energy to compose new terrains — provides mechanisms for massive change with minimal input. What the table demonstrated with sand and water, the interface demonstrates with code: that the most powerful design tools remain answerable to the physics they describe, even as they invite us to play.</p>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t,i){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      lbMedia.appendChild(img);
+    }
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>

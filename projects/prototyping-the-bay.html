@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototyping the Bay | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url(''); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2025</div>
+    <h2 class="hero-title">Prototyping the Bay: Landscape as Medium</h2>
+    <div class="hero-type">Pedagogical Research / Design Studio</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+
+<a href="../work.html" class="back-link">All Projects</a>
+  <dl>
+    <div><dt><strong>Location</strong></dt><dd>University of Virginia, Department of Landscape Architecture</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Prototyping the Bay is a fourth-semester foundation studio that positions the Chesapeake Bay as both subject and instrument, a territorial landscape engaged as adaptive infrastructure responding to environmental, programmatic, and sociocultural flux. The studio synthesizes the theoretical frameworks developed through two decades of research, translating concepts of responsive technologies, adaptive management, and cultivated wildness into pedagogical method. Students confront the challenge of designing for landscapes that never look the same, developing propositions for futures that are, at best, unpredictable.</p>
+<p>The studio’s central provocation distinguishes between territory and landscape. Territory is “an abstracted space composed of objects and processes for the purposes of state administration,state borders, census tracts, tax parcels.” Landscape, by contrast, is “the living medium, and always evolving motley array of materials and spaces and relationships and histories that are composed and choreographed to produce life catalyzing forms.” This distinction frames landscape architecture’s unique capacity to engage territorial systems through living processes rather than administrative abstraction.</p>
+<p>Site Context: The Chesapeake Bay presents a landscape of contradictions: historically important, ecologically productive, socially diverse, industrially prosperous. Yet simultaneously contaminated, impoverished, slowly submerging, sinking, and eroding due to climate change, exploitation, and single-purpose civil engineering. The studio focuses on the coastal landscapes and islands of Pocomoke Sound, where sea-level rise, land subsidence, and shifting ecological communities create conditions of radical uncertainty. Within this marginalized environment, the studio identifies “a latent wildness: remote areas that are difficult to access, novel ecological systems, hyper productive logistics, sites of extraction, cultural enclaves, and powerful infrastructures.”</p>
+<p>Conceptual Framework: The studio draws explicitly on the “Wild Disequilibria” framework developed through prior research: “Earth’s new wilds will look very different from the wilderness of the past. Classical wilderness is characterized by purity: it is unsettled, uncultivated, and untouched. But given the massive reshaping of ecological patterns and processes across the Earth, wilderness has become less useful, conceptually. Wildness, on the other hand, is undomesticated rather than untouched.” This reframing shifts design priorities “from maintaining a precious and pure environment to creating plural conditions of autonomy and distributed control that promote both human and non-human form.”</p>
+<p>Pedagogical Structure: The studio operates through three modules,</p>
+<p>Module I: Unpacking the Bay combines research, mapping, modeling, and manifesto creation. Students develop familiarity with the Chesapeake through multiple representations, lenses, and scales while establishing core design values that guide subsequent work. The module produces both analytical understanding and ethical positioning.</p>
+<p>Module II: Systems, Models, Surrogates tests research and stated values through systems diagrams and site prototypes. Students speculate on emergent effects of interventions on site dynamics and develop strategies for implementation. Workshops convey methods including geomorphology table techniques, generative AI tools, and machine learning applications. The module emphasizes “quick iterative testing” and feedback-driven development.</p>
+<p>Module III: Landscape as Experiment develops comprehensive design strategies treating the Chesapeake as dynamic landscape shaped by multiple agents,“human/non-human, geologic, historic, biologic, political, hydrological.” Teams evolve methods from Module II to generate strategic approaches and future visions for experimental coastal landscapes. The module confronts the tension between experimentation and conservation, requiring active decisions about what must be acknowledged and conserved versus what can be purposefully reformed as research grounds.</p>
+<p>Key Concepts: The studio introduces several theoretical frameworks.</p>
+<p>Landscape as Experiment: Sites function simultaneously as models and cultural artifacts. Design proposals ask questions and provide answers and landscapes produce knowledge through their own transformation. This framing extends the geomorphology table methodology to the territorial scale where the bay itself becomes a prototype.</p>
+<p>Time as Agency: Time operates not merely as linear process but as “an agency that affords the possibility of redemption and reconciliation because it offers the possibility of experience.” Students engage landscape’s endemic processes “that occur without our intervention and that can be choreographed, catalyzed, or ossified through our actions.”</p>
+<p>Mediated Experience: The site is experienced not only through human senses but “alongside an array of other modes of mediated experience, representation, and monitoring.” This approach extends the responsive technologies research into studio pedagogy, positioning sensing and data as design materials.</p>
+<p>Choreographing Matter: Following John May’s concept of the “managerial surface,” the studio asks students to work “beyond the natural and artificial, to an ontological plane where such distinctions no longer make sense and can no longer interfere with the choreographing of matter.”</p>
+<h2>Fundamental Questions</h2>
+<p>Prototyping the Bay translates research insights into transmissible pedagogy, demonstrating how the theoretical frameworks developed through two decades of practice can inform design education:</p>
+<p>From Prediction to Adaptation: The studio explicitly rejects the goal of “restoring” or “saving” the Chesapeake Bay. Instead, it asks how designers might engage rapidly changing environments without assuming predictive capacity. The emphasis on prototyping (testing, learning, adjusting) models the adaptive epistemology framework at the core of the dissertation’s theoretical contribution.</p>
+<p>Landscape as Knowledge Production: By framing landscapes as experiments, the studio positions design as a mode of inquiry rather than merely a mode of implementation. Sites become “testing grounds” that “produce experiments that begin to identify physiological, relational, and biochemical thresholds that drive ecological responses to climatic shifts.” This framework extends practice-based research methodology from individual projects to territorial-scale propositions.</p>
+<p>Multi-Species Design: The James Bridle epigraph,“Where we start to move forward is when we learn to ask questions which are less concerned with ‘Are you like us?’, and more interested in ‘What is it like to be you?’” frames the studio’s commitment to designing for human and nonhuman constituents. Students must consider how “a broader range of species, phenomena, and cultures be catalyzed within the place.”</p>
+<p>Technology as Design Material: The studio engages “the technologies that have created the bay in its current form, the hydrological infrastructure, the monitoring systems, the agricultural machinery, and the logistics networks” while imagining how “contemporary technologies (machine learning, artificial intelligence, simulation, and robotics, but also natural infrastructure, nature-based features, and other technocratic approaches to landscape-making) can play a future role.” This dual attention to technological history and technological futures positions students to design with and through responsive systems.</p>
+<p>Values-Based Design: The first course objective asks students to “develop coherent design values that speak to your convictions regarding the cultural, technical, and philosophical basis of your design research.” This emphasis on ethical positioning distinguishes the studio from purely technical approaches, insisting that engagement with dynamic systems requires explicit articulation of commitments and responsibilities.</p>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t,i){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      lbMedia.appendChild(img);
+    }
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>

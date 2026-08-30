@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UVA Geomorphology Lab and Adaptive Design Protocols | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url(''); background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2017-present</div>
+    <h2 class="hero-title">UVA Geomorphology Lab and Adaptive Design Protocols</h2>
+    <div class="hero-type">Research Infrastructure / Pedagogical Platform</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+
+<a href="../work.html" class="back-link">All Projects</a>
+  <dl>
+    <div><dt><strong>Location</strong></dt><dd>University of Virginia School of Architecture</dd></div>
+    <div><dt><strong>Collaborators</strong></dt><dd>Brian Davis, Xun Liu</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Responsive geomorphology model with multi-modal sensing, robotic prototyping, and machine learning integration</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Upon relocating to the University of Virginia, the geomorphology modeling research evolved from a focused research instrument into a multi-purpose platform supporting PhD student investigations, speculative advanced studios, and foundational instruction in landscape architecture. A team of academics, including Brian Davis and Xun Liu, collaborated on developing platforms and interfaces for adaptive design protocols that could engage territorial-scale landscape systems.</p>
+<p>The UVA installation utilized an EmRiver geomorphology table (approximately 4m × 1.5m working area, 0.3m depth) augmented with expanded sensing and actuation capabilities. The methods developed experimentally at REAL were codified, transforming experimental practice into teachable methodology that could be engaged by students and research collaborators across multiple levels of expertise.</p>
+<p>Physical Environment: The model is similar but larger than the one used at REAL and creates fluvial landscapes through the interaction of water flow and synthetic sediment. Particulate matter moves under the force of water through processes that sort and organize particles based on velocity, weight, and size. As water moves across the surface, through channels, and as groundwater below, erosion and deposition organize the sediment to create landscapes of river beds, islands, deltas, beaches, dunes, ripples, and other landforms.</p>
+<p>The synthetic sediment comprises particles of varying sizes and densities that sort according to flow velocity where larger/lighter particles concentrate where velocities are higher, smaller/denser particles deposit where flow slows. This sorting creates visible stratigraphic patterns, with fine-grained material often marking “ancient” deposits overlain by subsequent coarse-grained layers. The self-organizing behavior produces recognizable geomorphological features without requiring precise scaling to any particular prototype landscape.</p>
+<p>Control Parameters:</p>
+<p>Bed slope (lateral and longitudinal) via adjustable supports</p>
+<p>Water level through downstream weir height</p>
+<p>Stream flow via variable-speed pump with programmable hydrographs</p>
+<p>Groundwater flow via secondary pump system</p>
+<p>Sediment input through calibrated media feeders</p>
+<p>Flow visualization through dye injection system</p>
+<p>The programmable hydrographs enable repeatable experimental conditions and the same flow regime can be run multiple times with measured variations in other parameters, supporting systematic investigation of cause and effect relationships while acknowledging the inherent variability of complex systems.</p>
+<p>Sensing Systems, the multi-modal sensing infrastructure captures model behavior at multiple resolutions and temporalities:</p>
+<p>Microsoft Kinect and Kinect 2mounted overhead captures continuous point clouds of surface topography, with viewing angle of approximately 60 degrees and point resolution of roughly 10mm at the surface</p>
+<p>Ultrasonic banner sensors on stepper-motor-driven rails (controlled via Arduino) measure precise spot elevations and generate section cuts, offering higher accuracy than depth cameras and controllable through predefined gridded sampling patterns</p>
+<p>Image analysis tracks sediment sorting, channel migration, and morphological change through systematic photographic documentation</p>
+<p>Dye visualization reveals flow paths, velocity gradients, and turbulence patterns</p>
+<p>The overlay of sensing modalities produces a continuously updated digital representation of the physical model,not a prediction of external landscapes but a record of the model’s own dynamic behavior available for analysis and feedback control.</p>
+<p>Responsive Prototypes: The lab serves as a testing ground for actuated design elements operating across a gradient of engagement modes. Direct interaction involves physical manipulation of the model environment,placing obstacles, adjusting slopes, introducing sediment. Responsivity involves sensing-driven devices that react to detected conditions. Autonomy involves systems that learn or evolve behaviors through feedback and devices whose response patterns develop through machine learning rather than pre-programmed rules.</p>
+<h2>Fundamental Questions</h2>
+<p>The UVA phase consolidated experimental methods into pedagogy, enabling subsequent generations of students and researchers to engage the geomorphology table as a design tool. Beyond technical operation, this step required articulating theoretical frameworks and situating the work within broader disciplinary and scientific contexts.</p>
+<p>Composite Modeling as Design Method: The UVA lab operates within an emerging practice of composite modeling that creates simultaneous interaction between numerical and physical models.</p>
+<p>From Responsivity to Autonomy: The UVA phase advanced integration of machine learning into the responsive framework. A useful analogy distinguishes pre-programmed responsivity from learned adaptation in that early thermostats operated through fixed thresholds (when temperature drops below X, activate heating) and contemporary systems like Nest develop patterns of automation through machine learning, optimizing across multiple variables (user schedule, energy pricing, thermal dynamics of the space). The device develops behaviors unique to the learning algorithm it uses and the context in which it functions.</p>
+<p>The geomorphology lab became a testing ground for this transition applied to landscape infrastructure. How might sediment gates develop response patterns through learned optimization rather than pre-programmed rules? How might infrastructure that “continually learns from itself by processing the results of its actions before choosing the next intervention” differ from infrastructure operating through fixed protocols? The gradient from interaction through responsivity to autonomy maps a trajectory of increasing machine agency in landscape systems,a trajectory the lab enables investigating at experimental scale before territorial deployment.</p>
+<p>Notation for Indeterminacy: The iterative documentation produced through image analysis and sensing generates new forms of landscape notation. Traditional topographic plans represent terrain as it exists at a moment of survey creating a snapshot extracted from continuous process. The research produces topographic representations that speak to movement and probabilities of change, expressing flux as condition rather than capturing stasis as fact. Areas of stability and areas of active change appear as gradients rather than boundaries; the notation system provides graphic language for landscapes understood as dynamic systems rather than fixed forms.</p>
+<p>Collapsing Design Phases: The research collapses representation, analysis, documentation, and construction into continuous feedback. Sensing systems that document the model’s behavior simultaneously provide data driving responsive interventions. The distinction between observing landscape and acting upon it dissolves into unified cycles of perception and response. This collapse prefigures the “learn-and-adjust” approach that characterizes adaptive management,design as ongoing negotiation with dynamic systems rather than one-time specification of fixed outcomes.</p>
+<p>The work advances a form of design research holding great promise for engaging large-scale environmental change. Engaging highly dynamic systems and utilizing their energy to compose new terrains provides mechanisms for massive change with minimal input. The feedback between sensing systems, machine intelligence, and landscape modification creates construction methodologies that are tunable, challenging current methods of complex simulation and static infrastructure. The goal is to move beyond known representations and design methods, developing tools necessary to address global conditions characterized by flux and indeterminacy.</p>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t,i){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      lbMedia.appendChild(img);
+    }
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
