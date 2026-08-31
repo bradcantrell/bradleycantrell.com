@@ -4,3 +4,7 @@
 
 # Computational Wilds book page — local only (forthcoming, not linked from the site).
 writing/computational-wilds.html
+
+# OS cruft and stale generated files
+.DS_Store
+projects/computational-wilds.html
