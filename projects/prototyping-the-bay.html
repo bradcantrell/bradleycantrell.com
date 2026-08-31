@@ -20,11 +20,14 @@
     .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
     .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
     .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
-    .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
     .back-link:hover { opacity: 0.7; }
     .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
     .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
     .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
 
     .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
     @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -88,8 +91,10 @@
 </div>
 
 <div class="meta-bar">
-
+<div class="meta-bar-top">
 <a href="../work.html" class="back-link">All Projects</a>
+
+</div>
   <dl>
     <div><dt><strong>Location</strong></dt><dd>University of Virginia, Department of Landscape Architecture</dd></div>
   </dl>
