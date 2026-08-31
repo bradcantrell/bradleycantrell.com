@@ -209,6 +209,7 @@ def build_section(key):
     <li><a href="/writing.html">Writing</a></li>
     <li><a href="/teaching.html">Teaching</a></li>
     <li><a href="/lectures.html">Lectures</a></li>
+    <li><a href="/press.html">Press</a></li>
     <li><a href="/dissertation.html" class="active">Dissertation</a></li>
     <li><a href="/awards.html">Awards</a></li>
     <li><a href="/about.html">About</a></li>
