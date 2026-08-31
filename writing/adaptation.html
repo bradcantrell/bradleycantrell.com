@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptation | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2016</div>
+    <h2 class="hero-title">Adaptation: Sense, Process, Respond</h2>
+    <div class="hero-type">Publication / Essay</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Medium</strong></dt><dd>Essay, simulation and responsive systems</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>LA+ Simulation, University of Pennsylvania Press</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Adaptation traced the evolution of landscape simulation from the Mississippi Basin Model to real-time computational models, arguing that responsive technologies enable an adaptive control that engages the indeterminacy of ecological systems. The essay frames fabrication as a process of addition and subtraction driven by contextual cues, guided by logics that evolve as the landscape is sensed and processed.</p>
+<p>Responsive technologies is a general term for devices or components that enable methods of sensing, monitoring, processing, and feedback. For example, the F-35 Joint Strike Fighter Jet currently being developed by Lockheed Martin is a sensory platform that provides pilots with on-board radar, weapons guidance, navigation, and environmental mediation. The F-35's pilot, while not physically manipulating the aircraft's flaps and rudders, can apply a range of technologies to travel faster than the speed of sound or deliver ordnance from miles away to targets in the air or on the ground with sub-millimeter precision. The platform not only creates new forms of vision, hearing, and feeling but also allows the pilot to make small adjustments to controls that affect the plane's mechanical and hydraulic systems. The feedback loop between human, machine, and environment in the F-35 occurs in real time and requires thousands of interpretations of environmental conditions to provide accurate feedback to the pilot. The interpreted environment makes possible sophisticated interactions between the pilot controlling the aircraft and the plane's flight.</p>
+<p>The F-35 is an extreme case, but we see similar versions of this relationship in the implementation of responsive technologies in commercial agriculture, transportation logistics, consumer electronic devices, and a host of other applications. The automatic door opener at the grocery store, the Nest thermostat in a house, and the Roomba domestic vacuum are all familiar forms of responsive technologies. For the purpose of projecting future conditions, it is worthwhile to speculate on an ecological or infrastructural equivalent to the F-35: a highly symbiotic connection between the constructed and the biologic, enabled by real-time simulations that drive responsive technologies. This symbiosis draws on the inherent uncertainty of hydraulic models but reacts precisely through small modifications that are evaluated and applied to evolve future feedback. The uncertainty of these models spawns from the modeler's construction of an alternate reality that abstracts complex fluid systems through averaging, random value generation, and minimization of variables for computational efficiency.</p>
+<p>Nascent efforts across multiple disciplines are engaging ecological systems with forms of real-time simulation and responsive technologies. These efforts range from drone seed dispersal to autonomous terrain grading to in-situ genetic manipulation of biological systems. Each of these efforts alters the current paradigm of design, evaluation, and construction and offers entry points for an adaptive method of ecological manipulation. Because hydrologic systems are in a constant state of flux, there are ongoing attempts by designers to develop methodologies that explore the creation of adaptive landscapes that engage responsive technologies and ecological systems. Responsive technologies enable a degree of adaptive control that directly addresses the indeterminacy inherent in landscapes and their ongoing processes of change. When we consider how these mechanisms of adaptive control might be embedded in our landscapes in the future, various questions emerge. What role do models and simulation have in the design of new forms of infrastructure and ecological systems? What is the relationship between the simulation and the physical environment? How might we leverage the potential of simulation, analysis, and visualization tools to advance an ecological system's ability to adaptively synthesize biotic and abiotic systems?</p>
+<p>The implementation of responsive technologies requires frameworks that not only engage landscapes at the site scale but also acknowledge the territory and interconnections of ecological systems. These frameworks are not imagined as overarching methods of control but instead express a relationship between sensing and processing that is predicated on learning and that activates natural processes such as succession, accretion, and remediation as agents of change in the environment. This method privileges the dynamics of ecology over static constructions as a method by which to design landscape systems. Within responsive technologies reside programmed interactions driven by logics, the instructions that define how the systems process sensed data and provide responses. These logics can evoke a simple binary response or they may be complex models that simulate possible outcomes, weigh options, and select the most appropriate alternative. These evolving forms of interaction, coupled with new methods of digital modeling that have increased computational efficiency, require an important shift in our conceptualization of responsive technologies in association with simulation. This shift requires designers to confront two important paradigms: a compressed, autonomous modeling heuristic and a pervasive, expanding simulation space.</p>
+<p>With regard to the first, creating models is a heuristic process that typically requires the model to be produced, executed, analyzed, and updated. Often the ground itself is assumed to be static, but phenomena such as hydrology are dynamic and varied, requiring models to predict behaviors. The process creates a feedback loop that allows the model's complexity and accuracy to evolve over successive iterations, which could occur over the course of a day or, in more complex scenarios, over weeks. As the modeler creates successive iterations, he or she learns from previous models and tunes them to represent their targets with ever-growing precision. With increased computational power and efficiency, the speed of each cycle increases, and models that simulate complex processes such as fluid dynamics or ray-traced lighting can now run faster than real time. The speed of this feedback loop can thus temporally compress the heuristic of the model, enabling the outcomes to form the basis for new relationships or predictions. The increased speed enhances the model's adaptive capacity; for example, the process of constructing topography can be evaluated as it evolves, allowing it to respond to dynamic hydrological systems.</p>
+<p>The second conceptual shift concerns the expansion of the simulation space, particularly in its pervasiveness in control systems, which is in direct opposition to the visibility of the simulation itself. Simulation becomes invisible, a background process that mediates human interaction with machine systems and environmental phenomena. The pervasiveness of this form of simulation is directly correlated with the simulation's invisibility, performing as an extension of the sensing and response feedback cycles. This thin but powerful form of mediation creates a method of control that is as imperceptible as the interaction between physical constructions within an ecological system.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-09.jpg" alt="Figure 09"><figcaption>Figure 9. The collapsed relationship between analog and digital modeling.</figcaption></figure>
+
+<p>To better understand the significance of these conceptual shifts, it is helpful to review previous models of landscape simulation and control. An illustrative example is the physical Mississippi Basin Model (MBM) and the subsequent computational models that were developed from it. The MBM was exceptional due to its size, the length of time invested in the modeling effort, the resulting intervention in the watershed, and the overlap with computational modeling. Model construction began in 1943 in Clinton, Mississippi as a part of the Waterways Experiment Station (WES). The effort signaled a shift in engineering that moved the discipline toward numerical modeling and laboratory models that simulated interconnected systems. As Kristi Cheramie states, this was the first time that engineers, politicians, and landholders were able to comprehend their roles within the larger Mississippi River watershed through the observation of a tangible model.</p>
+<p>Although the MBM operated at the intersection of fieldwork and laboratory science, it also aligned with a post-World War II investment in infrastructure, which drastically increased the model's significance as it influenced the construction of new levees, spillways, and locks. Operationally, the MBM created a space in which to conduct sound hydrologic studies without the cost, complexity, and danger involved in manipulating the river itself. The model makers invested heavily in instrumentation and automation that allowed the feeding of historic and future scenario data into control systems. Moreover, the model was tuned through successive simulations that calibrated the surfaces, channels, and control systems to make the MBM perform in a similar manner to the historic norms of the Mississippi River. Just as importantly, the process of building the model itself was a form of inquiry, requiring the abstraction of complex systems that could be distilled to permit repeatable experiments. The model functioned operationally as a surrogate for the larger Mississippi River watershed and also provided a space where discussions between engineers and scientists, as well as presentations to politicians and stakeholders, could take place. Individuals could occupy the 1:1000 model space, stand confidently next to the simulated locations of major urban centers, and understand how engineered changes upstream would "save" humanity from the sublime power of the river. The MBM presented a reality of a tidy Mississippi River, controllable and, most importantly, predictable. It provided a version of the river that we have subsequently manufactured in the physical world, a precursor to the watershed that our engineering prowess has produced over the past 70 years.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-01.jpg" alt="Figure 01"><figcaption>Figure 1. The Mississippi Basin Model, a 1:1000 physical model of the Mississippi River watershed.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-02.jpg" alt="Figure 02"><figcaption>Figure 2. The Mississippi Basin Model, a 1:1000 physical model of the Mississippi River watershed.</figcaption></figure>
+
+<p>In the 1970s, Congress granted appropriations to study the efficacy of computer modeling as a nascent method of hydraulic simulation. These studies resulted in the MBM's replacement by the Hydraulic Engineering Center's River Analysis System (HEC-RAS), released in 1995 as a joint collaboration between the Department of Defense and the Army Corps of Engineers. These computational models have been at the core of several advancements in hydraulic modeling and are still in use within the Army Corps of Engineers. This form of simulation is essentially the full MBM project reduced to software, with its processing occurring in real time on powerful desktop workstations. This change is crucial because the feedback from simulations that previously took weeks to generate results can now be computed in microseconds and embedded into smaller and more dispersed devices. In comparison to the MBM, simulation software lacks physical tangibility but makes up for it with infinite iteration, connectivity, and portability. Computational models expand the range and speed of modeling yet, coupled with contemporary engineering paradigms and the institutions that employ such models, they remain centered on the purpose of control over hydrological systems that are inherently dynamic. However, when coupled with responsive technologies, real-time (or faster than real-time) simulation provides the framework for an algorithmic heuristic. This framework in turn promotes computational learning that permits simulations and the logics that they produce to adapt as they engage ecological systems. Rather than simply seeking the most efficient macro solution, real-time simulations linked to in-situ sensing devices can determine appropriate responses and enable immediate action at smaller scales.</p>
+<p>This approach is inherent in such initiatives as the Responsive Environments and Artifacts Lab (REAL) at the Harvard Graduate School of Design that is researching methods of design that are predicated on the design of adaptive infrastructures within dynamic ecological systems. This work is taking place primarily through the use of a physical geomorphology model that simulates the flow of water and sediment across a surface. The model is not a surrogate for any particular physical location but operates as a miniaturized landscape with a limited set of variables, i.e., water flow, sediment size, and slope. The physical model is equipped with sensors that record the surface morphology at multiple fidelities, monitor water velocities, sense moisture levels within the sediment, and capture images from multiple angles, all of which are analyzed in real time. The datasets gathered from the sensors are used to create abstractions of the sediment and water flows. Abstracting the data provides the basis for optimized representations of complex phenomena, allowing them to be visualized or interpreted by devices that modify the sediment.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-03.jpg" alt="Figure 03"><figcaption>Figure 3. The geomorphology model simulating the flow of water and sediment across a surface.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-04.jpg" alt="Figure 04"><figcaption>Figure 4. The geomorphology model simulating the flow of water and sediment across a surface.</figcaption></figure>
+
+<p>The model is also equipped with a computer-controlled, two-axis platform that can be positioned within the model to manipulate the sediment flows. These manipulations alter water velocities by using interferences or resistances to curate areas of deposition and erosion. This relationship between real-time abstract models and adaptive logics produces landscapes that are the product of interactions between the robotic system and the dynamic forces of the water and sediment. The research taking place in the REAL is one example of topographic formation enabled by responsive technologies; however, there are myriad settings where the design of logics to create interactions between infrastructure and ecology can be instructive.</p>
+<p>This approach postulates a fabrication method that engages dynamic landscapes not as a generator of landscape form but as a fluid medium. The research regards fabrication as a process of addition and subtraction that is driven by contextual cues such as surface morphology, species movement, climate, and water speed to form dynamic terrain suitable for habitat, settlement, or production. As an adaptive infrastructure, it creates a relationship with the environment, evolving its operating logics as information from the landscape is processed. The machine evolves continually through the simulation by means of its interactions within the modeling environment, in such a way that the resultant "form" is a product of successive tuning interactions. The interactions are predicated on simple criteria such as tracking low points and high points across the surface morphology, searching for differentials in water velocity within areas of flow, and monitoring changes in sediment moisture. These criteria are then used to accomplish goals such as maintaining a distribution of low, medium, and high surface conditions with stable moisture levels to provide platforms where a diverse set of flora and fauna can take root. The system does not presume that any particular location is more important than others; instead, it acts locally to accomplish these larger goals, generating a shifting physical landscape that responds to both small and large disturbances. The process of learning is enabled through a mixture of real-time simulation and local interactions, all guided by overarching goals. The interactions are catalogued based on the general current state of the system and then redeployed when they are believed to be most effective. This means of deploying responsive technologies is further complemented by computational methods that sense and engage real-time conditions through representations that more accurately reflect the dynamics involved in the practice of landscape architecture.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-05.jpg" alt="Figure 05"><figcaption>Figure 5. Deposition patterns produced through sediment manipulation.</figcaption></figure>
+
+<p>As a method of fabrication, the system proposes to utilize the entropy of ecological systems to construct incrementally evolving landscapes that are the product of coordinated manipulation, curation, and choreography. In this sense, the landscape architect uses simulation to generate predictive data and reduce uncertainty about the performance and design of dynamic systems. The design and formation of the logics that guide these interactions constitute a design paradigm that embraces infrastructures governed by continual adaptation. They provide landscape architects with an important set of tools to engage territorial systems and promote the use of simulation as an intermediary. The infrastructures designed through this approach are nimble and rely on the information collected to both evaluate and engage the landscape. In much the same way as the pilot of the F-35 Joint Strike Fighter depends on technologies to augment his or her senses, the landscape architect now depends on the agency of sophisticated models that can adapt in real time. Not only will these systems be more responsive, but they will also evolve in tandem with the ecologies in which they operate.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-06.jpg" alt="Figure 06"><figcaption>Figure 6. Site one: blank mangrove.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-07.jpg" alt="Figure 07"><figcaption>Figure 7. Site two: sediment diversion.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/adaptation/figure-08.jpg" alt="Figure 08"><figcaption>Figure 8. Site three: material recycling.</figcaption></figure>
+
+<h3>Notes</h3>
+<ol>
+<li>Lockheed Martin, "F-35 Lightning II," https://www.f35.com/about/capabilities (accessed December 28, 2015).</li>
+<li>Geoff Manaugh, <em>Landscape Futures: Instruments, Devices and Architectural Inventions</em> (Barcelona: Actar D Editorial, 2012), 42.</li>
+<li>E. F. Schuster, "Buffon's Needle Experiment," <em>American Mathematical Monthly</em> 81 (1974): 26-29.</li>
+<li>J. E. Foster, "History and Description of the Mississippi Basin Model," Mississippi Basin Model Report 1-6, US Army Corps of Engineers Waterways Experiment Station (August 1971).</li>
+<li>Kristi Cheramie, "The Scale of Nature: Mississippi River Basin Model," <em>Places Journal</em> (accessed September 29, 2015).</li>
+<li>US Army Corps of Engineers, "Hydrologic Engineering Center," http://www.hec.usace.army.mil/about/history.aspx (accessed December 28, 2015).</li>
+<li>Richard Nance and Robert Sargent, "Perspectives on the Evolution of Simulation," <em>Electrical Engineering and Computer Science</em>, Paper 100, http://surface.syr.edu/eecs/100.</li>
+<li>James C. Scott, <em>Seeing Like a State: How Certain Schemes to Improve the Human Condition Have Failed</em> (New Haven: Yale University Press, 1998).</li>
+<li>Henrik Ernstson, et al., "Urban Transitions: On Urban Resilience and Human-Dominated Ecosystems," <em>AMBIO</em> 39 (2010): 531-45.</li>
+</ol>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
