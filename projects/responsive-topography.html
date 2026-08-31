@@ -6,7 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sediment Bridge | Bradley Cantrell</title>
+  <title>Responsive Topography | Bradley Cantrell</title>
   <link rel="stylesheet" href="../style.css">
   <style>
     .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
@@ -78,12 +78,12 @@
 <body>
 
 <div class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/hero.jpg')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-year">2025-present</div>
-    <h2 class="hero-title">Sediment Bridge</h2>
-    <div class="hero-type">Design Interface / Research Instrument</div>
+    <div class="hero-year">2016</div>
+    <h2 class="hero-title">Responsive Topography</h2>
+    <div class="hero-type">Exhibition</div>
   </div>
 </div>
 
@@ -91,34 +91,40 @@
 
 <a href="../work.html" class="back-link">All Projects</a>
   <dl>
-    <div><dt><strong>Location</strong></dt><dd>University of Virginia School of Architecture</dd></div>
-    <div><dt><strong>Collaborators</strong></dt><dd>Bradley Cantrell</dd></div>
-    <div><dt><strong>Medium</strong></dt><dd>Real-time fluvial simulation coupled to high-fidelity computational fluid dynamics</dd></div>
+    <div><dt><strong>Location</strong></dt><dd>Harvard Graduate School of Design, Experiments Wall</dd></div>
+    <div><dt><strong>Collaborators</strong></dt><dd>Jeremy Hartley (Student Researcher)</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Lab elements, drawings, models, and video</dd></div>
   </dl>
 </div>
 
 <div class="project-body">
-<p>As the geomorphology modeling research matured from a physical instrument into a teachable methodology, the question of the model's relationship to precision remained open. The EmRiver table made sediment processes tangible and responsive, but the accuracy of its behavior was bounded by the material and by the resolution of its sensing. The Sediment Bridge extends the composite-modeling trajectory into a purely computational instrument: a real-time simulation that feels as immediate as sand and water, coupled to a high-fidelity solver that holds it accountable.</p>
-<p>The project is an interface, not a visualization. It is built to be played with — to be shaped, disrupted, and re-run — while keeping a line open to the precise physics that the play approximates. Where the physical table coupled material and measurement, the Sediment Bridge couples two numerical models of radically different fidelity, and in doing so it asks how a designer can iterate with the freedom of a sketch while still being answerable to the truth of a model.</p>
-<p>Simulation Environment: A browser-based two-dimensional fluid solver, built on Jos Stam's stable-fluids method, drives the flow field at interactive frame rates. Thousands of sediment particles are advected through the field, and through the competing processes of settling, erosion, and deposition they sort and organize themselves into recognizable landforms — bars, channels, deltas, and dunes — that emerge without being drawn.</p>
-<p>The sediment behaves as a population of particles whose fate is governed by local velocity. Where the flow slows, particles settle and accumulate into an aggrading bed; where it accelerates, the bed is eroded and re-entrained. The accumulated deposition forms a continuous heightfield that rises and falls over time, and the resulting surface is a record of the model's own history — an ancient deposit overlain by subsequent layers, rendered so that the age of every grain is legible as color.</p>
-<p>Control Parameters:</p>
-<p>Bed slope through a drawn longitudinal profile and cross-sections, which together sculpt the initial bedform</p>
-<p>Inflow velocity through a variable-speed analogue of the laboratory pump</p>
-<p>Settling and erosion thresholds and probabilities, which tune how readily sediment is deposited or re-entrained</p>
-<p>Obstacle placement — circles, rectangles, and freeform polygons — whose positions, sizes, and rotations can be choreographed over a looping timeline</p>
-<p>Sediment supply rate and grain behavior, adjustable in real time</p>
-<p>Flow and deposition rendering, from velocity color-mapping to age-graded deposition</p>
-<p>Sensing and State: Because the model is computational, its own state is already a continuous record. The aggrading bed, the spot elevations sampled across it, the cross-sections, and the velocity field are all read back from the same state that drives the simulation — there is no separate sensing layer, only the model observing itself. This self-documenting quality is what makes the bridge possible: the entire scene can be serialized at any instant and handed to a more precise model without translation.</p>
-<p>The Bridge: The defining operation of the interface is the bake. At any moment, the complete scene — bedform, obstacles, inflow, and sediment state — is packaged and sent to an OpenFOAM solver running separately. There the scene is re-meshed, the incompressible fluid equations are solved with a k-epsilon turbulence model, and the resulting velocity field returns into the same interface, rendered side-by-side against the real-time approximation.</p>
-<p>This is the methodological core of the project. A real-time solver is fast enough to be a sketch — hundreds of variations in minutes — but it achieves that speed by compromising on exactly the physics it purports to describe. A high-fidelity solver is the inverse: precise but slow and brittle, measured in minutes to hours per run, and therefore useless as an instrument of iteration. The Sediment Bridge holds both in a single loop, so that the fast model becomes a hypothesis and the slow model becomes its verification. Play is not abandoned at the threshold of rigor; it is calibrated by it.</p>
-<h2>Fundamental Questions</h2>
-<p>The interface does not resolve the tension between speed and precision; it makes that tension productive.</p>
-<p>Composite Numerical Modeling as Design Method: The geomorphology table established composite modeling as the simultaneous interaction of physical and numerical models. The Sediment Bridge extends the method into a composite of two numerical models — one approximate and immediate, one precise and deferred. The designer works within the fast model, but the fast model is never allowed to forget that it is an approximation; the precise model is always one gesture away.</p>
-<p>Play Validated by Precision: Design interfaces have traditionally forced a choice between fast-but-dumb physics and slow-but-smart analysis. The Sediment Bridge argues that this choice is false. Play is not the opposite of rigor but its precondition — the mechanism by which a designer develops intuition for a dynamic system — and validation is not the end of play but its correction. An interface that allows both to coexist turns iteration into a form of learning, in which each playful variation is checked against physics and the discrepancy itself becomes knowledge.</p>
-<p>Notation for Indeterminacy: Because the model records its own history, it produces representations that express flux as condition rather than stasis as fact. The age-graded deposition marks areas of stability and active change as gradients rather than boundaries; the evolving bed and the shifting velocity field are a graphic language for landscapes understood as dynamic systems rather than fixed forms.</p>
-<p>Collapsing Design Phases: The same state that is drawn, simulated, and observed is the state that is validated by the precise solver. Representation, analysis, and verification collapse into a single continuous loop, dissolving the boundary between making and measuring. Design becomes an ongoing negotiation with a dynamic system rather than a one-time specification of a fixed outcome.</p>
-<p>The Sediment Bridge advances the same argument the geomorphology table made in material form: that engaging highly dynamic systems — and using their energy to compose new terrains — provides mechanisms for massive change with minimal input. What the table demonstrated with sand and water, the interface demonstrates with code: that the most powerful design tools remain answerable to the physics they describe, even as they invite us to play.</p>
+<p>The Responsive Environments and Artifacts Lab at the Harvard Graduate School of Design conducts research that examines the potential of responsive technologies across a variety of scales. An area of research examining systems at the territorial scale, focuses on the manipulation of indeterminate land building using real-time sensing, robotics, and adaptive management techniques.</p>
+<p>Approximately 40% of people across the globe are living within 100 kilometers of coastal and riverine environments. This means that three-quarters of the world's megacities and critical infrastructure will be required to adapt to rising sea levels over the next century. This adaptation will be a monumental task, requiring huge adjustments in the physical location of cities and the construction of new infrastructure.</p>
+<p>Current research in the lab posits that the energy, embodied in the hydrological systems that build coastal lands, can be choreographed. The work primarily focuses on sediment transport, the suspension and movement of sediment within the water column, and how sensing and monitoring can drive small modifications in the water system to construct or deconstruct land. The lab is currently using a geomorphology modeling table to simulate dynamic riverine and coastal environments. This is the site where we begin to develop novel approaches to a fluctuating hydrology. The lab has created four sensing systems that use ultrasonic range-finding sensors, real-time photogrammetry, image analysis, and capacitance sensors to record sediment behavior, surface morphology, and water flow.</p>
+<div class="image-grid-natural">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-01.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-02.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-03.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-04.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-05.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-06.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-07.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-08.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-09.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-10.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-11.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-12.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-13.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-14.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-15.jpg" alt="">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/responsive-topography/rt-16.jpg" alt="">
+</div>
+
+<p style="font-size: 0.82rem; color: var(--text-dimmer); margin-top: 1rem;">Photographs: Keith Lamont Scott.</p>
+
+<p>The geomorphology model is imagined as its own space, with dynamic phenomena, unique to the context of its conditions. This allows the model to be free to simulate non-specific physical landscapes or realities. There are baseline conditions derived from prototypical geomorphological tropes, such as delta buildings, meandering rivers, backwater swamps, and tidal zones (among others). The modeling space creates a tangible environment that can generate a large range of conditions. These conditions are created using a synthetic sediment of varying sizes and densities, water pumps that create stream flow and groundwater flow, and an adjustable bed that can set lateral and longitudinal slopes and depths. These variables can be altered to set the initial conditions as well as conditions controlled over time.</p>
+<p>The work advances a form of design research that holds great promise for how we engage large-scale environmental change. Engaging highly dynamic systems and utilizing their energy to compose new terrains provides a mechanism for massive change with minimal input. The feedback between sensing systems and landscape modifications forms a construction methodology that is tunable and capable of challenging complex simulations and static infrastructure. Using the real-time digital models, the lab is creating devices that respond to changes in the physical model such as robotic sediment gates, repositionable sieves, and flow disruptors. The intent of this exploration is to develop prototypes and a design language that enables designers to create novel hydrologic landscapes that are tied to sensed phenomena and forecasting models.</p>
+<p>The current scope of work in the lab provides proof of concept for an emerging toolset that engages territorial landscape systems. This toolset relies on real-time sensing of landscape phenomena coupled with a process of adaptive management to produce closer relationships between site analysis and methods of construction. Conceptually, this proposes a method that relies on designing operations that intervene locally but aggregate to produce territorial change. Most importantly, this process is a form of landscape choreography that continually learns from itself by processing the results of its actions before choosing the next intervention. A continuous call and response between biological systems and an active infrastructure.</p>
 </div>
 
 
