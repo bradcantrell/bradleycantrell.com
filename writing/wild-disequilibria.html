@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wild Disequilibria | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/wild-disequilibria/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2022</div>
+    <h2 class="hero-title">Wild Disequilibria: Climatic Energy and Ecological Autonomy</h2>
+    <div class="hero-type">Article</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+<a href="https://journal.b-pro.org/issue/issue39g#contents964" target="_blank" rel="noopener" style="display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none;">Read in Bartlett Prospectives</a>
+</div>
+  <dl>
+    <div><dt><strong>Collaborators</strong></dt><dd>Marantha Dawkins</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>Bartlett Prospectives (B-Pro Journal), Issue 39G</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>There is no way back to the climate that we once knew: "our old world, the one that we have inhabited for the last 12,000 years, has ended".[1] Accepting this end presents an opportunity to reframe considerations of risk, indeterminacy, and danger as questions of restructuring and rewilding; shifting the discussion of global warming from a matter of a scarcity of resources to an abundance of energy that can kick-start landscape futures.</p>
+<p>To engage this future, it is critical to set up some terms for how design will engage with the multitude of potential climates before us. Rather than working preventatively by designing solutions that are predicated on the simplification of the environment by models, we advocate for an experimentalism that is concerned with the proliferation of complexity and autonomy in the context of radical change. Earth systems are moving hundreds to thousands of times faster than they did when humans first documented them. This acceleration is distributed across such vast space and time scales that the consequences are ubiquitous but also unthinkable, which sets present-day Earth out of reach of existing cognitive tools. For example, twenty- to fifty-year decarbonisation plans are expected to solve problems that will unfold over million-year timescales.[2] These efforts are well-intentioned but poorly framed; in the relentless pursuit of a future that looks the same as the past, there is a failure to acknowledge that it is easier to destroy a system than it is to create one, a failure to acknowledge the fool's errand of stasis that is embodied in preservation, and most importantly, a failure to recognise that climate change is not a problem to be solved.[3] Climate "solutions" are left conceptually bankrupt when they flatten complex contexts into one-dimensional problem sets that are doomed by unknowable variability. From succession, to extinction, to ocean biochemistry, to ice migration; our understanding of environmental norms has expired.[4]</p>
+<p>The expiration of our environmental understanding is underlined by the state of climate adaptation today – filled with moving targets, brittle infrastructures, increasing rates of failure, and overly complicated management regimes. These symptoms illustrate the trouble contemporary adaptation has escaping the cognitive dissonance of the manner in which knowledge about climate change is produced: the information has eclipsed its own ideological boundaries. This eclipse represents a crisis of knowledge, and therefore must give rise to a new climatic form. Changing how we think and how we see climatic energy asks us to make contact with the underlying texture and character of this nascent unruliness we find ourselves in, and the wilds that it can produce.</p>
+<p>Earth's new wilds will look very different from the wilderness of the past. Classical wilderness is characterised by purity: it is unsettled, uncultivated, and untouched. But given the massive reshaping of ecological patterns and processes across the Earth, wilderness has become less useful, conceptually. Even in protected wilderness areas, "it has become a challenge to sustain ecological patterns and processes without increasingly frequent and intensive management interventions, including control of invading species, management of endangered populations, and pollution remediation".[5] Subsequently, recent work has begun to focus less on the pursuit of historical nature and more on promoting ecological autonomy.[6, 7, 8] Wildness, on the other hand, is undomesticated rather than untouched. The difference between undomesticated and untouched means that design priorities change from maintaining a precious and pure environment to creating plural conditions of autonomy and distributed control that promote both human and non-human form.</p>
+<p>Working with wildness requires new ways of imagining and engaging futurity that operate beyond concepts of classical earth systems and the conventional modelling procedures that re-enact them, though conventional climate thinking, especially with the aid of computation, has achieved so much: "everything we know about the world's climate – past, present, future – we know through models".[9] Models take weather, which is experiential and ephemeral, abstract it into data over long periods of time, and assemble this data into patterns. Over time, these patterns have become increasingly dimensional. This way of understanding climate has advanced extremely quickly over the past few decades, enough that we can get incredibly high-resolution pictures (like the one below, which illustrates how water temperature swirls around the earth). Climate models use grids to organise their high resolution, layered data and assign it rules about how to pass information to neighbouring cells. But the infinite storage capacity of the grid cells and the ways they are set up to handle rules and parameters create a vicious cycle, by enabling exponential growth toward greater and greater degrees of accuracy. Models get bigger and bigger, heavier and heavier, with more and more data; operating under the assumption that collecting enough information will eventually lead to the establishment of a perfect "control" earth,[10] and to an earth that is under perfect control. But this clearly isn't the case, as for these models, more data means more uncertainty about the future. This is the central issue with the traditional, bottom-up climate knowledge that continues to pursue precision. It produces ever more perfect descriptions of the past while casting the future as more and more obscene and unthinkable. In other words, in a nonlinear world, looking through the lens of these bottom-up models refracts the future into an aberration.[11]</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/wild-disequilibria/figure-01.jpg" alt="Figure 1"><figcaption>Figure 1. Global ocean temperatures modeled at Los Alamos National Labs illustrate how heat travels in swirling eddies across the globe. Image source: Los Alamos National Laboratories.</figcaption></figure>
+
+<p>The technological structure of models binds us to a bizarre present. It is a state which forecloses the future in the same way that Narcissus found himself bound to his own reflection. When he saw his reflection in a river, he "[mistook] a mere shadow for a real body" and found himself transfixed by a "fleeting image".[12] The climatic transfixion is the hypnotism of the immediate, the hypothetically knowable, which devalues real life in favour of an imaginary, gridded one. We are always just a few simulations from perfect understanding and an ideal solution. But this perfection is a form of deskilling which simulates not only ideas but thinking itself. The illusion of the ideal hypothetical solution, just out of reach, allows the technical image to operate not only as subject but as project;[13] a project of accuracy. And the project of making decisions about accuracy in models then displaces the imperative of making decisions about the environments that the models aim to describe by suspending us in the inertia of a present that is accumulating more data than it can handle.</p>
+<p>It is important to take note of this accumulation because too much information starts to take on its own life. It becomes a burden beyond knowledge,[14] which makes evident that "without forgetting it is quite impossible to live at all".[15] But rather than forget accumulated data and work with the materiality of the present, we produce metanarratives via statistics. These metanarratives are a false consciousness. Issues with resolution, boundary conditions, parameterization, and the representation of physical processes represent technical barriers to accuracy, but the deeper problem facing accuracy is the inadequacy of old data to predict new dynamics. For example, the means and extremes of evapotranspiration, precipitation and river discharge have undergone such extreme variation due to anthropogenic climate change that fundamental concepts about the behaviour of earth systems for fields like water resource management are undergoing radical transformation.[16] Changes like this illustrate how dependence upon the windows of variability that statistics produce is no longer viable. This directly conflicts with the central conceit of models: that the metanarrative can be explanatory and predictive. In his recently published book, Justin Joque challenges the completeness of the explanatory qualities of statistics by underlining the conflicts between its mathematical and metaphysical assumptions.[17] He describes how statistics (and its accelerated form, machine learning) are better at describing imaginary worlds than understanding the real one. Statistical knowledge produces a way of living on top of reality rather than in it.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/wild-disequilibria/figure-02.jpg" alt="Figure 2"><figcaption>Figure 2. An illustration of how a climate model breaks the Earth surface and atmosphere into rectangular chunks within which data is stored, manipulated, and passed on to neighboring cells. Image source: ERA-Interim Archive.</figcaption></figure>
+
+<p>The shells of modelled environments miss the materiality, the complexity and the energy of an ecosystem breaking apart and restructuring itself. The phase of a system that follows a large shift is known as a "back loop" in resilience ecology,[18, 19] and is an original and unstable period of invention that is highly contingent upon the materials left strewn about in the ruins of old norms. For ecological systems in transition, plant form, geological structure, biochemistry and raw materiality matter. These are landscape-scale issues that are not described in the abstractions of parts per million. High-level knowledge of climate change, while potentially relevant for some scales of decision-making, does not capture the differentiated impacts of its effects that are critical for structuring discussions around the specific ways that environments will grow and change, degrade or complexify through time.</p>
+<p>This is where wilds can play a role in structuring design experimentation. Wildness is unquestionably of reality, or a product of the physical world inhabited by corporeal form. Wilds as in situ experiments become model forms, which have a long epistemological history as a tool for complex and contingent knowledge. Physicists (and, here, conventional climate modellers) look to universal laws to codify, explain and predict events, but because medical and biological scientists, for example, do not have the luxury of stable universalism, they often use experiments as loose vehicles for projection. By "repeatedly returning to, manipulating, observing, interpreting, and reinterpreting certain subjects—such as flies, mice, worms, or microbes—or, as they are known in biology, 'model systems'", experimenters can acquire a reliable body of knowledge grounded in existing space and time.[20] This is how we position the project of wildness, which can be found from wastewater swamps, to robotically maintained coral reefs, to reclaimed mines and up-tempo forests. Experimental wilds, rather than precisely calculated infrastructures, have the potential to do more than fail at adapting to climate: they can serve "not only as points of reference and illustrations of general principles or values but also as sites of continued investigation and reinterpretation".[21]</p>
+<p>There is a tension between a humility of human smallness and a lunacy in which we imagine ourselves engineering dramatic and effective climate fixes using politics and abstract principles. In both of these cases, climate is framed as being about control: control of narrative, control of environment. This control imaginary produces its own terms of engagement. Because its connections to causality, accuracy, utility, certainty and reality are empty promises, modelling loses its role as a scientific project and instead becomes a historical, political and aesthetic one. When the model is assumed to take on the role of explaining how climate works, climate itself becomes effectively useless. So rather than thickening the layer of virtualisation, a focus on wild experiments represents a turn to land and to embodied changes occurring in real time. To do this will require an embrace of aspects of the environment that have been marginalised, such as expanded autonomy, distributed intelligence, a confrontation of failure, and pluralities of control. This is not a back-to-the-earth strategy, but a focus on engagement, interaction and modification; a purposeful approach to curating climatic conditions that embraces the complexity of entanglements that form the ether of existence.</p>
+<h2>References</h2>
+<p>[1] M. Davis, "Living on the Ice Shelf," Guernica.org, https://www.guernicamag.com/living_on_the_ice_shelf_humani/ (accessed May 01, 2022).</p>
+<p>[2] V. Masson-Delmotte, P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.), IPCC, 2021: Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change (Cambridge University Press, Cambridge, UK and New York, USA, 2021). doi:10.1017/9781009157896.</p>
+<p>[3] R. Holmes, "The problem with solutions," Places Journal (2020).</p>
+<p>[4] V. Masson-Delmotte, et al. (eds.), IPCC, 2021: Climate Change 2021: The Physical Science Basis (Cambridge University Press, 2021). doi:10.1017/9781009157896.</p>
+<p>[5] B. Cantrell, L.J. Martin, and E.C. Ellis, "Designing autonomy: Opportunities for new wildness in the Anthropocene," Trends in Ecology &amp; Evolution 32.3 (2017), 156-166.</p>
+<p>[6] Ibid.</p>
+<p>[7] R.T. Corlett, "Restoration, reintroduction, and rewilding in a changing world," Trends in Ecology &amp; Evolution 31 (2016), 453-462.</p>
+<p>[8] J. Svenning, et al., "Science for a wilder Anthropocene: Synthesis and future directions for trophic rewilding research," Proceedings of the National Academy of Sciences 113 (2015), 898-906.</p>
+<p>[9] P.N. Edwards, A Vast Machine: Computer Models, Climate Data, and the Politics of Global Warming (MIT Press, Cambridge, 2010).</p>
+<p>[10] P.N. Edwards, "Control earth," Places Journal (2016).</p>
+<p>[11] J. Baudrillard, Cool Memories V: 2000-2004 (Polity, Oxford, 2006).</p>
+<p>[12] Ovid, Metamorphoses III (Indiana University Press, Bloomington, 1955), 85.</p>
+<p>[13] B. Han, Psychopolitics: Neoliberalism and New Technologies of Power (Verso Books, New York, 2017).</p>
+<p>[14] B. Frohmann, Deflating Information (University of Toronto Press, Toronto, 2016).</p>
+<p>[15] F. Nietzsche, On the Advantage and Disadvantage of History for Life (1874).</p>
+<p>[16] P.C.D. Milly, et al., "Stationarity is dead: whither water management?" Science 319.5863 (2008), 573-574.</p>
+<p>[17] J. Joque, Revolutionary Mathematics: Artificial Intelligence, Statistics and the Logic of Capitalism (Verso Books, New York, 2022).</p>
+<p>[18] Gunderson and Holling, 2001; and Holling, "From complex regions to complex worlds," Ecology and Society 9.1 (2004), 11.</p>
+<p>[19] S. Wakefield, Anthropocene Back Loop (Open Humanities Press, 2020).</p>
+<p>[20] A.N.H. Creager, et al. (eds.), Science Without Laws: Model Systems, Cases, Exemplary Narratives (Duke University Press, Durham, 2007).</p>
+<p>[21] Ibid.</p>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
