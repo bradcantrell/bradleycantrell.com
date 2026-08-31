@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Specters of a Changing Climate | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2024</div>
+    <h2 class="hero-title">The Specters of a Changing Climate</h2>
+    <div class="hero-type">Book Chapter</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Collaborators</strong></dt><dd>Leena Cho, Brian Davis, Matthew Seibert, Xun Liu, Marantha Dawkins</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>Representing Landscapes: Visualizing Climate Action. Ed. Nadia Amoroso. Routledge, pp. 211–220</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Surveys the representational strategies developed across the University of Virginia's foundation and research studios, seminars, and faculty research, arguing that visualizing the impacts of a changing climate is central to how the next generation of landscape architects will reimagine a planet adapting to rising temperatures.</p>
+<hr>
+
+<h2>Full Chapter Text</h2>
+<p>Within tempestuous skies and changing tides, we find ourselves floating in a sea of indeterminacy, where the enigmatic dance of a changing climate remains elusive. The environmental impact of a changing climate is one of the most pressing issues of our time and understanding its impact on our surroundings is critical to developing the strategies necessary to sustain humanity and ecological complexity. With every model, every simulation, we seek to conjure forecasts from chaos, yet our fool's errand continues, gazing wide eyed into a crystal ball of uncertainty. Importantly, the future of the planet will not look like the past, there is no way to reverse our current course only nudges to speed up or slow down a trajectory that was started a century ago.</p>
+<p>As we gather and analyze data, craft algorithms, and run simulations, we attempt to peer into the future, but we do so with a sobering realization of the indeterminacy that persists. The climate system is an intricate web of interactions, influenced by countless variables and feedback loops, making it resistant to simple predictions. In our quest to grasp the evolving climate and its impacts, we often underestimate the complexity of the natural world. It is not unlike attempting to predict the precise path of a wandering river, ever-changing and shaped by forces barely within our control. While our simulations offer valuable insights and trends, they are constrained by their inability to fully capture the intricacies of our planet's dynamic systems. Awakening, we yearn to capture the essence of a fleeting dream, we chase specters in the code, watching our predictions dance in wild defiance.</p>
+<p>As we attempt to grasp the ever-expanding complexities of our planet it is necessary to critically unpack the role that visualization serves as a tool for landscape architects to comprehend and respond to the intractable challenges of a changing climate. This critique aids in continually rethinking the varied impacts of climate change for designers. The approach in turn, fosters increased awareness, intuition, and engagement within the design process.</p>
+<p>Using data, models, and simulations, landscape architects can develop valuable visual representations that simplify complex climate-related information. These visualizations help make scientific information more relatable and accessible, translating data into clear, comprehensible visual representations. With these visualizations that integrate scientific information into the design process, landscape architects are beginning to propose and construct living environments that are thermally comfortable, ecologically fit, and resilient to future scenarios. In the discipline of landscape architecture, climate visualization serves as a practical means to raise awareness and promote action but just as importantly frames the pertinent design questions and implies authorship. It is an essential methodology that encourages diverse concepts to coalesce promoting an understanding necessary to address climate change. By breaking down complex concepts into clearly articulated visual representations, landscape architects contribute to the ongoing conversation about climate change, both during the design process and in public forums, propelling society toward innovative approaches and necessary conversations.</p>
+<p>Representing time in landscape architecture is a complex and fascinating task. Typically, landscape architecture documentation does not display aspects of time in drawings, focusing more on spatial rather than temporal aspects. However, the representation of time is certainly possible and can be explored through various ways, such as drawing experiments and re-ordering the taxonomy of spatial and temporal representations. The dynamic representation of landscape is an important aspect in landscape architecture education, especially for students who come from disciplines not accustomed to design and graphical communication. Gardens and designed landscapes serve as a medium of time, both in a material and ideological sense. Time-based processes play a significant role in landscape architectural concepts and projects, addressing sustainability, identity, and the preservation and development of natural and built environments.</p>
+<p>The University of Virginia's Master of Landscape Architecture curriculum is structured to integrate principles of climate change across multiple dimensions, encompassing design studios, technology and ecology workshops, media courses, and history and theory seminar sequences. The program's core objective is to equip students with the requisite skills and knowledge to grapple with the multifaceted challenges posed by an uncertain future, marked by the complexities of climate change, which eludes precise predictions.</p>
+<p>Simultaneously, the faculty actively engage in a diverse range of theoretical and externally funded projects, gaining recognition for their applied approach to climate-related research. Their work is instrumental in unraveling the intricacies of our planet's dynamic climate systems at the scale of landscape systems and help chart a path forward in this era of unpredictability.</p>
+<p>Within this academic landscape, representational techniques assume a pivotal role in shaping the next generation of landscape architects. The pedagogical focus centers on the adoption of innovative methods for visualizing environmental dynamics and landscape performance. Such visual tools are integral to preparing students to navigate an indeterminate and ever-evolving future. Through these methods, students learn to speak the language of design and ecology, as they grapple with the complexities of climate change and its implications for the landscapes, they will shape in the years to come.</p>
+<p>The intersection between the sciences and design when developing representational techniques for climate change is significant. Climate models have played a crucial role in understanding a changing climate, and effective visualization is important for both the scientific community and the public. Additionally, representational methods can elucidate design principles and offer useful tools for guiding spatial propositions that address climate and can provide tentative guidance currently while charting a trajectory for future decisions. Furthermore, the realm of economics is increasingly recognizing its role in appraising the economic repercussions of various climate change scenarios. In this context, economists are being called upon to craft economic mechanisms and structures that empower individuals and communities to adapt effectively to evolving environmental circumstances. These economic artifacts are becoming the linchpin that bridges financial aspects with climate resilience. Moreover, landscape architects and engineers are developing tools that anticipate future climate change impacts on site design, including comfort, resilience, autonomous construction, and hydrologic management.</p>
+<p>Lastly, the realm of design education emerges as a potent agent of change, imparting critical knowledge and instilling a sense of responsibility among designers. These designers are equipped to make choices rooted in an environmental consciousness and a complex understanding of our planet's ecological intricacies. Ultimately, this contributes significantly to how we address climate change, fostering a cadre of mindful individuals who are attuned to the relational nature of the environment and how they can consciously shape their propositions and decisions.</p>
+<p>The representational strategies in this section capture a range of foundation and research design studios, seminars, PhD student research, and faculty research at the UVA Department of Landscape Architecture.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-01.jpg" alt="Figure 01"><figcaption>Figure 01. Final presentation board for project Re(de)fining Decomposition by Joyce Fong, for first semester foundation studio, Elements of Landscape Architecture taught by Associate Professor Leena Cho and Matthew Seibert. Recipient of 2023 ASLA Student Honor Award in General Design Category.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-02.jpg" alt="Figure 02"><figcaption>Figure 02. The Dossier of Details from EcoTech III course taught by Matthew Seibert. Composed of three construction details, measured drawings, or rigorous diagrams (i.e. a line drawing) illustrating regenerative tools, techniques, tactics, strategies, or technologies. The third and final drawing was newly drafted in visualization of indigenous knowledge systems in conversation with the Colonial Lands module. This was not instructed as an extractive practice but rather an exercise in engaging with healthy and restorative frameworks in which humans and more-than-human species and systems have evolved to need and thrived within. —description from EcoTech III website at: https://miltonlandlab.cargo.site/Dossier-of-Details</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-03.jpg" alt="Figure 03"><figcaption>Figure 03. Mapping and ideogram of Lithium Mining Extraction</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-04.jpg" alt="Figure 04"><figcaption>Figure 04. Water drawing by Priyanka Parachoor from "Drawing Water" seminar taught by Associate Professor Brian Davis. Water is one of the most basic and most complicated elements of landscape, and it figures prominently in humanity's collective future. Similarly, drawing is a basic and complicated mode of creating and analyzing, expressing, and communicating. It is a kind of boundary practice that can be both representational and experimental, combining intuition and reasoning in many mediums. —Associate Professor Brian Davis</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-05.jpg" alt="Figure 05"><figcaption>Figure 05. Water drawing by Alisa Thai from "Drawing Water" seminar taught by Associate Professor Brian Davis. To do water work well, we must become more technically savvy and more aesthetically devoted. Whether through teaching, practice, or research, I have come to believe that an important project in landscape architecture is to increase technical skill and weld it directly to a hardy aesthetic sensibility and ethical stance that is at home in the vernacular, the natural, and the infrastructural landscapes of our time is what the field of landscape architecture must develop to more fully take on the work of the next generation. —Associate Professor Brian Davis</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-06.jpg" alt="Figure 06"><figcaption>Figure 06. The illustration highlights a river-scale climate adaptive design in the James River, emptying into the Chesapeake Bay. Climate adaptive design often focuses on restoration practices. A return to natural hydrological, geological, and biological function is meant to recover ecosystem services. But in the face of climatic uncertainty, the pursuit of stability and protection of normalcy is most likely doomed to violent failure. —Marantha Dawkins, PhD Candidate in the Constructed Environments.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-07.jpg" alt="Figure 07"><figcaption>Figure 07. In landscape architecture, physical models and simulations are essential for examining the intricate, nonlinear dynamics of river morphology—a task challenging for numerical simulations. Yet, setting up these physical simulations can be intricate, costly, and time intensive. This limits the number of possible simulations per study, thereby constraining both the applicability of these physical simulations and the creative scope of designers. The research proposes an innovative approach to streamline the process using the hydro morphological sand table simulation of fluvial landscapes as a case study. Through the integration of the Procedural Terrain Generation (PTG) methodology with Generative Adversarial Networks (GANs), we've gathered 500 data sets pairing intervention and sedimentation patterns from the Hydro morphological Sand Table. The resulting 3D latent walk is showcased via a user-friendly interface, offering landscape designers a seamless way to embed it into their creative processes. —Xun Liu, PhD Candidate in the Constructed Environments</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-08.jpg" alt="Figure 08"><figcaption>Figure 08. The Sensors: Remote data collection. The project interprets data collected from micrometeorological sensors installed in Utqiaġvik, studying the impact of the built environment in extreme climates. Image credit: Judy Shao-Yu Chen, Phoebe Tamminen, 2023. Arctic Studio taught by Leena Cho and Matthew Jull</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-09.jpg" alt="Figure 09"><figcaption>Figure 09. Seasonal Maintenance Practices: Responding to site-specific conditions. Four strategies deployed across the year aim to stabilize permafrost and improve quality of life for the residents of the 29-unit TNHA housing. Image credit: Jessica Huang, Yi Zhu, Phoebe Tamminen, 2023. Arctic Studio taught by Leena Cho and Matthew Jull</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/specters-of-a-changing-climate/figure-10.jpg" alt="Figure 10"><figcaption>Figure 10. LAR 7020 Foundation Studio IV, in Module II students explore live models to represent dynamic environmental phenomena. The models must update and respond to design iterations, providing a tool to explore how design concepts of curation and choreography can inform landscape behaviors. Cyanotype drawings developed by Qiuming Li.</figcaption></figure>
+
+<p>With an uncertain future and the haunting specters of a changing climate, it is critical that the next generation of landscape architects are approaching design in a bold manner. Rather than attempting to save our planet in its current state, it is critical to reimagine it as it is attempting to adapt to rising temperatures. The representation of these complexities requires new approaches to curriculum, research, and service to the communities we reside within. It is a time to be bold, in the words of Russian science fiction author and philosopher Yevgeny Zamyatin in "On Literature, Revolution, Entropy, and other Matters.":</p>
+<blockquote>
+<p>Harmful literature is more useful than useful literature, for it is antientropic, it is a means of combating calcification … It is utopian, absurd … It is right 150 years later. What we need in literature today are vast philosophic horizons … We need the most ultimate, the most fearsome, the most fearless "Why?" and "What next?"</p>
+</blockquote>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
