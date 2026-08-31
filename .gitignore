@@ -1,3 +1,6 @@
 # Venice program moved to its own site (veniceprogram.com, Cloudflare Pages).
 # Source now lives at /mnt/vault/infrastructure/www/veniceprogram/ and is
 # deployed from /mnt/vault/infrastructure/venice-program-production/.
+
+# Computational Wilds book page — local only (forthcoming, not linked from the site).
+projects/computational-wilds.html
