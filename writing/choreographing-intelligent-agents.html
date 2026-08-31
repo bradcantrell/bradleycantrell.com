@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choreographing Intelligent Agents | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2019</div>
+    <h2 class="hero-title">Choreographing Intelligent Agents</h2>
+    <div class="hero-type">Publication / Peer-Reviewed Paper</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Collaborators</strong></dt><dd>Zihao Zhang</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Paper, theoretical framework</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>ACSA Annual Meeting Proceedings: Black Box, Articulating Architecture&#x27;s Core in the Post-Digital Era</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Choreographing Intelligent Agents, co-authored with Zihao Zhang, framed landscape design as the choreography of intelligent agents, drawing on Timothy Morton's notion of attunement to argue for environments that enable living, dynamic relations among human and nonhuman actors.</p>
+<h3>Introduction</h3>
+<p>The discipline of landscape architecture has developed an ecological design framework that relies on process-based strategies and systems thinking to manipulate the environment. In this essay, we want to unpack and articulate this landscape design paradigm with the notion of attunement. But before moving into Morton and his attunement concept, we want to provide some considerations over object-oriented ontology (OOO) movement at large, highlighting how the landscape discipline has responded to this intellectual shift.</p>
+<h3>Agency and Autonomy</h3>
+<p>Since the late 1990s, there have been several intellectual and theoretical developments that move away from epistemological and contextual concerns stemmed from the 20th century "linguistic turn" to ontological concerns in a posthumanist framework characterized by a revival of materialism and the ascendency of OOO and machine-oriented ontology (MOO). Unlike many architecture theorists, who are interested in OOO based on the refocusing of the architectural object, the landscape discipline is sympathetic towards OOO for its flat ontology and its interests in the nonhumans. In fact, many in the discipline of landscape architecture respond to this intellectual shift by aligning themselves with new materialist philosophers such as Jane Bennett and Levi Bryant and share with them the concerns toward the "withdrawal" and "nonrelational" claims of some OOO thinkers. Because for the discipline of landscape architecture, the nonhuman realm has always been active and full of transformative forces, and "withdrawal" gives rise to a sense of negativity that cannot help to recognize the nonhuman intelligence as well as their agency to transform the shared environment.</p>
+<p>Framing the nonhumans as active agents is crucial for us to interpret Morton's attunement. Morton describes attunement as "a living, dynamic relation with another being." Taking this argument, designing landscapes means to forge new kinds of living, dynamic relations among different intelligent agents including humans, machines, and other biotic and abiotic actors to co-produce the shared environment.</p>
+<p>In the past few years, the developments in artificial intelligence and machine learning research, on the one hand, challenge our understanding of nonhuman intelligence and agency, and on the other hand, inspire us to develop new design methodologies that focus on landscape agents and their intelligence. We find computer scientists Shane Legg and Marcus Hutter's concept of universal intelligence conceptually stimulating to understand what intelligence is. Generally speaking, "intelligence measures an agent's ability to achieve goals in a wide range of environments." This definition relies on a cybernetic model by imagining an intelligent system or an agent that interacts with its environment and achieves goals through feedback loops.</p>
+<p>As a discipline landscape architecture recognizes and respects the autonomy and agency of human and nonhuman agents in constructing the shared environments. The framework of co-production between human and nonhuman agents requires a unique understanding of intelligence in the landscape discipline: designing landscape essentially assumes that human and nonhuman agents in ecosystems possess intelligence, and they are intelligent enough to sense their environments and take actions to construct their environments. But to truly embrace nonhuman agency and intelligence in constructing the shared environment, we have to avoid anthropocentrism and individualism that are inherent in how people usually understand intelligence, agency, intentionality and other associated terms.</p>
+<p>Anthropocentrism, or understanding the world from a human-centered perspective, is the first issue when considering nonhuman intelligence and agency. Even though Legg and Hutter expanded the agent to include human, animals, and machines, the fact that universal intelligence works as a measurement unwittingly imposes a human-centered standard on nonhuman agents of when considering what action is intelligent. For example, this human-centered view prevents people from understanding that a plant such as a tree is intelligent because people cannot see trees move or think. However, nonhumans relate to their environment very differently from humans. Thomas Nagel in his 1979 essay "What is it like to be a bat?" posits the question of thinking in other species' mind. We cannot know what it is like to be a bat, but we know a bat is thinking and that thinking is different from ours and we cannot hope to comprehend it. And the experience of a bat may have a complexity that we cannot comprehend. For us, this is less an epistemological question, how we can know what it is like to be something, but an ontological claim. We cannot know entirely other people's thinking and feelings, but it does not prevent us to respect their agency and values. We see no reason to limit this empathy only to human. Nonhumans sense the environment, process information, and respond to inputs very differently from human beings, and it is impossible for us as humans to really understand how nonhuman relate to their world. As a consequence, there is no necessity and also impossible to compare which "intelligence" is more intelligent or more similar to human intelligence. For example, in a posthumanist perspective, we respect animals not because they are diminished versions of us, but because they are intrinsically different from us.</p>
+<p>The second problem we want to point out in universal intelligence is individualism. The "agent" in the definition assumes an individual intelligent being, overlooking group intelligence emerged from the interactions and coupling of different agents forming an intelligent assemblage. For example, an ant is not capable in taking actions intelligently to impact the environments at a meaningful scale, whereas a colony of ants is able to act intelligently and construct an underground ecosystem that supports their lives. This point can also be further illustrated by using cognitive scientist Andy Clark's extended mind theory. Clark argues that humans can offload their cognitive functions onto other things such as a paper. By writing down formulas and numbers on a piece of paper, we can free up our attention to only focus on simple calculations, and the paper remembers numbers for us. From this perspective, what liberal humanist subject thought to be intelligent action was in fact achieved by an assemblage of things. In a way, humans are always co-evolved with nonhumans around us, some are technical, some are biological, and some are incorporeal. And intelligent actions could be understood as a desired local manifestation that is overdetermined by many actors.</p>
+<h3>System</h3>
+<p>With these caveats, we can restate our argument that built around Morton's attunement as manifesto. Landscape design is about enabling attunement among different beings. It is about forging new kinds of living, dynamic relations among all kinds of biotic and abiotic intelligent agents in the shared environment. It is about setting up the stage for all kinds of actors to interact and achieve their own potentials. And it is about constructing a shared environment that is democratic for all species. Designers also need to attune to the forces and structures of other intelligent agents. This requires an understanding of the definition of landscape not as a designed object, a field, a background, or a figure, but a complex multiagent-system of which humans are a part. The aesthetic experience is not achieved by landscape object, but by the synchronic attunement to the forces and flows in the designed landscape through constructed experiences and affects. Bringing together the concept of intelligent agent and attunement, we saw an opportunity to design the environment towards a more than human future.</p>
+<h3>Notes</h3>
+<ol>
+<li>Richard A. Grusin. 2015. <em>The Nonhuman Turn</em>. Minneapolis, London: University of Minnesota Press. On vital materialism, see Jane Bennett. 2010. <em>Vibrant Matter: A Political Ecology of Things</em>. Durham: Duke University Press. On OOO, see Graham Harman. 2018. <em>Object-Oriented Ontology: A New Theory of Everything</em>. Penguin UK. On MOO, see Levi R. Bryant. 2014. <em>Onto-Cartography: An Ontology of Machines and Media</em>. Edinburgh: Edinburgh University Press.</li>
+<li>Graham Harman. 2018. <em>Object-Oriented Ontology: A New Theory of Everything</em>. Penguin UK. Ch. 6. And Mark Foster Gage. 2015. "Killing Simplicity: Object-Oriented Philosophy In Architecture." <em>Log</em>, no. 33: 95-106.</li>
+<li>Timothy Morton. 2007. <em>Ecology Without Nature: Rethinking Environmental Aesthetics</em>. Cambridge, Mass: Harvard University Press.</li>
+<li>Shane Legg, and Marcus Hutter. 2007. "A Collection of Definitions of Intelligence." ArXiv:0706.3639. And "Universal Intelligence: A Definition of Machine Intelligence." <em>Minds and Machines</em> 17 (4): 391-444.</li>
+<li>Thomas Nagel. 1974. "What Is It Like to Be a Bat?" <em>The Philosophical Review</em> 83 (4): 435.</li>
+<li>Andy Clark, and David Chalmers. 1998. "The Extended Mind." <em>Analysis</em> 58 (1): 7-19.</li>
+</ol>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>

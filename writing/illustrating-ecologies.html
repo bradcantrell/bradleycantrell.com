@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illustrating Ecologies | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2011</div>
+    <h2 class="hero-title">Illustrating Ecologies</h2>
+    <div class="hero-type">Publication / Peer-Reviewed Paper</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Medium</strong></dt><dd>Paper, pedagogical methodology</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>OZ Journal, Kansas State University Press</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Illustrating Ecologies described an advanced research seminar at Louisiana State University that explored animating and modeling ephemeral ecological systems through analog and digital models, pairing the study of ecological processes with the development of representation techniques. The paper documents the seminar's structure and the range of student work it produced.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-01.jpg" alt="Figure 01"><figcaption>Figure 01. River channel prototypes, Alex Ramirez and Andrew Baum.</figcaption></figure>
+
+<h3>Pedagogy</h3>
+<p>In an attempt to understand the complex relationships occurring within ecological systems, methods of representation must explore modes that focus on illustration, simulation and dynamic modeling. Illustrating Ecologies, an advanced research seminar at the Louisiana State University Robert Reich School of Landscape Architecture, explores animating and modeling ephemeral ecological systems through analog and digital models. Students are asked to research ecological processes, infrastructure and/or biotic systems through processes that deconstruct through modeling and animation. Students learn techniques necessary to model ephemeral processes such as decomposition, deposition, growth and hydrology utilizing particle systems and other techniques that are at times simulations and at other times illustrations. Digital and analog representations were combined with field observations of ecological processes as well as recording methods such as video, photography, sensing and sketching in order to fully understand the complex processes that were illustrated.</p>
+<p>The research was conducted in groups where each group focused on a representation methodology and ecological system definition. Within the course of the seminar students became experts on specific software and representation techniques, as well as their chosen ecological system. The two concurrent research streams would focus the groups research on the ecological science and the representation techniques. The information was documented throughout the semester at lab.visual-logic.com to serve as a resource for the seminar and for outside collaborators.</p>
+<p>Through this process research groups were asked to clearly define the scope of an ecological system. This required the creation of a comprehensive body of research that included both scientific and anecdotal evidence that would be used to describe an ecological system model. This research required the development of observation methods that were used to document dynamic, ephemeral processes for the purpose of developing representations of ecosystem complexity. The observations and research were tied directly to the concurrent research into software, techniques and methodologies for illustration and simulation.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-02.jpg" alt="Figure 02"><figcaption>Figure 02. Mississippi River watershed model and data projection, Jessica Carvajal and Katherine Tabor.</figcaption></figure>
+
+<h3>Ecological System Research</h3>
+<p>The research groups defined an area of research and scope through the specification of an ecological system. For the purpose of the seminar ecological system was defined as naturally occurring and/or constructed or reconstructed systems that could be biotic and/or abiotic. Typically ecology refers to the relationship of organisms to one another, or in terms of human ecology the relationship of human beings to the environment. The students were asked to define an ecological system and to create a body of research to support the representation of the components of the ecology. The ecological system research was comprehensive, concentrating on the overall system/framework, relationships of elements (flora, fauna, etc), relationship to larger systems, temporal change, ephemeral qualities, perceived experience and physical relationships.</p>
+<h3>Software/Tool Review</h3>
+<p>The tools necessary to create compelling digital representations are complex and not specifically tailored to the design professions. Each research group focused on a specific digital tool in order to research and review the tools ability to create ecological illustrations. The review contained an overview, specific application and examples. A wide variety of software and systems were explored including:</p>
+<ul>
+<li>Particle Flow, 3ds Max</li>
+<li>Reactor, 3ds Max</li>
+<li>Polygon and NURBS Modeling</li>
+<li>Vue xStream</li>
+<li>Autodesk Civil 3D</li>
+<li>Fluid Dynamics, Maya</li>
+<li>Adobe After Effects</li>
+<li>CAD/CAM, 3D Printing/Laser Cut</li>
+<li>Global Illumination Systems, Mental Ray, V-Ray</li>
+</ul>
+<h3>Technique Documentation</h3>
+<p>It was necessary to understand and share techniques that are developed to represent the researched ecologies. Each group documented two techniques that they developed for the representation of a specific ecological system or feature. The techniques were original and/or derived from other work or tutorials. The documentation showed the representation process step-by-step and explained not only how it is done but why this technique is appropriate. The documentation contained images and/or screenshots as well as source files to allow others to work their way through the process.</p>
+<h3>Exhibition</h3>
+<p>The culmination of the semester was an exhibition representing the researched ecological system as a framework, process, and experience. Each group determined, based on their research, the appropriate methods to represent each of these modes. This was accomplished through prototype models, animations and/or illustrations. Each group's exhibition was assembled to express three terms to frame the ecological system creating three modes of inquiry.</p>
+<p><strong>Framework.</strong> A basic structure underlying a system or concept.</p>
+<p><strong>Process.</strong> A series of actions or steps taken in order to achieve a particular end, or a natural or involuntary series of changes, or a systematic series of mechanized or chemical operations that are performed in order to produce or manufacture something.</p>
+<p><strong>Experience.</strong> (noun) practical contact with and observation of facts or events, or an event or occurrence that leaves an impression on someone. (verb) encounter or undergo or feel.</p>
+<p>Each group was responsible for designing and creating a stand-alone exhibit that works with each of the other research groups in the class as a single exhibition. The following four projects represent the range of work completed in the course including digital illustrations, digital simulations, analog simulation, and physical models.</p>
+<h3>Stream Bed Modeling: Fluctuating Infrastructure</h3>
+<p>Andrew Baum and Alex Ramirez</p>
+<p>The water flow of the Mississippi has many factors that influence where it turns, bends, rises, falls, increases in speed, or even decreases in speed at some points. These factors are known as levees, dams, spur dikes, and locks. There are 29 locations where these locks/dams are located along the Mississippi, 27 of which are north of St. Louis. This means that the river is controlled at many points. In doing so, these locks and dams help maintain a stable water flow for navigational purposes.</p>
+<p>Not only do manmade factors affect the river system, but the natural environment that the river exists in can affect how the river fluctuates. Some of these factors include the depth of the river, the width, and the volume. From St. Louis south, the levee system starts to be more prominent due to elements such as settlements and the increasing volume of water. Within this area of focus, the group was interested in what happens when the water is affected by these structures. Objects like soil sediment and debris are shifted around, while the river continues to cut and fill the surrounding land. The emphasis is placed on the ecological system being created and disturbed over a period of time.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-03.jpg" alt="Figure 03"><figcaption>Figure 03. River channel simulation model construction, Alex Ramirez and Andrew Baum.</figcaption></figure>
+
+<p>Within the framework, there are major elements that must be studied to understand how the river flow has become an ecological system. The river began its course as a fluctuating structure that has evolved to become a channelized element. The strategies to understand this system begin from how the river once was, and how it has transformed over the years into a more controlled and manipulated ecological system.</p>
+<p>The Mississippi river was once an untamed force that carved the land in any direction the geomorphology and water flow wanted it to go. It was in a world where nothing hindered the river system allowing it to have its way with the landscape as it created the shortest route to its outlet in the Gulf of Mexico. Over time, it became a controlled force due to man creating settlements and providing the proper way for the river to flow. Furthermore, there are factors that man and nature still present that affect the way the river fluctuates. The main focus of the framework is how the river fluctuates from the past, to the present, and even explores the possibilities of the future.</p>
+<p>The fluctuation of the river depends on the likes of sediment deposition, water levels, and the addition/subtraction of land along the river. By investigating these factors, the research group is interested in studying the ideas of how a meandering river forces itself upon the land ultimately affecting settlements, different ecologies, and ways humans can interact in these diverse environments. The river fluctuation is explored through the digital modeling, animation and analog simulation techniques.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-04.jpg" alt="Figure 04"><figcaption>Figure 04. River channel digital models, Alex Ramirez and Andrew Baum.</figcaption></figure>
+
+<p>The digital models helped strengthen the ideas behind the physical river model as it was in the construction stages. The models show more detail of how the river fluctuates and changes due to erosion and sediment in which the 3D models will begin to show. The group attempted to incorporate the rendering of the models with particle flows and a realistic ground plane. The animation began to gradually show the changing of the river yet somehow leaves remnants of lines or other pieces of the model to see how the river is really fluctuating.</p>
+<p>By exploring different situations the water encounters, the group began to understand how the river runs its course and is controlled at the same time. The situations that are simulated will help one understand the systems of the river and hopefully open more detailed aspects not fully understood or shown yet. This pattern can be seen as the water moves laterally across its down-valley axis (floodplain). Oxbow lakes are formed when these meanders are cut off from the main stem of the river. Specifically, oxbow lakes are formed when two concave banks have eroded away the sediment so much that they are immediately adjacent to each other. Once the two banks have finally been cut through, a newer, straighter channel is created and the abandoned meander loop is formed. An oxbow lake is formed when there has been enough deposition of the sediment at each end of the abandoned loop that it seals off the loop from the river.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-05.jpg" alt="Figure 05"><figcaption>Figure 05. Initial stream bed prototype, Alex Ramirez and Andrew Baum.</figcaption></figure>
+
+<p>The analog simulation prototype parallels our study of the meandering rivers. The group attempted to duplicate the work of Christian Braudrick, William Dietrich, and their fellow colleagues at the University of California at Berkeley. They have successfully been able to construct a scaled down version of a meandering river that successfully maintains meanders in the river. By adding light weight plastic particles used in sandblasting to the water that flows through this model and alfalfa sprouts as the deep rooted vegetation of the river banks, the stream is able to maintain one main stem. Other studies similar to this have resulted in a system of braided streams that have no regularity and no significance in studying the effects of meandering rivers. It is our hope to successfully duplicate what has been produced in California, and study the effects that meandering rivers have across the nation.</p>
+<p>After exploring the rivers sediment deposition process closely, it begins to set up a story that explains what happens in the changing course of the river. The sediment plays a significant role that causes the river to fluctuate the way it does. As observed in a more detailed view through the process, the experience begins to widen its view across the larger aspect of the landscape. It creates situations that alter the land and how the people benefit or suffer from the decisions the river has chosen. Even though portions of the ecological system become cut off from its original foundation, it still presents an environment full of wildlife and ecology that will settle into its new role in the landscape. There are multiple settings on which to demonstrate through a time lapse illustration across the reconstructed landscape due to the fluctuating river.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-06.jpg" alt="Figure 06"><figcaption>Figure 06. River channel analog simulation sequence, Alex Ramirez and Andrew Baum.</figcaption></figure>
+
+<p>The diagrams below represent the scheme in how the final experience will tell the story over a period of time. It looks at how the meandering river changes courses creating an oxbow lake, and how the river affects the overall land and ecology patterns surrounding it. The final simulation system was implemented and documented through a large analog physical model. The model simplified the geomorphological conditions by representing soil strata with sand of varying coarseness. Vegetation was introduced using fast growing alfalfa to represent forest massing. The simplicity of this system simulated a low fidelity meandering stream ecosystem.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-07.jpg" alt="Figure 07"><figcaption>Figure 07. River channel digital models, Alex Ramirez and Andrew Baum.</figcaption></figure>
+
+<h3>Algae Power Economies</h3>
+<p>Joaquin Martinez, Andrew Collins, Lauren Fasic</p>
+<p>We interpret our project as being, like any other farming ecology, an economy of trade, efficiency of production, and more specifically; the implementation of an alternate energy source. Thus, this ecology requires: the production of algae at a large scale, achievable through technological advances, in order to produce enough biofuel to sustain the production of algae (so that algae production is not dependent on fossil fuels); political support through means of laws and bills which provide certain incentives and tax exceptions to manufacturers, distributors, and consumers; a social acceptance driven by the availability and easy access made possible by political, economical and technological advances.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-08.jpg" alt="Figure 08"><figcaption>Figure 08. Algae power generation cycle, Joaquin Martinez, Andrew Collins, Lauren Fasic.</figcaption></figure>
+
+<p>The project's relationship to the Mississippi River can be interpreted as design interventions that take advantage or riverfront areas that have been neglected or that are defunct due to the abandonment of industrial plants. Again, political support through tax exemption, land price considerations or other economic incentives for investors and energy companies, may open up a market through the Mississippi's riverfront which may create an identity and establish the waterfront as a prime energy producing location.</p>
+<p>The process for our ecology would be the conversion from biomass to a biofuel. On a larger scale, it would deal with the process (at this point a speculation) about the role of algae biofuel within the energy market. More specifically, the process of conversion from a fossil fuel economy, to a sustainable energy source, like algae biofuels.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-09.jpg" alt="Figure 09"><figcaption>Figure 09. Algae power sequence model and animation (1 frame), Joaquin Martinez, Andrew Collins, Lauren Fasic.</figcaption></figure>
+
+<p>Algae convert sunlight into energy via the process of photosynthesis, whereby carbon dioxide plus light equals glucose plus oxygen. In addition algae quickly reproduce, allowing for harvest in as little as 10 days. When compared to corn growth cycles (used for ethanol production) it is clear that algae are superior for fuel production.</p>
+<p>PhotoBioreactors: where nutrient filled water is pumped through "bioreactors," plastic tubes that are then exposed to sunlight to allow photosynthesis to occur.</p>
+<p>Closed Loop Systems: are expensive because they require heavy infrastructural costs. They are designed to isolate the algae, and feed pollutant-free, pure CO2, usually from a smokestack.</p>
+<p>Open Ponds: are extremely hard to cultivate because they deal with many outside forces, precisely those that the closed loop system is designed to eliminate. Elements like, change in water temperature and pH levels, competition from other algae, and the exposure to bacteria, make the process of cultivating in an Open Pond, extremely difficult, with high variance algae biofuel extracted.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-10.jpg" alt="Figure 10"><figcaption>Figure 10. Wire bundles representing economic, political and cultural issues, Joaquin Martinez, Andrew Collins, Lauren Fasic.</figcaption></figure>
+
+<p>The representation of this system was developed into a sculptural piece that attempted to portray the overall complexities of the adjoining elements. Ecological system was construed loosely as an economy of commercial power generation visualized through sculpture and animation.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-11.jpg" alt="Figure 11"><figcaption>Figure 11. Complete composite model, Joaquin Martinez, Andrew Collins, Lauren Fasic.</figcaption></figure>
+
+<h3>Oil Infrastructure</h3>
+<p>Andrea Galinski</p>
+<p>The ecology of the oil and gas infrastructure is an extremely complex system and so in order to develop a coherent simulation it is necessary define the particular area of inquiry. In particular, I am interested in how the petrochemical infrastructure is inserted into the Louisiana's Gulf Coast wetlands landscape. Many processes could be included, cutting of canals, insertion of pipelines, puncturing of wells, extracting hydrocarbons, which all alter the physical dimensions of the wetland ecosystem. However I would like to focus on possibly the most spatially extensive and hydrologically profound process of the oil and gas infrastructure, the incision of canals. The network of canals leaves a powerful geometric imprint on the landscape and the processes involved are fundamental to understanding how the industrial ecology has been woven into the natural ecology.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-12.jpg" alt="Figure 12"><figcaption>Figure 12. Oil and gas volumes, Andrea Galinski.</figcaption></figure>
+
+<p>Three resulting dynamics occur which I would like to model: (1) dredging canals in terrain (incision / altered topography), (2) intrusion of salt water (infiltration / altered hydrology), (3) fragmentation of vegetation (disintegration / altered ecology).</p>
+<p>This is the most ephemeral component of the project. I would like to be able to capture the experience of dynamic processes involved. Perhaps there is a way to condense time to express one location at various moments so that systems which operate at a humanly imperceptible speed may become visible. For example, the infrastructure connects larger cycles of geologic time, ecological scales of time, as well as fleeting environmental conditions.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-13.jpg" alt="Figure 13"><figcaption>Figure 13. Composite analog model of oil and gas strata, Andrea Galinski.</figcaption></figure>
+
+<p>Louisiana's oil and gas infrastructure is a complex system. As a physical infrastructure it consists of wells, pipes, off-shore oil rigs, refining stations, submerged barges, and other technologies. My research attempted to better understand the intersection between these built and natural ecologies and explore the dynamic processes that result from the evolving interface between the two.</p>
+<p>Threads: pipes, canals, channels. Islands: wells, off-shore rigs. Mats: refining plants, oil fields, wetland vegetation, submerged aquatic vegetation.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-14.jpg" alt="Figure 14"><figcaption>Figure 14. Overview of analog model of oil and gas strata, Andrea Galinski.</figcaption></figure>
+
+<h3>Agricultural Runoff</h3>
+<p>Patrick McGannon and Kristen Lonon</p>
+<p><strong>Framework.</strong> In order to establish a point of reference for modeling various methods of combating contamination of runoff and filtration processes, the research group modeled existing conditions of a watershed within an agricultural region. This agriculture practices modeled in this section considered base agricultural situations with no consideration of runoff treatment or control.</p>
+<p>First, a typical watershed will be constructed in 3ds Max. Then the hydrologic properties of the watershed will be modeled using the 3ds Max Particle Flow system. Finally, fertilizer type contaminants (Nitrogen, Phosphorous) will be distributed on the site and both the groundwater infiltration and watershed infiltration. Other factors that will be modeled are soil porosity, crop type, rainfall/irrigation frequency and amount, and vegetation density and type.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-15.jpg" alt="Figure 15"><figcaption>Figure 15. Experiential landscape illustration showing transition between forest and agriculture, Kristen Lonon and Patrick McGannon.</figcaption></figure>
+
+<p><strong>Process.</strong> The process portion will consist of small scale modeling of the contamination and filtration process of runoff and river systems using a particle flow simulator. The focus in this model will be the exploration and experimentation of various runoff containment and filtration strategies. Some examples that were modeled are on-site detention, vegetated filters, and synthetic filtration systems. The effectiveness of each model was analyzed to determine the strengths and weakness of each method.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-16.jpg" alt="Figure 16"><figcaption>Figure 16. Overview of agricultural and runoff potential, Kristen Lonon and Patrick McGannon.</figcaption></figure>
+
+<p><strong>Experience.</strong> The information gathered from analysis of the first two sections will be synthesized into the basis for a comparative model. This model was presented in such a way that clearly represents the difference in impact on watershed ecosystems when exposed to both untreated and effectively treated agricultural runoff. This model gives viewers a firsthand demonstration of the dispersing of contaminants and the chain of effects these contaminants create on a watershed.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/illustrating-ecologies/figure-17.jpg" alt="Figure 17"><figcaption>Figure 17. Interior shot of agricultural fields, Kristen Lonon and Patrick McGannon.</figcaption></figure>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>

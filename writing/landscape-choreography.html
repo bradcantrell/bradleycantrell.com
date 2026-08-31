@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landscape Choreography | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/landscape-choreography/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2016</div>
+    <h2 class="hero-title">Landscape Choreography: Physical Models for Responsive Infrastructures</h2>
+    <div class="hero-type">Publication / Essay</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Collaborators</strong></dt><dd>Justine Holzman</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Essay, hydraulic modeling and responsive infrastructure</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>LaFarge Holcim Foundation Conference Proceedings</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Landscape Choreography, co-authored with Justine Holzman, outlined the responsive sediment model developed in the Responsive Environments and Artifacts Lab as a method of physical hydraulic modeling for landscape architecture, framing fabrication as a process of addition and subtraction driven by contextual cues.</p>
+<h3>Abstract</h3>
+<p>Embedded computation and methods of simulation have altered the relationship between the designer and the tools they deploy to mediate the construction of physical environments. These tools have evolved from representational paradigms such as illustration, specifications, visualizations, and physical modeling. The application of these methods have relied on forms of abstraction that describe the experience of the built environment or illustrate procedures and relationships for construction. Primarily these methods have been rooted in the analog (drawing, drafting, illustration) and in the past two decades computation has found ways to simulate and extend these analog tools. By removing representation, the act of modifying the physical environment becomes an embedded process of representation, analysis, and inquiry capable of addressing landscape systems at the territorial scale. This responsive act of modifying the landscape in situ is enabled by nascent technologies in sensing, monitoring, and robotics that embed computation directly within the processes of soil, water, and air. To understand the potential of these methods it is necessary to outline nascent tools and techniques that enable feedback and response at the territorial scale and frame historical cases that illustrate key logics necessary for the construction of landscape as a method of inquiry and analysis.</p>
+<h3>Overview</h3>
+<p>The planning, construction, and maintenance of landscape at the territorial scale requires tools that are directly embedded within or interact with the complex processes of ecologies. Large scale systems such as watersheds, deltas, and riparian corridors are the product of myriad external forces and relationships. The representation of the designed landscape is the product of analog methods such as drawing, painting, photography, and modeling. These forms of representation are necessary to mediate between the design complex thought and the design as constructed, physical space. Representation fills this conceptual gap, communicating abstract thought into methods of construction. Computation has extended these forms of representation, simulating analog tools of drafting, illustrating, and collage with software. As Lev Manovich states, simulations of analog tools negate the concept of medium, instead the "digital" forms a meta or mono-medium. The meta-medium suggests that software is at the heart of "digital media," extrapolating this to landscape, representation that mediates ecological processes becomes problematic. Rather than separating construction from the design and speculation of landscape systems, particularly in dynamic environments, tools are necessary to form parallel relationships between processes of construction and methods of iteration and inquiry.</p>
+<blockquote>
+<p>...there is an irresistible fascination in watching a small, controlled landscape evolve, creating dynamic patterns that seem to come from out of nowhere. — Chris Paola et al., 2009</p>
+</blockquote>
+<p>The design and use of models become actors in the modification of the built environment. The making of models, derived from sensing and translating data is an integral part of the feedback loop between human intention and the physical landscape. As modeling practices become more robust to address the complexity of dynamic systems, there is a significant gap between the materiality of the landscape and the extracted data. The use of small interactive geomorphology tables are defining new workflows and methods of design for landscape architectural interventions within hydrological systems. The feedback between digital and physical representations becomes a process of inquiry and unfolding as design intentions are challenged by shifting conditions.</p>
+<p>Within the scientific and engineering practice of physical hydraulic modeling, the visual impact and potential for physical models to communicate complex and nonlinear phenomena is considered a strength. In the same way that the engineer, scientist, or geomorphologist, must have the experience to read, shift, and guide a model to a state in which it renders meaning, there is open opportunity for the landscape architect to begin to craft their physical modeling skills to resemble and bring meaning to the types of systems and landscapes which present some of the most interesting and exigent issues facing urbanism today. The work developing in the Harvard Graduate School of Design Responsive Environments and Artifacts Lab (REAL) using a responsive sediment model intends to build upon recent experiments with small interactive water tables in the field of landscape architecture to facilitate the production of responsive design strategies and hybrid visualizations, which bridge physical material experimentation with digital design methods.</p>
+<p>Responsive sediment model applications include modeling of dynamic systems, observation of complex dynamic systems, prototyping of devices that engage with dynamic systems, and testing responsive systems and methods of feedback.</p>
+<h3>The Practice of Physical Hydraulic Modeling</h3>
+<p>Potamology, "the study of rivers," includes river morphology, water movement, and sediment transport. Within this field, physical modeling has always been an important tool for studying hydrological systems. The existing landscape system is referred to as the prototype and the physical model is referred to as the model, for clarity we will refer to the geomorphology table as the physical model. In the field of hydraulic modeling, digital computational models are referred to as numerical models. Technically, both physical and digital models are considered to be forms of computational modeling. As computing power and data-handling capabilities increase, it may seem counter-intuitive that physical models would be preferred over numerical models. However, physical models are quite good at reproducing complex nonlinear physical phenomena which are not yet fully understood, and therefore not available in the form of numerical models. Material and dynamic processes which occur at a large scale often appear at a small scale over much shorter periods of time, quickly revealing complex nonlinear phenomena. Validating a physical model requires mathematical scaling to determine similarity, or similitude to the prototype condition.</p>
+<p>The necessary scaling criteria are difficult to satisfy simultaneously and extracting data from the model may prove difficult (though not as difficult as procuring measurements in the field). Moveable bed models effectively model both fluid and sediment dynamics, which are incredibly difficult to scale in relation to each other and often, result in distorted models, where the vertical scale is exaggerated in relationship to the horizontal scale to achieve similitude. If the model is scaled correctly, the hydrodynamics will perform similarly at smaller scales over shorter periods of time. Numerical models are often used to design and validate physical models and vice versa. The coupling of physical and numerical models is loosely termed composite modeling; this practice is "still in its infancy in the hydraulic community" but shows great promise. As sensing technology and computing power advance, the opportunities for extracting model data to develop numerical models as a process of feedback are considerable.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/landscape-choreography/figure-01.jpg" alt="Figure 01"><figcaption>Figure 1. Responsive Sediment Model, REAL Lab.</figcaption></figure>
+
+<p>Technologies that enable responsive infrastructures explored through physical modeling methods comprise several current research projects at the Responsive Environments and Artifacts Lab (REAL) at the Harvard Graduate School of Design. These projects explore the interface between dynamic landscape systems and responsive technologies, including sensing, monitoring, and actuation. The research expands the application of responsive technologies to investigate indeterminacy and dynamics in contemporary landscape architecture. The lab is developing models that can be accessed by designers which focus on the real-time manipulation of landscape systems. The research specifically attempts to develop the tools and methods that would enable the fabrication of dynamic and complex landscapes.</p>
+<h3>Em River Geomorphology Table</h3>
+<p>When approaching the responsive sediment model as a design tool, prototype refers the real world landscape or landscape typology under examination and physical model refers to the Em River geomorphology table (a metal table roughly 4m by 1.5m). Media refers to the water and synthetic sediment within the geomorphology table and the media feeder controls the input of media to simulate the behavior of sediment in a hydraulic system. The slope of the geomorphology table is adjustable both laterally and along the length of the bed, and a vertically adjustable cylinder controls outflow and water level within the basin. The manipulation of these parameters allows for a range of simulated systems and the potential to run iterations of the same system with measurable adjustments for observation, testing, and design. Other elements of the system, such as sensing, monitoring, and actuation, are computational and function in parallel with the model's physical materials to both control and record the physical properties of the model.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/landscape-choreography/figure-02.jpg" alt="Figure 02"><figcaption>Figure 2. Extracted Point-cloud data, REAL Lab, 2015.</figcaption></figure>
+
+<h3>Sensing, Monitoring and Data Collection</h3>
+<p>The physical model is rigged with sensing and monitoring equipment for gathering, translating, and post-processing extracted data. The Em River sediment table is equipped with a baseline of responsive technologies. A digitally programmable media feeder operated by micro-controllers is utilized to produce simulated runs or flows of water and synthetic sediment across the geomorphology table. The table is monitored by a Microsoft Kinect overhead to gather imagery while recording surface topography and banner sensors are set on adjustable rails and deployed across the bed with stepper motors. The table is a platform for additional sensing devices and testing other modes of sensing.</p>
+<p>The responsive sediment model has the capacity to simulate a gradient of topographies from landscapes of erosion to deposition, simulating dynamic phenomena from flood events to the introduction of pollutants. Topographic change, borders between topographic formations, and patterns become indicators of time and landscape morphology. These indicators can be drawn out or abstracted in diagrammatic representations to track observations and aid in decision making.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/landscape-choreography/figure-03.jpg" alt="Figure 03"><figcaption>Figure 3. Attuning Sediment Transfer, Ricardo Jnani Gonzalez, Cyborg Coasts 2015.</figcaption></figure>
+
+<h3>Responsive Environments: Interaction, Responsivity, and Autonomy</h3>
+<p>The REAL Lab's geomorphology table has been designed as a responsive environment to engage dynamic and performative design interventions, operating between digital and physical forms by using tools that sense, respond to, and evolve with conditions that manifest in the physical model. This work-flow projects the use of real-time models as a critical component within the feedback loop for responding and adapting to circumstances in the landscape. Utilizing the physical model as a responsive environment offers opportunities to test methods of interaction, responsivity, and autonomy.</p>
+<p>Embedded sensors, operated by micro-controllers, relay information to software systems to be read, analyzed and visualized. Sensing devices are utilized to animate the model by sketching features or moments of complex systems and patterns. The sensing devices move beyond measuring and recording the site, and act as participatory elements of the model itself by shaping perceptions. The range of conditions and operations that exist within the bed might include, for instance, real-time sensing to detect if the bed is inundated with water or not. In addition to controlling inputs and facilitating monitoring, the micro-controllers can operate design prototypes, for example, utilizing servo motors to mimic the rotation of barrier sections to direct velocity or flow of water.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/landscape-choreography/figure-04.jpg" alt="Figure 04"><figcaption>Figure 4. Intercoastal Land Formation "FIN," Andrew Boyd and Tyler Mohr, Cyborg Coasts 2015.</figcaption></figure>
+
+<h3>Scaling and Temporal Characteristics</h3>
+<p>The responsive sediment table is not meant to replicate form or processes present in an ecological system. In this setting, the lab does not have the capacity to calibrate or effectively scale the model to the prototype. However, due to its small scale the hydraulic model helps us understand and visualize some of the self-organizing behaviors of ecological systems during briefer periods of time that can be observed.</p>
+<p>The presumed scale of the hydraulic model is illustrative and diagrammatic as opposed to establishing a linear or proportionate relationship with the landscape conditions it emulates. This approach challenges the understanding of the model as a scaled representation with a sequential relationship to a real-life artifact or prototype, and instead, functions as a site itself with a respective history of material patterns captured by monitoring and interaction. By regarding the model as its own environment, with its own elements of novelty and surprise, a dialogue can start between the model and the broader systems it serves to inform.</p>
+<p>The physical model offers the possibility for designers to circumvent traditional forms of representation by utilizing digital tools to simulate landscape conditions in real-time. Here, the role of computation is not simply used to design a space, rather it is used to play a sustained role in determining the functions of the responsive environment. It is in these moments, where the distinction between the physical prototype and the representation blurs in a process of feedback and modification.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/landscape-choreography/figure-05.jpg" alt="Figure 05"><figcaption>Figure 5. Sedimachine Diagram, Bradley Cantrell and Justine Holzman, 2014.</figcaption></figure>
+
+<h3>Assumptions and Limitations</h3>
+<p>The physical model simulates both physical and temporal processes at multiple scales framed by the construction and the physical dimensions of the environment as well as how that environment is recorded and captured. Because the environment is not scientifically calibrated and scaled there are significant limitations to what the simulation can represent. Assumptions are made about the simulation by abstracting and conceptualizing elements of the environment. Observing the interactions between media, water, design interventions and other inputs impacting the simulation are contingent on external set-ups within the room such as sensing apparatuses as well as initial and intermediate conditions within the bed. Representations of the model in the form of image capture, data extraction from sensors, and other forms of sensing bridges observed and predicted phenomena between the prototype, hydraulic model, and resulting digital simulations. For example, individual sensors programmed by micro-controllers capture discrete moments in time or in space that can be compiled and calibrated to generate representations of features and patterns occurring in the hydraulic model.</p>
+<p>The profession of landscape architecture inherently engages a dynamic, biological medium through the manipulation of soils, vegetation, and atmosphere. The implementation of responsive technologies requires frameworks that not only engage landscape at the scale of object but also acknowledge the territory and interconnections of ecological systems. These frameworks are not imagined as overarching methods of control but instead express a relationship between sensing and processing that is predicated on forms of computational learning. As a methodology, the project directly addresses the need to develop forms of "distanced authorship," that activate natural processes such as succession, accretion and remediation as the agents of change in the environment. This approach privileges the dynamics of ecology and hydrology over static infrastructures as a method to design landscape systems.</p>
+<p>The research in the lab postulates a method of fabrication that engages dynamic landscapes, not as a generator of architectural form but as a fluid medium. The project regards fabrication as a process of addition and subtraction that is driven by contextual cues. An agent unto itself, it creates a relationship with the environment, evolving its operating logics as information is digested. While the concepts of customization and complexity are present, the project extends a line of research that assumes the machine (fabricator) is continually tuned and the resultant "form" is a product of this tuning. This mode of inquiry is complemented by computational methods that sense and engage real-time conditions through representations that more accurately reflect the dynamics involved in the professions of architecture, landscape architecture, and urban design. As a method of fabrication, the system proposes to utilize the entropy of ecological systems to construct incrementally evolving forms that are the product of coordinated curation and choreography.</p>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
