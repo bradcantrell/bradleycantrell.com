@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codify &mdash; Bradley Cantrell</title>
+  <meta name="description" content="Codify: Parametric and Computational Design in Landscape Architecture. Edited by Bradley Cantrell and Adam Mekies. Routledge, 2018.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .book-hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+    .book-cover-large {
+      width: 200px;
+      aspect-ratio: 2/3;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .book-cover-large span { font-size: 0.7rem; color: var(--text-dimmer); text-align: center; padding: 1rem; }
+    .book-hero-text h1 { font-style: italic; margin-bottom: 0.75rem; }
+    .book-hero-text .subtitle { font-size: 1rem; color: var(--text-dim); margin-bottom: 1.5rem; max-width: none; }
+    .book-meta-block { margin-bottom: 1.5rem; }
+    .book-meta-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 0.3rem; }
+    .book-meta-value { font-size: 0.9rem; color: var(--text); }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin: 1.5rem 0 3rem;
+    }
+    .section-card {
+      background: var(--bg2);
+      padding: 1.5rem;
+    }
+    .section-name {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-entry {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .project-entry:last-child { border-bottom: none; }
+    .project-entry strong { color: var(--text); font-weight: 400; }
+
+    @media (max-width: 700px) {
+      .book-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .book-cover-large { width: 140px; }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><a href="/">Bradley Cantrell</a></div>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="lectures.html">Lectures</a></li>
+    <li><a href="dissertation.html">Dissertation</a></li>
+    <li><a href="awards.html">Awards</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 8rem;">
+
+  <div class="section-header">
+    <h3>Writing</h3>
+    <span class="section-count">&larr; <a href="writing.html">All writing</a></span>
+  </div>
+
+  <!-- Book Hero -->
+  <div class="book-hero">
+    <div class="book-cover-large">
+      <img src="images/books/codify.jpg" alt="Codify book cover" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="book-hero-text">
+      <h1>Codify</h1>
+      <p class="subtitle">Parametric and Computational Design in Landscape Architecture</p>
+
+      <div class="book-meta-block">
+        <div class="book-meta-label">Editors</div>
+        <div class="book-meta-value">Bradley Cantrell &amp; Adam Mekies</div>
+      </div>
+      <div class="book-meta-block">
+        <div class="book-meta-label">Publisher</div>
+        <div class="book-meta-value">Routledge, 2018</div>
+      </div>
+      <div class="book-meta-block">
+        <div class="book-meta-label">Foreword</div>
+        <div class="book-meta-value">Christophe Girot &mdash; "About Code"</div>
+      </div>
+
+      <a href="https://www.routledge.com/Codify-Parametric-and-Computational-Design-in-Landscape-Architecture/Cantrell-Mekies/p/book/9781138125049" target="_blank" rel="noopener" class="btn" style="margin-top: 1.5rem;">Get the book &rarr; Routledge</a>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <p class="about-text">
+    <em>Codify</em> addressed the question of how landscape architecture might develop computational methods specific to its disciplinary concerns. Architecture's parametric turn had produced a decade of formally complex buildings, and the editors' position was that landscape's computational engagement would need to produce something different: the tools for managing ecological complexity, indeterminacy, and temporal depth rather than generating novel geometries.
+  </p>
+  <p class="about-text" style="margin-top: 1.25rem;">
+    The book argued that ecology, technology, and urbanization were collapsing into a single sector where landscape architecture was uniquely positioned to operate. Code, understood broadly as algorithm, protocol, and executable instruction, was proposed as the essential language for managing this convergence. The publication explored multiple dimensions of codification:
+  </p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Generative Design:</strong> Algorithms that could generate planting plans adapting to microclimates, grading designs optimizing water retention, or infrastructure layouts responding to ecological gradients. Rather than manually placing thousands of elements, designers could write rules: "Place a <em>Populus deltoides</em> wherever soil moisture exceeds 40% and slope is less than 5 degrees."</p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Managing Indeterminacy:</strong> Unlike architectural parametricism, which often sought precise formal control, landscape parametricism engaged indeterminacy as a design condition. Code provided rules (a genotype) generating landscapes (phenotypes) that could adapt to changing conditions. The designer became curator of algorithms, establishing parameters within which systems could evolve.</p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Tool-Making:</strong> The book championed a shift from using software to making software. Landscape architects needed to become "tool-makers," opening the black box of commercial applications to write algorithms calibrated to specific ecological questions. This required literacy in scripting languages (Python, JavaScript) and visual programming environments (Grasshopper) that enabled customization of computational workflows.</p>
+  <p class="about-text" style="margin-top: 1.25rem;">
+    The edited volume brought together practitioners, researchers, and educators demonstrating computational approaches across contexts, from parametric planting design to algorithmic hydrology to machine learning applications. The diversity of contributions illustrated that computational landscape architecture was not a singular method but an expanding field of approaches.
+  </p>
+
+  <!-- Fundamental Questions -->
+  <div style="margin-top: 4rem;">
+    <h3 style="margin-bottom: 1rem;">Fundamental Questions</h3>
+    <p class="about-text">
+      <em>Codify</em> articulated a fundamental shift: from using computation for landscape architecture to thinking computationally about landscape architecture. This distinction separated the book from software tutorials or digital technique manuals, proposing that computation was not merely a tool for efficiency but a mode of thought capable of engaging landscape's specific complexities.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      Richard Hindle, commenting on the book, stated: "Codify convincingly argues that Landscape Architecture is uniquely positioned to define this sector of technology, and in the process redefine itself." This observation captured the book's disciplinary ambition of not merely adopting computational methods from adjacent fields but developing approaches native to landscape's concerns with ecology, territory, and temporal process.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      The book also advanced the concept of the landscape architect as algorithm curator. If ecological systems are too complex to fully specify, and if environmental conditions are too variable to predict, then design must operate through establishing rules and parameters within which outcomes emerge. The designer's role shifts from determining form to calibrating process, setting the conditions within which landscapes self-organize, adapt, and evolve.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      The emphasis on tool-making had pedagogical implications developed through concurrent work at Harvard GSD and UVA. Curricula evolved to include scripting, electronics prototyping (Arduino), and geospatial programming, skills enabling students to create rather than merely consume computational tools. This "white box" pedagogy, as opposed to "black box" software operation, empowered designers to customize their instruments to disciplinary needs.
+    </p>
+  </div>
+
+  <!-- Book Chapters -->
+  <div style="margin-top: 4rem;">
+    <h3 style="margin-bottom: 1rem;">Book Chapters</h3>
+    <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 70ch; margin-bottom: 1.5rem;">The volume is organized into four sections, framed by an introduction, "Coding Landscape," by Bradley Cantrell and Adam Mekies.</p>
+    <div class="section-grid">
+
+      <div class="section-card">
+        <div class="section-name">Syntax</div>
+        <div class="project-entry"><strong>Computation in Practice</strong> &mdash; Paralabs</div>
+        <div class="project-entry"><strong>Generative Modeling and the Making of Landscape</strong> &mdash; Chris Reed</div>
+        <div class="project-entry"><strong>21st Century Learning</strong> &mdash; Pete Evans</div>
+        <div class="project-entry"><strong>The Parametric Park</strong> &mdash; David Fletcher</div>
+        <div class="project-entry"><strong>Big Data for Small Places</strong> &mdash; Elizabeth Christoforetti, Will Cohen, Yonatan Cohen, Stephen Rife, Jia Zhang</div>
+        <div class="project-entry"><strong>Turing Landscapes</strong> &mdash; Stephen Ervin</div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-name">Perception</div>
+        <div class="project-entry"><strong>Landscape Models of the Scientific Imaginary</strong> &mdash; Justine Holzman</div>
+        <div class="project-entry"><strong>Computational and Research-Driven Design Methodologies</strong> &mdash; Jillian Wallis and Heike Rahmann</div>
+        <div class="project-entry"><strong>Agent Based Models to Reveal Underlying Landscape Structure</strong> &mdash; Joseph Claghorn</div>
+        <div class="project-entry"><strong>Open Source Mapping + App Development</strong> &mdash; Chris Seeger</div>
+        <div class="project-entry"><strong>From Solution Space to Interface</strong> &mdash; Alexander Robinson and Brian Davis</div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-name">Employ</div>
+        <div class="project-entry"><strong>The Role of Query and Convergence in Next Generation Tool Sets</strong> &mdash; Anthony Frausto-Robledo</div>
+        <div class="project-entry"><strong>Coding Behavior: The Agency of Material in Landscape Architecture</strong> &mdash; Brian Osborn</div>
+        <div class="project-entry"><strong>Beyond Heuristic Design</strong> &mdash; Brian Phelps</div>
+        <div class="project-entry"><strong>The New Maker Culture: Computation and Participation in Design</strong> &mdash; Andrea Hansen Philips</div>
+        <div class="project-entry"><strong>Code Matters: Consequent Digital Tool Making</strong> &mdash; James Melsom and Luis Fraguada</div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-name">Prospective</div>
+        <div class="project-entry"><strong>Technology, Evolution, and An Ecology of Cities</strong> &mdash; Kurt Culbertson</div>
+        <div class="project-entry"><strong>The Witness</strong> &mdash; David Fletcher</div>
+        <div class="project-entry"><strong>From Documents to Directives: Experimental Fast Matter</strong> &mdash; Craig Reschke</div>
+        <div class="project-entry"><strong>Towards Sentience</strong> &mdash; Leif Estrada</div>
+        <div class="project-entry"><strong>Design for a Mind with Many Bodies</strong> &mdash; Ricardo Jnani Gonzalez</div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>Bradley Cantrell &middot; University of Virginia School of Architecture</p>
+</footer>
+
+
+<script src="ripple-bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Drawing for Landscape Architecture &mdash; Bradley Cantrell</title>
+  <meta name="description" content="Digital Drawing for Landscape Architecture: Contemporary Techniques and Tools for Digital Representation in Site Design. Bradley Cantrell and Wes Michaels. Wiley, 2010.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .book-hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+    .book-cover-large {
+      width: 200px;
+      aspect-ratio: 2/3;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .book-cover-large span { font-size: 0.7rem; color: var(--text-dimmer); text-align: center; padding: 1rem; }
+    .book-hero-text h1 { font-style: italic; margin-bottom: 0.75rem; }
+    .book-hero-text .subtitle { font-size: 1rem; color: var(--text-dim); margin-bottom: 1.5rem; max-width: none; }
+    .book-meta-block { margin-bottom: 1.5rem; }
+    .book-meta-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 0.3rem; }
+    .book-meta-value { font-size: 0.9rem; color: var(--text); }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin: 1.5rem 0 3rem;
+    }
+    .section-card {
+      background: var(--bg2);
+      padding: 1.5rem;
+    }
+    .section-name {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-entry {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .project-entry:last-child { border-bottom: none; }
+    .project-entry strong { color: var(--text); font-weight: 400; }
+
+    @media (max-width: 700px) {
+      .book-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .book-cover-large { width: 140px; }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><a href="/">Bradley Cantrell</a></div>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="lectures.html">Lectures</a></li>
+    <li><a href="dissertation.html">Dissertation</a></li>
+    <li><a href="awards.html">Awards</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 8rem;">
+
+  <div class="section-header">
+    <h3>Writing</h3>
+    <span class="section-count">&larr; <a href="writing.html">All writing</a></span>
+  </div>
+
+  <!-- Book Hero -->
+  <div class="book-hero">
+    <div class="book-cover-large">
+      <img src="images/books/digital_drawing.jpg" alt="Digital Drawing for Landscape Architecture book cover" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="book-hero-text">
+      <h1>Digital Drawing for Landscape Architecture</h1>
+      <p class="subtitle">Contemporary Techniques and Tools for Digital Representation in Site Design</p>
+
+      <div class="book-meta-block">
+        <div class="book-meta-label">Authors</div>
+        <div class="book-meta-value">Bradley Cantrell &amp; Wes Michaels</div>
+      </div>
+      <div class="book-meta-block">
+        <div class="book-meta-label">Publisher</div>
+        <div class="book-meta-value">Wiley, 2010 &middot; Second edition 2014</div>
+      </div>
+      <div class="book-meta-block">
+        <div class="book-meta-label">Recognition</div>
+        <div class="book-meta-value">2012 ASLA Award of Excellence in Communication</div>
+      </div>
+
+      <a href="https://www.wiley.com/en-us/shop/general-introductory-architecture/digital-drawing-for-landscape-architecture-contemporary-techniques-and-tools-for-digital-representation-in-site-design-2nd-edition-p-9781118938911" target="_blank" rel="noopener" class="btn" style="margin-top: 1.5rem;">Get the book &rarr; Wiley</a>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <p class="about-text">
+    <em>Digital Drawing for Landscape Architecture</em> addressed a fundamental crisis in the profession's visual culture. By 2010, digital tools had become ubiquitous in practice, yet the available instructional literature remained either software-centric (button-pushing tutorials for Photoshop or AutoCAD) or borrowed wholesale from architectural visualization traditions that prioritized the clarity of objects over the atmospheric complexity of landscapes. The book provided landscape architecture with a methodology for digital representation calibrated to its specific disciplinary concerns.
+  </p>
+  <p class="about-text" style="margin-top: 1.25rem;">
+    The core theoretical contribution was the concept of the digital composite, a recognition that landscape representation requires layering heterogeneous information (texture, shadow, vegetation, atmospheric effect, temporal change) that cannot be generated by any single software engine. The composite method synthesized the precision of vector drawing with the ambiguity of raster imagery, producing representations capable of holding the indeterminacy fundamental to landscape materials.
+  </p>
+  <p class="about-text" style="margin-top: 1.25rem;">
+    The book articulated what came to be known as the hybrid workflow:
+  </p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Analog Base:</strong> The process often began with hand-drawn linework, not as nostalgic concession but as recognition that the human hand captures gestural information (the looseness of a tree canopy, the roughness of a path) that mouse-driven tools struggle to replicate.</p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Digital Synthesis:</strong> Analog bases were scanned and manipulated in image-editing software, layered with photographic textures, rendered passes from 3D models, and digital painting techniques.</p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Atmospheric Construction:</strong> Unlike architectural renderings prioritizing object clarity, the techniques focused on atmosphere with detailed workflows for rendering fog, light beams, rain, seasonal change, and the temporal qualities that define landscape experience.</p>
+
+  <!-- Fundamental Questions -->
+  <div style="margin-top: 4rem;">
+    <h3 style="margin-bottom: 1rem;">Fundamental Questions</h3>
+    <p class="about-text">
+      <em>Digital Drawing</em> argued implicitly that representation is never neutral. The way a landscape architect draws a site determines how they understand it. Vector lines in CAD imply hard edges, walls, curbs, building footprints, yet landscape materials (vegetation, water, soil gradients, fog) are defined by indeterminacy and flux. By introducing compositing techniques that could hold ambiguity and atmospheric depth, the book equipped the discipline to represent and therefore to think about higher levels of complexity.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      The ASLA jury recognized this contribution, noting that the book appealed "specifically to landscape architects who have been trained in traditional representation methods&hellip; but who would like to work effectively in digital media." One juror remarked: "It's the first drawings book I've seen that is contemporary and clear." The recognition confirmed the central thesis of the textbook and had effectively standardized a new visual language for the profession.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      The book also established a pedagogical model that would carry through subsequent publications, involving theory-grounded instruction that situated technical skills within larger questions about how representation shapes design thinking. The techniques were not ends in themselves but means toward richer engagement with landscape's atmospheric and temporal qualities.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  <p>Bradley Cantrell &middot; University of Virginia School of Architecture</p>
+</footer>
+
+
+<script src="ripple-bg.js"></script>
+</body>
+</html>

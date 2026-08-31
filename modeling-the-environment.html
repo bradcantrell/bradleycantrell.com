@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling the Environment &mdash; Bradley Cantrell</title>
+  <meta name="description" content="Modeling the Environment: Techniques and Tools for the 3D Illustration of Dynamic Landscapes. Bradley Cantrell and Natalie Yates. Wiley, 2012.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .book-hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+    .book-cover-large {
+      width: 200px;
+      aspect-ratio: 2/3;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .book-cover-large span { font-size: 0.7rem; color: var(--text-dimmer); text-align: center; padding: 1rem; }
+    .book-hero-text h1 { font-style: italic; margin-bottom: 0.75rem; }
+    .book-hero-text .subtitle { font-size: 1rem; color: var(--text-dim); margin-bottom: 1.5rem; max-width: none; }
+    .book-meta-block { margin-bottom: 1.5rem; }
+    .book-meta-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 0.3rem; }
+    .book-meta-value { font-size: 0.9rem; color: var(--text); }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin: 1.5rem 0 3rem;
+    }
+    .section-card {
+      background: var(--bg2);
+      padding: 1.5rem;
+    }
+    .section-name {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-entry {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .project-entry:last-child { border-bottom: none; }
+    .project-entry strong { color: var(--text); font-weight: 400; }
+
+    @media (max-width: 700px) {
+      .book-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .book-cover-large { width: 140px; }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><a href="/">Bradley Cantrell</a></div>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="lectures.html">Lectures</a></li>
+    <li><a href="dissertation.html">Dissertation</a></li>
+    <li><a href="awards.html">Awards</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 8rem;">
+
+  <div class="section-header">
+    <h3>Writing</h3>
+    <span class="section-count">&larr; <a href="writing.html">All writing</a></span>
+  </div>
+
+  <!-- Book Hero -->
+  <div class="book-hero">
+    <div class="book-cover-large">
+      <img src="images/books/modeling_the_environment.jpg" alt="Modeling the Environment book cover" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="book-hero-text">
+      <h1>Modeling the Environment</h1>
+      <p class="subtitle">Techniques and Tools for the 3D Illustration of Dynamic Landscapes</p>
+
+      <div class="book-meta-block">
+        <div class="book-meta-label">Authors</div>
+        <div class="book-meta-value">Bradley Cantrell &amp; Natalie Yates</div>
+      </div>
+      <div class="book-meta-block">
+        <div class="book-meta-label">Publisher</div>
+        <div class="book-meta-value">Wiley, 2012</div>
+      </div>
+
+      <a href="https://www.wiley.com/en-us/shop/general-introductory-architecture/modeling-the-environment-techniques-and-tools-for-the-3d-illustration-of-dynamic-landscapes-p-9780470902943" target="_blank" rel="noopener" class="btn" style="margin-top: 1.5rem;">Get the book &rarr; Wiley</a>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <p class="about-text">
+    If <em>Digital Drawing</em> addressed the static image, <em>Modeling the Environment</em> introduced the critical dimension of time. Landscape architecture is distinguished from architecture by the fact that its medium is alive. A building is finished when construction ends, but a landscape is just beginning. The book addressed the technical challenge of representing growth, decay, erosion, succession, and the other temporal processes that define landscape as a dynamic system.
+  </p>
+  <p class="about-text" style="margin-top: 1.25rem;">
+    The publication introduced landscape students to procedural and parametric modeling approaches:
+  </p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Procedural Modeling:</strong> Rather than modeling static terrain, the book demonstrated how to model terrain that could erode, with surfaces defined by rules governing their transformation over time. Rather than placing static tree blocks, it explored simulating forest growth across decades, with planting plans that evolved according to ecological logic.</p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Data Integration:</strong> The book argued for integrating GIS (Geographic Information Systems) data directly into design models, transforming the digital model from a "picture" of the site into a "database" of the site. By linking models to real-world geospatial data, designers could work with actual topographic, hydrological, and vegetative information rather than abstracted representations.</p>
+  <p class="about-text" style="margin-top: 0.5rem;"><strong>Temporal Representation:</strong> The text developed techniques for representing seasonal change, growth patterns, material weathering, and other time-based phenomena. Landscape representation, the book argued, must capture not merely how a site appears at a moment but how it transforms across multiple temporal scales.</p>
+  <p class="about-text" style="margin-top: 1.25rem;">
+    The focus on environmental dynamics positioned the book as a bridge between representation and simulation. Modeling was not merely a means of producing images but a way of understanding how systems behave, a conceptual shift that would mature in subsequent research on responsive and adaptive systems.
+  </p>
+
+  <!-- Fundamental Questions -->
+  <div style="margin-top: 4rem;">
+    <h3 style="margin-bottom: 1rem;">Fundamental Questions</h3>
+    <p class="about-text">
+      <em>Modeling the Environment</em> advanced the argument that landscape representation must engage temporal depth. Static images, however atmospherically rich, cannot capture the fundamental characteristic that distinguishes landscape from architecture: landscape is always in process, always becoming, never finished. By introducing techniques for modeling dynamic systems, the book provided tools for thinking about landscape as trajectory rather than state.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      The integration of GIS data also signaled a methodological shift from representation to analysis. When the digital model contains actual geospatial information, it becomes an instrument for investigating site dynamics rather than merely depicting site appearance. This data-driven approach foreshadowed the sensing-based methodologies that would characterize the next phase of research.
+    </p>
+    <p class="about-text" style="margin-top: 1.25rem;">
+      The book contributed to an emerging discourse on design simulation, using modeling tools not to visualize predetermined designs but to explore how designs might perform under varying conditions. If a planting plan can be simulated across twenty years of growth, designers can evaluate not merely how it looks at installation but how it matures, how it responds to disturbance, how it provides ecological function across its lifespan.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  <p>Bradley Cantrell &middot; University of Virginia School of Architecture</p>
+</footer>
+
+
+<script src="ripple-bg.js"></script>
+</body>
+</html>
