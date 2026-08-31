@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambient Space | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2007</div>
+    <h2 class="hero-title">Ambient Space</h2>
+    <div class="hero-type">Publication / Peer-Reviewed Paper</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Location</strong></dt><dd>Halifax, Nova Scotia</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Paper, streetscape lighting prototype</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>ACADIA 2007, Proceedings of the 27th Annual Conference of the Association for Computer Aided Design in Architecture</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Ambient Space explored streetscape lighting that responds to site phenomena, a basis for examining how sensor-driven devices construct landscape form. The project expressed multiple reactive spaces through a hypothetical design on Pine Street in New York City, treating wind, sound, motion, and light as the inputs that focus, open, lower, and contract each lighting device.</p>
+<h3>Abstract</h3>
+<p>An exploration of streetscape lighting that responds to site phenomenon provides a basis to explore the abilities of sensor driven devices to construct landscape form. The project expresses multiple reactive spaces through a hypothetical design project on Pine Street in New York City. The landscape is the input using the variables of wind, sound, motion, and light in order to focus, open, lower, and contract each lighting device. As the landscape progresses throughout the day, season, and/or year, various relationships are created in form and light to organize spaces on multiple scales. Data becomes the armature for scripted reactions allowing infrastructure to respond for safety or efficiency. With the proliferation of sensor networks and sensor systems, the possibilities arise for the re-articulation of data expression. The single lighting device works within a network that is connected by the phenomenology that is specific to the site. The project is grounded historically in the landscape folly, an architectural device that is not what it appears to be.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-01.jpg" alt="Figure 01"><figcaption>Figure 01. Pine Street, New York City, NY.</figcaption></figure>
+
+<h3>Introduction</h3>
+<p>This project focuses on the manipulation of the built landscape through the introduction of devices that create consistent responses to site phenomenon and alter spatial conditions accordingly. This is explored through a hypothetical project on Pine Street in Lower Manhattan, New York City, NY. The project looks at street lighting infrastructure as a reactive network that creates evolving spatial conditions through environmental inputs. The device is a responsive lighting structure that opens, closes, contracts, expands, lowers, raises, brightens and dims according to inputs such as motion, wind speed, ambient light, and noise. The device is context aware, creating new spatial configurations throughout the course of the day, slowly readjusting as environmental inputs change.</p>
+<p>Many devices in the landscape use data collection and reactionary systems to perform specific tasks. Streetlights turn on at dusk, traffic lights change based on motion or weight sensors, and doors open automatically when sensors are tripped. These are basic binary systems that respond to input through a reaction in the device, a one to one mapping of environmental stimuli and device response. Through the mapping of multiple ambient environmental inputs to multiple expressions the proposed lighting infrastructure develops a complex and ambiguous relationship with the landscape. The proposed streetlight system expresses specific site phenomenons through the device's ability to transform itself through simple modifications. These modifications are expressed in the landscape as morphing spatial configurations. The spatial changes rendered by the lighting network are expressed as pragmatic modifications to the physical space. This project explores the boundary between spatial perception and interactive device. Specifically, the proposed lighting infrastructure aims to express the ambient environment through recognizable and morphing forms.</p>
+<p>Landscape is a complex sensory environment, explored and interpreted by humans through multiple inputs. This discussion uses the term landscape to define interstitial space within the urban fabric. The interstitial is comprised of the streetscape, plazas, alleys, and other associated elements that tie together architectural components. Pragmatically landscape describes a variety of spatial conditions defined by cultural and social perception and mores. Environmental phenomenon is interpreted through the lens of culture and society to build landscape independently, and this project explores a phenomenological investigation through the reinterpretation of phenomenon through device.</p>
+<p>The introduction of reactive or interactive devices into a space alters our relationship with the environment and the perception of its constituent parts. A device is "a thing made or adapted for a specific purpose," in this sense devices in the landscape perform specific functions such as lighting, seating, retaining soil, etc. This function manipulates "phenomena in the same way that architecture does, using space, time, sound, and materiality to interact with the audience in a performative relationship" (Lim 2006). The function of the device is inherent but the deployment of the device in the landscape defines the object as constructor or ornament. The function and configuration of landscape devices are the armature for landscape creation when utilized as space generators.</p>
+<h3>Device</h3>
+<p>It is important to develop a methodology for a working device in order to explore the implications the device will have within the landscape. The reactive streetlight design focuses on creating a flexible element that responds directly to human perception through recognizable phenomenon. The device is composed of four elements that are directly driven through real time data gathered from the site.</p>
+<p><strong>Lamp.</strong> The lamp system is comprised of an HID ballast system with a dimming function. The light cast from the lamp can be from a high pressure sodium (yellow tint), sulfur (white tint), or a mercury vapor (blue tint) lamp. The lamp system is controlled by ambient light using photo-voltaic sensors. The lamp will dim and brighten based on the environment's ambient lighting conditions.</p>
+<p><strong>Internal Armature.</strong> The internal armature consists of three rings that are raised and lowered below the main lamp. The material of this internal armature is built using mirrored or prismatic glass and a gauze exterior to project and diffuse light throughout the armature. This structure allows light to be reflected down through a central light tube and dispersed as ambient light through each of the rings surrounding it. The central armature is controlled by the variable of motion using an on board motion sensor. The internal armature expands when intermittent motion is detected, expanding the length of the structure allowing light to be cast over a larger surface area.</p>
+<p><strong>Outer Panels/Shades.</strong> The exterior panels encasing the lamp are etched acrylic that is held using a tubular frame. The panels are hinged in the middle allowing them to fold, open, and encase the internal armature. These outer panels create topologically significant changes to the lamp, the structures are fundamentally changed when the panels fold themselves upwards to expose the internal armature.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-02.jpg" alt="Figure 02"><figcaption>Figure 02. Outer Panels.</figcaption></figure>
+
+<p>The outer panels are controlled by ambient noise levels. As ambient noise levels increase on the site the panels pull upward, opening the device to the streetscape below. The lamps close when noise levels are low, pulling the device into a tighter form within the street.</p>
+<p><strong>Attachment.</strong> The devices are attached to surrounding architecture using two methods. The first considers the lamp structure attached to cabling that allows the lamp to be lowered and raised within the streetscape. This allows the lamp to be lowered to either side of the street creating a reconfigurable pattern of habitation. The second attachment method uses a singular pole arm where a span between two existing buildings does not exist. This would allow the lamp to be lowered and raised but not repositioned within the streetscape. The placement of the lamp within the streetscape is controlled by the variable of wind speed. This allows the lamp to occupy the street in low wind conditions and to push itself towards the facade of the buildings in high wind conditions.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-03.jpg" alt="Figure 03"><figcaption>Figure 03. Internal Armature.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-04.jpg" alt="Figure 04"><figcaption>Figure 04. Lighting Device Structure.</figcaption></figure>
+
+<p>The mapping of environmental inputs develops a specific framework that allows for a discussion of an interactive environment that creates perceived spatial conditions. There is an obvious ability to create more complicated or smart interactions and reactions using multiple inputs. An example would allow the lighting infrastructure to interpret data for high wind velocities to close the device armature and position it into a "safe" position near the architecture. This is an important factor in interactive/reactive/smart devices but for the purpose of this exploration the reactions of the devices will be confined to spatial or compositional arrangements.</p>
+<h3>Architectural Folly</h3>
+<p>The folly embodies the methodology that architecture does not have to represent progress but can be engaged as art, without considering function. It can be assumed that this stance on architecture and landscape is taken from a purist point of view and as a precedent reactive devices can exist within a middle ground. The folly can be seen to represent several attributes that directly relate to our understanding of the designed device and its role in the environment. While the folly assumes a lack of function it gains relevance in the built environment as an element of contrast, exploration, and/or decomposition.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-05.jpg" alt="Figure 05"><figcaption>Figure 05. Street Section, Spatial Relationships.</figcaption></figure>
+
+<p>Bernard Tschumi's 20th Century Follies represents an exploration; the project tested five basic relationships: single object, pair of objects, linear sequence of objects, randomly scattered objects, and objects on a point grid. "All 20th Century Follies systematically explore spatial organizations or related objects and seek new forms of urbanism" (Archer 1983). Tschumi's explorations with the 20th Century Follies and beyond often expressed site through decomposition, shock, and subterfuge (Davey). Our relationship with the device, or folly, is situated within this context of exploration or decomposition. The device undercuts our relationship with the environment, mediating our experience through automation and shifting morphologies.</p>
+<p>Many follies are based on the balance of madness and equilibrium such as Eisenman's Fin d'Ou T Hou S. The object is assumed no origin in classical architecture and therefore "it cannot be the logic of known orders and human-centered or hierarchical values, but a 'logic' of another kind" (Archer 1983). This logic, the logic of another kind, can be seen as the input variables in sensor based reactive landscapes. The input variables mediate the designed landscape and environmental phenomenon, expressing a new spatial methodology situated between control and chaos.</p>
+<h3>Site</h3>
+<p>The site for this hypothetical project is Pine Street in New York City, New York. Pine Street runs parallel to Wall Street and was chosen for this project because of the contrast in its environmental conditions. The street itself is quite narrow, at its widest point Pine Street is 25' wide, not considering its interface with the Chase Manhattan Plaza. Near the intersection of Pine Street and Pearl Street there is also a covered walkway approximately 60' above the streetscape creating unique variables throughout the course of the day.</p>
+<p>This environment for an interactive installation creates ambient cues that are perceivable at a human scale and interpreted by the devices in a defined relationship. In many landscapes the variation in ambient cues are small and interpretation by the device comes solely at the hands of the designer through minuscule adjustments to the devices sensors. The purpose therefore is similar to creating a high contrast environment for camera based "blob" detection, in this instance it is a turn key solution within the urban landscape.</p>
+<h3>Perception</h3>
+<p>An exploration of device as a reactive and/or interactive element builds a language that documents the manipulation of human perception defining new and engaging landscape spaces created by ambient reactive devices. The proposed devices alter our perceived relationship between space and phenomenon. This can be examined with two theories of perception, gestalt and direct (Gibsonian), allowing us to understand the devices in situ state within the environment.</p>
+<p>Gestalt perception states that we view objects as groups rather than as individual elements (Pedroz). Within the context of this project the street lighting infrastructure network provides the framework for this grouping, rather than identifying the individual lighting structure we perceive similar states. This is derived from the main principle of gestalt perception which focuses on compositional grouping. These similar states construct our perception of the streetscape, spatial typologies are constructed throughout the course of the day. These states are the basis for interaction, environmental phenomenon (wind and light) organizes space and human interaction begins to reorganize through motion and sound.</p>
+<p>Gibsonian or direct perception states that environmental cues are used to generate perception (Allard 2001). In this methodology the groupings, or compositions created by the lighting infrastructure builds a direct relationship between human and environmental interaction. The morphing structures build a language of topology, mediating the ambient environment. The structures build a new environment of mediated ambient cues that take advantage of the peripheral processing, or background processing (Ishii 1998). The cues are direct and interpreted immediately by users of the spaces, the reorganization applies topologically to the landscape rather than per node within the infrastructure.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-06.jpg" alt="Figure 06"><figcaption>Figure 06. Self Organized Spatial Configurations, Similar Zones Designated by Color.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-07.jpg" alt="Figure 07"><figcaption>Figure 07. Self Organized Spatial Configurations, Similar Zones Designated by Color.</figcaption></figure>
+
+<h3>Installation</h3>
+<p>Landscape device is often implemented as a static element, the device is deployed and a maintenance regime is developed to preserve its initial state. Static landscape elements function and evolve in the landscape through deterioration and/or maintenance, processes erode, chip, crack, stain, and warp the device. This is in direct opposition to the normal processes in the landscape that favor temporal change and evolution. Human perception of time and sensation in the landscape is built upon temporal changes and ambient cues in the environment. These cues are expressed in the landscape through the interpretation of sublime events such as grasses blowing in the wind, the changing of the seasons, and the smell of water vapor before a rain storm. These events are heightened through a direct relationship with the natural environment through continued patterns of interaction.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/ambient-space/figure-08.jpg" alt="Figure 08"><figcaption>Figure 08. Lighting Infrastructure within Streetscape.</figcaption></figure>
+
+<p>The installation of the project focuses primarily on simplicity. "A network of sensors that is configured with a network of processing devices can yield a rich multi-modal stream of sensory data" (Essa). In this regard the network is built based on a phenomenological investigation, each lighting node contains the information necessary to sense and respond to the environment. While a site was developed for this proposal it is only necessary to ground the device in space. The lighting nodes respond independently from one another, therefore the relationships they build within the landscape are based solely on outside, or environmental inputs. A network is created through phenomenon rather than a wired or wireless network, this grounds the installation in the landscape.</p>
+<h3>Precedent</h3>
+<p>Lighting as a spatial constructor is a common medium in the definition of architectural and landscape space. The work of James Turrell, Rafael Lozano-Hemmer, and Diana Thater exemplify the use of light and device as spatial generators. Each artist or architect uses light or projection to "paint" space or manipulate form in either temporal or static forms. James Turrell has developed many light based installations that explore the relationship between the quality of light and human perception about architectural or landscape space. Turrell explains that light is "a universal experience" although our cultural perception changes how we assign light quality to space (Turrell 1999). The power for device to manipulate light quality through site based phenomena is powerful as a method to alter perception and relationship within the landscape.</p>
+<p>Diana Thater poses interesting spatial questions that often exemplify the relationship between participant in space and perceived scale using video installations. In an exhibition entitled Knots and Surfaces at the Dia in New York, the viewer sees several projections displaying a honeycomb with oversized bees crawling throughout (Dia 2001). Upon initial entry into the space the honeycomb is an object that is moving in one corner of the exhibition but as one moves through the projections the scale of the bees change as the movement becomes textures cast across the body. This diametric relationship to the projection allows for two definitions, light as object and light as space.</p>
+<p>Rafael Lozano-Hemmer develops another approach using an installation entitled Homographies in a gallery in New South Wales. The exhibition uses seven surveillance cameras to track user movement within the gallery space. This movement is then used to control a grid of fluorescent tubes that turn to follow the patrons below. Because the space is constantly reconfigured "this gives a reconfigurable light-space that is based on flow, on motion, on lines of sight, an intended contrast to the modernist grid that currently organizes the court" (Lozano-Hemmer 2006).</p>
+<h3>Future Work and Conclusion</h3>
+<p>Currently two experiments are being conducted to create autonomous devices that build spatial networks from environmental cues. The first uses localized environmental cues to drive a lighting network that would change hues and values based on ambient light and temperature. The resulting spatial changes develop direct relationships to the surrounding environmental changes. The second experiment is taking non-localized environmental cues to construct topological changes within a space. This involves using data gathered from a distant yet related landscape space to shift the morphology of a wall surface.</p>
+<p>Human beings experience the landscape through ambient and explicit cues, allowing for a deeper understanding of the landscape through the senses. The visceral phenomenon of waving grasses embeds a deeper understanding of wind speed, and the scent of pollen in the air ushers memories. Rush hour traffic and weekend shopping crowds embellish temporal change within the urban fabric.</p>
+<p>Similar environmental phenomenon is monitored using sensor based devices for data collection or for the automation of systems. Developing a language to attach device to space and/or to alter space is a common attribute in architectural design as witnessed with the folly. To move beyond the interactive element as a baseless and/or strictly pragmatic device such as the folly it is important to understand the relationship between device and site phenomenon especially in a landscape context. To understand the morphological connection between space and device interaction it is necessary to examine the role of human perception within this context.</p>
+<h3>References</h3>
+<ul>
+<li>Archer, B.J. Follies: Architecture for the Late-Twentieth-Century Landscape. New York: Rizzoli International Publications, 1983.</li>
+<li>Ishii, Hiroshi, Craig Wisneski, Scott Brave, Andrew Dahley, Matt Gorbet, Brygg Ullmer, and Paul Yarin. 1996. ambientROOM: Integrating Ambient Media with Architectural Space. CHI'96, Los Angeles, CA USA.</li>
+<li>Essa, I. 2000. Ubiquitous Sensing for Smart and Aware Environments. IEEE Personal Communication. pp. 47-49.</li>
+<li>Davey, Peter. 2000. View. Architectural Review.</li>
+<li>Pedroz, Carlos. Visual Perception: Gestalt Laws.</li>
+<li>Allard, F. 2001. Kinesiology 356: Information Processing in Human Perceptual Motor Performance. Waterloo: University of Waterloo.</li>
+<li>Lim, CJ. 2006. Devices, A Manual of Architectural and Spatial Machines. Oxford: Architectural Press, 2006.</li>
+<li>"Diana Thater: Knots + Surfaces." Dia:Chelsea. 24 Jan 2001.</li>
+<li>Lozano-Hemmer, Rafael. "Projects." Rafael Lozano-Hemmer. 2005.</li>
+<li>Turrell, James. Interview with Richard Whittaker. conversations.org, 1 Feb 1999.</li>
+</ul>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizing and Illustrating Complex Meteorological Events | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2008</div>
+    <h2 class="hero-title">Visualizing and Illustrating Complex Meteorological Events: A Design Approach for Planning and Land Management</h2>
+    <div class="hero-type">Publication / Peer-Reviewed Paper</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Collaborators</strong></dt><dd>Keera Pullman, Werner Benger</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Paper, meteorological visualization methodology</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>ACADIA 2008, Proceedings of the 28th Annual Conference of the Association for Computer Aided Design in Architecture</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Visualizing and Illustrating Complex Meteorological Events developed a hybrid analog and digital method for representing severe weather data, using Severe Tropical Cyclone Larry, the Category 5 storm that struck northeast Australia in 2006, as its subject. Co-authored with Keera Pullman and Werner Benger, the paper addressed the gap between increasingly complex meteorological datasets and the graphic means available to communicate them, arguing that effective representation requires integrating computer modeling, digital tools, and analog drawing.</p>
+<h3>Abstract</h3>
+<p>Three dimensional visualization of scientific data is emerging as a powerful tool through which to better understand severe weather events like tropical storms and hurricanes. Recent technological advances have given designers the ability to access increasingly complex geographic and meteorological data sets. However, extracting and communicating essential information from such sets is often hampered by poor graphic representation. Ineffective use of color, superfluous data, and poorly constructed narratives can obscure essential data and create unnecessary visual clutter (Tufte 1997).</p>
+<p>The successful synthesis and representation of output from scientific models can communicate to public and professional audiences alike essential information about tropical storms and their effect on local communities. For design professionals, however, effective communication of scientific data depends on successful graphic representation, intuitive workflows, and efficient compiling of diverse data sets for visualization in a design environment. We believe this requires a hybrid approach that integrates computer modeling, traditional and emerging digital tools, and analog drawing processes.</p>
+<p>This paper addresses the above issues and uses as its subject Severe Tropical Cyclone Larry, a Category 5 storm that devastated the northeast coast of Australia in 2006. Its method is threefold: (1) to discuss a hybrid approach to visualizing meteorological or ecological data based on current theories drawn from graphic design and visual cognition; (2) to describe the available data; and (3) to outline the specific computational challenges in managing and integrating the geographic and meteorological data sets for Larry.</p>
+<h3>Motivation</h3>
+<p>Tropical cyclones and hurricanes play major roles in shaping coastal ecosystems and landscapes. The force, speed, and duration of their winds alter forest composition and wildlife habitat. As coastal populations increase worldwide, the risk to human life also becomes a serious issue.</p>
+<p>The integration and successful communication of meteorological data, satellite imagery, and GIS data in a design environment can communicate to public and professional audiences alike essential information about tropical storms and their effect on local communities. Effective communication of scientific data for design professionals hinges on successful graphic representation, intuitive workflows, and efficient compiling of diverse data sets for visualization. This requires a hybrid approach integrating the efficiencies of computer modeling, traditional and emerging digital tools, and analog drawing processes.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-01a.jpg" alt="Figure 01a"><figcaption>Figure 1a. Severe Tropical Cyclone Larry struck the northeast coast of the Australian state of Queensland (Carpenter 2006).</figcaption></figure>
+
+<h3>Cyclone Larry</h3>
+<p>In March 2006, Severe Tropical Cyclone Larry struck the northeast coast of the Australian state of Queensland. Larry caused damage to infrastructure, residential areas, industry, agriculture, and rainforests, ranking it as one of the costliest natural disasters in Queensland history (Carpenter 2006) (Fig. 1a). Qualitative observations of Larry revealed an intriguing fact: local terrain affected the direction and force of cyclone winds (Ramsey and Leslie 2008). Not only was this effect apparently responsible for the unusual pattern of vegetation damage, but it poses significant future threats to population and urban infrastructure. Recent regional population growth is spurring urban and residential development, which has extended onto sensitive rangeland slopes. In these regions, the risk to population and infrastructure is intensified due to the way westerly winds distribute over local terrain. This dynamic significantly affects surface wind speeds of land-falling cyclones in the Cairns region (Turton 2007). Cyclone Larry made these risks starkly evident, with structures unprotected from westerly down slope winds suffering the most damage. To help design professionals better study this unique dynamic, the visualization aims to reveal the interaction between the cyclone and the land masses it encountered, the influence of topography and westerly winds on the cyclone's track, and the pattern of vegetation destruction it produced.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-01b.jpg" alt="Figure 01b"><figcaption>Figure 1b. Agricultural damage in the wake of Cyclone Larry (Carpenter 2006).</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-01c.jpg" alt="Figure 01c"><figcaption>Figure 1c. Rainforest damage in the wake of Cyclone Larry (Carpenter 2006).</figcaption></figure>
+
+<h3>Representation Methodologies</h3>
+<p>At the core of any representation method is the physical relationship between data and user. To process and interact with information requires sensing the data in some way, through touch, sight, sound, smell, and/or taste. How the data is approached and represented determines to a large extent how we think about and use the information. How we physically relate to digital data has become increasingly important with the introduction of hybrid analog and digital design processes. It is particularly important in the design profession because of the spatial nature of data and the use of drawing, modeling, and seeing as procedural tools to explore design ideas. The expression of data for design and planning decisions typically requires envisioning the relationship among multiple data sets to create specific cartographic representations of landscape conditions. The method of data representation is the first choice designers must make before analyzing a site and defining the parameters of a design study. This choice determines how designs can be manipulated and problems formulated, and what outcomes are possible. A hybrid technology that marries analog and digital representation would help designers to understand the data and view how elements change over time. And in fact, it is in the interface between digital and analog methods that such new ideas, techniques, and representation methodologies are being forged (Bermudez et al. 2000).</p>
+<h3>Representation Tools</h3>
+<p>Many tools currently exist that are used to represent atmospheric data and physical landscapes. Each tool has advantages and disadvantages for designers when representing static and temporal data. The primary concern when choosing a representation regime is the heuristic process the designer will engage in. The visualization of Cyclone Larry used a combination of tools, including GIS, digital raster/vector editing software, analog tools, and VISH (visualization shell).</p>
+<p><strong>GIS.</strong> The primary purpose of a geographic information system (GIS) is to perform spatial analysis (Rhyne et al. 1994). As such, GIS's strength is in its ability to manage data and implement analytical operations, as well as its powerful tools to develop methodologies to interrogate data (Rhyne 2001). The development of advanced visualization tools and methods in GIS did not develop in parallel with efforts to advance spatial analysis (Rhyne 2001). This development occurred in fields as varied as computer science, graphic design, animation and film, and medical imaging (Rhyne et al. 1994). Therefore there are major problems with integrating and visualizing scientific and observational data within the GIS environment. These include lack of support for file formats from atmospheric and meteorological sciences (e.g., MM5 models), production of fly-throughs and animations that lack spontaneity, difficulties in acquiring continuous 3-D data (e.g., volume data), and the generalization of data (Hearnshaw and Unwin 1994). The ideal solution is to merge the strengths of GIS with the sophisticated graphic and animation abilities of scientific visualization software. This requires a common programming language for diverse file formats, extensions for scientific visualization programs to support GIS data, and tools that support the integration and analysis of GIS databases (Maguire 2007).</p>
+<p><strong>Raster/Vector Illustration.</strong> Two-dimensional representation of geographic information is especially suited to solving spatial relationships. By visualizing the relationships between objects on a planar surface, professionals in areas like planning and land management can see patterns in data that help them develop effective management regimes (Savage, Wiebe, Devine 2004). Additionally, both vector and raster illustrations are easily imported and exported into a variety of computing environments and so offer users greater opportunity to interact with, manipulate, and edit data. Previous research suggests that for data extraction, 2-D displays of topographic data are superior to 3-D representations, which are plagued by distortion associated with perspective and foreshortening (Hollands, Pierce, Magee 1995; Savage, Wiebe, Devine 2004). However, 2-D visualization has limited ability to represent volumetric- or time-dependent data; for such data, only 3-D visualization can extract valuable information (Savage, Wiebe, Devine 2004).</p>
+<p><strong>Analog Tools.</strong> Today, discussions of visual representation include both analog and digital representations of information. Analog methods and tools represent data in a continuous time stream. They are physical and tactile and imbued with a vitality born of matching how we perceive information (Arnheim 1969). Some research suggests that interpretation of analog data is linked with sensory processes like imagination (Blachowicz 1997). Landscape architects' stock-in-trade methods of concretizing conceptual design ideas are analog: graphite, ink, vellum, clay, matt board, plastic, etc. By contrast, digital methods use binary codes to translate images of, and ideas about, the world. Because these binary signals can only estimate discrete units of data, analog methods are in theory more accurate (Bermudez, Neiman 1997). Landscape architects, for example, routinely deal with geographic information containing complex spatio-temporal components. For them, the ideal is to be able to interact with these data sets in a real-time, 3-D environment. Yet purely analog methods are limited in their ability to fully express the content of 3-D and 4-D data sets.</p>
+<p><strong>VISH (Visualization Shell).</strong> Past visualization algorithms have usually been limited to a certain application and visualization environment. Although many commercial and open source visualization tools have extended their capacities by providing a developer's kit to write plugins, those are still specific only to the given tool. VISH ("VIsualization SHell") separates algorithm implementation from the software environment the algorithm runs in. Unlike the complex VTK library, VISH builds upon a micro-kernel-like architecture that "knows" about objects and parameters only in a general way. Anything else, OpenGL rendering, user interfaces, data handling, I/O layers, is a runtime plugin. VISH comes with a stand-alone user interface, plus an optional component that implements a generic data model based on the mathematical concept of fiber bundles. This model is similar in spirit to that used in the OpenDX Data Explorer. It allows the handling of a wide range of data types using a common interface, including unstructured meshes, structured meshes, hierarchical grid schemes, multiple coordinate systems, and particle data. Converting a data set available from a specific application, e.g., numerical simulation or observational data, into this common layout is a prerequisite for visualization.</p>
+<h3>Computational Model Methods and Data</h3>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-02.jpg" alt="Figure 02"><figcaption>Figure 2. The Atherton Tablelands Study Area.</figcaption></figure>
+
+<p><strong>Study Area.</strong> The Atherton Tablelands is located west of Cairns between the Bellenden Ker Range and the Great Dividing Range (Fig. 2). While the central Atherton Tablelands escaped the brunt of the force, the eye of the cyclone passed 30-40 km to the north. The area was affected by wind gusts of up to 230 km/h (Davidson 2006), resulting in significant damage to rain forest vegetation.</p>
+<p><strong>Atmospheric Data: Fifth Generation Penn State/NCAR Mesoscale Model (MM5).</strong> MM5 is a high resolution terrain model developed by Pennsylvania State University (PSU) and the University Corporation for Atmospheric Research (UCAR). It is performed on a quadruply nested two-way interactive mesh with dimensions and grid spacing of 93x100, 27 km (D1); 220x210, 9 km (D2); 445x286, 3 km (D3); and 385x268, 1 km (D4), respectively (Ramsey and Leslie 2008). The model is particularly suited to modeling cyclonic weather systems less than 1000 km (620 miles) long. (Larry's diameter varied between 20 and 30 km.) Results of this simulation show that topography significantly influenced surface winds' speed and the cyclone track itself. This agrees completely with on-ground observations (Ramsey and Leslie 2008).</p>
+<p><strong>Anisotropic Friction Surface.</strong> The VARCOST algorithm in the IDRISI GIS package was used to model the anisotropic cost surface (Fig. 3). The cost surface maps the probability that cyclone wind speeds change according to topography and land cover. The results of the anisotropic cost surface showed land cover producing a marked effect on the winds' speed and direction, and the strongest winds occurring in the southern half of the western eye-wall. In actuality, this was not consistently the case. Strong winds recorded on the lee side of Mount Bellenden Ker indicate that the dense vegetation not only did not dampen wind speeds, but, in conjunction with downslope winds, actually accelerated them. This indicates the complex interaction between Larry's wind field and local terrain and illustrates the unpredictable effect that terrain and vegetation had on the cyclone's wind field.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-03.jpg" alt="Figure 03"><figcaption>Figure 3. Anisotropic cost friction surface.</figcaption></figure>
+
+<p><strong>Meteorological Data.</strong> The ADvanced CIRCulation (ADCIRC) model is a framework for computing flow and transport in coastal water bodies (ADCIRC Development Group 2006). For hurricane visualization, it is used to model wind-driven storm surge. Bathymetric data are used to build an underlying computational mesh. Each vertex of the mesh contains numerical simulation outputs of water elevation, wind, and water-flow direction (Fig. 4). The ADCIRC grid was provided by the National Tidal Centre (NTC), part of the Australian Bureau of Meteorology, and covers the Australian coastal region. It is an experimental grid that was developed to model only seasonal tidal flows, and as such is incomplete (no wind data). However, the model provides enough information to develop rudimentary tidal flow visualization for the study area. To maximize the efficiency of storing, processing, and visualizing data, the files were converted from the original ASCII format to HDF5. This reduced the file size by a factor of 20 and thus greatly increased the speed of loading and visualizing the data.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-04.jpg" alt="Figure 04"><figcaption>Figure 4. ADCIRC grid model.</figcaption></figure>
+
+<h3>Visualization and Design Process</h3>
+<p>The Cyclone Larry visualization was extrapolated to develop multiple representations specific to environmental planning, including cyclone frequency, topographic effects, disturbance regimes, and proposals for resilient landscapes. The results are divided into two categories: analysis and proposal.</p>
+<p>ArcView 9.2 was used to set up the initial mapping project. Data were gathered from GeoScience Australia, the Australian Bureau of Meteorology, and James Cook University's Wet Tropics GIS. MapPublisher by Avenza was used to import the GIS data into Adobe Illustrator, where the final drawings were rendered.</p>
+<p><strong>Analysis.</strong> North Queensland's ecosystems have evolved in concert with severe weather events like tropical cyclones, droughts, fires, and floods. Although the official record of cyclone events for the region exists only from 1858-2006 (Callaghan 2004), a much longer history is recorded in the land itself. Scientists from James Cook University use radiocarbon dating to extract the history of cyclone events from the geological record. By examining the region's coral reefs, Professor Jon Nott and colleagues have extended recorded cyclonic history by 5,000 years. Their research shows that in northeast Australia, a super-cyclone (Category 4 and greater) event occurs every 200 years, ten times more frequently than previously estimated. Naturally, these events significantly alter the structure and composition of forests and the distribution of plant and animal species (Callaghan 2004).</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-05.jpg" alt="Figure 05"><figcaption>Figure 5. Cyclone frequency shows cyclone tracks that affected the Atherton Tablelands.</figcaption></figure>
+
+<p>Figure 5 shows cyclone tracks that affected the Atherton Tablelands and surrounding areas from 1950-2006. Existing observational and historical records were used to reconstruct tracks for unnamed cyclones (Callaghan 2006; Turton and Dale 2007). By mapping "hyper-disturbed" ecosystems especially sensitive to cyclonic disturbance (Figs. 6 and 7), the drawings highlight the processes behind and the effect of recurring cyclonic events on the Atherton Tablelands and help in understanding nature's adaptability.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-06.jpg" alt="Figure 06"><figcaption>Figure 6. "Hyper-disturbed" eco-systems, especially sensitive to cyclonic disturbance.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-07.jpg" alt="Figure 07"><figcaption>Figure 7. "Hyper-disturbed" eco-systems, especially sensitive to cyclonic disturbance.</figcaption></figure>
+
+<p>These cyclones' strength, speed, and path are uniquely affected by the topography of the region (Callaghan 2006; Turton and Dale 2007). This effect was especially pronounced during Cyclone Larry, when the atmospheric stability, wind velocity, cyclone intensity, and other cyclone properties changed over the course of the event, dramatically affecting both the wind speed and central air pressure (Turton and Dale 2007). Figure 8 uses the recorded data for both wind speed and central air pressure and labels this information on a gradient represented by a triangular graphic. But because no scientific studies exist mapping the actual response of the cyclone, experiments were undertaken with different scenarios graphically. The crescent moon shape depicts the strength of southwesterly winds (data extracted from the remote sensing study); the three wind-line maps are extrapolations imagining how topographic change affected wind speed.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-08.jpg" alt="Figure 08"><figcaption>Figure 8. Recorded data for wind speed and central air pressure, labeled on a gradient represented by a triangular graphic.</figcaption></figure>
+
+<p>Initially, Larry's response to the vegetation and topography of the Atherton Tablelands was modeled using remote sensing. An anisotropic cost surface, mapping the effects of slope and surface roughness (vegetation) on the cyclone's wind speeds, was constructed to demonstrate this dynamic. Wind speed data were extracted from the numerical table generated by the remote sensing study and incorporated into a section of the study area (Fig. 9). The section represents the topography most susceptible to the complex interaction between terrain, local winds, and cyclone winds. GIS data describing forest structure of vegetated area was used to map areas most subject to disturbance. Geo-referenced layers show fragments of coastal vegetation.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-09.jpg" alt="Figure 09"><figcaption>Figure 9. Wind speed data incorporated into a section of the study area.</figcaption></figure>
+
+<p><strong>Proposal.</strong> Examination of existing agricultural patterns suggests alternatives to traditional planting, partly based on the resilience of specific tree species and crop types (Tucker, Middleton, and Kupsch 2006). Planting decisions based on soil, slope, and resilience of vegetation type help build a strong interlocking landscape. The design's goal is to create a robust landscape that is resilient to cyclone events, protects major agricultural crops by buffering winds, encourages rapid recovery of valuable ecosystems, and improves species survival by creating vegetated corridors supplying refuge and food source for wildlife.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-10a.jpg" alt="Figure 10a"><figcaption>Figure 10a. Graphite drawings of felled trees and vegetation corridors.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-10b.jpg" alt="Figure 10b"><figcaption>Figure 10b. Graphite drawings of felled trees and vegetation corridors.</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-10c.jpg" alt="Figure 10c"><figcaption>Figure 10c. Graphite drawings of felled trees and vegetation corridors.</figcaption></figure>
+
+<p>Figure 10 shows hand drawings based on aerial photos of damage taken immediately after the cyclone hit and reflect patterns of felled trees and corridors of vegetation cleared by Larry's surface winds. The drawings' sharp geometric forms are renderings of vegetation damage; the patterns differ depending on whether the affected area was lee-ward, wind-ward, or an open field. The sketches were overlaid on the existing landscape and imagined a fortress of resilient native forest (darker, geometric areas) extending into agricultural fields, providing both a buffer and wildlife habitat (Fig. 11). Resilient vegetation types, including hardy tree plantation species, are intertwined with less resilient agricultural crops. The goal is to dampen cyclonic winds and minimize damage.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-11.jpg" alt="Figure 11"><figcaption>Figure 11. Sketches overlaid on the existing landscape, imagining a fortress of resilient native forest extending into agricultural fields.</figcaption></figure>
+
+<p>Figure 12 charts the response of cyclone winds to different land cover types. The left graphic shows wind speed patterns over regions in the study area that support the type of vegetation shown in the graph. Wind speed lines were derived from the anisotropic cost surface; closer lines indicate higher wind speeds and lower central air pressure.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/visualizing-illustrating-complex/figure-12.jpg" alt="Figure 12"><figcaption>Figure 12. The response of cyclone winds to different land cover types.</figcaption></figure>
+
+<h3>Conclusion</h3>
+<p>This project explores hybrid methodologies to manage, represent, and interact with spatial data via a collaboration of landscape architecture, computer science, environmental science, and meteorological studies. Using novel visualization tools such as VISH, the researchers address the difficulties of integrating large and often incompatible geographic and meteorological file formats, and contribute to improvements in data handling and display.</p>
+<p>Designing, building, and computing 3-D landscape processes may not only improve management of future storms, but provide designers with a tool to examine interaction between atmospheric and geo-spatial data. The result may facilitate future land planning, help generate intuitive design decisions, and stimulate further research in techniques for integrated visualization of observational and computational data.</p>
+<h3>References</h3>
+<ul>
+<li>Allard, F. 2001. Information Processing in Human Perceptual Motor Performance. Kinesiology 356 Course Notes. Waterloo: University of Waterloo.</li>
+<li>Arnheim, R. 1969. Visual Thinking. Berkeley, CA: University of California Press.</li>
+<li>Benger, W., Ritter, G. and R. Heinzl. The Concepts of VISH. In 4th High-End Visualization Workshop, Obergurgl, Tyrol, Austria, June 18-21, 2007. Berlin: Lehmanns Media-LOB.de, 2007.</li>
+<li>Bermudez, Julio, Jim Agutter, Dwayne Westenskow, Stefano Foresti, Yi Zhang, Debra Gondeck-Becker, Noah Syroid, Brent Lilly, David Strayer, Frank Drews. 2000. Data Representation Architecture: Visualization Design Methods, Theory and Technology Applied to Anesthesiology. In Proceedings of ACADIA 2000. Washington DC, pp. 91-102.</li>
+<li>Blachowicz, J. Analog Representation Beyond Mental Imagery. The Journal of Philosophy, Vol. 94, No. 2 (1997): pp. 55-84.</li>
+<li>Bloomer, C. 1976. Principles of Visual Perception. New York: Van Nostrand Reinhold.</li>
+<li>Bradford, M. and C. Suplee. 2003. News Focus: Visualization and the Communication of Science. Science 301 (5639), 1472a.</li>
+<li>Hearnshaw, H. M. and D. J. Unwin. 1994 (eds.). Visualization in Geographical Information Systems. John Wiley &amp; Sons, Chichester.</li>
+<li>Hollands, J. G., Pierce, B. J., and Magee, L. E. 1995. Displaying quantitative information in two and three dimensions. Paper presented at the Human Factors and Ergonomics Society 39th Annual Meeting, San Diego, CA.</li>
+<li>MacEachren, A. M., and Menno-Jan Kraak. 1997. Exploratory cartographic visualization: advancing the agenda. Computers &amp; Geosciences, v. 23 n. 4, p. 335-343.</li>
+<li>Maguire, D. 2007. ArcGIS and Science: ArcNews Online.</li>
+<li>Neiman, Bennett and Julio Bermudez. 1997. Between Digital &amp; Analog Civilizations: The Spatial Manipulation Media Workshop. In Proceedings of ACADIA 1997. Cincinnati, OH; pp. 131-137.</li>
+<li>Otto, P. and J. Callaghan. 2006. The Meteorological Analysis of Tropical Cyclone Larry. Australian Bureau of Meteorology Publication.</li>
+<li>Carpenter, P. C. G. 2006. Tropical Cyclone Larry Review. Technical report, Guy Carpenter &amp; Company Pty Ltd publication, May.</li>
+<li>Ramsey, H. and L. M. Leslie. 2008. The Effects of Complex Terrain on Severe Landfalling Tropical Cyclone Larry (2006) over Northeast Australia. Monthly Weather Review: In Press.</li>
+<li>Rhyne, Theresa M. 1997. Going virtual with geographic information and scientific visualization. Computers &amp; Geosciences, v. 23 n. 4, p. 489-491.</li>
+<li>Savage, D. M., Wiebe, E. N. and Devine, H. A. 2004. Performance of 2D versus 3D topographic representations for different task types. Proceedings of the Human Factors and Ergonomics Society Annual Meeting. Santa Monica, CA: HFES.</li>
+<li>Rhyne, Theresa Marie, William Ivey, Loey Knapp, Peter Kochevar, Tom Mace. Visualization and geographic information system integration: what are the needs and the requirements, if any? Proceedings of the Conference on Visualization '94, Washington, D.C.</li>
+<li>Tufte, Edward R. 1997. Visual Explanations: Images and Quantities, Evidence and Narrative. Cheshire, CT: Graphics Press.</li>
+<li>Turton, S. and D. Dale. 2007. A Preliminary Assessment of the Environmental Impacts of Cyclone Larry on the Forest Landscapes of Northeast Queensland. Report submitted to the Bureau of Meteorology.</li>
+<li>Tucker, Middleton, and Kupsch. 2006. Cyclone Larry Biotropica Australia.</li>
+</ul>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
