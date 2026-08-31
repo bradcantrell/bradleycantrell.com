@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthetic Ecologies | Bradley Cantrell</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
+    .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
+    .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
+    .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }
+    .meta-bar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.25rem; }
+    .back-link { display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none; }
+    .back-link:hover { opacity: 0.7; }
+    .project-body { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad) 2rem; }
+    .project-body p { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .project-body h2, .project-body h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); margin-top: 3rem; margin-bottom: 1rem; text-transform: uppercase; }
+    .project-body ul, .project-body ol { font-size: 0.9rem; line-height: 1.85; color: var(--text-dim); padding-left: 1.5rem; margin: 0 0 1.5rem; }
+    .project-body li { margin-bottom: 0.35rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: var(--max); margin: 2rem auto; padding: 0 var(--pad); }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-grid h3 { grid-column: 1 / -1; font-size: 1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gallery-tile { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-soft); background: #000; cursor: pointer; }
+    .gallery-tile video, .gallery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-tile:hover { border-color: var(--accent2); }
+
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.94); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox video, .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1001; width: 40px; height: 40px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; width: 48px; height: 48px; background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .lightbox-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 1001; font-size: 0.75rem; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; font-style: italic; text-align: center; max-width: 80vw; }
+
+    .inline-figure { margin: 2.5rem 0; }
+    .inline-figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .inline-figure figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .slide-gallery { display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.25rem 0 0.75rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 2.5rem 0; }
+    .slide-gallery img { height: 340px; width: auto; flex: 0 0 auto; scroll-snap-align: center; border-radius: 4px; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 2.5rem 0; overflow: hidden; border-radius: 4px; background: #000; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .image-grid-natural { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 2.5rem 0; }
+    .image-grid-natural img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0 2.5rem; }
+    .video-grid figure { margin: 0; }
+    .video-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; }
+    .video-grid figcaption { font-size: 0.7rem; color: var(--text-dimmer); margin-top: 0.6rem; letter-spacing: 0.04em; }
+    .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .media-grid img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .media-grid video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; object-fit: cover; }
+    .video-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0 2.5rem; }
+    .video-grid-2 figure { margin: 0; }
+    .video-grid-2 video { width: 100%; height: auto; background: #000; border-radius: 4px; }
+    @media (max-width: 600px) { .video-grid-2 { grid-template-columns: 1fr; } }
+    .image-grid img, .image-grid-natural img, .media-grid img, .inline-figure img, .slide-gallery img { cursor: zoom-in; }
+    .image-grid img:hover, .image-grid-natural img:hover, .media-grid img:hover, .inline-figure img:hover, .slide-gallery img:hover { opacity: 0.92; }
+    @media (max-width: 600px) { .image-grid { grid-template-columns: repeat(2, 1fr); } .image-grid-natural { grid-template-columns: repeat(2, 1fr); } .slide-gallery img { height: 260px; } .media-grid { grid-template-columns: 1fr; } }
+  </style>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-year">2014</div>
+    <h2 class="hero-title">Synthetic Ecologies: Protocols, Simulation, and Manipulation for Indeterminate Landscapes</h2>
+    <div class="hero-type">Publication / Peer-Reviewed Paper</div>
+  </div>
+</div>
+
+<div class="meta-bar">
+<div class="meta-bar-top">
+<a href="../writing.html" class="back-link">Writing</a>
+
+</div>
+  <dl>
+    <div><dt><strong>Collaborators</strong></dt><dd>Justine Holzman</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Paper, simulation and responsive systems methodology</dd></div>
+    <div><dt><strong>Publication</strong></dt><dd>ACADIA 2014: Design Agency, Proceedings of the Association for Computer Aided Design in Architecture</dd></div>
+  </dl>
+</div>
+
+<div class="project-body">
+<p>Synthetic Ecologies, co-authored with Justine Holzman, positioned the design and curation of synthetic ecologies through the lens of simulation and monitoring as a way to develop logics of interaction. The paper proposed autonomous decision-making, manipulation, and management of the landscape as a means of establishing adaptive and indeterminate landscapes, worked out through three speculative projects: Metabolic Forest, Sedimachine, and Synthetic Mudscapes.</p>
+<h3>Abstract</h3>
+<p>The finite methods of design and engineering have created static counterpoints to systems that are continually in fluctuation. There is a necessity to engage dynamic environmental phenomena through methods that mimic an indeterminate control framework as a means of developing infrastructures and settlements that are more tightly entwined with complex ecologies. The work outlined in this paper positions the design and curation of synthetic ecologies through the lens of simulation and monitoring as a way to develop logics of interaction.</p>
+<p>Advances in computational design research, engineering simulation, and computational fluid dynamics are providing designers with the tools to challenge the determinacy of systems engineering with informed dynamic solutions. Synthetic ecologies describe a conceptual methodology for autonomous landscape manipulation guided by protocols that are informed through multiple physical and temporal scales of data, learning from past and future scenarios. This methodology, developed as a response to landscape indeterminacy, expresses a computational approach to designing complex and evolving ecologies.</p>
+<h3>Introduction</h3>
+<p>Conceptually, a synthetic ecology embraces the notion that humanity is a significant driver in the construction and formulation of environmental relationships. Human influence may come from both passive and active interventions, but must be addressed as a conscious and symbiotic effort. Synthetic ecologies relate to and rely on synthetic modeling strategies in ecology. A synthetic model of an ecological system is defined as "tactical models that aim to explain system dynamics and provide testable predictions" (Evans et al. 2013). A synthetic model encompasses both "strategic" and "tactical" models. Strategic describes a model that broadly considers a dynamic condition as simply as possible in order to expose general characteristics applicable to multiple systems of similar nature. Tactical describes a highly complex model developed from data in relation to a specific system to predict distinct dynamics. The combination of these two modes provides a model that is predictive and quantitative while allowing for broader scale speculation normally found in simpler strategic models. The simulation of ecologies through synthetic modeling allows for dynamic testing between scales that are simultaneously simplistic and complex, local and global. The simulation is capable of assessing individual processes contributing to an ecological condition.</p>
+<p>This methodology has been tested through several speculative projects developed within the last year attempting to design adaptive and intelligent environments through simulation and progressive management techniques guided by protocols. Synthetic ecologies attempt to avoid the pitfalls of systems engineering and discrete goals, the last step of which is "retirement, disposal, and replacement." Instead, synthetic ecologies are manipulated by a control system capable of understanding competing objectives through a multi-layered set of outcomes. This system of control uses simulation as a mode of understanding the world to predict and project multiple futures aligned to shifting goals.</p>
+<h3>Simulation in the Field of Design</h3>
+<p>Accessibility of parametric modeling software to designers enables sophisticated computation of site phenomena, providing tools for designing within highly complex landscapes. Specifically, within the field of landscape architecture, current discourse acknowledges the need for dynamic design solutions at increasingly larger scales. The simulation of dynamic systems within the landscape enables designers to visualize and test a range of solutions. These models are effective as a decipherable representation because they establish a metric that translates numerical data from simulations into hybrid or coupled models. This metric becomes the underlying fabric of a representation that appeals to our ability to observe pattern and order in both short and long term cycles.</p>
+<p>The development of these models creates custom connections between environmental phenomena and modeling or mapping software. These connections are the key for developing common onto-cartographic methods, formats, and processes, which map the agency of things. Things in this sense are considered as machines. An onto-cartography defined by Levi Bryant is, "in one of its significations, a mapping of relations between these machines so as to discern their lines of force" (Bryant 2014). Machines within this context can be understood as physical materials within the landscape engaged in ecological systems, infrastructures, sensing or measurement devices, and as artificial intelligence, all acting and playing vital roles in shaping contemporary ecologies. Machines by definition are performative, they operate, act, and apply force, they have agency. The onto-cartography or map becomes the simulation and design tool for strategic intervention, an approach that recognizes the agency of technological machines.</p>
+<p>As groundbreaking as these methods are for the discipline, many of the models or simulations produced through available parametric tools are a distillation of site systems, lacking the complexities existing within a site, and only as powerful as the accuracy of the model. There is a significant disparity between the accuracy of simulation of particles in design software and many of the more sophisticated flow simulation tools. Operating at this low fidelity requires conscious methods of abstraction for highly complex systems.</p>
+<h3>Virtualizing the Physical World</h3>
+<p>When virtualizing a simulation for the physical world, we rely on extracted data to formulate a working model. The model is understood as a quasi-objective rendering of reality where the data itself is objective, curated for the intended model as well as the tools of measurement. These tools or measurement devices are designed through a discrete lens with defined goals, associated not only with what it is measuring but why it is measuring, resulting in a "synoptic" view of reality.</p>
+<p>The abstraction of reality requires logic to assign real material actors to quantities, values, forces, locations etc. The model or simulation produced from this logic is then applied to reality in order to manipulate, measure, and quantify selective aspects inevitably causing reality to become a product of the logic, a "selective reality." The history of this condition is easily identified through the use of the Jeffersonian grid, early forestry management practices, and agriculture. To establish a metric in early forestry techniques through a "fiscal lens" concerned with overall production, the planting of trees were ordered within a Cartesian grid, simplifying methods for quantification and data extraction. This metric provided data associated with the economic viability of production, but subsequently ignored elements such as biodiversity contributing to the resilience of a forest ecosystem. The metric, ordered to easily observe stasis vs. change, led to an oversimplification of complex ecological processes by bracketing certain factors.</p>
+<p>Another inhibiting factor to producing an accurate model is the fidelity associated with a tool or measurement device. A substantial difference in fidelity exists between a tool that measures in microscopic quantities on the ground and a satellite monitoring global weather conditions from space. Simulating and interpreting ecologies requires a range of scales; depending on the fidelity of the data, the model will have weaknesses at multiple scales.</p>
+<p>To heighten the fidelity of the simulation and formulate a comprehensive model of ecological dynamics, there must be a hybridization of multiple models, pulling them together to function side by side as a composite simulation. There are currently working versions of simulations bolstered by multiple models like Google Earth, virtual versions of the world, fluid dynamics models, and big climate change models. The virtualization of something like climate demands a considerable shift in the way that we are simulating material phenomena and building virtual worlds. A view of climate in the wake of climate change is much more totalizing, it encompasses not just hydrology, but hydrological systems, weather systems, and anthropogenic influences coming together as climate. The way these pieces are merging represents the coupling of models as a robust simulation with ability to view it as a combinatory projection to weight the defining inputs to problem solve through multiple lenses. It is not enough to verify observed site phenomena; instead the simulation proposes new trajectories.</p>
+<p>This form of simulation is projective, allowing for speculation and inquiry by opening up negotiation between accuracy, projected futures and intention. In the case of Southern Louisiana, what may be best for navigation may not be best for habitation in the delta. That negotiation returns multiple simulations and scenarios allowing for liminal connections between models and couplers. The use of couplers may also refer to the combination of "strategic" and "tactical" models in order to make a predictive yet complex model.</p>
+<h3>Embedding Intelligence in Landscape</h3>
+<p>To establish a feedback loop, there needs to be a relationship between simulation and real-time one-to-one manipulations of the landscape. The feedback loop between monitoring and actuation requires embedding intelligence within the physical landscape. The establishment of an intelligent system begins with monitoring. We have already been monitoring and representing the landscape for years through various instruments, it is now a matter of utilizing a multiplicity of devices to produce a simulation composed of parameters describing material and immaterial logics. Synthetic ecologies utilize multiple forms of monitoring from collected historical data to satellite data to compress time scales and understand the larger story. However, the most pivotal form of monitoring is data collected in real-time through embedded sensors. Real-time sensing capabilities provide current snapshots of landscape conditions to be compared against a larger timeline of data in order to make automated decisions. The actuation or decision-making process occurs along intervals spanning from second-to-second and day-to-day up to long term and major events. Actuation describes a set of rules for rendering, transforming, and morphing a stream of data into a set of commands. Within this translation, there is room for error and interpretation, providing multiple sets of manipulations to occur.</p>
+<p>"Intelligence" can be expressed through the appropriation of machine learning algorithms to develop novel computational solutions. In a similar manner to the tuning of physical models, machine learning would be tuned using historical data and ongoing simulations that would define approaches to complex problems. This approach requires two distinct components, clear processes of abstraction and generalization as well as robust interfaces. The need to accurately translate complex interactions to abstract or generalized models must be an ongoing process, where the abstraction is continually evaluated to understand the relationship between fidelity, accuracy, and chance. This mode of operation is uniquely suited as a design problem in itself and is the backbone of developing logics that are the product of human intuition derived from analysis and curating. The interface between computational logic and actuated or manipulated environments is the second critical component. This interface follows the abstracted relationship but must maintain a flexible evolution allowing for new logics to harness the connections that are created. In this manner a relationship develops between programmed logic and physical interaction.</p>
+<p>The relationship between logic and actuation becomes a feedback loop that is approached through control theory, calculating solutions for corrective action. Through this it is necessary to maintain a soft or fuzzy approach, finding limits for control and allowing for moments of chance. The situations being addressed are infinitely dimensional and therefore this finitely dimensional approach is the hinge upon which designers must take ownership within a realm of metrics and hyper efficiency.</p>
+<h3>Control Systems</h3>
+<p>The focus on indeterminate systems relies on unorthodox methods of measurement, implementation of failure, and modes of resistance. The indeterminacy of site systems and networks constructs a future for networks as political ontologies, which place the material significance of networks as a critical indicator to establishing effective protocol; the ability for political control of networks. This methodology of applying protocol to biological networks, termed "protocological control," to aid in political resistance can be paralleled to the necessary methods for adjusting the complex networks that would exist in a synthetic ecology. Small adjustments to protocol, termed "counterprotocols," can be envisioned as a set of design rules, management guidelines, or instructions for landscape manipulation to aid in adaptive management.</p>
+<p>"Resistance" is generally a political term used to describe tactics for initiating political reform and can be understood as a metaphor for small adjustments to the system. The idea of a resistance is especially compelling within the context of designing counterprotocols for ecological systems and networks. Instead of instituting a definite system or network, the counterprotocol takes advantage of an ecosystem's adaptive and generative capabilities to excite change by a catalytic resistance. This target of resistance as a stimulus for protocol's ability to "sculpt" and "inflect" allows for small adjustments to effectively manipulate the overall structure of the network over time.</p>
+<h3>Building Synthetic Ecologies</h3>
+<p>The construction of synthetic ecologies establishes the role of management within systems of adaptability and change, defining the designer's role as a curator or manipulator of processes. Responsive technologies, computational iteration, and autonomy are employed towards new methods for building, establishing, and adaptively maintaining synthetic ecologies. There are four methods that can be outlined in the establishment of synthetic ecologies; micro modifications, temporal exploitation, novel relationships, and phase manipulation.</p>
+<p>Micro modifications can be seen as insertions in bottom-up processes such as eutrophication and soil catalyzation among others. This approach privileges the local condition and proposes slight alterations, resistances, or shifts across a multiplicity of operations. This multiplicity can be tuned to provide effect across a range of scales, seen as a gradient in the landscape.</p>
+<p>Temporal exploitation refers to the manipulation of ecological systems across both micro and macro timescales. Through modeling and simulation it is possible to align these timescales and derive relationships in both the near term and situate these modifications with long-term events. This method views time on a continuum where each modification is a part of an understanding of historical data and models while also speculating on future trajectories.</p>
+<p>Novel relationships are created and monitored based on ongoing methods of simulation and machine learning. These relationships curate new ecologies, based on performative pairings and evolutionary trajectories. This method creates relations that format, predict, reorder, or nudge systems in unknown directions. While these may be system wide changes it is assumed that they would be emergent, functioning as predictors of the unknown, tested and altered to suit current conditions.</p>
+<p>Phase manipulation refers to the intentional intersection between entropic processes and actuation. This would typically be through the manipulation of phenomena that govern the behavior of water, air, and soil in an attempt to shift trajectories. This manipulation is expressed through shifts rather than complete state changes within systems, for example the alteration of water velocity or the liquefying of soil substrates.</p>
+<h3>Examples of Synthetic Ecologies</h3>
+<p>Several speculative projects developed at the Louisiana State University Robert Reich School of Landscape Architecture have contributed to testing and formulating the methodology of synthetic ecologies. The following examples utilize aspects of all the aforementioned methods.</p>
+<h4>Metabolic Forest</h4>
+<p>Metabolic Forest, designed by graduate students Silvia Cox and Prentiss Darden during the advanced topic studio "Synthetic Urban Ecologies," was developed and taught by Bradley Cantrell and Justine Holzman. The studio asks students to design a 'synthetic ecology' using real-time monitoring and responsive technologies to move away from reductionist approaches of stability, certainty, and order. The studio embraced management strategies that promote flexibility, adaptability, and resilience. The site chosen for the studio is the Port of Oakland and West Oakland dealing with issues of environmental justice around the evolving relationship between the port and the city.</p>
+<p>The most critical issue facing West Oakland is the intensification of air pollution concentration from associated Port activities. "Metabolic Forest" seeks to metabolize the harmful particulate matter causing cancer and other health related issues through the reintroduction of an applied ecological methodology, an urban forest, organized around a responsive infrastructure of misting poles designed to heighten the biological capabilities of the vegetation to metabolize contaminants with micro modifications (Figure 1). The urban forest buffer between the system of freeways and the city could be categorized as a humid and temperate rainforest in an otherwise Mediterranean climate (Figure 2).</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-01.jpg" alt="Figure 01"><figcaption>Figure 1. Metabolic Forest: Mapping of data collection points, air pollution density, and proposed vegetated area (Cox and Darden, 2013).</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-02.jpg" alt="Figure 02"><figcaption>Figure 2. Metabolic Forest: Bird's eye rendering (Cox and Darden, 2013).</figcaption></figure>
+
+<p>By targeting a specific issue, the design capitalizes on a biological system's ability to offset what is considered a harmful output, by providing the required conditions for the biological process to take place. The embedded intelligence of the misting poles alters the density of the air in close proximity to the freeway, causing the particles to fall out into a dense forest (Figure 3). Misting also fosters an understory of fungi where the metabolic reaction occurs. This project provides a solution informed by ecology but supported by an intelligent infrastructure able to sense appropriate times for mitigation to take place. The micro modifications operate on micro timescales to compose an ecology that does not appeal to a baseline condition, but is invented through an understanding of ecological systems. Metabolic Forest serves as a case study for an intervention designed to function in a highly disturbed landscape by adaptively managing and mitigating air pollution through a network of responsive infrastructure.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-03.jpg" alt="Figure 03"><figcaption>Figure 3. Metabolic Forest: Diagram illustrating particle velocity relative to humidity (Cox and Darden, 2013).</figcaption></figure>
+
+<h4>Sedimachine</h4>
+<p>Sedimachine, designed by Bradley Cantrell, Justine Holzman, and David Merlin, developed as an iteration of a small classroom sediment model, expanded with the implementation of a range of sensing instruments for real-time analysis for the 2014 DredgeFest Louisiana curated by the Dredge Research Collective. The model was envisioned as a simulation of a large-scale sediment diversion proposed as a solution to Southern Louisiana's land loss problem. The Sedimachine is a simplified hybrid model with both physical and digital simulation components negotiated by a Kinect feeding through Firefly and Grasshopper to produce a digital model (Figure 4). The digital model is then used as data to analyze and make informed manipulations to operate deployed devices within the physical model, establishing novel relationships based on virtualization (Figure 5).</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-04.jpg" alt="Figure 04"><figcaption>Figure 4. Sedimachine: Sediment model with devices in operation (Cantrell and Holzman, 2014).</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-05.jpg" alt="Figure 05"><figcaption>Figure 5. Sedimachine: Close-up of articulated spillway in operation (Cantrell and Holzman, 2014).</figcaption></figure>
+
+<p>The physical model is composed of a 3.5 feet by 7 feet wooden box with a milled foam, removable insert with a 2 per cent slope, scaled 1 inch = 50 feet, with the equivalent flow of 50,000 cubic feet per second. Walnut shells were used as lighter weight sediment and fine-grained sand was used as heavier sediment. The sediment being deployed was not calculated to reflect an analog in the landscape. These parameters already determine the inaccuracy of the model as an analog, the purpose of the model is to apply the integration of virtual and physical modeling to test the agency of feedback loops in real-time. The physical model in this sense could represent the use of another more developed physical model for experimentation or reality, as a one-to-one landscape, where the virtual model is automating material manipulations in situ.</p>
+<p>The monitoring capabilities developed for the Sedimachine rely on the Microsoft Kinect technology. Using the data collected from the Kinect a surface is generated through the parametric modeling plugin, Grasshopper and Firefly, representing the current topography. The accuracy of the surface was severely compromised by the Kinect's inability to distinguish between materials, specifically water versus sediment. Fidelity was another issue; the grid cell size used to sample points and generate the surface was dependent on the ability for the software to handle the computation. However, it successfully determined average high and low points of the digital surface over time in relation to the high and low points of landbuilding concurrent in the physical model (Figure 6).</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-06.jpg" alt="Figure 06"><figcaption>Figure 6. Sedimachine: Monitoring diagram virtualizing areas of concentration and sedimentation trends (Cantrell and Holzman, 2014).</figcaption></figure>
+
+<p>The simulation is extremely simplified, only elucidating basic processes. The most important aspect of this project is the application of the feedback loop in real-time through the integration of virtual and physical modeling, highlighting a new mode of operation, automation. Using the feedback loop to govern the rules of the designed system through methods of monitoring, sensing and actuation of the device(s), it would be possible to develop a speculative strategy for large-scale sediment manipulation (such as land-building) through the design of controlled devices, with specific rules driving the manipulation.</p>
+<h4>Synthetic Mudscapes</h4>
+<p>Synthetic Mudscapes is a speculative project at the scale of the Mississippi River Delta, imagining the reintroduction of deltaic fluctuation and strategic deposition of fertile material as an adjustable system, finely tuned through the intensification and reinvention of an existing coast wide modeling system within a responsive network. Synthetic Mudscapes projects into a near future based on a similar set of monitoring and simulation methods introduced in the Sedimachine project. This project envisions this system as a virtualized mesh that allows the landscape to be increasingly known at small timescales and predictive through multiple futures at longer timescales (Figure 7). This virtual mesh, a real-time simulation of fluid processes, is the framework for recursive decision-making and management within a newly introduced coastal landbuilding infrastructure.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-07.jpg" alt="Figure 07"><figcaption>Figure 7. Synthetic Mudscapes: Mapping of virtualized mesh indicating past and future projections (Cantrell et al, 2014).</figcaption></figure>
+
+<p>The scale of deltaic landbuilding processes exists on a continuum driven by temporal landscape processes at both the micro and geologic timescales. Synthetic Mudscapes utilizes phase and flow manipulation to intersect the entropic systems of the delta, using the past geologic record, storm events, and land configurations as a basis to compute multiple models (Figure 8) and (Figure 9). This strategy focuses on the one hundred and thousand year timescales by making current local decisions based on the clearest averaged trajectories of future models.</p>
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-08.jpg" alt="Figure 08"><figcaption>Figure 8. Synthetic Mudscapes: Speculative landbuilding strategy for Isle de Jean Charles Crescent (Cantrell et al, 2014).</figcaption></figure>
+
+<figure class="inline-figure"><img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/writing/synthetic-ecologies/figure-09.jpg" alt="Figure 09"><figcaption>Figure 9. Synthetic Mudscapes: Speculative landbuilding strategy for Myrtle Grove Diversion (Cantrell et al, 2014).</figcaption></figure>
+
+<h3>Outcomes for Landscape Form and Dynamic Ecologies</h3>
+<p>Autonomous decision making, manipulations and management of the landscape produces outcomes and landscapes that are loosely defined and composed of blurred renderings of time, shifting territories, and overlapping edges. Projects of this nature exist on a past, present, and future continuum, where decision-making is weighted on multiple moments and scales of time. Designing with indeterminacy asks the designer to structure the protocols as such that none of the manipulations are confined to a strict hierarchy. The protocols remain fuzzy, without discrete goals that the system must conform to. Instead, protocols change in reaction to the feedback loop, redefining and rewriting themselves as large or small resistances and as failures present themselves, resulting in a range of potential outcomes. While it is fuzzy and indeterminate because of the structure of monitoring, data manipulation, and technological intervention, it remains a control regime without dictating a predicted outcome.</p>
+<p>The control framework driving synthetic ecologies opposes classical hierarchical systems. Within classical hierarchies there is an inability for the overall structure to adapt, fitting everything into an inclusive defined structure. The competing hierarchies of synthetic ecologies are bottom-up and established through local adjustments, following a set of interconnected rules, protocols or algorithms, but not defined by an overarching set of rules. The nature of competing hierarchies allows for small failures with the embedded ability for multiple outcomes. The concurrent development of future trajectories avoids the ecological concept of "panarchy" described by Lance Gunderson and C.S. Holling as conditions of abrupt failure and overall collapse to a system structured for maximum efficiency through redundancy and interconnectedness. Variance within a system will have a higher probability for resiliency allowing for comparison in the face of competition and risk.</p>
+<p>Landscape will always have to be engaged with, the method in which we interface with it is quickly changing and developing with advances in computation. Throughout the history and our current process of modeling and creating simulations, our application of metrics and measures renders a selective reality. Not only are we unsure of the complexities of the landscape and the function of ecology in an urbanized world, but also the lens through which we approach these models is constantly shifting. This negotiation, highly embedded in a cycle of simulation and manipulation has incredible agency for how we manage future landscapes.</p>
+<h3>References</h3>
+<ul>
+<li>Bryant, Levi R. 2014. "Onto-Cartography Author Q&amp;A." Speculative Realism Series.</li>
+<li>Evans, Matthew R. et al. 2013. "Do simple models lead to generality in ecology?" Trends in Ecology &amp; Evolution, no. 10: 578-583.</li>
+<li>Ellis, Erle C. 2014. "(Anthropogenic Taxonomies) A Taxonomy of the Human Biosphere." In Projected Ecologies, edited by Chris Reed and Nina-Marie Lister, 168-182. New York: Actar, Harvard Graduate School of Design.</li>
+<li>Scott, James C. 1998. Seeing Like a State: How Certain Schemes to Improve the Human Condition Have Failed. New Haven: Yale University Press.</li>
+<li>Manaugh, Geoff. 2013. Landscape Futures: Instruments, Devices, and Architectural Interventions. New York: Actar.</li>
+<li>Galloway, Alexander and Eugene Thacker. 2004. "Protocol, Control, and Networks." Grey Room, no. 17: 6-29.</li>
+<li>Fisher, Thomas. 2009. "Fracture Critical." Places: Design Observer.</li>
+</ul>
+</div>
+
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&lsaquo;</button>
+  <div id="lbMedia"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&rsaquo;</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <p>Bradley Cantrell | University of Virginia School of Architecture</p>
+</footer>
+
+<script>
+(function(){
+  var heroBg=document.getElementById('heroBg');
+  function parallax(){
+    var y=window.pageYOffset;
+    if(heroBg)heroBg.style.transform='translate3d(0,'+(y*0.35)+'px,0)';
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  var lb=document.getElementById('lightbox');
+  var lbMedia=document.getElementById('lbMedia');
+  var lbCaption=document.getElementById('lbCaption');
+  var lbCount=document.getElementById('lbCounter');
+  var tiles=document.querySelectorAll('.gallery-tile');
+  var bodyImgs=document.querySelectorAll('.project-body img');
+  var items=[],curIdx=0;
+
+  tiles.forEach(function(t){
+    items.push({src: t.dataset.src, type: t.dataset.type});
+  });
+  bodyImgs.forEach(function(img){
+    var fig=img.closest('figure');
+    var cap=fig?(fig.querySelector('figcaption')||{textContent:''}).textContent:'';
+    items.push({src: img.currentSrc||img.src, type:'image', alt:img.alt||'', caption:(cap||'').trim()});
+  });
+
+  tiles.forEach(function(t,i){
+    t.addEventListener('click',function(){
+      curIdx=i; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+  bodyImgs.forEach(function(img,j){
+    img.addEventListener('click',function(){
+      curIdx=tiles.length+j; showLb(curIdx); lb.classList.add('active');
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click',function(){lb.classList.remove('active');});
+  document.getElementById('lbPrev').addEventListener('click',function(){
+    curIdx=(curIdx-1+items.length)%items.length; showLb(curIdx);
+  });
+  document.getElementById('lbNext').addEventListener('click',function(){
+    curIdx=(curIdx+1)%items.length; showLb(curIdx);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('active');});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')lb.classList.remove('active');
+    if(e.key==='ArrowLeft'){curIdx=(curIdx-1+items.length)%items.length;showLb(curIdx);}
+    if(e.key==='ArrowRight'){curIdx=(curIdx+1)%items.length;showLb(curIdx);}
+  });
+
+  function showLb(i){
+    lbMedia.innerHTML='';
+    lbCaption.textContent='';
+    if(items[i].type==='video'){
+      var v=document.createElement('video');
+      v.src=items[i].src; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+      lbMedia.appendChild(v);
+    } else {
+      var img=document.createElement('img');
+      img.src=items[i].src;
+      if(items[i].alt)img.alt=items[i].alt;
+      lbMedia.appendChild(img);
+    }
+    if(items[i].caption)lbCaption.textContent=items[i].caption;
+    lbCount.textContent=(i+1)+' / '+items.length;
+  }
+
+  // Force play all videos (browsers may block autoplay)
+  document.querySelectorAll('.gallery-tile video').forEach(function(v){
+    v.play().catch(function(){});
+  });
+  document.addEventListener('click', function playAll(){
+    document.querySelectorAll('.gallery-tile video').forEach(function(v){
+      if(v.paused) v.play().catch(function(){});
+    });
+  }, {once: true});
+})();
+</script>
+
+</body>
+</html>
