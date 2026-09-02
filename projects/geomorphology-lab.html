@@ -105,31 +105,152 @@
 <div class="project-body">
 <p>At the University of Virginia, the geomorphology modeling research evolves from a focused research instrument into a multi-purpose platform supporting PhD student investigations, speculative advanced studios, and foundational instruction in landscape architecture. A team of academics, including Brian Davis and Xun Liu, collaborate on developing platforms and interfaces for adaptive design protocols that can engage territorial-scale landscape systems.</p>
 <p>The UVA installation utilizes an EmRiver geomorphology table (approximately 4m × 1.5m working area, 0.3m depth) augmented with expanded sensing and actuation capabilities. The methods developed experimentally at REAL are codified, transforming experimental practice into teachable methodology that can be engaged by students and research collaborators across multiple levels of expertise.</p>
-<p>Physical Environment: The model is similar but larger than the one used at REAL and creates fluvial landscapes through the interaction of water flow and synthetic sediment. Particulate matter moves under the force of water through processes that sort and organize particles based on velocity, weight, and size. As water moves across the surface, through channels, and as groundwater below, erosion and deposition organize the sediment to create landscapes of river beds, islands, deltas, beaches, dunes, ripples, and other landforms.</p>
-<p>The synthetic sediment comprises particles of varying sizes and densities that sort according to flow velocity where larger/lighter particles concentrate where velocities are higher, smaller/denser particles deposit where flow slows. This sorting creates visible stratigraphic patterns, with fine-grained material often marking “ancient” deposits overlain by subsequent coarse-grained layers. The self-organizing behavior produces recognizable geomorphological features without requiring precise scaling to any particular prototype landscape.</p>
-<p>Control Parameters:</p>
-<p>Bed slope (lateral and longitudinal) via adjustable supports</p>
-<p>Water level through downstream weir height</p>
-<p>Stream flow via variable-speed pump with programmable hydrographs</p>
-<p>Groundwater flow via secondary pump system</p>
-<p>Sediment input through calibrated media feeders</p>
-<p>Flow visualization through dye injection system</p>
-<p>The programmable hydrographs enable repeatable experimental conditions and the same flow regime can be run multiple times with measured variations in other parameters, supporting systematic investigation of cause and effect relationships while acknowledging the inherent variability of complex systems.</p>
-<p>Sensing Systems: the multi-modal sensing infrastructure captures model behavior at multiple resolutions and temporalities:</p>
-<p>Microsoft Kinect and Kinect 2 mounted overhead captures continuous point clouds of surface topography, with viewing angle of approximately 60 degrees and point resolution of roughly 10mm at the surface</p>
-<p>Ultrasonic banner sensors on stepper-motor-driven rails (controlled via Arduino) measure precise spot elevations and generate section cuts, offering higher accuracy than depth cameras and controllable through predefined gridded sampling patterns</p>
-<p>Image analysis tracks sediment sorting, channel migration, and morphological change through systematic photographic documentation</p>
-<p>Dye visualization reveals flow paths, velocity gradients, and turbulence patterns</p>
-<p>The overlay of sensing modalities produces a continuously updated digital representation of the physical model, not a prediction of external landscapes but a record of the model’s own dynamic behavior available for analysis and feedback control.</p>
-<p>Responsive Prototypes: The lab serves as a testing ground for actuated design elements operating across a gradient of engagement modes. Direct interaction involves physical manipulation of the model environment, placing obstacles, adjusting slopes, introducing sediment. Responsivity involves sensing-driven devices that react to detected conditions. Autonomy involves systems that learn or evolve behaviors through feedback and devices whose response patterns develop through machine learning rather than pre-programmed rules.</p>
+<p>The physical apparatus and its sensing infrastructure extend the one developed at REAL, documented in detail there. The UVA table is larger, running the same synthetic sediment, programmable control parameters, and multi-modal sensing, while adding a second Kinect for higher-resolution point clouds, stepper-motor-driven ultrasonic banner sensors controlled via Arduino for precise section cuts, and image analysis that tracks channel migration alongside sediment sorting. The engagement gradient established at REAL, from direct interaction through sensing-driven responsivity, now extends toward machine-learning autonomy.</p>
+<h2>Research</h2>
+<p>Collaborative research extends the platform toward territorial-scale applications and machine-learning integration. Xun Liu, with Sherwood Design Engineers, developed adaptive design protocols built on the table's sensing and simulation capabilities, while bed tests calibrated the physical apparatus and Stable Diffusion experiments probed how generative models might interface with the model environment.</p>
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image3.jpg" alt="Adaptive design protocol, Xun Liu and Sherwood Design Engineers">
+  <figcaption>Xun Liu + Sherwood Design Engineers, 2023.</figcaption>
+</figure>
+
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media1.mp4"></video>
+    <figcaption>Xun Liu + Sherwood Design Engineers, 2024.</figcaption>
+  </figure>
+</div>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image4.jpg" alt="Simulation, Xun Liu and Sherwood Design Engineers">
+  <figcaption>Xun Liu + Sherwood Design Engineers, 2024.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image5.jpg" alt="Bed test">
+  <figcaption>Bed tests, 2022.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image6.jpg" alt="Bed test">
+  <figcaption>Bed tests, 2022.</figcaption>
+</figure>
+
+<div class="video-grid-2">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media2.mp4"></video>
+    <figcaption>Bed tests, 2022.</figcaption>
+  </figure>
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media3.mp4"></video>
+    <figcaption>Bed tests, 2022.</figcaption>
+  </figure>
+</div>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image7.jpg" alt="Stable Diffusion test">
+  <figcaption>Xun Liu, Stable Diffusion tests, 2023.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image8.jpg" alt="Stable Diffusion test">
+  <figcaption>Xun Liu, Stable Diffusion tests, 2023.</figcaption>
+</figure>
+
+<div class="video-grid-2">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media4.mp4"></video>
+    <figcaption>Xun Liu, Stable Diffusion tests, 2023.</figcaption>
+  </figure>
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media5.mp4"></video>
+    <figcaption>Xun Liu, Stable Diffusion tests, 2023.</figcaption>
+  </figure>
+</div>
+
+<h2>Student Work</h2>
+<p>The platform anchors foundational instruction in LAR 7020. Students test the geomorphology table directly and explore Stable Diffusion streaming as a generative interface, documenting their experiments through iterative image analysis.</p>
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media6.mp4"></video>
+    <figcaption>Student work, LAR 7020, Stable Diffusion streaming tests.</figcaption>
+  </figure>
+</div>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image9.jpg" alt="Student work, LAR 7020">
+  <figcaption>Student work, LAR 7020, Stable Diffusion streaming tests.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image10.jpg" alt="Student work, LAR 7020">
+  <figcaption>Student work, LAR 7020, Stable Diffusion streaming tests.</figcaption>
+</figure>
+
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/media7.mp4"></video>
+    <figcaption>Heald, Fry, Daley, Shatkay, geomorphology table test.</figcaption>
+  </figure>
+</div>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image11.jpg" alt="Geomorphology table test">
+  <figcaption>Heald, Fry, Daley, Shatkay, geomorphology table test.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image12.jpg" alt="Geomorphology table test">
+  <figcaption>Heald, Fry, Daley, Shatkay, geomorphology table test.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/pptx/image13.jpg" alt="Geomorphology table test">
+  <figcaption>Heald, Fry, Daley, Shatkay, geomorphology table test.</figcaption>
+</figure>
+
 <h2>Fundamental Questions</h2>
 <p>The UVA phase consolidates experimental methods into pedagogy, enabling subsequent generations of students and researchers to engage the geomorphology table as a design tool. Beyond technical operation, this step requires articulating theoretical frameworks and situating the work within broader disciplinary and scientific contexts.</p>
 <p>Composite Modeling as Design Method: The UVA lab operates within an emerging practice of composite modeling that creates simultaneous interaction between numerical and physical models.</p>
 <p>From Responsivity to Autonomy: The UVA phase advances integration of machine learning into the responsive framework. A useful analogy distinguishes pre-programmed responsivity from learned adaptation in that early thermostats operate through fixed thresholds (when temperature drops below X, activate heating) and contemporary systems like Nest develop patterns of automation through machine learning, optimizing across multiple variables (user schedule, energy pricing, thermal dynamics of the space). The device develops behaviors unique to the learning algorithm it uses and the context in which it functions.</p>
-<p>The geomorphology lab serves as a testing ground for this transition applied to landscape infrastructure. How might sediment gates develop response patterns through learned optimization rather than pre-programmed rules? How might infrastructure that “continually learns from itself by processing the results of its actions before choosing the next intervention” differ from infrastructure operating through fixed protocols? The gradient from interaction through responsivity to autonomy maps a trajectory of increasing machine agency in landscape systems, a trajectory the lab enables investigating at experimental scale before territorial deployment.</p>
+<p>The geomorphology lab serves as a testing ground for this transition applied to landscape infrastructure. How might sediment gates develop response patterns through learned optimization rather than pre-programmed rules? How might infrastructure that "continually learns from itself by processing the results of its actions before choosing the next intervention" differ from infrastructure operating through fixed protocols? The gradient from interaction through responsivity to autonomy maps a trajectory of increasing machine agency in landscape systems, a trajectory the lab enables investigating at experimental scale before territorial deployment.</p>
 <p>Notation for Indeterminacy: The iterative documentation produced through image analysis and sensing generates new forms of landscape notation. Traditional topographic plans represent terrain as it exists at a moment of survey creating a snapshot extracted from continuous process. The research produces topographic representations that speak to movement and probabilities of change, expressing flux as condition rather than capturing stasis as fact. Areas of stability and areas of active change appear as gradients rather than boundaries; the notation system provides graphic language for landscapes understood as dynamic systems rather than fixed forms.</p>
-<p>Collapsing Design Phases: The research collapses representation, analysis, documentation, and construction into continuous feedback. Sensing systems that document the model’s behavior simultaneously provide data driving responsive interventions. The distinction between observing landscape and acting upon it dissolves into unified cycles of perception and response. This collapse prefigures the “learn-and-adjust” approach that characterizes adaptive management, design as ongoing negotiation with dynamic systems rather than one-time specification of fixed outcomes.</p>
+<p>Collapsing Design Phases: The research collapses representation, analysis, documentation, and construction into continuous feedback. Sensing systems that document the model's behavior simultaneously provide data driving responsive interventions. The distinction between observing landscape and acting upon it dissolves into unified cycles of perception and response. This collapse prefigures the "learn-and-adjust" approach that characterizes adaptive management, design as ongoing negotiation with dynamic systems rather than one-time specification of fixed outcomes.</p>
 <p>The work advances a form of design research holding great promise for engaging large-scale environmental change. Engaging highly dynamic systems and utilizing their energy to compose new terrains provides mechanisms for massive change with minimal input. The feedback between sensing systems, machine intelligence, and landscape modification creates construction methodologies that are tunable, challenging current methods of complex simulation and static infrastructure. The goal is to move beyond known representations and design methods, developing tools necessary to address global conditions characterized by flux and indeterminacy.</p>
+<h2>Model Runs (February 2025)</h2>
+<p>A February 2025 session produced four systematic model runs spanning basic single stream flow, estuary and delta, backwater swamp, and square grid channels. Each run was recorded with the Orbbec depth camera. The color-mapped depth renders below compress the full temporal sequence of each experiment into a single image grid, reading left to right and top to bottom as the run progresses. The first two runs were also captured in handheld phone video.</p>
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/run-01-basic-stream-flow-grid.jpg" alt="Basic single stream flow, Orbbec depth-to-color sequence">
+  <figcaption>Run 01, basic single stream flow. Orbbec depth-to-color renders, sequential scans.</figcaption>
+</figure>
+
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/run-01-basic-stream-flow.mp4"></video>
+    <figcaption>Run 01, basic single stream flow. Phone recording.</figcaption>
+  </figure>
+</div>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/run-02-estuary-delta-grid.jpg" alt="Estuary and delta, Orbbec depth-to-color sequence">
+  <figcaption>Run 02, estuary and delta. Orbbec depth-to-color renders, sequential scans.</figcaption>
+</figure>
+
+<div class="video-grid">
+  <figure>
+    <video controls playsinline preload="metadata" src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/run-02-estuary-delta.mp4"></video>
+    <figcaption>Run 02, estuary and delta. Phone recording.</figcaption>
+  </figure>
+</div>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/run-03-backwater-swamp-grid.jpg" alt="Backwater swamp, Orbbec depth-to-color sequence">
+  <figcaption>Run 03, backwater swamp. Orbbec depth-to-color renders, sequential scans.</figcaption>
+</figure>
+
+<figure class="inline-figure">
+  <img src="https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/geomorphology-lab/run-04-square-grid-channels-grid.jpg" alt="Square grid channels, Orbbec depth-to-color sequence">
+  <figcaption>Run 04, square grid channels. Orbbec depth-to-color renders, sequential scans.</figcaption>
+</figure>
 </div>
 
 
