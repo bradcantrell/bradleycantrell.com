@@ -154,10 +154,14 @@ section {
   display: flex;
   align-items: baseline;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.25rem;
   border-bottom: 1px solid var(--border);
   padding-bottom: 1rem;
 }
+
+/* First content after a page header always starts at the same offset */
+.section-header + * { margin-top: 0 !important; }
+section:has(> .section-header) + * { margin-top: 0 !important; }
 
 .section-count {
   font-size: 0.7rem;
