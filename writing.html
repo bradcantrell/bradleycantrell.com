@@ -17,17 +17,14 @@
       pointer-events: none;
       opacity: 0.35;
     }
-    body > nav,
     body > section,
     body > .book-grid,
     body > .writing-section,
     body > footer {
-      position: relative;
       z-index: 1;
     }
     /* Ensure all page content sits above the backdrop */
     section, .book-grid, .writing-section, footer {
-      position: relative;
       z-index: 1;
     }
   </style>
@@ -101,7 +98,7 @@
     .book-meta { font-size: 0.8rem; color: var(--text-dim); }
     .book-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.75; max-width: none; }
 
-    .writing-section { margin: 2rem 0 0; padding: 0 var(--pad); }
+    .writing-section { margin: 2rem auto 0; max-width: var(--max); padding: 0 var(--pad); }
     .essay-item {
       display: grid;
       grid-template-columns: 1fr auto;
