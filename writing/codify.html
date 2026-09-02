@@ -65,6 +65,21 @@
       .book-hero { grid-template-columns: 1fr; gap: 2rem; }
       .book-cover-large { width: 140px; }
     }
+
+    .spread-gallery {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .spread-gallery figure { margin: 0; }
+    .spread-gallery img { width: 100%; height: auto; display: block; }
+
+    @media print {
+      .btn { display: none !important; }
+      .spread-gallery { grid-template-columns: 1fr; }
+      .spread-gallery figure { page-break-inside: avoid; break-inside: avoid; }
+    }
   </style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "195993823e6241a8867422c9905568b9"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
@@ -130,6 +145,18 @@
   <p class="about-text" style="margin-top: 1.25rem;">
     The edited volume brought together practitioners, researchers, and educators demonstrating computational approaches across contexts, from parametric planting design to algorithmic hydrology to machine learning applications. The diversity of contributions illustrated that computational landscape architecture was not a singular method but an expanding field of approaches.
   </p>
+
+  <!-- The Book -->
+  <div style="margin-top: 4rem;">
+    <h3 style="margin-bottom: 1rem;">The Book</h3>
+    <div class="spread-gallery">
+      <figure><img src="../images/books/codify-spreads/109.jpg" alt="Codify book"></figure>
+      <figure><img src="../images/books/codify-spreads/099.jpg" alt="Codify open spread"></figure>
+      <figure><img src="../images/books/codify-spreads/104.jpg" alt="Codify open spread"></figure>
+      <figure><img src="../images/books/codify-spreads/105.jpg" alt="Codify open spread"></figure>
+      <figure><img src="../images/books/codify-spreads/108.jpg" alt="Codify open spread"></figure>
+    </div>
+  </div>
 
   <!-- Book Chapters -->
   <div style="margin-top: 4rem;">
