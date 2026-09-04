@@ -6,7 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sediment Bridge / Sediment Interface | Bradley Cantrell</title>
+  <title>Ecological Corridor Choreography | Bradley Cantrell</title>
   <link rel="stylesheet" href="../style.css">
   <style>
     .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
@@ -87,56 +87,31 @@
 <body>
 
 <div class="hero">
-  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/sediment-interface/hero.jpg')"></div>
+  <div class="hero-bg" id="heroBg" style="background-image: url('https://pub-5412300b78544df88d0ec66502b6e7f3.r2.dev/projects/woolen-mills-corridor-choreography/hero.jpg')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-year">2026</div>
-    <h2 class="hero-title">Sediment Bridge / Sediment Interface</h2>
-    <div class="hero-type">Design Interface / Research Instrument</div>
+    <h2 class="hero-title">Ecological Corridor Choreography</h2>
+    <div class="hero-type">Live Monitoring Dashboard / Research Instrument</div>
   </div>
 </div>
 
 <div class="meta-bar">
 <div class="meta-bar-top">
 <a href="../work.html" class="back-link">All Projects</a>
-<a href="https://bradcantrell.github.io/sediment-interface/" target="_blank" rel="noopener" style="display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none;">Launch the interface</a>
+<a href="https://ael-woolen-mills.pages.dev/" target="_blank" rel="noopener" style="display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); text-decoration: none;">View the development site</a>
 </div>
   <dl>
-    <div><dt><strong>Location</strong></dt><dd>University of Virginia School of Architecture</dd></div>
-    <div><dt><strong>Medium</strong></dt><dd>Real-time fluvial simulation coupled to high-fidelity computational fluid dynamics</dd></div>
+    <div><dt><strong>Location</strong></dt><dd>Adaptive Environments Lab, University of Virginia</dd></div>
+    <div><dt><strong>Medium</strong></dt><dd>Real-time hydrology, biodiversity, and terrain-scan data fused into a navigable 3D corridor model</dd></div>
   </dl>
 </div>
 
 <div class="project-body">
-<p>As the geomorphology modeling research matured from a physical instrument into a teachable methodology, the question of the model's relationship to precision remained open. The EmRiver table made sediment processes tangible and responsive, but the accuracy of its behavior was bounded by the material and by the resolution of its sensing. The Sediment Bridge extends the composite-modeling trajectory into a purely computational instrument. It is a real-time simulation that feels as immediate as sand and water, coupled to a high-fidelity solver that holds it accountable.</p>
-<p>The project exists in two versions. The Sediment Interface is the public face of the instrument. It runs free in the browser, built to be played with, and it can hand any scene to precise physics as a portable, runnable OpenFOAM case. The Sediment Bridge is the research build, the same interface coupled to a running solver so that validation happens inside the loop rather than after it. Together they carry one argument. A designer should be able to iterate with the freedom of a sketch while remaining answerable to the truth of a model.</p>
-<h2>The Interface</h2>
-<p>A browser-based two-dimensional fluid solver, built on Jos Stam's stable-fluids method, drives the flow field at interactive frame rates. Thousands of sediment particles are advected through the field, and through the competing processes of settling, erosion, and deposition they sort and organize themselves into recognizable landforms. Bars, channels, deltas, and dunes emerge without being drawn.</p>
-<p>The sediment behaves as a population of particles whose fate is governed by local velocity. Where the flow slows, particles settle and accumulate into an aggrading bed. Where it accelerates, the bed is eroded and re-entrained. The accumulated deposition forms a continuous heightfield that rises and falls over time, and the resulting surface is a record of the model's own history, an ancient deposit overlain by subsequent layers, rendered so that the age of every grain is legible as color.</p>
-<p>Control Parameters:</p>
-<ul>
-<li>Bed slope through a drawn longitudinal profile and cross-sections, which together sculpt the initial bedform</li>
-<li>Inflow velocity through a variable-speed analogue of the laboratory pump</li>
-<li>Settling and erosion thresholds and probabilities, which tune how readily sediment is deposited or re-entrained</li>
-<li>Obstacle placement, circles, rectangles, and freeform polygons whose positions, sizes, and rotations can be choreographed over a looping timeline</li>
-<li>Sediment supply rate and grain behavior, adjustable in real time</li>
-<li>Flow and deposition rendering, from velocity color-mapping to age-graded deposition</li>
-</ul>
-<p>Sensing and State: Because the model is computational, its own state is already a continuous record. The aggrading bed, the spot elevations sampled across it, the cross-sections, and the velocity field are all read back from the same state that drives the simulation. There is no separate sensing layer, only the model observing itself. This self-documenting quality is what makes the hand-off to precision possible. The entire scene can be serialized at any instant and given to a more precise model without translation.</p>
-<h2>Sediment Interface</h2>
-<p>The Sediment Interface is the instrument opened to anyone, a static page, no server, no setup, running entirely in the browser. Its defining operation is the export. At any moment the complete scene, bedform, obstacles, inflow, and sediment state, is packaged as a self-contained OpenFOAM case, with mesh dictionaries, boundary and initial conditions, and the geometry of the bed and obstacles as triangulated surfaces. The result downloads as a single file, ready to run with OpenFOAM 14 on any machine.</p>
-<p>This is the interface's answer to the speed-precision problem, offered as a hand-off rather than a live coupling. The real-time model is fast enough to be a sketch, hundreds of variations in minutes, but it achieves that speed by compromising on the physics it describes. The exported case hands that sketch to a solver that makes no such compromise, and the designer runs it when the sketch has earned the expense. Play and rigor stay in contact without being forced to run at the same speed.</p>
-<h2>Sediment Bridge</h2>
-<p>The Sediment Bridge is the research version of the same interface, coupled to an OpenFOAM solver that runs alongside it. Here the defining operation is the bake. At any moment the complete scene is sent to the solver, re-meshed, and solved with a k-epsilon turbulence model. The resulting velocity field returns into the same interface and renders side-by-side against the real-time approximation.</p>
-<p>This is the methodological core of the project. A real-time solver is fast enough to be a sketch, but it achieves that speed by compromising on exactly the physics it purports to describe. A high-fidelity solver is the inverse, precise but slow and brittle, measured in minutes to hours per run, and therefore useless as an instrument of iteration. The Sediment Bridge holds both in a single loop, so that the fast model becomes a hypothesis and the slow model becomes its verification. Play is not abandoned at the threshold of rigor. It is calibrated by it.</p>
-<p>Where the Interface hands the scene to the solver as a portable artifact, the Bridge keeps the two models in continuous conversation. The discrepancy between the fast field and the precise field becomes an object of study in its own right.</p>
-<h2>Fundamental Questions</h2>
-<p>The interface does not resolve the tension between speed and precision. It makes that tension productive.</p>
-<p>Composite Numerical Modeling as Design Method: The geomorphology table established composite modeling as the simultaneous interaction of physical and numerical models. The Sediment Bridge extends the method into a composite of two numerical models, one approximate and immediate, one precise and deferred. The designer works within the fast model, but the fast model is never allowed to forget that it is an approximation. The precise model is always one gesture away.</p>
-<p>Play Validated by Precision: Design interfaces have traditionally forced a choice between fast-but-dumb physics and slow-but-smart analysis. The Sediment Bridge argues that this choice is false. Play is not the opposite of rigor but its precondition, the mechanism by which a designer develops intuition for a dynamic system, and validation is not the end of play but its correction. An interface that allows both to coexist turns iteration into a form of learning, in which each playful variation is checked against physics and the discrepancy itself becomes knowledge.</p>
-<p>Notation for Indeterminacy: Because the model records its own history, it produces representations that express flux as condition rather than stasis as fact. The age-graded deposition marks areas of stability and active change as gradients rather than boundaries. The evolving bed and the shifting velocity field are a graphic language for landscapes understood as dynamic systems rather than fixed forms.</p>
-<p>Collapsing Design Phases: The same state that is drawn, simulated, and observed is the state that is validated by the precise solver. Representation, analysis, and verification collapse into a single continuous loop, dissolving the boundary between making and measuring. Design becomes an ongoing negotiation with a dynamic system rather than a one-time specification of a fixed outcome.</p>
-<p>The Sediment Bridge advances the same argument the geomorphology table made in material form. Engaging highly dynamic systems, and using their energy to compose new terrains, provides mechanisms for massive change with minimal input. What the table demonstrated with sand and water, the interface demonstrates with code. The most powerful design tools remain answerable to the physics they describe, even as they invite us to play.</p>
+<p>A river corridor is never finished being measured. Gauges log discharge every fifteen minutes, birders and naturalists log sightings whenever they happen to look up, and a terrain scan captures only the sliver of ground someone actually walked with a scanner that week. The Ecological Corridor Choreography Tool treats that scattershot record as the point rather than the problem. It is a live dashboard for a reach of the Rivanna River at its confluence with Moore's Creek, built to hold live hydrology, community-reported biodiversity, and a slowly accumulating library of terrain scans in one place, navigable in both space and time.</p>
+<p>The instrument is built around a simple premise: a real site is not one continuous survey, it is many small, independently dated observations that need to aggregate into a coherent whole rather than pretend to be a single, complete map. A USGS baseline DEM gives the corridor its terrain, toggleable on and off as new elevation models eventually replace it. Individual scans, whatever scale a single field capture can actually cover, a tree, a bank slope, a rock outcrop, register against that baseline and accumulate over time rather than overwrite each other. Species observations pulled from eBird and iNaturalist appear as dots hovering just above the real ground surface at their true location, cached weekly so the public APIs that supply them are never hammered into a rate limit. A time-range control lets the whole assembly be scrubbed back to any moment, so the corridor's record of itself can be read as a history rather than a snapshot.</p>
+<p>Underneath the dashboard sits a standing set of choreography rules, thresholds that watch the live gauge feed and flag when a geomorphically significant flow event is underway, or when it has receded long enough that a post-event scan should be requested before the evidence washes away. The tool does not just display the river. It watches it, and it tells the people who study it when watching more closely is warranted.</p>
+<p>This is a working research instrument, not a finished product. It is public to demonstrate method: sites reveal themselves through accumulation, not through a single authoritative capture.</p>
 </div>
 
 
