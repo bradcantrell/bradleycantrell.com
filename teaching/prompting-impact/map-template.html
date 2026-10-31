@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Systems — Map Template (Knoxville)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#02070e;font-family:ui-monospace,Menlo,monospace;color:#cceeff}
+  #map{position:absolute;inset:0}
+  #panel{
+    position:absolute;top:12px;right:12px;z-index:1000;max-width:280px;
+    background:rgba(2,7,14,0.85);border:1px solid rgba(102,204,255,0.3);border-radius:6px;
+    padding:10px 12px;font-size:12px;line-height:1.5;backdrop-filter:blur(6px)
+  }
+  #panel h1{font-size:12px;margin:0 0 6px;color:#66ccff;text-transform:uppercase;letter-spacing:.1em}
+  #panel .kv{color:#5f7d99}
+  #panel .kv b{color:#cceeff;font-weight:500}
+  #panel .warn{color:#ffb000}
+  .legend{position:absolute;bottom:20px;left:12px;z-index:1000;font-size:11px;color:#5f7d99;background:rgba(2,7,14,0.8);padding:8px 10px;border:1px solid rgba(102,204,255,0.2);border-radius:6px}
+  .legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <h1>Living Systems · live read</h1>
+  <div id="status" class="warn">fetching…</div>
+</div>
+<div class="legend">
+  <span class="dot" style="background:#66ccff"></span> gauge &nbsp;
+  <span class="dot" style="background:#00e5a0"></span> species &nbsp;
+  <span class="dot" style="background:#ffb000"></span> air quality
+</div>
+<script>
+// ============================================================
+// SITE — change these for your parcel
+// ============================================================
+const SITE = { name: "Tennessee River at Knoxville", lat: 35.9606, lng: -83.9205, zoom: 12 };
+// USGS gauge site id (Tennessee River at Knoxville). Find creek gauges:
+// https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=TN&parameterCd=00060
+const USGS_SITE = "03532000";
+const INAT_RADIUS_KM = 25;   // iNaturalist search radius
+const OPENAQ_RADIUS_M = 25000; // OpenAQ station radius (meters)
+
+const map = L.map("map").setView([SITE.lat, SITE.lng], SITE.zoom);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+  attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: "abcd", maxZoom: 19
+}).addTo(map);
+const status = document.getElementById("status");
+
+function say(k, v){ status.innerHTML += `<div class="kv">${k} <b>${v}</b></div>`; }
+
+// --- USGS streamflow (real-time) -----------------------------
+fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${USGS_SITE}&parameterCd=00060,00065`)
+  .then(r => r.json())
+  .then(d => {
+    const ts = d.value.timeSeries;
+    if (!ts || !ts.length) { say("gauge", "no data"); return; }
+    const name = ts[0].sourceInfo.siteName;
+    const flow = ts.find(t => t.variable.variableCode[0].value === "00060");
+    const gage = ts.find(t => t.variable.variableCode[0].value === "00065");
+    const fv = flow ? flow.values[0].value[0].value : "—";
+    const gv = gage ? gage.values[0].value[0].value : "—";
+    const fmeta = flow.variable.unit.unitCode || "";
+    const gmeta = gage.variable.unit.unitCode || "";
+    say("gauge", `${name}`);
+    say("flow", `${fv} ${fmeta}`);
+    say("gage ht", `${gv} ${gmeta}`);
+    const [lon, lat] = [ts[0].sourceInfo.geoLocation.geogLocation.longitude, ts[0].sourceInfo.geoLocation.geogLocation.latitude];
+    L.circleMarker([lat, lon], { radius: 7, color: "#66ccff", fillColor: "#66ccff", fillOpacity: 0.8 })
+      .addTo(map).bindPopup(`<b>${name}</b><br>flow ${fv} ${fmeta}`);
+  }).catch(e => say("gauge", "error"));
+
+// --- Open-Meteo current weather ------------------------------
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${SITE.lat}&longitude=${SITE.lng}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`)
+  .then(r => r.json())
+  .then(d => {
+    const c = d.current;
+    say("temp", `${c.temperature_2m}°F`);
+    say("humidity", `${c.relative_humidity_2m}%`);
+    say("wind", `${c.wind_speed_10m} mph`);
+  }).catch(() => say("weather", "error"));
+
+// --- OpenAQ air-quality stations -----------------------------
+fetch(`https://api.openaq.org/v3/locations?coordinates=${SITE.lat},${SITE.lng}&radius=${OPENAQ_RADIUS_M}&limit=15`)
+  .then(r => r.json())
+  .then(d => {
+    (d.results || []).forEach(s => {
+      const c = s.coordinates || {};
+      if (c.latitude == null) return;
+      L.circleMarker([c.latitude, c.longitude], { radius: 5, color: "#ffb000", fillColor: "#ffb000", fillOpacity: 0.6 })
+        .addTo(map).bindPopup(`<b>${s.name || "AQ station"}</b>`);
+    });
+    say("air stations", `${(d.results||[]).length}`);
+  }).catch(() => say("air", "error"));
+
+// --- iNaturalist recent species observations ------------------
+fetch(`https://api.inaturalist.org/v1/observations?lat=${SITE.lat}&lng=${SITE.lng}&radius=${INAT_RADIUS_KM}&per_page=40&order=desc&order_by=observed_on`)
+  .then(r => r.json())
+  .then(d => {
+    let n = 0;
+    (d.results || []).forEach(o => {
+      if (!o.geojson || !o.geojson.coordinates) return;
+      const [lng, lat] = o.geojson.coordinates;
+      const taxon = o.taxon && o.taxon.preferred_common_name || o.taxon && o.taxon.name || "unknown";
+      L.circleMarker([lat, lng], { radius: 3, color: "#00e5a0", fillColor: "#00e5a0", fillOpacity: 0.7 })
+        .addTo(map).bindPopup(`<b>${taxon}</b><br>${o.observed_on || ""}`);
+      n++;
+    });
+    say("species obs", `${n}`);
+  }).catch(() => say("species", "error"));
+
+// ============================================================
+// TODO for your site:
+//  - change SITE + USGS_SITE + radii
+//  - add NWS alerts (api.weather.gov) as polygons
+//  - add a static baseline layer (land cover / elevation) if wanted
+// ============================================================
+</script>
+</body>
+</html>
