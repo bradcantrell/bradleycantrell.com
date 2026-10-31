@@ -69,7 +69,7 @@ fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${USGS_SITE}&pa
     const [lon, lat] = [ts[0].sourceInfo.geoLocation.geogLocation.longitude, ts[0].sourceInfo.geoLocation.geogLocation.latitude];
     L.circleMarker([lat, lon], { radius: 7, color: "#66ccff", fillColor: "#66ccff", fillOpacity: 0.8 })
       .addTo(map).bindPopup(`<b>${name}</b><br>flow ${fv} ${fmeta}`);
-  }).catch(e => say("gauge", "error"));
+  }).catch(e => say("gauge", "unavailable in browser (USGS may rate-limit) — read the value at waterdata.usgs.gov and enter it by hand"));
 
 // --- Open-Meteo current weather ------------------------------
 fetch(`https://api.open-meteo.com/v1/forecast?latitude=${SITE.lat}&longitude=${SITE.lng}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`)
