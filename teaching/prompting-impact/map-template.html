@@ -36,10 +36,11 @@
 // ============================================================
 // SITE — change these for your parcel
 // ============================================================
-const SITE = { name: "Holston River near Knoxville", lat: 36.0156, lng: -83.8316, zoom: 12 };
-// USGS gauge site id (Holston River near Knoxville). Find creek gauges:
-// https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=TN&parameterCd=00060
-const USGS_SITE = "03495500";
+const SITE = { name: "Tennessee River at Knoxville", lat: 35.9458, lng: -83.9467, zoom: 12 };
+// NWPS live gauge (Tennessee River at Knoxville) — stage + flow + forecast + flood stages.
+// NOTE: the downtown creeks (Third Creek, First Creek) are UNGAUGED — for those, drive the
+// assessment with a design storm (Atlas 14 rainfall → runoff → inundation), not a live gauge.
+const NWPS_GAUGE = "knot1";
 const INAT_RADIUS_KM = 25;   // iNaturalist search radius
 
 const map = L.map("map").setView([SITE.lat, SITE.lng], SITE.zoom);
@@ -50,26 +51,21 @@ const status = document.getElementById("status");
 
 function say(k, v){ status.innerHTML += `<div class="kv">${k} <b>${v}</b></div>`; }
 
-// --- USGS streamflow (real-time) -----------------------------
-fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${USGS_SITE}&parameterCd=00060,00065`)
+// --- NWPS river stage + flow (real-time + forecast) -----------
+fetch(`https://api.water.noaa.gov/nwps/v1/gauges/${NWPS_GAUGE}`)
   .then(r => r.json())
   .then(d => {
-    const ts = d.value.timeSeries;
-    if (!ts || !ts.length) { say("gauge", "no data"); return; }
-    const name = ts[0].sourceInfo.siteName;
-    const flow = ts.find(t => t.variable.variableCode[0].value === "00060");
-    const gage = ts.find(t => t.variable.variableCode[0].value === "00065");
-    const fv = flow ? flow.values[0].value[0].value : "—";
-    const gv = gage ? gage.values[0].value[0].value : "—";
-    const fmeta = flow.variable.unit.unitCode || "";
-    const gmeta = gage.variable.unit.unitCode || "";
-    say("gauge", `${name}`);
-    say("flow", `${fv} ${fmeta}`);
-    say("gage ht", `${gv} ${gmeta}`);
-    const [lon, lat] = [ts[0].sourceInfo.geoLocation.geogLocation.longitude, ts[0].sourceInfo.geoLocation.geogLocation.latitude];
-    L.circleMarker([lat, lon], { radius: 7, color: "#66ccff", fillColor: "#66ccff", fillOpacity: 0.8 })
-      .addTo(map).bindPopup(`<b>${name}</b><br>flow ${fv} ${fmeta}`);
-  }).catch(e => say("gauge", "unavailable in browser (USGS may rate-limit) — read the value at waterdata.usgs.gov and enter it by hand"));
+    const obs = d.status.observed;
+    const fc = d.status.forecast;
+    const cat = (d.flood && d.flood.categories) || {};
+    say("gauge", d.name);
+    say("stage", `${obs.primary} ${obs.primaryUnit} · ${obs.floodCategory.replace(/_/g, ' ')}`);
+    say("flow", `${obs.secondary} ${obs.secondaryUnit}`);
+    say("forecast", `${fc.primary} ${fc.primaryUnit} by ${(fc.validTime || '').slice(0, 16)}`);
+    say("flood stages", `action ${cat.action && cat.action.stage} · minor ${cat.minor && cat.minor.stage} · major ${cat.major && cat.major.stage} ft`);
+    L.circleMarker([d.latitude, d.longitude], { radius: 7, color: "#66ccff", fillColor: "#66ccff", fillOpacity: 0.8 })
+      .addTo(map).bindPopup(`<b>${d.name}</b><br>stage ${obs.primary} ${obs.primaryUnit}<br>flow ${obs.secondary} ${obs.secondaryUnit}`);
+  }).catch(e => say("gauge", "unavailable — open water.noaa.gov and read the stage by hand"));
 
 // --- Open-Meteo current weather ------------------------------
 fetch(`https://api.open-meteo.com/v1/forecast?latitude=${SITE.lat}&longitude=${SITE.lng}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`)

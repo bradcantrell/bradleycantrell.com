@@ -4,12 +4,12 @@ Seven sites across Knoxville. Pick one. Each has a hook (the ecological question
 
 ## 1. Tennessee River at Knoxville (Fort Loudoun Lake)
 - **Question:** how does a dammed river behave as a managed system — and what does "real-time" even mean for a reservoir?
-- **Data:** USGS streamflow (Holston River nr Knoxville `03495500`), TVA lake levels / releases, NWS flood stage.
+- **Data:** NWPS live stage + flow + forecast (`knot1`), TVA lake levels / releases, NWS flood stages.
 - **Hook:** the river is both a natural system and a piece of infrastructure; the gage tells you what it's doing *right now*.
 
 ## 2. Third Creek
 - **Question:** how does an urban creek flood, and what does the impervious surface upstream do to it?
-- **Data:** USGS gauge (if present), NWS, NLCD land cover, weather.
+- **Data:** no live gauge (ungauged) — use rainfall (Open-Meteo/ACIS) + a design storm (NOAA Atlas 14 → runoff → inundation); NLCD land cover, weather.
 - **Hook:** the classic urban-watershed assessment — runoff, flash, water quality.
 
 ## 3. The Urban Wilderness (South Knoxville)
@@ -29,7 +29,7 @@ Seven sites across Knoxville. Pick one. Each has a hook (the ecological question
 
 ## 6. First Creek (daylighting candidate)
 - **Question:** what would it mean to bring a buried creek back to the surface?
-- **Data:** hydrology, land cover, elevation; then a *proposed intervention* (your design move).
+- **Data:** ungauged — design storm (NOAA Atlas 14 → runoff → inundation); land cover, elevation; then a *proposed intervention* (your design move).
 - **Hook:** the "what-if" — read the system, then propose the restoration.
 
 ## 7. Oak Ridge / DOE Reservation

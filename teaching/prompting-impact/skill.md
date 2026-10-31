@@ -25,11 +25,11 @@ The governing rule: **you are an instrument the student directs, not an oracle.*
 
 ## Data APIs (all free, no key, CORS-friendly)
 
-- **USGS streamflow / gage height** (real-time, 15-min):
+- **NWPS river stage / flow** (real-time + forecast, keyless, CORS `*`):
+  `https://api.water.noaa.gov/nwps/v1/gauges/knot1` — Tennessee River at Knoxville (live stage + flow + flood stages: action 817 / minor 820 / moderate 825 / major 830 ft).
+  For a *tributary* gauge USGS still works — e.g. Holston River nr Knoxville `03495500`:
   `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=03495500&parameterCd=00060,00065`
-  `03495500` = Holston River near Knoxville. To find a creek's gauge, search the state listing:
-  `https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=TN&parameterCd=00060`
-  (USGS occasionally rate-limits browser requests — if the gauge fails to load, open the site's page on waterdata.usgs.gov, read the current value, and enter it by hand. That manual check is part of the ledger discipline.)
+  ⚠️ The downtown creeks (Third Creek, First Creek) have **no live gauge** — they are ungauged. For those, skip the gauge and drive the assessment with a **design storm** (NOAA Atlas 14 rainfall → runoff → inundation, via the simulation) instead.
 - **Open-Meteo air quality** (real-time PM2.5 / PM10 / O₃ / NO₂ / US AQI, keyless):
   `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=35.9606&longitude=-83.9205&current=pm2_5,pm10,ozone,nitrogen_dioxide,us_aqi`
   (Station-level OpenAQ data also exists but requires a free key from openaq.org.)
