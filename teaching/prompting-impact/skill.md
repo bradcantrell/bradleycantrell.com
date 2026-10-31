@@ -26,8 +26,8 @@ The governing rule: **you are an instrument the student directs, not an oracle.*
 ## Data APIs (all free, no key, CORS-friendly)
 
 - **USGS streamflow / gage height** (real-time, 15-min):
-  `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=03532000&parameterCd=00060,00065`
-  `03532000` = Tennessee River at Knoxville. To find a creek's gauge, search the state listing:
+  `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=03495500&parameterCd=00060,00065`
+  `03495500` = Holston River near Knoxville. To find a creek's gauge, search the state listing:
   `https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=TN&parameterCd=00060`
 - **Open-Meteo air quality** (real-time PM2.5 / PM10 / O₃ / NO₂ / US AQI, keyless):
   `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=35.9606&longitude=-83.9205&current=pm2_5,pm10,ozone,nitrogen_dioxide,us_aqi`

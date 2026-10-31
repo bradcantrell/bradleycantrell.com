@@ -4,7 +4,7 @@ Seven sites across Knoxville. Pick one. Each has a hook (the ecological question
 
 ## 1. Tennessee River at Knoxville (Fort Loudoun Lake)
 - **Question:** how does a dammed river behave as a managed system — and what does "real-time" even mean for a reservoir?
-- **Data:** USGS streamflow + gage height (`03532000`), TVA lake levels / releases, NWS flood stage.
+- **Data:** USGS streamflow (Holston River nr Knoxville `03495500`), TVA lake levels / releases, NWS flood stage.
 - **Hook:** the river is both a natural system and a piece of infrastructure; the gage tells you what it's doing *right now*.
 
 ## 2. Third Creek
