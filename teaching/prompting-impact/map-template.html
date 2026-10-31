@@ -44,8 +44,11 @@ const NWPS_GAUGE = "knot1";
 const INAT_RADIUS_KM = 25;   // iNaturalist search radius
 
 const map = L.map("map").setView([SITE.lat, SITE.lng], SITE.zoom);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-  attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: "abcd", maxZoom: 19
+L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+  attribution: 'Powered by Esri', maxZoom: 16
+}).addTo(map);
+L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+  maxZoom: 16
 }).addTo(map);
 const status = document.getElementById("status");
 
