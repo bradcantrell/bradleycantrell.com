@@ -30,8 +30,7 @@
 </div>
 <div class="legend">
   <span class="dot" style="background:#66ccff"></span> gauge &nbsp;
-  <span class="dot" style="background:#00e5a0"></span> species &nbsp;
-  <span class="dot" style="background:#ffb000"></span> air quality
+  <span class="dot" style="background:#00e5a0"></span> species
 </div>
 <script>
 // ============================================================
@@ -42,7 +41,6 @@ const SITE = { name: "Tennessee River at Knoxville", lat: 35.9606, lng: -83.9205
 // https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=TN&parameterCd=00060
 const USGS_SITE = "03532000";
 const INAT_RADIUS_KM = 25;   // iNaturalist search radius
-const OPENAQ_RADIUS_M = 25000; // OpenAQ station radius (meters)
 
 const map = L.map("map").setView([SITE.lat, SITE.lng], SITE.zoom);
 L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
@@ -83,18 +81,15 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${SITE.lat}&longitude=${S
     say("wind", `${c.wind_speed_10m} mph`);
   }).catch(() => say("weather", "error"));
 
-// --- OpenAQ air-quality stations -----------------------------
-fetch(`https://api.openaq.org/v3/locations?coordinates=${SITE.lat},${SITE.lng}&radius=${OPENAQ_RADIUS_M}&limit=15`)
+// --- Open-Meteo air quality (keyless) ------------------------
+fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${SITE.lat}&longitude=${SITE.lng}&current=pm2_5,ozone,nitrogen_dioxide,us_aqi`)
   .then(r => r.json())
   .then(d => {
-    (d.results || []).forEach(s => {
-      const c = s.coordinates || {};
-      if (c.latitude == null) return;
-      L.circleMarker([c.latitude, c.longitude], { radius: 5, color: "#ffb000", fillColor: "#ffb000", fillOpacity: 0.6 })
-        .addTo(map).bindPopup(`<b>${s.name || "AQ station"}</b>`);
-    });
-    say("air stations", `${(d.results||[]).length}`);
-  }).catch(() => say("air", "error"));
+    const c = d.current;
+    say("PM2.5", `${c.pm2_5} µg/m³`);
+    say("ozone", `${c.ozone} µg/m³`);
+    say("US AQI", `${c.us_aqi}`);
+  }).catch(() => say("air quality", "error"));
 
 // --- iNaturalist recent species observations ------------------
 fetch(`https://api.inaturalist.org/v1/observations?lat=${SITE.lat}&lng=${SITE.lng}&radius=${INAT_RADIUS_KM}&per_page=40&order=desc&order_by=observed_on`)
@@ -117,6 +112,8 @@ fetch(`https://api.inaturalist.org/v1/observations?lat=${SITE.lat}&lng=${SITE.ln
 //  - change SITE + USGS_SITE + radii
 //  - add NWS alerts (api.weather.gov) as polygons
 //  - add a static baseline layer (land cover / elevation) if wanted
+//  - want station-level air quality markers? OpenAQ has them but
+//    needs a free API key (openaq.org) — see skill.md
 // ============================================================
 </script>
 </body>

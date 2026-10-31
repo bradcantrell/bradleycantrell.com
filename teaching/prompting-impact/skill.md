@@ -29,9 +29,9 @@ The governing rule: **you are an instrument the student directs, not an oracle.*
   `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=03532000&parameterCd=00060,00065`
   `03532000` = Tennessee River at Knoxville. To find a creek's gauge, search the state listing:
   `https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=TN&parameterCd=00060`
-- **OpenAQ air quality** (real-time PM2.5 / O₃ / NO₂):
-  `https://api.openaq.org/v3/locations?coordinates=35.9606,-83.9205&radius=25000&limit=20`
-  then per-location measurements via `https://api.openaq.org/v3/locations/{id}/measurements?period_name=hour1`.
+- **Open-Meteo air quality** (real-time PM2.5 / PM10 / O₃ / NO₂ / US AQI, keyless):
+  `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=35.9606&longitude=-83.9205&current=pm2_5,pm10,ozone,nitrogen_dioxide,us_aqi`
+  (Station-level OpenAQ data also exists but requires a free key from openaq.org.)
 - **Open-Meteo weather** (current + forecast):
   `https://api.open-meteo.com/v1/forecast?latitude=35.9606&longitude=-83.9205&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`
 - **iNaturalist species observations** (real-time, radius in km):
