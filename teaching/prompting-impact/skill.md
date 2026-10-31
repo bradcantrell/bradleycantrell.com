@@ -1,11 +1,17 @@
+# Ecological Assessment — Knoxville Living Systems
+
+**Claude skill.** To use, paste the body of this file into Claude (chat) and tell it you are working from this skill. If you use Claude Code instead, save this as `SKILL.md` and prepend the frontmatter below:
+
+```
 ---
 name: ecological-assessment
 description: Produce a live environmental web map + a defensible ecological assessment of a Knoxville living system using real-time data.
 ---
+```
 
-# Ecological Assessment — Knoxville Living Systems
+---
 
-Use this skill to help a student conduct an **ecological assessment** of a Knoxville site. The deliverable is two things: (1) a **live web map** and (2) a **written assessment** that is honest about what is verified versus what is merely asserted.
+Use this skill to conduct an **ecological assessment** of a Knoxville site. The deliverable is two things: (1) a **live web map** and (2) a **written assessment** that is honest about what is verified versus what is merely asserted.
 
 The governing rule: **you are an instrument the student directs, not an oracle.** You help assemble, structure, and reason — but every claim about the real world must be traceable to a real source, and anything that is not must be labeled as machine-asserted.
 
