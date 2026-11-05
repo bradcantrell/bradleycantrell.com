@@ -21,13 +21,11 @@
 
 <header class="hero">
   <div class="term-window">
+    <canvas id="gol" class="gol" aria-hidden="true"></canvas>
     <div class="term-bar">
-      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-      <span class="term-title">bradley@prompting-impact — ~/living-systems — 80×24</span>
+      <span class="term-title">bradley@prompting-impact — ~/living-systems</span>
     </div>
     <div class="term-body">
-      <p class="line cmd"><span class="prompt">❯</span> <span class="cmdtext">ssh bradley@prompting-impact.utk.edu</span></p>
-      <p class="line out">Connected · ecological intelligence session initialized</p>
       <p class="line cmd"><span class="prompt">❯</span> <span class="cmdtext">whoami</span></p>
       <span class="term-kicker">Prompting Impact · Module C · Fall 2026 · Gensler × UT CoAD</span>
       <h1 class="term-h1">Living Systems &amp;<br><span class="em">Ecological Intelligence</span></h1>
@@ -46,8 +44,8 @@
   <section class="term-section" id="briefing">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat briefing.md</span><span class="meta">the premise</span></div>
     <p>AI supporting <strong>environmentally responsive design</strong> by interpreting <em>climate</em>, <em>material</em>, <em>landscape</em>, and <em>building-performance</em> as interconnected systems. This module moves <strong>beyond generalized sustainability</strong> toward <strong>precise environmental consequence</strong>.</p>
-    <p>No generated imagery. Instead, students conduct an <strong>ecological assessment</strong> of a Knoxville living system — reading it with <em>live environmental data</em>, mapping it, and auditing what the machine actually knows versus what it merely asserts.</p>
-    <p>Possible outputs: <span class="tag">ecological systems maps</span><span class="tag">scenario studies</span><span class="tag">material response diagrams</span><span class="tag">short design proposals</span></p>
+    <p>Eighteen students each take one <strong>2 km × 4 km reach</strong> of the Tennessee River — a corridor of quads aligned end-to-end through downtown Knoxville. Each reads their reach as a living system with <em>live environmental data</em>, maps it, and audits what the machine actually knows versus what it merely asserts.</p>
+    <p>No generated imagery. The output: <span class="tag">ecological systems maps</span><span class="tag">scenario studies</span><span class="tag">material response diagrams</span><span class="tag">short design proposals</span></p>
   </section>
 
   <section class="term-section" id="lectures">
@@ -75,39 +73,28 @@
     </div>
   </section>
 
+  <section class="term-section" id="corridor">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">open corridor.map</span><span class="meta">the river corridor</span></div>
+    <p><strong>21 quads</strong> — 18 assigned, 3 held in reserve — each <strong>2 km along the river × 4 km into the land</strong>, aligned end-to-end to a single straight axis through downtown Knoxville. Every student owns one quad and hosts their own live map; this synthetic map references them all. Find your reach in the left-hand roster.</p>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="https://prompting-impact.pages.dev/" target="_blank" rel="noopener">prompting-impact.pages.dev</a> — synthetic corridor map (Cloudflare Pages)</div></div></div>
+  </section>
+
   <section class="term-section" id="assessment">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat assessment.md</span><span class="meta">the deliverable</span></div>
-    <p>The deliverable is an <strong>ecological assessment / audit</strong> of one Knoxville site, built around a <strong>live web map</strong>.</p>
-    <p>Students read a living system with real-time data — streamflow, air quality, weather, reservoir levels, species observations — then map it and argue what it means. The machine's role is explicit: it is a <em>scaffold that must be audited</em>.</p>
+    <p>The deliverable is an <strong>ecological assessment</strong> of your reach of the Tennessee River, built around a <strong>live web map</strong>.</p>
+    <p>You read your quad with real-time data — river stage and flow, weather, air quality, species observations — then map it and argue what it means. The machine's role is explicit: it is a <em>scaffold that must be audited</em>.</p>
     <div class="ledger">
       <div class="h">live-verified</div><div class="h">machine-asserted</div>
-      <div class="c live">USGS streamflow · OpenAQ air quality · iNaturalist observations · NWS alerts</div>
+      <div class="c live">NWPS river stage · Open-Meteo air quality · iNaturalist observations · NWS alerts</div>
       <div class="c">everything the LLM claims without a source — held to account before it is trusted</div>
       <div class="c">what the data actually shows</div>
       <div class="c">the reasoning the student must verify, correct, or reject</div>
     </div>
   </section>
 
-  <section class="term-section" id="sites">
-    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">ls sites/</span><span class="meta">knoxville ground</span></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">Tennessee River at Knoxville</div><div class="hook">reservoir dynamics, TVA releases, flood stage</div><div class="data">USGS · TVA</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">Third Creek</div><div class="hook">urban flooding, water quality, impervious runoff</div><div class="data">USGS · NWS · land cover</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">The Urban Wilderness (South Knoxville)</div><div class="hook">reclaimed land, succession, biodiversity</div><div class="data">iNaturalist · canopy</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">Downtown / UT Campus</div><div class="hook">urban heat island, air quality</div><div class="data">air quality · weather · canopy</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">Sharp's Ridge / House Mountain</div><div class="hook">Smokies-foothills forest edge, biodiversity</div><div class="data">iNaturalist · land cover</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">First Creek (daylighting candidate)</div><div class="hook">a restoration "what-if"</div><div class="data">hydrology · proposal</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name">Oak Ridge / DOE Reservation</div><div class="hook">environmental legacy, monitoring, remediation — a neo-wild</div><div class="data">air · water</div></div></div>
-  </section>
-
-  <section class="term-section" id="corridor">
-    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">open corridor.map</span><span class="meta">the synthetic map</span></div>
-    <p>The <strong>live corridor map</strong> — 25 sites, each a 2 km × 4 km quad aligned end-to-end along the Tennessee River, centered on downtown Knoxville. Every student owns one quad and hosts their own web map; this is the shared map that will reference them all.</p>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="https://prompting-impact.pages.dev/" target="_blank" rel="noopener">prompting-impact.pages.dev</a> — synthetic corridor map (Cloudflare Pages)</div></div></div>
-  </section>
-
   <section class="term-section" id="skill">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat skill.md</span><span class="meta">the instrument, codified</span></div>
-    <p>A Claude <strong>skill</strong> ships with the module — a reusable recipe students hand to the model so it produces the live map and structures the assessment. It encodes: the workflow (<em>site → question → live data → map → assessment</em>), the exact API endpoints with Knoxville examples, a Leaflet template, and the <strong>verification ledger</strong> that separates live-verified from machine-asserted.</p>
+    <p>A Claude <strong>skill</strong> ships with the module — a reusable recipe students hand to the model so it produces the live map and structures the assessment. It encodes: the workflow (<em>reach → question → live data → map → assessment</em>), the exact API endpoints, a Leaflet template, and the <strong>verification ledger</strong> that separates live-verified from machine-asserted.</p>
     <p><span class="tag">SKILL.md</span><span class="tag">leaflet template</span><span class="tag">data recipes</span><span class="tag">assessment structure</span><span class="tag">disclosure</span></p>
   </section>
 
@@ -115,16 +102,71 @@
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">ls resources/</span><span class="meta">downloads</span></div>
     <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="skill.md">skill.md</a> — the Claude skill (workflow + APIs + verification ledger)</div></div></div>
     <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="map-template.html">map-template.html</a> — working Leaflet map template</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="sites.md">sites.md</a> — the seven Knoxville sites</div></div></div>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="sites.md">sites.md</a> — the Tennessee River corridor</div></div></div>
     <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="assessment.md">assessment.md</a> — the assessment template</div></div></div>
   </section>
 
   <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
 
-  <div class="footer">
-    <p><span class="prompt">❯</span> transparency is part of the design ethic — disclose the source, the tool, and the extent of assistance.</p>
-  </div>
-
 </main>
+
+<script>
+// Conway's Game of Life — a slow, fading cellular automaton behind the title
+(function () {
+  const cv = document.getElementById('gol');
+  const ctx = cv.getContext('2d');
+  const CELL = 13;
+  let cols, rows, grid, alpha;
+
+  function resize() {
+    const w = cv.parentElement.clientWidth, h = cv.parentElement.clientHeight;
+    cv.width = w; cv.height = h;
+    cols = Math.max(1, Math.floor(w / CELL));
+    rows = Math.max(1, Math.floor(h / CELL));
+    grid = new Uint8Array(cols * rows);
+    alpha = new Float32Array(cols * rows);
+    for (let i = 0; i < cols * rows; i++) {
+      grid[i] = Math.random() < 0.20 ? 1 : 0;
+      alpha[i] = grid[i];
+    }
+  }
+
+  function step() {
+    const next = new Uint8Array(cols * rows);
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        let n = 0;
+        for (let dy = -1; dy <= 1; dy++) {
+          for (let dx = -1; dx <= 1; dx++) {
+            if (!dx && !dy) continue;
+            n += grid[((y + dy + rows) % rows) * cols + ((x + dx + cols) % cols)];
+          }
+        }
+        const i = y * cols + x;
+        next[i] = (grid[i] && (n === 2 || n === 3)) || (!grid[i] && n === 3) ? 1 : 0;
+      }
+    }
+    grid = next;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    for (let i = 0; i < cols * rows; i++) {
+      alpha[i] += (grid[i] - alpha[i]) * 0.045;
+      if (alpha[i] > 0.015) {
+        const x = (i % cols) * CELL, y = Math.floor(i / cols) * CELL;
+        ctx.fillStyle = 'rgba(102,204,255,' + (alpha[i] * 0.20).toFixed(3) + ')';
+        ctx.fillRect(x + 1, y + 1, CELL - 2, CELL - 2);
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  setInterval(step, 2400);
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>

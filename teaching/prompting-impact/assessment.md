@@ -2,14 +2,14 @@
 
 Work through this top to bottom. Every factual claim must land in the verification ledger.
 
-## 1. Site + question
+## 1. Reach + question
 
-- **Site:** (name, coordinates, why you chose it)
+- **Reach:** (your quad on the Tennessee River corridor — number, coordinates, why you chose it)
 - **Question:** (the one ecological question you are actually asking)
 
 ## 2. Baseline
 
-What the site is *now* — land cover, hydrology, built form, current conditions. Cite the sources (live data, land cover, your own observation).
+What the reach is *now* — land cover, hydrology, built form, current conditions. Cite the sources (live data, land cover, your own observation).
 
 ## 3. Indicators
 

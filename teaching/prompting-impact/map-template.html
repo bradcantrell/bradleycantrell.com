@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Living Systems — Map Template (Knoxville)</title>
+<title>Living Systems — Map Template (Tennessee River)</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -36,10 +36,8 @@
 // ============================================================
 // SITE — change these for your parcel
 // ============================================================
-const SITE = { name: "Tennessee River at Knoxville", lat: 35.9458, lng: -83.9467, zoom: 12 };
+const SITE = { name: "your quad — Tennessee River corridor", lat: 35.9606, lng: -83.9205, zoom: 12 };
 // NWPS live gauge (Tennessee River at Knoxville) — stage + flow + forecast + flood stages.
-// NOTE: the downtown creeks (Third Creek, First Creek) are UNGAUGED — for those, drive the
-// assessment with a design storm (Atlas 14 rainfall → runoff → inundation), not a live gauge.
 const NWPS_GAUGE = "knot1";
 const INAT_RADIUS_KM = 25;   // iNaturalist search radius
 
@@ -107,12 +105,10 @@ fetch(`https://api.inaturalist.org/v1/observations?lat=${SITE.lat}&lng=${SITE.ln
   }).catch(() => say("species", "error"));
 
 // ============================================================
-// TODO for your site:
-//  - change SITE + USGS_SITE + radii
+// TODO for your quad:
+//  - set SITE to your quad's centre (find it on prompting-impact.pages.dev)
 //  - add NWS alerts (api.weather.gov) as polygons
 //  - add a static baseline layer (land cover / elevation) if wanted
-//  - want station-level air quality markers? OpenAQ has them but
-//    needs a free API key (openaq.org) — see skill.md
 // ============================================================
 </script>
 </body>
