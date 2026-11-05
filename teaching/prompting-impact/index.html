@@ -46,9 +46,9 @@
 
   <section class="term-section" id="briefing">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat briefing.md</span><span class="meta">the premise</span></div>
-    <p>AI supporting <strong>environmentally responsive design</strong> by interpreting <em>climate</em>, <em>material</em>, <em>landscape</em>, and <em>building-performance</em> as interconnected systems. This module moves <strong>beyond generalized sustainability</strong> toward <strong>precise environmental consequence</strong>.</p>
-    <p>Eighteen students each take one <strong>2 km × 4 km reach</strong> of the Tennessee River — a corridor of quads aligned end-to-end through downtown Knoxville. Each reads their reach as a living system with <em>live environmental data</em>, maps it, and audits what the machine actually knows versus what it merely asserts.</p>
-    <p>No generated imagery. The output: <span class="tag">ecological systems maps</span><span class="tag">scenario studies</span><span class="tag">material response diagrams</span><span class="tag">short design proposals</span></p>
+    <p>A model that can answer anything is only as good as the question put to it. This module teaches designers to prompt. Eighteen students each direct a machine to read one reach of the Tennessee River, then hold every claim it makes against live data.</p>
+    <p>Each student owns one quad in a corridor that runs through downtown Knoxville. They read it with their own eyes, then with the machine, then with river gauges, weather, air quality, and species observations. They learn what the model <em>knows</em> and what it only <em>asserts</em>.</p>
+    <p>No generated imagery. <span class="tag">ecological systems maps</span><span class="tag">scenario studies</span><span class="tag">material response diagrams</span><span class="tag">short design proposals</span></p>
   </section>
 
   <section class="term-section" id="lectures">
@@ -57,39 +57,39 @@
       <div class="num">01</div>
       <div>
         <div class="t">The Instrument</div>
-        <div class="d">Computation — now an LLM — is not an oracle but an <em>instrument the designer directs</em>. Knowledge of a living system is co-produced by human + instrument + landscape. <strong>Adaptive epistemology.</strong></div>
+        <div class="d">Computation is now a large language model. It is an <em>instrument the designer directs</em>, not an oracle. Knowledge of a living system is co-produced by the human, the instrument, and the landscape. <strong>Adaptive epistemology.</strong></div>
       </div>
     </div>
     <div class="lecture">
       <div class="num">02</div>
       <div>
         <div class="t">Reading the Living System</div>
-        <div class="d">Environmental intelligence — how you read climate, hydrology, ecology, and material as <em>interconnected dynamics</em>, not isolated metrics. The assessment core.</div>
+        <div class="d">Environmental intelligence. You read climate, hydrology, ecology, and material as one <em>interconnected dynamic</em> rather than separate metrics. The assessment core.</div>
       </div>
     </div>
     <div class="lecture">
       <div class="num">03</div>
       <div>
         <div class="t">The Neo-Wilds &amp; Precise Consequence</div>
-        <div class="d">The difference between greenwash and a defensible, specific ecological outcome — a system that behaves like neither nature nor city.</div>
+        <div class="d">The difference between greenwash and a specific, defensible ecological outcome. A system with no precedent in nature or the city.</div>
       </div>
     </div>
   </section>
 
   <section class="term-section" id="corridor">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">open corridor.map</span><span class="meta">the river corridor</span></div>
-    <p><strong>21 quads</strong> — 18 assigned, 3 held in reserve — each <strong>2 km along the river × 4 km into the land</strong>, aligned end-to-end to a single straight axis through downtown Knoxville. Every student owns one quad and hosts their own live map; this synthetic map references them all. Find your reach in the left-hand roster.</p>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="https://prompting-impact.pages.dev/" target="_blank" rel="noopener">prompting-impact.pages.dev</a> — synthetic corridor map (Cloudflare Pages)</div></div></div>
+    <p><strong>21 quads.</strong> 18 assigned, 3 held in reserve. Each runs <strong>2 km along the river and 4 km into the land</strong>, aligned end to end on a single straight axis through downtown Knoxville. Every student owns one quad and hosts their own live map. This synthetic map references them all. Find your reach in the left-hand roster.</p>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="https://prompting-impact.pages.dev/" target="_blank" rel="noopener">prompting-impact.pages.dev</a>, synthetic corridor map (Cloudflare Pages)</div></div></div>
   </section>
 
   <section class="term-section" id="assessment">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat assessment.md</span><span class="meta">the deliverable</span></div>
     <p>The deliverable is an <strong>ecological assessment</strong> of your reach of the Tennessee River, built around a <strong>live web map</strong>.</p>
-    <p>You read your quad with real-time data — river stage and flow, weather, air quality, species observations — then map it and argue what it means. The machine's role is explicit: it is a <em>scaffold that must be audited</em>.</p>
+    <p>You read your quad with real-time data. River stage and flow, weather, air quality, species observations. Then you map it and argue what it means. The machine's role is explicit. It is a <em>scaffold that must be audited</em>.</p>
     <div class="ledger">
       <div class="h">live-verified</div><div class="h">machine-asserted</div>
       <div class="c live">NWPS river stage · Open-Meteo air quality · iNaturalist observations · NWS alerts</div>
-      <div class="c">everything the LLM claims without a source — held to account before it is trusted</div>
+      <div class="c">everything the LLM claims without a source, held to account before it is trusted</div>
       <div class="c">what the data actually shows</div>
       <div class="c">the reasoning the student must verify, correct, or reject</div>
     </div>
@@ -97,16 +97,16 @@
 
   <section class="term-section" id="skill">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat skill.md</span><span class="meta">the instrument, codified</span></div>
-    <p>A Claude <strong>skill</strong> ships with the module — a reusable recipe students hand to the model so it produces the live map and structures the assessment. It encodes: the workflow (<em>reach → question → live data → map → assessment</em>), the exact API endpoints, a Leaflet template, and the <strong>verification ledger</strong> that separates live-verified from machine-asserted.</p>
+    <p>A Claude <strong>skill</strong> ships with the module. A reusable recipe students hand to the model so it produces the live map and structures the assessment. It encodes the workflow from reach to question to live data to map to assessment. It carries the exact API endpoints, a Leaflet template, and the <strong>verification ledger</strong> that separates live-verified from machine-asserted.</p>
     <p><span class="tag">SKILL.md</span><span class="tag">leaflet template</span><span class="tag">data recipes</span><span class="tag">assessment structure</span><span class="tag">disclosure</span></p>
   </section>
 
   <section class="term-section" id="resources">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">ls resources/</span><span class="meta">downloads</span></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="skill.md">skill.md</a> — the Claude skill (workflow + APIs + verification ledger)</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="map-template.html">map-template.html</a> — working Leaflet map template</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="sites.md">sites.md</a> — the Tennessee River corridor</div></div></div>
-    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="assessment.md">assessment.md</a> — the assessment template</div></div></div>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="skill.md">skill.md</a>, the Claude skill (workflow, APIs, verification ledger)</div></div></div>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="map-template.html">map-template.html</a>, working Leaflet map template</div></div></div>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="sites.md">sites.md</a>, the Tennessee River corridor</div></div></div>
+    <div class="site"><div class="glyph">▸</div><div><div class="name"><a href="assessment.md">assessment.md</a>, the assessment template</div></div></div>
   </section>
 
   <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
