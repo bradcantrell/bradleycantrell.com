@@ -98,19 +98,21 @@ The table of sources you used, a short list of the ones you left aside, and one 
 
 The table, one row per source you actually used.
 
+| source | tier | method | resolution | latency | what it can answer | what it cannot |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+
 Then, below the table, the sources you looked at and left aside, one line each saying why. Deciding not to use a source is part of being critical about it.
 
 | left aside | why |
 |---|---|
 | | |
 
-| source | tier | method | resolution | latency | what it can answer | what it cannot |
-|---|---|---|---|---|---|---|
-| | | | | | | |
-
 The table carries method, resolution, latency and fitness. Authority is the tier column. Stated error belongs in the prose, where it needs a sentence rather than a cell.
 
 Then five short sections.
+
+The [example on site 19](https://prompting-impact.pages.dev/example/site-19/source-assessment.md) shows the standard, on a spare reach no one was assigned. Your sources, claims and disagreements should look nothing like its.
 
 **What I built and why.** The question, the layers, and the dashboard. One paragraph.
 
