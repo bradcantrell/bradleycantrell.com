@@ -173,7 +173,8 @@
     { <span class="k">"name"</span>: <span class="s">"flood model"</span>, <span class="k">"kind"</span>: <span class="s">"modeled"</span>,  <span class="k">"source"</span>: <span class="s">"Open-Meteo flood"</span> },
     { <span class="k">"name"</span>: <span class="s">"species"</span>,     <span class="k">"kind"</span>: <span class="s">"observed"</span>, <span class="k">"source"</span>: <span class="s">"iNaturalist"</span> },
     { <span class="k">"name"</span>: <span class="s">"1920s photos"</span>, <span class="k">"kind"</span>: <span class="s">"archival"</span>, <span class="k">"source"</span>: <span class="s">"McClung"</span> },
-    { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"traced from 2024 imagery"</span> }
+    { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"traced from 2024 imagery"</span>,
+      <span class="k">"file"</span>: <span class="s">"data/bank-condition.geojson"</span> }
   ]
 }</pre>
     <p><strong>Do not type this file by hand.</strong> Every coordinate in it should arrive from a file the model can read, never from a number you copied off a screen. Paste the example above, paste your KML from Session 2, and ask for <em>meta.json</em>. The only value you supply yourself is the URL you are hosting at.</p>
@@ -192,6 +193,7 @@
   one object per layer, each with name, kind and source
   kind is one of measured, modeled, observed, archival, mine, asserted
   if you cannot cite a source for a layer, use asserted
+  for my own layer, if it is a GeoJSON file, add file, its path inside my site, such as data/bank-condition.geojson
 
   <span class="cm">mine to fill in</span>
   site number    NN
