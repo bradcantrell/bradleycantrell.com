@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 3 · The Score · Prompting Impact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+<style>
+/* scoped to this page so style.css is not cache-busted for every other page */
+.a2-table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin:1.1rem 0 0.4rem;font-size:0.78rem}
+.a2-table th{text-align:left;padding:0.55rem 0.8rem;background:rgba(102,204,255,0.06);color:var(--accent);
+  font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--line)}
+.a2-table td{padding:0.55rem 0.8rem;color:var(--muted);border-bottom:1px solid var(--line);vertical-align:top}
+.a2-table td:first-child{color:var(--ink);white-space:nowrap}
+.a2-table tr:last-child td{border-bottom:none}
+.a2-pre{background:rgba(102,204,255,0.04);border:1px solid var(--line);border-left:2px solid var(--accent);
+  padding:0.9rem 1.1rem;margin:1rem 0;overflow-x:auto;font-size:0.74rem;line-height:1.75;
+  color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.a2-pre .k{color:var(--accent)}
+.a2-pre .s{color:var(--warn)}
+.a2-pre .cm{color:#4d6478}
+.a2-warn{border-left:2px solid var(--warn);padding:0.15rem 0 0.15rem 1.1rem;margin:1.4rem 0;
+  color:var(--muted);font-size:0.83rem}
+.a2-warn b{color:var(--ink);font-weight:500}
+.a2-feed{border-left:2px solid var(--accent);padding:0.15rem 0 0.15rem 1.1rem;margin:1.25rem 0;
+  color:var(--muted);font-size:0.82rem}
+.a2-feed b{color:var(--accent);font-weight:500;font-size:0.64rem;letter-spacing:0.12em;
+  text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.a2-feed code{color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:0.76rem}
+</style>
+</head>
+<body>
+<div class="gridbg"></div>
+<div class="scanlines"></div>
+
+<nav class="site-nav">
+  <span class="brand">prompting-impact</span>
+  <a href="../../teaching.html">← teaching</a>
+  <a href="index.html">~/living-systems</a>
+  <a href="assignment-1.html">assignment-1</a>
+  <a href="assignment-2.html">assignment-2</a>
+  <a href="assignment-3.html" class="active">assignment-3</a>
+</nav>
+
+<header class="hero">
+  <div class="term-window">
+    <div class="term-bar">
+      <span class="term-title">bradley@prompting-impact · ~/assignment-3</span>
+    </div>
+    <div class="term-body">
+      <span class="term-kicker">Prompting Impact · Module D · Assignment 3</span>
+      <h1 class="term-h1">The Score</h1>
+      <div class="term-datum">
+        <span>Due Monday, November 16 · 2200 EST</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="term-section" id="brief">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat brief.md</span><span class="meta">the premise</span></div>
+    <p>Assignment 1 read your reach. Assignment 2 sensed it, and taught you to keep the disagreements between your sources on the page instead of settling them. Both were about knowing. This one is about daring something.</p>
+    <p>You will make a proposition for your 2 km, and it will not be a plan. A plan draws the finished thing and asks the river to hold still while it is built. This river has never held still. Lawrence Halprin wrote scores instead, instructions that set up a performance and leave room for the performers to do something no one drew in advance. Your performers are the water, the sediment, the species, the TVA release schedule and the people who use this bank. You are writing the rules they play by.</p>
+    <p><strong>Assignment 3 writes the score, has the machine perform it, and connects it to your neighbors.</strong> Eighteen scores on one river make a single corridor proposition, and the corridor map will show where they reinforce each other and where they collide.</p>
+  </section>
+
+  <section class="term-section" id="step0">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 0 · the operator</span><span class="meta">the machine as co-creator</span></div>
+    <p>In the first two assignments the model was an instrument you audited. Here it is also a collaborator that generates options, more and stranger than you would draw yourself, including images. You still direct it, and you still audit every contribution. The ledger does not stop at the data. It runs through the design.</p>
+    <p>The three rules from Assignment 2 still hold. Paste the file. Ask for the file, not the values. Make it show its source. Two more apply here.</p>
+    <div class="lecture"><div class="num">4</div><div><div class="t">Ask for the version you would never draw</div><div class="d">The first answer a model gives is the most probable one, which means it is the most generic one. Ask for the strange version on purpose, then cultivate one piece of it. A cut to the stool of a coppiced tree is a provocation, not an instruction, and the tree answers with something no one specified. Use the model the same way.</div></div></div>
+    <div class="lecture"><div class="num">5</div><div><div class="t">Every image carries its prompt</div><div class="d">Keep the prompt history for every image you use. What you asked, what came back, what you changed and why. An image without its history cannot go in the ledger, and an image that is not in the ledger cannot go on the map.</div></div></div>
+  </section>
+
+  <section class="term-section" id="step1">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 1 · write the score</span><span class="meta">three to five rules</span></div>
+    <p>Start from your one question and from what Assignment 2 taught you about this reach, especially the disagreement you found between your own layer and an instrument. That gap is often the best place to put a rule, because it is where your reach is doing something no single source describes.</p>
+    <p>Write one line of <strong>starting conditions</strong>, what you change on day one. Then write three to five <strong>rules</strong>. Each rule has three parts.</p>
+    <div class="lecture"><div class="num">1</div><div><div class="t">A trigger</div><div class="d">A condition one of your instruments can read. <em>When knot1 stage passes 820 ft.</em> <em>When the first frost date in the Open-Meteo forecast arrives.</em> <em>When iNaturalist records a heron within the quad.</em> If no instrument on your panel can see the trigger, name the one you would add and mark the rule speculative.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">An operation</div><div class="d">What happens. Cut, plant, open, release, close a path, let a bank erode, stop mowing, do nothing on purpose. Operations, not outcomes. The rule says what you do. The river decides what it becomes.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">A place</div><div class="d">Where on your quad the operation happens, drawn on the map as a point, line or area. Every rule has a geometry, and every geometry stays inside your bounds.</div></div></div>
+    <div class="a2-warn"><b>A score is not a plan in disguise.</b> If your rules only make sense when they produce one particular drawing, you have written a plan and called it a score. Test each rule by asking what it would do in a year you did not expect. A good rule still means something in that year.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste your one question, your <code>meta.json</code> and the disagreement paragraph from your source assessment. Ask for ten candidate rules, each with a trigger your panel can read, and ask for three of them to be ones you would not have thought of. Keep the ones you can defend. Rewrite them in your own words.</div>
+  </section>
+
+  <section class="term-section" id="step2">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 2 · perform it</span><span class="meta">three conditions, three futures</span></div>
+    <p>A score is only known by its performances. Have the model perform yours three times, under three conditions, and make one future from each.</p>
+    <table class="a2-table">
+      <thead><tr><th>condition</th><th>what it asks</th></tr></thead>
+      <tbody>
+        <tr><td>an ordinary year</td><td>The river as the gauge usually reports it, regulated, seasonal, unremarkable. What do your rules do when nothing dramatic happens?</td></tr>
+        <tr><td>a flood year</td><td>knot1 at major stage, 830 ft. Which rules fire, in what order, and what does the bank look like when the water goes down?</td></tr>
+        <tr><td>fifty years untended</td><td>Your starting conditions, then no one comes back. What does the reach build on its own from what you set in motion?</td></tr>
+      </tbody>
+    </table>
+    <p>Each future is two things together. <strong>An image</strong> of the reach in that condition, generated or drawn. And <strong>the operation that produced it</strong>, a section, a plan diagram or a sequence showing which rules fired and what they did. Mark what in each future is grounded in your data and what is speculation you are choosing to make.</p>
+    <div class="a2-warn"><b>No image without its operation.</b> Image models are very good at a particular picture, lush and sunlit and vaguely sustainable, that could be anywhere. That picture says nothing about this reach. An image earns its place only when it sits beside the drawing of the rules that made it, and when something in it could only be true of your 2 km.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste your score and the condition, and ask it to narrate the performance before it draws anything. Which rule fires first, what the water does, what moves, what grows. Then ask for the image from that narration, not from your title. Ask for the version that surprises you, and keep the prompt history.</div>
+  </section>
+
+  <section class="term-section" id="step3">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 3 · choose</span><span class="meta">a hypothesis in spatial form</span></div>
+    <p>Now judge your own performances. Which future would you cultivate, and which would you design against? Answer three questions in a few sentences each.</p>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Resist, recover or transform</div><div class="d">Is your score built to hold the reach as it is, to bring it back quickly after disturbance, or to let it become something new? Say which, and say what that costs.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">What would tell you</div><div class="d">Which instrument, on your panel or one you would add, would show which of your three futures is actually unfolding, and how long it would take to see it. This is what makes the proposition a hypothesis rather than a wish.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">Fit for whom</div><div class="d">Who and what does this reach serve under your score, and who or what bears the cost? A heron, a mussel bed, a person fishing from the bank, the dam operator, the neighbor downstream.</div></div></div>
+  </section>
+
+  <section class="term-section" id="step4">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · the corridor</span><span class="meta">gives downstream, asks upstream</span></div>
+    <p>Your reach does not end at its bounds. Water, sediment, seeds, fish and people all cross the line. Site numbers run with the river, so the reach above yours is the number before yours and the reach below is the number after. Site 1 asks the Holston and the French Broad. Site 18 gives to the river beyond the corridor.</p>
+    <p>Write two lines.</p>
+    <div class="lecture"><div class="num">↓</div><div><div class="t">Gives downstream</div><div class="d">What your score sends to the next reach. Sediment released in a flood year. Cooler water from a shaded bank. A seed source. A trail that continues. Be specific about what and when.</div></div></div>
+    <div class="lecture"><div class="num">↑</div><div><div class="t">Asks upstream</div><div class="d">What your score needs from the reach above. Clear water, or sediment. A corridor for a species to arrive along. A bank that does not send debris at the wrong moment.</div></div></div>
+    <p>After Thursday's outcomes page goes up, open your upstream neighbor's map and read what is there. You do not have to agree with them. On the corridor map, every place where one reach gives what the next one asks for will show as a link, and every place where they collide will show as a conflict. A conflict is not a mistake. It is the corridor telling us something no single reach could.</p>
+  </section>
+
+  <section class="term-section" id="step5">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 5 · map it and export it</span><span class="meta">proposition.geojson</span></div>
+    <p>Add the proposition to the map you built in Assignment 2, at the same URL. One new layer toggle, <em>proposition</em>, shows your rules as geometry on the quad. A viewer shows your three futures, each image beside its operation drawing. Keep your Assignment 2 layers. The proposition sits on top of what you learned, it does not replace it.</p>
+    <p>Then export the proposition as one file in a shared shape. This is how eighteen scores become one corridor.</p>
+<pre class="a2-pre">{
+  <span class="k">"type"</span>: <span class="s">"FeatureCollection"</span>,
+  <span class="k">"properties"</span>: {
+    <span class="k">"site"</span>: 7,
+    <span class="k">"title"</span>: <span class="s">"a short name for your score"</span>,
+    <span class="k">"hosted_url"</span>: <span class="s">"https://site-07-river-bend.netlify.app/"</span>,
+    <span class="k">"starting_conditions"</span>: <span class="s">"what you change on day one"</span>,
+    <span class="k">"stance"</span>: <span class="s">"transform"</span>,
+    <span class="k">"cultivates"</span>: <span class="s">"flood year"</span>,
+    <span class="k">"tells_me"</span>: <span class="s">"the instrument and reading that would show which future is unfolding"</span>,
+    <span class="k">"gives_downstream"</span>: <span class="s">"sediment released from the bank cuts in flood years"</span>,
+    <span class="k">"asks_upstream"</span>: <span class="s">"no new riprap on the bank just upstream, so sediment keeps arriving"</span>,
+    <span class="k">"futures"</span>: [
+      { <span class="k">"condition"</span>: <span class="s">"ordinary year"</span>, <span class="k">"image"</span>: <span class="s">"https://…/future-1.jpg"</span>, <span class="k">"operation"</span>: <span class="s">"https://…/future-1-section.png"</span>,
+        <span class="k">"grounded"</span>: <span class="s">"what in it comes from your data"</span>, <span class="k">"speculative"</span>: <span class="s">"what you are choosing to imagine"</span> },
+      { <span class="k">"condition"</span>: <span class="s">"flood year"</span>, <span class="cm">…</span> },
+      { <span class="k">"condition"</span>: <span class="s">"fifty years untended"</span>, <span class="cm">…</span> }
+    ]
+  },
+  <span class="k">"features"</span>: [
+    { <span class="k">"type"</span>: <span class="s">"Feature"</span>,
+      <span class="k">"geometry"</span>: { <span class="k">"type"</span>: <span class="s">"Polygon"</span>, <span class="k">"coordinates"</span>: [ <span class="cm">[[lon, lat], …]</span> ] },
+      <span class="k">"properties"</span>: { <span class="k">"rule"</span>: 1, <span class="k">"trigger"</span>: <span class="s">"knot1 stage above 820 ft"</span>, <span class="k">"instrument"</span>: <span class="s">"NWPS knot1"</span>,
+                      <span class="k">"operation"</span>: <span class="s">"open three cuts in the bank"</span>, <span class="k">"kind"</span>: <span class="s">"speculative"</span> } }
+  ]
+}</pre>
+    <p><strong>Do not type this file by hand.</strong> Every coordinate comes from the geometry you drew on your map, exported as GeoJSON, or from your <em>meta.json</em> bounds. Paste the example above, your <em>meta.json</em>, the GeoJSON of your drawn rules and your written score, and ask for <em>proposition.geojson</em>.</p>
+<pre class="a2-pre">Read the files pasted below and write proposition.geojson for my corridor map.
+
+  <span class="cm">rules</span>
+  follow the example's shape exactly, same keys, same nesting
+  every coordinate pair is [longitude, latitude]
+  take geometry only from my drawn GeoJSON, never invent or move a point
+  every feature must fall inside the bounds in my meta.json
+  polygons are closed, the first point repeated as the last
+  one feature per rule, numbered to match my written score
+  kind is grounded or speculative, and if a trigger has no instrument on my panel it is speculative
+  stance is one of resist, recover, transform
+  copy my words for every text field, do not improve them
+  image and operation are the https URLs of files on my hosted site
+
+  <span class="cm">files</span>
+  &lt;meta.json&gt;
+  &lt;my drawn rules as GeoJSON&gt;
+  &lt;my written score, three futures, choice and corridor lines&gt;</pre>
+    <p>Then check three things before you trust it. Open the file in <em>geojson.io</em> and see that your rules land on your quad and nowhere else. Open each image URL in a private window and see that it loads. Read every text field and see that the words are yours.</p>
+    <div class="a2-warn"><b>Images live on your site.</b> Put each image in your repo or folder, no wider than 1600 pixels, and use its full https URL in the file. An image that only exists in a chat window will not be on the corridor map.</div>
+  </section>
+
+  <section class="term-section" id="submit">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat submit.md</span><span class="meta">three things</span></div>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Your map, updated</div><div class="d">The same public https URL as Assignment 2, now with the proposition layer and the three futures. Site number in the path, no name on the page.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">proposition.geojson</div><div class="d">Uploaded to your folder in <strong>Session 3</strong> in the shared Drive. Get the coordinates, the kind values and the image URLs right. This is what the corridor map reads.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">score.md</div><div class="d">Uploaded to the same folder. Your starting conditions and rules. The three futures, each with what is grounded and what is speculative. Your three answers from step 3. Your two corridor lines. Then a short ledger of the machine's contributions, the prompts behind each image and what you kept, changed or threw away.</div></div></div>
+    <p><strong>Due Monday, November 16 · 2200 EST.</strong></p>
+  </section>
+
+  <section class="term-section" id="hard">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat hard.md</span><span class="meta">the trap</span></div>
+    <p>The temptation is to fall in love with one beautiful future and write the rules backwards from it. That is a plan, and a plan is the thing this river has spent a century refusing.</p>
+    <p>The harder and better work is to write rules you believe in and then be genuinely curious about what they do, including the futures you did not want. A score that only ever produces the picture you hoped for has not been performed. It has been rendered.</p>
+    <p>Be daring in the rules and honest in the ledger. The creativity is in what you set in motion. The rigor is in saying, every time, which parts of the future the data can hold up and which parts are yours.</p>
+  </section>
+
+  <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
+
+</main>
+</body>
+</html>
