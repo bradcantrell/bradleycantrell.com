@@ -69,6 +69,11 @@
 
 <div id="side">
   <div class="panel">
+    <h2>Question</h2>
+    <div class="note" id="q-text" style="color:var(--ink);font-size:13px"></div>
+    <div class="note" id="q-wrong"></div>
+  </div>
+  <div class="panel">
     <h2>Instruments</h2>
     <div id="instruments"><div class="row"><span class="k">status</span><span class="v">fetching</span></div></div>
     <div class="note">Each reading shows the tier of the source that produced it. Tier 1 is measured by an accountable agency. Tier 2 is modeled. Tier 3 is volunteered.</div>
@@ -123,6 +128,8 @@ const SITE = {
   // The flood model is queried here, not at your center (see the data sources page).
   channel: [35.905, -83.966],
   zoom: 13,
+  question: "your one question from step 1",
+  wrongIf: "the measurement that would prove you wrong",
   gauge: "knot1"         // NWPS gauge id
 };
 
@@ -151,6 +158,8 @@ const box = { south: Math.min(...SITE.corners.map(c=>c[0])), north: Math.max(...
 // Leaflet draws your quad and every dot inside an svg too, and a bare rule can make them vanish with no error.
 
 const $ = id => document.getElementById(id);
+$('q-text').textContent = SITE.question;
+$('q-wrong').textContent = 'Wrong if: ' + SITE.wrongIf;
 $('q-site').textContent = SITE.number ? ('site-' + String(SITE.number).padStart(2,'0')) : 'unset';
 $('q-c').textContent = SITE.lat.toFixed(4) + ', ' + SITE.lng.toFixed(4);
 
