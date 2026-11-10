@@ -62,6 +62,10 @@
     <p>Stage, discharge, forecast and flood categories for the Tennessee River at Knoxville. Action 817 ft, minor 820, moderate 825, major 830. It is one point in the water, so say how far it is from your quad.</p></div>
 <pre class="a2-pre">https://api.water.noaa.gov/nwps/v1/gauges/knot1</pre>
 
+    <div class="src"><h3>NWS alerts<span class="kind">measured · tier 1</span></h3>
+    <p>Active watches and warnings for Tennessee, as polygons and text. Most days it is empty for your quad, and an empty answer is a real reading.</p></div>
+<pre class="a2-pre">https://api.weather.gov/alerts/active?area=TN</pre>
+
     <div class="src"><h3>Open-Meteo flood model<span class="kind">modeled · tier 2</span></h3>
     <p>Daily river discharge from GloFAS, a global model that works on cells about 5 km across. Query it at your <strong>channel point</strong>, not your center. Off the channel it can return almost nothing (0.37 m³/s at one quad center, against about 270 on the channel). The response gives the latitude and longitude of the cell it answered for. Record that pair. The API returns no outline for the cell, so mark its center and label it as the model's cell, never as your quad.</p></div>
 <pre class="a2-pre">https://flood-api.open-meteo.com/v1/flood?latitude={chan_lat}&longitude={chan_lon}&daily=river_discharge&forecast_days=1</pre>

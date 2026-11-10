@@ -17,35 +17,32 @@ The governing rule: **you are an instrument the student directs, not an oracle.*
 
 ## Your reach
 
-Find your quad on the synthetic corridor map (**prompting-impact.pages.dev**) — your name is in the left-hand roster. Each quad is **2 km along the river × 4 km into the land**, centered on the Tennessee River.
+Your quad is in your KMZ, in your Session 1 folder. A KMZ is a zipped KML: rename a copy to `.zip` and take out `doc.kml`, or save it as KML from Google Earth. Paste or attach that KML, never the KMZ. Each quad is **2 km along the river × 4 km into the land**, and it is **rotated to follow the river**, so its bounding box is about twice its area. Take the four corners and the center point from the KML, never from memory. You can see every quad on the corridor map at **prompting-impact.pages.dev**.
 
 ## Workflow
 
 1. **Reach + question** — locate your quad and state the ecological question you are asking about it.
-2. **Live data** — fetch real-time data from the APIs below.
+2. **Live data** — fetch every source on the data sources page into `data/`. Anything you did not just fetch is machine-asserted.
 3. **Map** — build a single-file Leaflet web map that plots the data.
 4. **Assessment** — for Assignment 2 this is the source assessment in `source-assessment.md`: one table and five short sections.
 5. **Verification ledger** — separate every claim into *live-verified* vs *machine-asserted*.
 
-## Data APIs (all free, no key, CORS-friendly)
+## Data sources
 
-- **NWPS river stage / flow** (real-time + forecast, keyless, CORS `*`):
-  `https://api.water.noaa.gov/nwps/v1/gauges/knot1` — Tennessee River at Knoxville (live stage + flow + flood stages: action 817 / minor 820 / moderate 825 / major 830 ft).
-- **Open-Meteo air quality** (real-time PM2.5 / PM10 / O₃ / NO₂ / US AQI, keyless):
-  `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=35.9606&longitude=-83.9205&current=pm2_5,pm10,ozone,nitrogen_dioxide,us_aqi`
-- **Open-Meteo weather** (current + forecast):
-  `https://api.open-meteo.com/v1/forecast?latitude=35.9606&longitude=-83.9205&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`
-- **iNaturalist species observations** (real-time, radius in km):
-  `https://api.inaturalist.org/v1/observations?lat=35.9606&lng=-83.9205&radius=25&per_page=50&order=desc&order_by=observed_on`
-- **NWS forecasts + alerts**:
-  `https://api.weather.gov/points/35.9606,-83.9205` → follow the returned `forecast` and `forecastGridData` links.
-- **Baseline (static, current not live)** — NLCD land cover, USGS 3DEP elevation, FEMA flood zones. Use these to anchor the map; the live layers animate it.
+Every endpoint, with a working query and the trap in each one, is on the data sources page:
+**https://bradleycantrell.com/teaching/prompting-impact/data-sources.html**
 
-Replace the coordinates with your quad's center. Radius and `per_page` are tunable.
+Fetch from that page, not from memory. All of the sources are keyless. Five rules catch most of the mistakes.
+
+- **The river gauge is NWPS `knot1`, not USGS.** The USGS Tennessee River sites in Knox County serve no live data. Flood stages are action 817, minor 820, moderate 825, major 830 ft. It is one point in the water, so say how far it is from the quad.
+- **Query the flood model at a point on the main channel inside the quad, not at the center.** It works on cells about 5 km across, and a center off the river can return almost nothing. Record the cell the response names, and never label that cell as the quad.
+- **Query species by the quad's bounding box, then keep only points inside the four corners.** A radius search reaches far past the quad.
+- **Mind units and sentinels.** The gauge reports feet. 3DEP reports meters unless you ask for feet, so ask. A FEMA value of −9999 means no value, not an elevation.
+- **Show FEMA flood zones with the image export.** Feature queries over a whole quad often time out.
 
 ## Map template
 
-Start from `map-template.html` (Leaflet + fetch, Esri dark basemap, centered on Knoxville). Edit the center to your quad, the data endpoints, and add site-specific layers. Keep everything `https` and keyless so it works from a plain browser.
+For Assignment 2, start from `dashboard-starter.html`. It already reads the gauge, the weather, air quality, the flood model at a channel point and species clipped to the quad, and it shows the measured against modeled gap without picking a winner. Fill its config block from the KML, then add one layer at a time and say which lines changed. `map-template.html` is the simpler map from the first week. Keep everything `https` and keyless so it works from a plain browser.
 
 ## Assessment structure
 
