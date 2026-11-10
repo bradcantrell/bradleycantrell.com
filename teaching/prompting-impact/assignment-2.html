@@ -176,7 +176,7 @@
     { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"traced from 2024 imagery"</span> }
   ]
 }</pre>
-    <p><strong>Do not type this file by hand.</strong> Every coordinate in it should arrive from a file the model can read, never from a number you copied off a screen. Paste the example above, paste the KML from your KMZ, and ask for <em>meta.json</em>. The only value you supply yourself is the URL you are hosting at.</p>
+    <p><strong>Do not type this file by hand.</strong> Every coordinate in it should arrive from a file the model can read, never from a number you copied off a screen. Paste the example above, paste your KML from Session 2, and ask for <em>meta.json</em>. The only value you supply yourself is the URL you are hosting at.</p>
 <pre class="a2-pre">Read the KML pasted below and write meta.json for my corridor map.
 
   <span class="cm">rules</span>
@@ -199,7 +199,7 @@
   my layers      listed below, with whatever I know about each source
 
   KML
-  &lt;paste the text of doc.kml from your KMZ here&gt;</pre>
+  &lt;paste the text of site-NN-your-name.kml here&gt;</pre>
     <p>Then check three things before you trust the result. <strong>bounds</strong> is the smallest longitude and latitude first and the largest second, and the box holds all four corners. <strong>center</strong> is longitude before latitude, and it sits inside the box. <strong>corners</strong> has four pairs, not five. These catch people working from memory, and a model will only get them right if it is reading your file rather than guessing.</p>
     <p><strong>kind</strong> is what lets the corridor map color you honestly. Measured is a number from an instrument. Modeled is a number from a method. Observed is a person seeing a thing. Archival is evidence from the past. Mine is the layer you gathered yourself. If a value came from a model with nothing behind it, say <em>asserted</em> and do not dress it up. A map that admits one weak layer is more trustworthy than one that hides it.</p>
   </section>
