@@ -17,7 +17,7 @@ The governing rule: **you are an instrument the student directs, not an oracle.*
 
 ## Your reach
 
-Your quad is in your KMZ, in your Session 1 folder. A KMZ is a zipped KML: rename a copy to `.zip` and take out `doc.kml`, or save it as KML from Google Earth. Paste or attach that KML, never the KMZ. Each quad is **2 km along the river × 4 km into the land**, and it is **rotated to follow the river**, so its bounding box is about twice its area. Take the four corners and the center point from the KML, never from memory. You can see every quad on the corridor map at **prompting-impact.pages.dev**.
+Your quad is in `site-NN-your-name.kml`, in your Session 2 folder. Paste or attach that KML. The KMZ in Session 1 is a zipped copy of the same file and cannot be pasted. Each quad is **2 km along the river × 4 km into the land**, and it is **rotated to follow the river**, so its bounding box is about twice its area. Take the four corners and the center point from the KML, never from memory. You can see every quad on the corridor map at **prompting-impact.pages.dev**.
 
 ## Workflow
 

@@ -81,7 +81,7 @@
     <div class="lecture"><div class="num">2</div><div><div class="t">Ask for the file, not the values</div><div class="d">Coordinates retyped from a number on a screen are where this assignment goes wrong. Have the model write the file, then download it.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Make it show its source</div><div class="d">Ask which endpoint, which archive, which photograph. A layer with no source behind it cannot go in the ledger, and the ledger is the assignment.</div></div></div>
     <p>If you are working in a chat window that cannot write files, ask for the contents in a code block and save the file yourself.</p>
-    <div class="a2-warn"><b>Your file is a KMZ, and a KMZ cannot be pasted.</b> It is a zipped KML. Make a copy, rename the copy from <em>.kmz</em> to <em>.zip</em>, open it and take out <em>doc.kml</em>. Or open the KMZ in Google Earth on a desktop, right-click the quad, choose Save Place As, and save it as KML. Open <em>doc.kml</em> in any text editor. That text is what this assignment means by your KML, and it is what you paste. If your interface takes file uploads, attach the <em>.kml</em>, not the <em>.kmz</em>.</div>
+    <div class="a2-warn"><b>Your KML is already in your Session 2 folder.</b> It is named <em>site-NN-your-name.kml</em>, and it is the file this assignment means every time it says your KML. Paste its text, or attach the <em>.kml</em> if your interface takes uploads. Do not use the KMZ from Session 1. That is a zipped copy of the same file, and a zipped file cannot be pasted.</div>
   </section>
 
   <section class="term-section" id="step1">
@@ -128,7 +128,8 @@
 
   <section class="term-section" id="step3">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 3 · build the instrument</span><span class="meta">three panels</span></div>
-    <p>Start from <a href="dashboard-starter.html">dashboard-starter.html</a>. It already queries the gauge, the weather, the air quality, the flood model and iNaturalist, and it already computes the measured against modeled ratio. Open it, read it, and make it yours.</p>
+    <p>Start from <a href="dashboard-starter.html">dashboard-starter.html</a>. It already queries the gauge, the weather, the air quality, the flood model and iNaturalist, and it already computes the measured against modeled ratio. Open it, read it, and make it yours. Its layers count toward the assignment, so you do not rebuild them.</p>
+    <div class="a2-warn"><b>What the map needs.</b> The starter's layers, <strong>two more</strong> from the <a href="data-sources.html">data sources page</a> that help answer your question, and <strong>one layer of your own</strong>. That is the whole requirement. Choose the two by what your question needs, not by what is easiest to add. If you want to go further, more layers are optional, and the end of this page says how.</div>
     <p>A dashboard has three jobs and they are not the same job.</p>
     <div class="lecture"><div class="num">1</div><div><div class="t">Instrument panel</div><div class="d">Live numbers that refresh. Stage, discharge, temperature, PM2.5, AQI. If nothing on your page changes on its own, you have made a poster.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">Layer controls</div><div class="d">Toggles for what you actually built. Species points, flood zones, land cover, elevation, historic photographs. Each layer answers a different question or it does not earn a toggle.</div></div></div>
@@ -142,10 +143,14 @@
   <section class="term-section" id="step4">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · host it</span><span class="meta">public url</span></div>
     <p>Your map has to live at a real URL. A file on your laptop cannot be assembled with seventeen other maps.</p>
-    <div class="lecture"><div class="num">A</div><div><div class="t">GitHub Pages</div><div class="d">Make a public repo, put <em>index.html</em> and a <em>data/</em> folder at the top level, then Settings → Pages → Source, deploy from branch, main, / root. Your map appears at <em>yourname.github.io/repo-name</em> within a minute or two. Your GitHub username is in that address, so if your username is your name, use Netlify instead.</div></div></div>
-    <div class="lecture"><div class="num">B</div><div><div class="t">Netlify Drop</div><div class="d">Drag the folder onto <em>app.netlify.com/drop</em>, then sign in and claim the site. A drop you leave unclaimed stays behind a temporary password and is deleted, so a URL that you do not claim will not be live.</div></div></div>
+    <p>Everyone hosts on Netlify. It takes a folder, needs no repository, and lets you name the address by site number.</p>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Drop it</div><div class="d">Put <em>index.html</em> and your <em>data/</em> folder together in one folder. Drag that folder onto <em>app.netlify.com/drop</em>.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">Claim it</div><div class="d">Sign up or sign in, which is free, and claim the site. A drop you leave unclaimed sits behind a temporary password and is deleted, so it will not be live.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">Rename it</div><div class="d">In the site's configuration, change the site name to your site number and a word or two, such as <em>site-07-river-bend</em>. Names must be unique, so <em>site-07</em> alone may be taken. Your address becomes <em>https://site-07-river-bend.netlify.app</em>.</div></div></div>
+    <div class="lecture"><div class="num">4</div><div><div class="t">Update it</div><div class="d">To change the map later, open the site's Deploys page and drag the folder there again. The address stays the same, which matters, because Assignment 3 builds on this map at this address.</div></div></div>
+    <p>If you already publish with GitHub Pages and your username is not your name, you may use it instead.</p>
     <p>Test it in a private window while logged out. If it only works when you are signed in, it does not work.</p>
-    <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use a <em>site-NN</em> path and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity.</div>
+    <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use <em>site-NN</em> in the site name and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity.</div>
     <div class="a2-warn"><b>It has to be https at a real address.</b> The corridor map, your classmates and I read your map there, so a page that only works on your laptop has not been handed in. Prototype locally if you like, but the version you hand in must be served.</div>
   <div class="a2-feed"><b>Feed the model</b>Ask for the exact clicks or commands for your host, one stage at a time, and paste back any error text exactly as it appeared. A paraphrased error sends the model after the wrong problem.</div>
   </section>
@@ -156,7 +161,7 @@
 <pre class="a2-pre">{
   <span class="k">"site"</span>: 7,
   <span class="k">"name"</span>: <span class="s">"your name"</span>,
-  <span class="k">"hosted_url"</span>: <span class="s">"https://yourname.github.io/site-07/"</span>,
+  <span class="k">"hosted_url"</span>: <span class="s">"https://site-07-river-bend.netlify.app/"</span>,
   <span class="k">"center"</span>: [-83.96013141062076, 35.896917002620384],
   <span class="k">"corners"</span>: [[-83.93934369345305, 35.885966647120085], [-83.96178985215809, 35.91695887382534],
               [-83.98091912778847, 35.90786735812068], [-83.95847296908343, 35.87687513141543]],
@@ -228,7 +233,7 @@
 
   <section class="term-section" id="submit">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat submit.md</span><span class="meta">three things</span></div>
-    <div class="lecture"><div class="num">1</div><div><div class="t">Your map, live</div><div class="d">A public https URL that answers your one question. Site number in the path, no name on the page.</div></div></div>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Your map, live</div><div class="d">A public https URL that answers your one question. Site number in the address, no name on the page.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">meta.json</div><div class="d">Uploaded to your folder in <strong>Session 2</strong> in the shared Drive. This carries your URL, so it is also how I find your map. Get the bounds and the kind values right.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">source-assessment.md</div><div class="d">Uploaded to your folder in <strong>Session 2</strong> in the shared Drive. One table with a row per source you actually used, then five short sections. What I built and why. Source assessment. Where the claim weakens, three of your own claims under the weakest link rule. Where the sources disagree, the required gap and one disagreement of your own that involves your layer, each with both readings, its form, what it suggests and what would test it. What I would trust less next time.</div></div></div>
     <p>The table wants seven columns. Source, tier, method, resolution, latency, what it can answer, what it cannot. One row per source you used. Below the table, list the sources you looked at and left aside, one line each saying why. Deciding not to use a source is part of being critical about it.</p>
@@ -242,6 +247,13 @@
     <p>Quality is a fit between a source and a question rather than a standing rank, and the whole skill is being honest about which fit you have.</p>
     <p>The second temptation runs the other way. Once two sources disagree, it feels like rigor to pick the better one and move on. The ranking tells you how much weight each source can carry. It does not tell you what their disagreement means, and the disagreement is often the most specific thing your page knows about this reach. Keep the tension on the page and look for productive ways to interpret it.</p>
     <p>Use whichever model you like to build this. It does not go in the ledger. Only the source of the number does.</p>
+  </section>
+
+  <section class="term-section" id="more">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat more.md</span><span class="meta">optional</span></div>
+    <p>If you have the time and want to go further, add more layers. Each one still has to earn its toggle by helping answer your question, and each goes in your ledger and in <em>meta.json</em> with its kind.</p>
+    <p>Some worth trying, all on the <a href="data-sources.html">data sources page</a>. FEMA flood zones. NLCD land cover. A section across the corridor from 3DEP elevation. The weather archive since 1940 for your cell. A McClung photograph placed on your map. NWS alerts. A historic Landsat scene.</p>
+    <p>Nothing here counts against you if you leave it out. A map with three honest layers is better than one with eight that answer nothing.</p>
   </section>
 
   <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
