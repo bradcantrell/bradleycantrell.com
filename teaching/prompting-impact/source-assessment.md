@@ -68,7 +68,7 @@ The Open-Meteo flood model, queried at a point on the channel near downtown, rep
 
 A factor of 5.9.
 
-**Your pair will be different.** The model answers for a cell about 5 km across, so its number depends on which cell your point falls in. Query it at a point on the main channel inside your quad, not at your center, and write down the cell the response names. A center that lands off the river can return almost nothing, and a ratio in the thousands is a fact about the cell, not about TVA. Your gauge reading changes too, because the river does.
+**Your pair will be different.** The model answers for a cell about 5 km across, so its number depends on which cell your point falls in. Its river can sit a whole cell away from the real channel, so ask it at your channel point, your center and your four corners, keep the cell that returns the most water, and write down the cell the response names. A cell off the model's river can return almost nothing, and a ratio in the thousands is a fact about the cell, not about TVA. Your gauge reading changes too, because the river does.
 
 Neither number is a lie. GloFAS runs one value per 5 km cell per day from a global hydrological model driven by weather reanalysis, and it has no way of knowing what the Tennessee Valley Authority released through the dams upstream this morning. At this reach, the release schedule is most of the flow. The gauge measures one point, continuously, in the channel. Both are correct about the thing each one measures, and they disagree about the river.
 
@@ -120,7 +120,7 @@ Then five short sections.
 
 **Where the sources disagree.** Two disagreements, each with both readings, its form, what it suggests, and what would test it. First the required gap, the NWPS gauge against the Open-Meteo flood model, including the ratio between them. Then one disagreement of your own that involves the layer you made.
 
-**What I would trust less next time.** One honest paragraph. A source you used confidently and now would not.
+**What I would trust less next time.** Three sentences at most. A source you used confidently and now would not, and why.
 
 ---
 

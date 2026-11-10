@@ -35,14 +35,14 @@ Every endpoint, with a working query and the trap in each one, is on the data so
 Fetch from that page, not from memory. All of the sources are keyless. Five rules catch most of the mistakes.
 
 - **The river gauge is NWPS `knot1`, not USGS.** The USGS Tennessee River sites in Knox County serve no live data. Flood stages are action 817, minor 820, moderate 825, major 830 ft. It is one point in the water, so say how far it is from the quad.
-- **Query the flood model at a point on the main channel inside the quad, not at the center.** It works on cells about 5 km across, and a center off the river can return almost nothing. Record the cell the response names, and never label that cell as the quad.
+- **Ask the flood model at the channel point, the center and the four corners, and keep the cell with the most water.** It works on cells about 5 km across, its river can sit a whole cell away from the real channel, and a cell off its river returns almost nothing. Record the cell the response names, and never label that cell as the quad.
 - **Query species by the quad's bounding box, then keep only points inside the four corners.** A radius search reaches far past the quad.
 - **Mind units and sentinels.** The gauge reports feet. 3DEP reports meters unless you ask for feet, so ask. A FEMA value of −9999 means no value, not an elevation.
 - **Show FEMA flood zones with the image export.** Feature queries over a whole quad often time out.
 
 ## Map template
 
-For Assignment 2, start from `dashboard-starter.html`. It already reads the gauge, the weather, air quality, the flood model at a channel point and species clipped to the quad, and it shows the measured against modeled gap without picking a winner. Fill its config block from the KML, then add one layer at a time and say which lines changed. `map-template.html` is the simpler map from the first week. Keep everything `https` and keyless so it works from a plain browser.
+For Assignment 2, start from `dashboard-starter.html`. It already reads the gauge, the weather, air quality, the flood model at the cell that carries the river and species clipped to the quad, and it shows the measured against modeled gap without picking a winner. Fill its config block from the KML, then add one layer at a time and say which lines changed. `map-template.html` is the simpler map from the first week. Keep everything `https` and keyless so it works from a plain browser.
 
 ## Assessment structure
 

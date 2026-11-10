@@ -67,8 +67,9 @@
 <pre class="a2-pre">https://api.weather.gov/alerts/active?area=TN</pre>
 
     <div class="src"><h3>Open-Meteo flood model<span class="kind">modeled · tier 2</span></h3>
-    <p>Daily river discharge from GloFAS, a global model that works on cells about 5 km across. Query it at your <strong>channel point</strong>, not your center. Off the channel it can return almost nothing (0.37 m³/s at one quad center, against about 270 on the channel). The response gives the latitude and longitude of the cell it answered for. Record that pair. The API returns no outline for the cell, so mark its center and label it as the model's cell, never as your quad.</p></div>
-<pre class="a2-pre">https://flood-api.open-meteo.com/v1/flood?latitude={chan_lat}&longitude={chan_lon}&daily=river_discharge&forecast_days=1</pre>
+    <p>Daily river discharge from GloFAS, a global model that works on cells about 5 km across. Its river does not always sit where your aerial shows it. The model's river network is coarse, so the cell carrying the main river can be a whole cell away from the real channel, and a cell off its river returns almost nothing. At one quad the center returned 0.37 m³/s and the channel 269. At another the channel returned 0.13 and the center 287. So ask at your channel point, your center and your four corners, and keep the cell that returns the most water, usually hundreds of m³/s. The response gives the latitude and longitude of the cell it answered for. Record that pair. The dashboard starter does all of this for you. The API returns no outline for the cell, so mark its center and label it as the model's cell, never as your quad.</p></div>
+<pre class="a2-pre">https://flood-api.open-meteo.com/v1/flood?latitude={chan_lat}&longitude={chan_lon}&daily=river_discharge&forecast_days=1
+<span class="k">then the same with</span> {lat},{lon} <span class="k">and each of your four corners</span></pre>
 
     <div class="src"><h3>Open-Meteo weather and air quality<span class="kind">modeled · tier 2</span></h3></div>
 <pre class="a2-pre">https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit

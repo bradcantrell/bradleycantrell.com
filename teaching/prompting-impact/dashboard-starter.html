@@ -118,7 +118,8 @@ const SITE = {
   // Ignore the corners in the description text: they are rounded and latitude first.
   corners: [[35.885966647120085, -83.93934369345305], [35.91695887382534, -83.96178985215809],
             [35.90786735812068, -83.98091912778847], [35.87687513141543, -83.95847296908343]],
-  // channel: a point on the main channel inside your quad, picked off the aerial.
+  // channel: a point on the main channel inside your quad, picked off the aerial. The flood model is
+  // asked at this point, your center and your four corners, and the page keeps the cell that carries the river.
   // The flood model is queried here, not at your center (see the data sources page).
   channel: [35.905, -83.966],
   zoom: 13,
@@ -193,18 +194,23 @@ fetch('https://api.water.noaa.gov/nwps/v1/gauges/' + SITE.gauge)
   .catch(() => { clearPlaceholder('instruments'); addRow('instruments','gauge','unavailable',null); });
 
 // --- modeled discharge (Tier 2) -------------------------
+// The model works on a grid of cells about 5 km across, and its river can sit a whole cell away from
+// the real one. So it is asked at six points, and the page keeps the cell carrying the most water,
+// which is the cell the model thinks the main river runs through. The others are listed in the console.
 let modeledM3s = null, modelCell = null;
-fetch('https://flood-api.open-meteo.com/v1/flood?latitude=' + SITE.channel[0] + '&longitude=' + SITE.channel[1] +
-      '&daily=river_discharge&forecast_days=1')
-  .then(r => r.json())
-  .then(d => {
-    modeledM3s = d.daily.river_discharge[0];
-    modelCell = [d.latitude, d.longitude];   // the cell the model answered for, about 5 km across
+const probes = [SITE.channel, [SITE.lat, SITE.lng], ...SITE.corners];
+Promise.all(probes.map(p => fetch('https://flood-api.open-meteo.com/v1/flood?latitude=' + p[0] + '&longitude=' + p[1] +
+      '&daily=river_discharge&forecast_days=1').then(r => r.json()).catch(() => null)))
+  .then(rs => {
+    const cells = rs.filter(d => d && d.daily).map(d => ({q: d.daily.river_discharge[0], cell: [d.latitude, d.longitude]}));
+    console.table(cells.map(c => ({m3s: c.q, cell: c.cell.map(v => v.toFixed(3)).join(', ')})));
+    const best = cells.reduce((a, b) => (b.q > a.q ? b : a));
+    modeledM3s = best.q;
+    modelCell = best.cell;                   // the cell the model answered for, about 5 km across
     L.circleMarker(modelCell,{radius:5,color:'#ffb000',fill:false,weight:2})
       .addTo(map).bindTooltip('flood model cell center, about 5 km across (not your quad)');
     renderCompare();
-  })
-  .catch(() => {});
+  });
 
 function renderCompare(){
   if (measuredM3s == null || modeledM3s == null) return;
