@@ -111,10 +111,11 @@
 // The values below are site 7's, as an example, so the page runs before you edit it.
 const SITE = {
   number: 7,
-  // center: the center point Placemark in your KML, as [lat, lng] for Leaflet
+  // center: the coordinates of the KML's only Point placemark, as [lat, lng] for Leaflet
   lat: 35.896917002620384,
   lng: -83.96013141062076,
-  // corners: the four corners of your KML polygon, as [lat, lng]. KML writes lng,lat.
+  // corners: the four corners from the polygon's <coordinates>, as [lat, lng]. KML writes lng,lat.
+  // Ignore the corners in the description text: they are rounded and latitude first.
   corners: [[35.885966647120085, -83.93934369345305], [35.91695887382534, -83.96178985215809],
             [35.90786735812068, -83.98091912778847], [35.87687513141543, -83.95847296908343]],
   // channel: a point on the main channel inside your quad, picked off the aerial.

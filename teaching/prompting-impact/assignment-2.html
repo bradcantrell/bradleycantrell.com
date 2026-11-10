@@ -180,12 +180,13 @@
 <pre class="a2-pre">Read the KML pasted below and write meta.json for my corridor map.
 
   <span class="cm">rules</span>
-  corners are the four corners of the KML polygon, in order, without the repeated last point
+  corners are the four corners from the polygon's coordinates, in order, without the repeated last point
+  ignore the corners listed in the description, they are rounded and latitude first
   copy every number at full precision, do not round
   every pair is [longitude, latitude]
   my quad is rotated, so bounds is computed from the corners, not copied
   bounds is [[smallest longitude, smallest latitude], [largest longitude, largest latitude]]
-  center is the center point Placemark in the KML
+  center is the coordinates of the KML's only Point placemark
   pulled is the time my data/ files were fetched, read from them, never invented
   copy my one_question verbatim, do not improve it
   one object per layer, each with name, kind and source
