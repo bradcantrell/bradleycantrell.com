@@ -96,7 +96,13 @@ Do not choose, and do not average. A disagreement is not an error to settle by p
 
 One table and one page of prose. The table comes first, above the prose.
 
-The table, one row per source you actually used. Do not list sources you looked at and discarded.
+The table, one row per source you actually used.
+
+Then, below the table, the sources you looked at and left aside, one line each saying why. Deciding not to use a source is part of being critical about it.
+
+| left aside | why |
+|---|---|
+| | |
 
 | source | tier | method | resolution | latency | what it can answer | what it cannot |
 |---|---|---|---|---|---|---|
