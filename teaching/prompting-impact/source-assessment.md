@@ -94,7 +94,7 @@ Do not choose, and do not average. A disagreement is not an error to settle by p
 
 ## 6. What you hand in
 
-One table and one page of prose. The table comes first, above the prose.
+The table of sources you used, a short list of the ones you left aside, and one page of prose. The tables come first, above the prose.
 
 The table, one row per source you actually used.
 
