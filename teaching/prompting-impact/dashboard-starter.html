@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Dashboard — Tennessee River Corridor</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{
+    --bg:#02070e; --panel:#060f18; --cyan:#66ccff; --dim:#5f7d99;
+    --text:#cceeff; --amber:#ffb000; --red:#ff5b6e; --green:#00e5a0;
+    --line:rgba(102,204,255,0.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:12px; line-height:1.5;
+    display:grid; grid-template-rows:auto 1fr auto;
+    grid-template-columns:300px 1fr;
+    grid-template-areas:"head head" "side map" "foot foot";
+  }
+  header{grid-area:head;display:flex;align-items:baseline;gap:14px;
+    padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:13px;margin:0;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+  header .sub{color:var(--dim);font-size:11px}
+  header .spacer{flex:1}
+  header .stamp{color:var(--dim);font-size:11px}
+  #side{grid-area:side;border-right:1px solid var(--line);overflow-y:auto;padding:10px}
+  #map{grid-area:map;background:#000}
+  footer{grid-area:foot;border-top:1px solid var(--line);padding:7px 16px;
+    color:var(--dim);font-size:11px;display:flex;gap:18px;flex-wrap:wrap}
+  .panel{border:1px solid var(--line);border-radius:5px;background:var(--panel);padding:9px 10px;margin-bottom:10px}
+  .panel h2{font-size:10px;margin:0 0 7px;letter-spacing:.13em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+  .row{display:flex;justify-content:space-between;gap:8px;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+  .row:last-child{border-bottom:none}
+  .row .k{color:var(--dim)}
+  .row .v{color:var(--text);font-weight:600;text-align:right}
+  .tier{display:inline-block;font-size:9px;padding:0 5px;border-radius:3px;
+    border:1px solid currentColor;letter-spacing:.06em;vertical-align:1px;margin-left:5px}
+  .t1{color:var(--green)} .t2{color:var(--cyan)} .t3{color:var(--amber)}
+  .t4{color:#b98cff} .t5{color:var(--red)}
+  .gap{background:rgba(255,93,110,.08);border-color:rgba(255,93,110,.4)}
+  .gap .v{color:var(--red)}
+  .note{color:var(--dim);font-size:10.5px;margin-top:6px;line-height:1.45}
+  label.tog{display:flex;align-items:center;gap:7px;padding:3px 0;cursor:pointer;color:var(--dim)}
+  label.tog.on{color:var(--text)}
+  input[type=checkbox]{accent-color:#66ccff;width:12px;height:12px;cursor:pointer}
+  .leaflet-container{background:#02070e}
+  .leaflet-tooltip{background:rgba(2,7,14,.94)!important;border:1px solid var(--line)!important;
+    color:var(--text)!important;font-family:inherit;font-size:11px;border-radius:4px}
+  @media(max-width:760px){
+    body{grid-template-columns:1fr;grid-template-areas:"head" "map" "side" "foot";
+      grid-template-rows:auto 46vh auto auto;height:auto;overflow-y:auto}
+    #side{border-right:none;border-top:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Site Dashboard</h1>
+  <span class="sub" id="hd-sub">your quad · Tennessee River corridor</span>
+  <span class="spacer"></span>
+  <span class="stamp" id="hd-stamp">loading</span>
+</header>
+
+<div id="side">
+  <div class="panel">
+    <h2>Instruments</h2>
+    <div id="instruments"><div class="row"><span class="k">status</span><span class="v">fetching</span></div></div>
+    <div class="note">Each reading shows the tier of the source that produced it. Tier 1 is measured by an accountable agency. Tier 2 is modeled. Tier 3 is volunteered.</div>
+  </div>
+
+  <div class="panel gap">
+    <h2>Measured against modeled</h2>
+    <div id="compare"><div class="row"><span class="k">status</span><span class="v">fetching</span></div></div>
+    <div class="note" id="compare-note"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Layers</h2>
+    <label class="tog on"><input type="checkbox" id="ly-species" checked> species observations <span class="tier t3">3</span></label>
+    <label class="tog"><input type="checkbox" id="ly-gauge"> river gauge <span class="tier t1">1</span></label>
+  </div>
+
+  <div class="panel">
+    <h2>Your quad</h2>
+    <div class="row"><span class="k">site</span><span class="v" id="q-site">—</span></div>
+    <div class="row"><span class="k">center</span><span class="v" id="q-c">—</span></div>
+    <div class="row"><span class="k">data pulled</span><span class="v" id="q-t">—</span></div>
+  </div>
+</div>
+
+<div id="map"></div>
+
+<footer>
+  <span id="ft-src">sources · NWPS, Open-Meteo, iNaturalist, Esri</span>
+  <span class="spacer"></span>
+  <span>Prompting Impact · Module D · UT Knoxville</span>
+</footer>
+
+<script>
+// ============================================================
+// CONFIGURE THIS BLOCK — this is the only part you must edit
+// ============================================================
+const SITE = {
+  number: 0,
+  name: "your name",
+  lat: 35.9548,          // your quad's centre, from prompting-impact.pages.dev
+  lng: -83.9205,
+  zoom: 13,
+  gauge: "knot1",        // NWPS gauge id
+  inatRadiusKm: 25
+};
+
+// ============================================================
+// No edits needed below unless you are adding a layer
+// ============================================================
+const map = L.map('map', {zoomControl:true}).setView([SITE.lat, SITE.lng], SITE.zoom);
+L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+  {attribution:'Powered by Esri', maxZoom:16}).addTo(map);
+L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom:16}).addTo(map);
+
+// quad outline placeholder — replace with your four corners from the KMZ
+L.circle([SITE.lat,SITE.lng],{radius:1200,color:'#66ccff',weight:1,dashArray:'4 6',fill:false}).addTo(map);
+
+const $ = id => document.getElementById(id);
+$('q-site').textContent = SITE.number ? ('site-' + String(SITE.number).padStart(2,'0')) : 'unset';
+$('q-c').textContent = SITE.lat.toFixed(4) + ', ' + SITE.lng.toFixed(4);
+
+const pulled = new Date();
+$('q-t').textContent = pulled.toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+$('hd-stamp').textContent = 'pulled ' + pulled.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+
+function addRow(host, key, val, tier){
+  const d = document.createElement('div');
+  d.className = 'row';
+  d.innerHTML = '<span class="k">' + key + '</span><span class="v">' + val +
+                (tier ? '<span class="tier t'+tier+'">'+tier+'</span>' : '') + '</span>';
+  $(host).appendChild(d);
+  return d;
+}
+
+// clear the placeholder row on first write
+let cleared = false;
+function clearPlaceholder(host){
+  if(cleared) return; cleared = true;
+  $(host).innerHTML = '';
+}
+
+// --- river gauge (Tier 1) --------------------------------
+let measuredM3s = null;
+fetch('https://api.water.noaa.gov/nwps/v1/gauges/' + SITE.gauge)
+  .then(r => r.json())
+  .then(d => {
+    clearPlaceholder('instruments');
+    const o = d.status.observed, f = d.status.forecast;
+    const kcfs = parseFloat(o.secondary);
+    if (!isNaN(kcfs)) measuredM3s = kcfs * 1000 * 0.0283168;
+    addRow('instruments','stage', o.primary + ' ' + o.primaryUnit, 1);
+    addRow('instruments','discharge', o.secondary + ' ' + o.secondaryUnit, 1);
+    if (f) addRow('instruments','forecast', f.primary + ' ' + f.primaryUnit, 1);
+    $('hd-sub').textContent = d.name + ' · site ' + (SITE.number||'--');
+    L.circleMarker([d.latitude, d.longitude], {radius:6,color:'#66ccff',fillColor:'#66ccff',fillOpacity:.9})
+      .addTo(gaugeLayer).bindTooltip(d.name + ' · ' + o.primary + ' ' + o.primaryUnit);
+    renderCompare();
+  })
+  .catch(() => { clearPlaceholder('instruments'); addRow('instruments','gauge','unavailable',null); });
+
+// --- modeled discharge (Tier 2) -------------------------
+let modeledM3s = null;
+fetch('https://flood-api.open-meteo.com/v1/flood?latitude=' + SITE.lat + '&longitude=' + SITE.lng +
+      '&daily=river_discharge&forecast_days=1')
+  .then(r => r.json())
+  .then(d => { modeledM3s = d.daily.river_discharge[0]; renderCompare(); })
+  .catch(() => {});
+
+function renderCompare(){
+  if (measuredM3s == null || modeledM3s == null) return;
+  const host = 'compare';
+  const ratio = measuredM3s / modeledM3s;
+  $('compare').innerHTML = '';
+  addRow(host,'measured', Math.round(measuredM3s).toLocaleString() + ' m³/s', 1);
+  addRow(host,'modeled',  Math.round(modeledM3s).toLocaleString()  + ' m³/s', 2);
+  const r = addRow(host,'ratio', ratio.toFixed(1) + '×', null);
+  r.querySelector('.v').style.color = ratio > 1.5 || ratio < 0.67 ? '#ff5b6e' : '#00e5a0';
+  $('compare-note').textContent =
+    'Both sources answer the same question and disagree by ' + ratio.toFixed(1) +
+    '×. One is an instrument at a dam-regulated reach. The other is a global model that does not simulate reservoir operations. Say which you would trust, and for what.';
+}
+
+// --- weather + air quality (Tier 2) ---------------------
+fetch('https://api.open-meteo.com/v1/forecast?latitude=' + SITE.lat + '&longitude=' + SITE.lng +
+      '&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph')
+  .then(r => r.json()).then(d => {
+    clearPlaceholder('instruments');
+    addRow('instruments','air temp', d.current.temperature_2m + ' °F', 2);
+    addRow('instruments','wind', d.current.wind_speed_10m + ' mph', 2);
+  }).catch(()=>{});
+
+fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + SITE.lat + '&longitude=' + SITE.lng +
+      '&current=pm2_5,us_aqi')
+  .then(r => r.json()).then(d => {
+    addRow('instruments','PM2.5', d.current.pm2_5 + ' µg/m³', 2);
+    addRow('instruments','US AQI', d.current.us_aqi, 2);
+  }).catch(()=>{});
+
+// --- species (Tier 3) -----------------------------------
+const speciesLayer = L.layerGroup().addTo(map);
+let speciesCount = 0;
+fetch('https://api.inaturalist.org/v1/observations?lat=' + SITE.lat + '&lng=' + SITE.lng +
+      '&radius=' + SITE.inatRadiusKm + '&per_page=50&order=desc&order_by=observed_on')
+  .then(r => r.json()).then(d => {
+    (d.results||[]).forEach(o => {
+      if(!o.geojson || !o.geojson.coordinates) return;
+      const [lng,lat] = o.geojson.coordinates;
+      const t = (o.taxon && (o.taxon.preferred_common_name || o.taxon.name)) || 'unknown';
+      L.circleMarker([lat,lng],{radius:3,color:'#00e5a0',fillColor:'#00e5a0',fillOpacity:.75})
+        .addTo(speciesLayer).bindTooltip(t + (o.observed_on ? ' · ' + o.observed_on : ''));
+      speciesCount++;
+    });
+    addRow('instruments','species logged', speciesCount + ' within ' + SITE.inatRadiusKm + ' km', 3);
+  }).catch(()=>{});
+
+// --- toggles --------------------------------------------
+const gaugeLayer = L.layerGroup().addTo(map);
+function wire(id, layer){
+  const el = $(id);
+  el.addEventListener('change', () => {
+    el.closest('label').classList.toggle('on', el.checked);
+  });
+}
+wire('ly-species', speciesLayer);
+document.getElementById('ly-species').addEventListener('change', e => {
+  e.target.checked ? map.addLayer(speciesLayer) : map.removeLayer(speciesLayer);
+});
+document.getElementById('ly-gauge').addEventListener('change', e => {
+  e.target.checked ? map.addLayer(gaugeLayer) : map.removeLayer(gaugeLayer);
+  e.target.closest('label').classList.toggle('on', e.target.checked);
+});
+</script>
+</body>
+</html>

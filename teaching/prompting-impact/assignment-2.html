@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 2 — Instrument Panel · Prompting Impact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+<style>
+/* scoped to this page so style.css is not cache-busted for every other page */
+.a2-table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin:1.1rem 0 0.4rem;font-size:0.78rem}
+.a2-table th{text-align:left;padding:0.55rem 0.8rem;background:rgba(102,204,255,0.06);color:var(--accent);
+  font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--line)}
+.a2-table td{padding:0.55rem 0.8rem;color:var(--muted);border-bottom:1px solid var(--line);vertical-align:top}
+.a2-table td:first-child{color:var(--ink);white-space:nowrap}
+.a2-table tr:last-child td{border-bottom:none}
+.a2-pre{background:rgba(102,204,255,0.04);border:1px solid var(--line);border-left:2px solid var(--accent);
+  padding:0.9rem 1.1rem;margin:1rem 0;overflow-x:auto;font-size:0.74rem;line-height:1.75;
+  color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.a2-pre .k{color:var(--accent)}
+.a2-pre .s{color:var(--warn)}
+.a2-pre .cm{color:#4d6478}
+.a2-warn{border-left:2px solid var(--warn);padding:0.15rem 0 0.15rem 1.1rem;margin:1.4rem 0;
+  color:var(--muted);font-size:0.83rem}
+.a2-warn b{color:var(--ink);font-weight:500}
+</style>
+</head>
+<body>
+<div class="gridbg"></div>
+<div class="scanlines"></div>
+
+<nav class="site-nav">
+  <span class="brand">prompting-impact</span>
+  <a href="../../teaching.html">← teaching</a>
+  <a href="index.html">~/living-systems</a>
+  <a href="assignment-1.html">assignment-1</a>
+  <a href="assignment-2.html" class="active">assignment-2</a>
+</nav>
+
+<header class="hero">
+  <div class="term-window">
+    <div class="term-bar">
+      <span class="term-title">bradley@prompting-impact · ~/assignment-2</span>
+    </div>
+    <div class="term-body">
+      <span class="term-kicker">Prompting Impact · Module D · Assignment 2</span>
+      <h1 class="term-h1">Instrument Panel</h1>
+      <div class="term-datum">
+        <span>Due Monday, November 16 · 1700 EST</span>
+        <span style="opacity:.35;margin:0 .5em">·</span>
+        <a href="https://prompting-impact.pages.dev/comparison/" target="_blank" rel="noopener"
+           style="color:inherit;border-bottom:1px solid currentColor;text-decoration:none;opacity:.85">what the image changed →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="term-section" id="brief">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat brief.md</span><span class="meta">the premise</span></div>
+    <p>A model read your quad from four coordinate pairs and got the water wrong. It put the channel at the edge of your site when the channel runs through the middle, or it read a reservoir as a flowing river, or it found a river where there is a parking lot. In several cases it admitted the error plainly in the second turn.</p>
+    <p>Assignment 1 produced a claim that nobody could check. <strong>Assignment 2 produces the instrument that can check it.</strong> You are building a map of your reach that carries live data, historical data, and an accounting of where every number on it came from.</p>
+  </section>
+
+  <section class="term-section" id="step1">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 1 · the question</span><span class="meta">one sentence</span></div>
+    <p>Go back to the one question you wrote in Assignment 1. If the aerial changed it, use the new version. Write it at the top of your page, above everything else.</p>
+    <p>The map exists to answer that question. This is the only test of whether a layer belongs on it. A layer that does not help answer your question is decoration, and decoration is what this assignment is trying to get you out of.</p>
+    <div class="a2-warn"><b>Say what would change your mind.</b> Below your question, write one sentence naming the measurement that would prove you wrong. If nothing could prove you wrong, the question is not yet a question.</div>
+  </section>
+
+  <section class="term-section" id="step2">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 2 · gather the signal</span><span class="meta">four kinds of evidence</span></div>
+    <p>Gather as much as you can, then throw most of it away. Every source below was queried and returned data on November 9. They are grouped by what kind of evidence they are, and the kind is the thing you will be assessed on.</p>
+
+    <table class="a2-table">
+      <thead><tr><th>kind</th><th>sources</th><th>what they give you</th></tr></thead>
+      <tbody>
+        <tr><td>measured</td>
+            <td>NWPS gauge <em>knot1</em></td>
+            <td>Stage, discharge, forecast, flood categories. An instrument on the river near Knoxville, maintained by an agency that answers for it. Action 817 ft, minor 820 ft, major 830 ft.</td></tr>
+        <tr><td>modeled</td>
+            <td>Open-Meteo forecast, air quality, flood. NLCD land cover. FEMA flood zones. USGS 3DEP elevation.</td>
+            <td>A documented method applied to data. Excellent at the scale it was built for, and carrying every assumption of that method.</td></tr>
+        <tr><td>observed</td>
+            <td>iNaturalist</td>
+            <td>Species recorded at or near your quad. A species is where somebody with a phone happened to walk.</td></tr>
+        <tr><td>archival</td>
+            <td>Open-Meteo archive, 1940 to present. McClung Digital Collection. Planetary Computer scenes.</td>
+            <td>More than eighty years of daily weather at your own coordinates, and a century of photographs of this river. Not measurements, but evidence.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="a2-warn"><b>The live river gauge is not the one you expect.</b> Five USGS Tennessee River sites sit inside Knox County and <strong>none of them serves live data</strong>. The river here is a regulated TVA reservoir reach, so USGS returns an empty array and the API looks broken. The live instrument is the NWPS gauge, not USGS. Start with <em>knot1</em>.</div>
+
+    <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Required · the gap</span> <span class="meta">two numbers, one river</span></div>
+    <p>Two answers for the flow of the same river exist in this set. The NWPS gauge reports <strong>55.3 kcfs</strong>, about <strong>1,566 m³/s</strong>, measured at a dam-regulated reach. The Open-Meteo flood model, queried at the same coordinates, reports <strong>266 m³/s</strong>.</p>
+    <p>Neither number is a lie. The second is a good model of the wrong river. The method never simulates TVA reservoir operations, so it answers for a free-flowing reach, and Knoxville sits on an impounded one. Put both numbers on your dashboard, side by side, and write the paragraph that explains the difference. This is the clearest lesson in this corridor and you already hold both ends of it.</p>
+  </section>
+
+  <section class="term-section" id="step3">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 3 · build the instrument</span><span class="meta">three panels</span></div>
+    <p>Start from <a href="dashboard-starter.html">dashboard-starter.html</a>. It already queries the gauge, the weather, the air quality, the flood model and iNaturalist, and it already computes the measured against modeled ratio. Open it, read it, and make it yours.</p>
+    <p>A dashboard has three jobs and they are not the same job.</p>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Instrument panel</div><div class="d">Live numbers that refresh. Stage, discharge, temperature, PM2.5, AQI. If nothing on your page changes on its own, you have made a poster.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">Layer controls</div><div class="d">Toggles for what you actually built. Species points, flood zones, land cover, elevation, historic photographs. Each layer answers a different question or it does not earn a toggle.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">The ledger</div><div class="d">Beside the live numbers, the modeled ones, and a visible mark on every claim that came from a model without a source. The page should show its own uncertainty rather than hide it.</div></div></div>
+
+    <div class="a2-warn"><b>One layer has to be yours.</b> Hand mapped, hand counted, or hand photographed. Walked, driven, or looked at out a window. Every API on this list can be called by anyone in ninety seconds, so a page assembled entirely from them says nothing about your reach that a page about any other reach would not also say. The layer you collect is what makes the map an argument about <em>this</em> 2 km.</div>
+  </section>
+
+  <section class="term-section" id="step4">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · host it</span><span class="meta">public url</span></div>
+    <p>Your map has to live at a real URL. A file on your laptop cannot be assembled with seventeen other maps and cannot be graded by anyone but you.</p>
+    <div class="lecture"><div class="num">A</div><div><div class="t">GitHub Pages</div><div class="d">Make a public repo, put <em>index.html</em> and a <em>data/</em> folder at the top level, then Settings → Pages → Source, deploy from branch, main, / root. Your map appears at <em>yourname.github.io/repo-name</em> within a minute or two.</div></div></div>
+    <div class="lecture"><div class="num">B</div><div><div class="t">Netlify Drop</div><div class="d">Drag the folder onto <em>app.netlify.com/drop</em>, then sign in and claim the site. A drop you leave unclaimed stays behind a temporary password and is deleted, so a URL you never claimed will not work for me. Claim it and it stays up.</div></div></div>
+    <p>Test it in a private window while logged out. If it only works when you are signed in, it does not work.</p>
+    <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use a <em>site-NN</em> path and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity. Your site number is enough for me to know whose it is.</div>
+    <div class="a2-warn"><b>It has to be https on a real origin.</b> USGS blocks requests from a local file, and several other endpoints are unhappy with them too. Prototype locally if you like, but the version you hand in must be served.</div>
+  </section>
+
+  <section class="term-section" id="step5">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 5 · the handshake</span><span class="meta">meta.json</span></div>
+    <p>Every student hands in one small file in the same shape. That file is how your map becomes a piece of a single corridor map instead of eighteen unrelated pages. It is also your ledger in machine readable form, so the honesty of it matters beyond this course.</p>
+<pre class="a2-pre">{
+  <span class="k">"site"</span>: 7,
+  <span class="k">"name"</span>: <span class="s">"your name"</span>,
+  <span class="k">"hosted_url"</span>: <span class="s">"https://yourname.github.io/site-07/"</span>,
+  <span class="k">"center"</span>: [-83.9205, 35.9548],
+  <span class="k">"bounds"</span>: [[-83.9381, 35.9452], [-83.9029, 35.9644]],
+  <span class="k">"pulled"</span>: <span class="s">"2026-11-16T14:05:00-05:00"</span>,
+  <span class="k">"one_question"</span>: <span class="s">"your sentence from step 1"</span>,
+  <span class="k">"layers"</span>: [
+    { <span class="k">"name"</span>: <span class="s">"live stage"</span>,  <span class="k">"kind"</span>: <span class="s">"measured"</span>, <span class="k">"source"</span>: <span class="s">"NWPS knot1"</span> },
+    { <span class="k">"name"</span>: <span class="s">"flood model"</span>, <span class="k">"kind"</span>: <span class="s">"modeled"</span>,  <span class="k">"source"</span>: <span class="s">"Open-Meteo flood"</span> },
+    { <span class="k">"name"</span>: <span class="s">"species"</span>,     <span class="k">"kind"</span>: <span class="s">"observed"</span>, <span class="k">"source"</span>: <span class="s">"iNaturalist"</span> },
+    { <span class="k">"name"</span>: <span class="s">"1920s photos"</span>, <span class="k">"kind"</span>: <span class="s">"archival"</span>, <span class="k">"source"</span>: <span class="s">"McClung"</span> },
+    { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"walked 2026-11-14"</span> }
+  ]
+}</pre>
+    <p>Copy this exactly and change the values. <strong>bounds</strong> runs west then south, so the lower left corner first and the upper right corner second. <strong>center</strong> is longitude before latitude. Both of those catch people who do them from memory.</p>
+    <p><strong>kind</strong> is what lets the corridor map color you honestly. Measured is a number from an instrument. Modeled is a number from a method. Observed is a person seeing a thing. Archival is evidence from the past. Mine is the layer you gathered yourself. If a value came from a model with nothing behind it, say <em>asserted</em> and do not dress it up. A map that admits one weak layer is more trustworthy than one that hides it.</p>
+  </section>
+
+  <section class="term-section" id="step6">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 6 · the ledger</span><span class="meta">source quality</span></div>
+    <p>This is the part being assessed. Not whether your data is verified. Whether you can say what each source is good for, and which of your claims it can actually hold up.</p>
+    <p>Quality belongs to a pairing, a source and a claim about a specific 2 km reach. The same global flood model is excellent for screening a continent and useless for telling you what the water is doing at your quad. The judgment is always relative to the question.</p>
+
+    <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Tiers of authority</span> <span class="meta">five, and you will touch all five</span></div>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Instrumented by an agency that answers for it</div><div class="d">The NWPS gauge. NWS warnings. A physical instrument, maintained by an organization that is accountable when it fails.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">Modeled or derived, with a stated method</div><div class="d">Open-Meteo, NLCD, FEMA flood zones. The assumptions of the method are usually the thing that matters.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">Volunteer and crowdsourced</div><div class="d">iNaturalist. Enormously valuable and unevenly distributed.</div></div></div>
+    <div class="lecture"><div class="num">4</div><div><div class="t">Archival and historical</div><div class="d">McClung photographs, old maps, engineering records. A 1920 photograph is a real observation by a real observer, and it is one frame, chosen by someone, at one moment.</div></div></div>
+    <div class="lecture"><div class="num">5</div><div><div class="t">Machine assertion with no source</div><div class="d">Anything a model told you that you could not trace. Useful as a hypothesis. It cannot support a claim about the world.</div></div></div>
+
+    <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Six dimensions</span> <span class="meta">two sentences each</span></div>
+    <p><strong>Authority.</strong> Who produced it, under what mandate, and do they answer for errors. <strong>Method.</strong> Measured, modeled, derived, observed, or recalled. Most disagreements between sources are method disagreements wearing a numbers costume. <strong>Resolution.</strong> Grain against your quad, and which axis fails. <strong>Latency.</strong> Realtime, hourly, daily, annual, or frozen in 2019. <strong>Fitness.</strong> Can it answer what you asked of this reach, or does it answer a neighboring question at a different scale. <strong>Stated error.</strong> Is an uncertainty given, or is the number bare. A source that publishes its error bars is easier to trust than one that does not, even when the error is large.</p>
+
+    <div class="a2-warn"><b>The weakest link rule.</b> A claim inherits the quality of the weakest source in the chain that produced it. If you write that your reach sits at 811.6 ft, and that number came from a gauge four kilometers upstream in a different hydraulic reach, your claim is only as strong as that spatial transfer and not as strong as the gauge. The instrument is excellent. The transfer is not. Do this to three of your own sentences.</div>
+  </section>
+
+  <section class="term-section" id="submit">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat submit.md</span><span class="meta">three things</span></div>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Your map, live</div><div class="d">A public https URL that answers your one question. Site number in the path, no name on the page.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">meta.json</div><div class="d">Uploaded to your folder in <strong>Session 2</strong> in the shared Drive. This carries your URL, so it is also how I find your map. Get the bounds and the kind values right.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">source-assessment.md</div><div class="d">Uploaded to your folder in <strong>Session 2</strong> in the shared Drive. One table with a row per source you actually used, then four short sections. What I built and why. Source assessment. Where the claim weakens, three of your own claims under the weakest link rule. What I would trust less next time.</div></div></div>
+    <p>The table wants seven columns. Source, tier, method, resolution, latency, what it can answer, what it cannot. Do not list sources you looked at and discarded.</p>
+    <p><strong>Due Monday, November 16 · 1700 EST.</strong></p>
+  </section>
+
+  <section class="term-section" id="hard">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat hard.md</span><span class="meta">the trap</span></div>
+    <p>The temptation is to rank the sources once and reuse the ranking. It does not survive contact with the work.</p>
+    <p>The gauge is the best source in your set and it cannot tell you anything specific about your quad. iNaturalist is the weakest by method and it is the only source that knows a species is actually there. A 1920 photograph has no method at all and it is the only thing on your page that shows what this bank looked like before the dam.</p>
+    <p>Quality is a fit between a source and a question rather than a standing rank, and the whole skill is being honest about which fit you have.</p>
+    <p>Use whatever model you like to build this, Claude or anything else. It does not go in the ledger. Only the source of the number does.</p>
+  </section>
+
+  <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
+
+</main>
+</body>
+</html>
