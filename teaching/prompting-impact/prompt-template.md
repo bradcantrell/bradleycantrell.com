@@ -1,13 +1,13 @@
-# Claude Prompt — Assignment 1
+# Model Prompt — Assignment 1
 
 ## How to use this
 
 Run the two turns in order.
 
-1. Open Claude in your browser.
+1. Open the model in your browser.
 2. Get your four corners — open your KMZ in Google Earth and click your quad once; a popup lists "Boundary corners (lat, lon)". Copy those four lines.
-3. Turn 1 — fill in the four corners, copy the block below, paste into Claude, send. No image.
-4. Turn 2 — attach your aerial screenshot to Claude, then copy the block below, paste, send.
+3. Turn 1 — fill in the four corners, copy the block below, paste into the model, send. No image.
+4. Turn 2 — attach your aerial screenshot to the model, then copy the block below, paste, send.
 
 ---
 

@@ -1,6 +1,6 @@
 # Ecological Assessment — Tennessee River Corridor
 
-**Claude skill.** To use, paste the body of this file into Claude (chat) and tell it you are working from this skill. If you use Claude Code instead, save this as `SKILL.md` and prepend the frontmatter below:
+**Model skill.** To use, paste the body of this file into your model's chat window and tell it you are working from this skill. If your tool reads skill files, save this as `SKILL.md` and prepend the frontmatter below:
 
 ```
 ---

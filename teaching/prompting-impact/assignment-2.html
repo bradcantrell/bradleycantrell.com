@@ -25,6 +25,11 @@
 .a2-warn{border-left:2px solid var(--warn);padding:0.15rem 0 0.15rem 1.1rem;margin:1.4rem 0;
   color:var(--muted);font-size:0.83rem}
 .a2-warn b{color:var(--ink);font-weight:500}
+.a2-feed{border-left:2px solid var(--accent);padding:0.15rem 0 0.15rem 1.1rem;margin:1.25rem 0;
+  color:var(--muted);font-size:0.82rem}
+.a2-feed b{color:var(--accent);font-weight:500;font-size:0.64rem;letter-spacing:0.12em;
+  text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.a2-feed code{color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:0.76rem}
 </style>
 </head>
 <body>
@@ -66,11 +71,22 @@
     <p><strong>Assignment 2 assembles the panel.</strong> You are building a map of your reach that carries live data, historical data, and an accounting of where every number on it came from.</p>
   </section>
 
+  <section class="term-section" id="step0">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 0 · the operator</span><span class="meta">how to work with the model</span></div>
+    <p>You will build this with a language model, and that is the intended way to build it. The model is the instrument you are learning to play. It is not the source of the answer, and you are the one who decides what counts. Every step below names what to hand it and what to ask for back.</p>
+    <p>Three rules hold across all six steps.</p>
+    <div class="lecture"><div class="num">1</div><div><div class="t">Paste the file</div><div class="d">Describe nothing from memory. If the question is about your bounds, paste the KML. A model that cannot read your file will invent numbers that look exactly as plausible as the right ones.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">Ask for the file, not the values</div><div class="d">Coordinates retyped from a number on a screen are where this assignment goes wrong. Have the model write the file, then download it. You should never type a coordinate by hand.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">Make it show its source</div><div class="d">Ask which endpoint, which archive, which photograph. A layer with no source behind it cannot go in the ledger, and the ledger is the assignment.</div></div></div>
+    <p>If you are working in a chat window that cannot write files, ask for the contents in a code block and save the file yourself. The rule does not change. You never retype a coordinate.</p>
+  </section>
+
   <section class="term-section" id="step1">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 1 · the question</span><span class="meta">one sentence</span></div>
     <p>Go back to the one question you wrote in Assignment 1. If the aerial changed it, use the new version. Write it at the top of your page, above everything else.</p>
     <p>The map exists to answer that question, both explicitly and abstractly. This is the test of whether a layer of information belongs on it. A layer that does not help answer your question is ornament. At the same time it may not be clear initially what layers matter, so being able to build relationships is critical.</p>
     <div class="a2-warn"><b>Say what would change your mind.</b> Below your question, write one sentence naming the measurement that would prove you wrong. If nothing could prove you wrong, the question is not yet a question.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste your assignment 1 log, both turns, and the sentence you wrote. Ask it to test the sentence against the sources in step 2, and tell you which of them could prove it wrong.</div>
   </section>
 
   <section class="term-section" id="step2">
@@ -88,18 +104,20 @@
             <td>A documented method applied to data. Excellent at the scale it was built for, and carrying every assumption of that method.</td></tr>
         <tr><td>observed</td>
             <td>iNaturalist</td>
-            <td>Species recorded at or near your quad. A species is where somebody with a phone happened to walk.</td></tr>
+            <td>Species recorded at or near your quad. A record is where somebody with a phone happened to walk.</td></tr>
         <tr><td>archival</td>
             <td>Open-Meteo archive, 1940 to present. McClung Digital Collection. Planetary Computer scenes.</td>
-            <td>More than eighty years of daily weather at your own coordinates, and a century of photographs of this river. Not measurements, but evidence.</td></tr>
+            <td>Reanalysis weather back to 1940 for the grid cell nearest your quad, and a century of photographs of this river. A reanalysis is a model run over the past rather than a station record, and it returns the cell and not your point. Treat it as evidence rather than as a measurement.</td></tr>
       </tbody>
     </table>
+    <p>Step 5 accepts two more kinds than the four above. <em>Mine</em> covers the layer you make yourself, and <em>asserted</em> covers a claim a model produced with nothing behind it. Four kinds to gather with, six to file under.</p>
 
     <div class="a2-warn"><b>The live river gauge is not the one you expect.</b> Five USGS Tennessee River sites sit inside Knox County and <strong>none of them serves live data</strong>. The river here is a regulated TVA reservoir reach, so USGS returns an empty array and the API looks broken. The live instrument is the NWPS gauge, not USGS. Start with <em>knot1</em>.</div>
 
     <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Required · the gap</span> <span class="meta">two numbers, one river</span></div>
     <p>Two answers for the flow of the same river exist in this set. The NWPS gauge reports <strong>55.3 kcfs</strong>, about <strong>1,566 m³/s</strong>, measured at a dam-regulated reach. The Open-Meteo flood model, queried at the same coordinates, reports <strong>266 m³/s</strong>.</p>
     <p>Neither number is a lie. The flood model is a good instrument answering a different question. It does not represent how TVA operates these reservoirs, so it describes a river that is not managed the way this one is. Put both numbers on your dashboard, side by side, and write the paragraph that explains the difference. This is the clearest lesson in this corridor and you already hold both ends of it.</p>
+  <div class="a2-feed"><b>Feed the model</b>Paste the endpoint list from the data sources page and your bounds file. Ask it to fetch each source and write the response into <code>data/</code>, not to describe what the response would probably say. Anything it did not just fetch is <em>asserted</em>.</div>
   </section>
 
   <section class="term-section" id="step3">
@@ -108,9 +126,10 @@
     <p>A dashboard has three jobs and they are not the same job.</p>
     <div class="lecture"><div class="num">1</div><div><div class="t">Instrument panel</div><div class="d">Live numbers that refresh. Stage, discharge, temperature, PM2.5, AQI. If nothing on your page changes on its own, you have made a poster.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">Layer controls</div><div class="d">Toggles for what you actually built. Species points, flood zones, land cover, elevation, historic photographs. Each layer answers a different question or it does not earn a toggle.</div></div></div>
-    <div class="lecture"><div class="num">3</div><div><div class="t">The ledger</div><div class="d">Beside the live numbers, the modeled ones, and a visible mark on every claim that came from a model without a source. The page should show its own uncertainty rather than hide it.</div></div></div>
+    <div class="lecture"><div class="num">3</div><div><div class="t">The ledger</div><div class="d">Beside the live numbers, show the modeled ones and put a visible mark on every claim that came from a model without a source. The page should show its own uncertainty rather than hide it.</div></div></div>
 
-    <div class="a2-warn"><b>One layer has to be yours.</b> Hand mapped, hand counted, or hand photographed. Walked, driven, or looked at out a window. Every API on this list can be called by anyone in ninety seconds, so a page assembled entirely from them says nothing about your reach that a page about any other reach would not also say. The layer you collect is what makes the map an argument about <em>this</em> 2 km.</div>
+    <div class="a2-warn"><b>One layer has to be yours.</b> It does not have to come from standing on the ground. Getting to your site in person is optional, and some of these reaches cannot be reached in the time you have. What is not optional is that one layer comes out of your own hand and your own reading rather than out of an endpoint. Draw a feature off the imagery in a drawing tool and export it as a layer. Count something across the whole quad and record the count and the method. Cut a section through the corridor from elevation data and draw what it shows you. Read a 1930s photograph closely and map the thing it holds that the current aerial does not. If you can get to the site, walk it and photograph what you find. Every API on this list can be called by anyone in ninety seconds, so a page assembled entirely from them says nothing about your reach that a page about any other reach would not also say. The layer you make is what turns the map into an argument about <em>this</em> 2 km.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste <code>dashboard-starter.html</code> and your one sentence. Ask for one layer at a time and ask which lines it touched. A model that rewrites the whole file leaves you unable to see what broke.</div>
   </section>
 
   <section class="term-section" id="step4">
@@ -120,12 +139,13 @@
     <div class="lecture"><div class="num">B</div><div><div class="t">Netlify Drop</div><div class="d">Drag the folder onto <em>app.netlify.com/drop</em>, then sign in and claim the site. A drop you leave unclaimed stays behind a temporary password and is deleted, so a URL you never claimed will not work for me. Claim it and it stays up.</div></div></div>
     <p>Test it in a private window while logged out. If it only works when you are signed in, it does not work.</p>
     <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use a <em>site-NN</em> path and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity. Your site number is enough for me to know whose it is.</div>
-    <div class="a2-warn"><b>It has to be https on a real origin.</b> USGS blocks requests from a local file, and several other endpoints are unhappy with them too. Prototype locally if you like, but the version you hand in must be served.</div>
+    <div class="a2-warn"><b>It has to be https on a real origin.</b> Several of these endpoints refuse requests that come from a local file, which is a CORS rule rather than a bug you can fix. Prototype locally if you like, but the version you hand in must be served.</div>
+  <div class="a2-feed"><b>Feed the model</b>Ask for the exact clicks or commands for your host, one stage at a time, and paste back any error text exactly as it appeared. A paraphrased error sends the model after the wrong problem.</div>
   </section>
 
   <section class="term-section" id="step5">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 5 · the handshake</span><span class="meta">meta.json</span></div>
-    <p>Every student hands in one small file in the same shape. That file is how your map becomes a piece of a single corridor map instead of eighteen unrelated pages. It is also your ledger in machine readable form, so the honesty of it matters beyond this course.</p>
+    <p>Every student hands in one small file in the same shape. That file is how your map becomes a piece of a single corridor map instead of eighteen unrelated pages. It is also your ledger in machine-readable form, so the honesty of it matters beyond this course.</p>
 <pre class="a2-pre">{
   <span class="k">"site"</span>: 7,
   <span class="k">"name"</span>: <span class="s">"your name"</span>,
@@ -139,10 +159,31 @@
     { <span class="k">"name"</span>: <span class="s">"flood model"</span>, <span class="k">"kind"</span>: <span class="s">"modeled"</span>,  <span class="k">"source"</span>: <span class="s">"Open-Meteo flood"</span> },
     { <span class="k">"name"</span>: <span class="s">"species"</span>,     <span class="k">"kind"</span>: <span class="s">"observed"</span>, <span class="k">"source"</span>: <span class="s">"iNaturalist"</span> },
     { <span class="k">"name"</span>: <span class="s">"1920s photos"</span>, <span class="k">"kind"</span>: <span class="s">"archival"</span>, <span class="k">"source"</span>: <span class="s">"McClung"</span> },
-    { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"walked 2026-11-14"</span> }
+    { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"traced from 2024 imagery"</span> }
   ]
 }</pre>
-    <p>Copy this exactly and change the values. <strong>bounds</strong> runs west then south, so the lower left corner first and the upper right corner second. <strong>center</strong> is longitude before latitude. Both of those catch people who do them from memory.</p>
+    <p><strong>Do not type this file by hand.</strong> Every coordinate in it should arrive from a file the model can read, never from a number you copied off a screen. Paste the example above, paste your assignment 1 KML, and ask for <em>meta.json</em>. The only value you supply yourself is the URL you are hosting at.</p>
+<pre class="a2-pre">Read the KML pasted below and write meta.json for my corridor map.
+
+  <span class="cm">rules</span>
+  take bounds from the KML exactly, do not round, do not reorder
+  bounds is the lower left corner first, then the upper right corner
+  every pair is [longitude, latitude]
+  center is the midpoint of those bounds, same order
+  copy my one_question verbatim, do not improve it
+  one object per layer, each with name, kind and source
+  kind is one of measured, modeled, observed, archival, mine, asserted
+  if you cannot cite a source for a layer, use asserted
+
+  <span class="cm">mine to fill in</span>
+  site number    NN
+  hosted url     https://...
+  one question   my sentence from step 1
+  my layers      listed below, with whatever I know about each source
+
+  KML
+  &lt;paste your assignment 1 KML here&gt;</pre>
+    <p>Then check two things before you trust the result. <strong>bounds</strong> is the lower left corner first and the upper right corner second. <strong>center</strong> is longitude before latitude. Both catch people working from memory, and a model will only get them right if it is reading your file rather than guessing.</p>
     <p><strong>kind</strong> is what lets the corridor map color you honestly. Measured is a number from an instrument. Modeled is a number from a method. Observed is a person seeing a thing. Archival is evidence from the past. Mine is the layer you gathered yourself. If a value came from a model with nothing behind it, say <em>asserted</em> and do not dress it up. A map that admits one weak layer is more trustworthy than one that hides it.</p>
   </section>
 
@@ -162,6 +203,7 @@
     <p><strong>Authority.</strong> Who produced it, under what mandate, and do they answer for errors. <strong>Method.</strong> Measured, modeled, derived, observed, or recalled. Most disagreements between sources are method disagreements wearing a numbers costume. <strong>Resolution.</strong> Grain against your quad, and which axis fails. <strong>Latency.</strong> Realtime, hourly, daily, annual, or frozen in 2019. <strong>Fitness.</strong> Can it answer what you asked of this reach, or does it answer a neighboring question at a different scale. <strong>Stated error.</strong> Is an uncertainty given, or is the number bare. A source that publishes its error bars is easier to trust than one that does not, even when the error is large.</p>
 
     <div class="a2-warn"><b>The weakest link rule.</b> A claim inherits the quality of the weakest source in the chain that produced it. If you write that your reach sits at 811.6 ft, and that number came from a gauge four kilometers upstream in a different hydraulic reach, your claim is only as strong as that spatial transfer and not as strong as the gauge. The instrument is excellent. The transfer is not. Do this to three of your own sentences.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste your <code>meta.json</code> and ask it to argue for the weakest layer, not the strongest. What a source is good for is something it can find. What your claim needs is yours to decide.</div>
   </section>
 
   <section class="term-section" id="submit">
@@ -178,7 +220,7 @@
     <p>The temptation is to rank the sources once and reuse the ranking. It does not survive contact with the work.</p>
     <p>The gauge is the best source in your set and it cannot tell you anything specific about your quad. iNaturalist is the weakest by method and it is the only source that knows a species is actually there. A 1920 photograph has no method at all and it is the only thing on your page that shows what this bank looked like before the dam.</p>
     <p>Quality is a fit between a source and a question rather than a standing rank, and the whole skill is being honest about which fit you have.</p>
-    <p>Use whatever model you like to build this, Claude or anything else. It does not go in the ledger. Only the source of the number does.</p>
+    <p>Use whatever model you like to build this, the model or anything else. It does not go in the ledger. Only the source of the number does.</p>
   </section>
 
   <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
