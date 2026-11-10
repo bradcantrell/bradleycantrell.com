@@ -24,7 +24,7 @@ Find your quad on the synthetic corridor map (**prompting-impact.pages.dev**) �
 1. **Reach + question** — locate your quad and state the ecological question you are asking about it.
 2. **Live data** — fetch real-time data from the APIs below.
 3. **Map** — build a single-file Leaflet web map that plots the data.
-4. **Assessment** — write four sections: baseline → indicators → stakes → uncertainties.
+4. **Assessment** — for Assignment 2 this is the source assessment in `source-assessment.md`: one table and five short sections.
 5. **Verification ledger** — separate every claim into *live-verified* vs *machine-asserted*.
 
 ## Data APIs (all free, no key, CORS-friendly)
@@ -47,12 +47,11 @@ Replace the coordinates with your quad's center. Radius and `per_page` are tunab
 
 Start from `map-template.html` (Leaflet + fetch, Esri dark basemap, centered on Knoxville). Edit the center to your quad, the data endpoints, and add site-specific layers. Keep everything `https` and keyless so it works from a plain browser.
 
-## Assessment structure (four sections)
+## Assessment structure
 
-1. **Baseline** — what the reach is now: land cover, hydrology, built form, current conditions.
-2. **Indicators** — 3–5 specific, measurable things to track, and why each matters.
-3. **Stakes** — what changes, and for whom, if the system shifts (species, people, infrastructure).
-4. **Uncertainties** — what the data does *not* tell you, and where the machine is guessing.
+Assignment 2 hands in the source assessment, built with the table and the five short sections in `source-assessment.md`. It covers the tiers of authority, the six dimensions, the weakest link rule, and the three forms of divergence.
+
+The module assessment in `assessment.md` is the larger document assembled across all three assignments, and you return to it at the end of the third.
 
 Every factual sentence must point to either a live source or be marked machine-asserted.
 
