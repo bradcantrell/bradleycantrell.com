@@ -38,7 +38,7 @@ For every source, characterize it on these. Two sentences each is enough.
 
 **Method.** Measured, modeled, derived, observed, or recalled. Write which one. Most disagreements between sources are method disagreements wearing a numbers costume.
 
-**Resolution.** Spatial and temporal grain against your quad. A point gauge is exact at one place. The flood model is a 5 km cell updated daily. A 25 km species radius is coarser than your quad spatially. Say which axis fails.
+**Resolution.** Spatial and temporal grain against your quad. A point gauge is exact at one place. The flood model is a 5 km cell updated daily. A 25 km species radius reaches far past your quad, which is why the data sources page queries your box and clips it to your corners. Say which axis fails.
 
 **Latency and currency.** Realtime, hourly, daily, annual, or frozen at a single vintage, which for the land cover layer means one date rather than a trend. This determines what question the source can answer now.
 
@@ -64,15 +64,17 @@ Two numbers for the flow of the same river exist in the set you were given.
 
 The NWPS gauge at Knoxville reports **55.3 kcfs**, which is about 1,566 cubic meters per second. It is an instrumented observation in the water, the reading when this was written on November 10, 2026, at a reach whose flow is set by dams.
 
-The Open-Meteo flood model, queried at the same coordinates, reports **266 cubic meters per second**.
+The Open-Meteo flood model, queried at a point on the channel near downtown, reports **266 cubic meters per second**.
 
 A factor of 5.9.
+
+**Your pair will be different.** The model answers for a cell about 5 km across, so its number depends on which cell your point falls in. Query it at a point on the main channel inside your quad, not at your center, and write down the cell the response names. A center that lands off the river can return almost nothing, and a ratio in the thousands is a fact about the cell, not about TVA. Your gauge reading changes too, because the river does.
 
 Neither number is a lie. GloFAS runs one value per 5 km cell per day from a global hydrological model driven by weather reanalysis, and it has no way of knowing what the Tennessee Valley Authority released through the dams upstream this morning. At this reach, the release schedule is most of the flow. The gauge measures one point, continuously, in the channel. Both are correct about the thing each one measures, and they disagree about the river.
 
 At least three explanations fit. The release schedule upstream. The 5 km cell, which cannot resolve a channel. The weather forcing behind the model, which is a reanalysis of a grid rather than this valley's rain gauges. Which one is right is a question you can test, and that is the work.
 
-Write the paragraph explaining that gap. It is the clearest exercise in source quality in this corridor, and you have both endpoints.
+Write the paragraph that holds that gap open. Both readings, the cell the model answered for, the form of the divergence, what it suggests, and what would test it. It is the clearest exercise in source quality in this corridor, and you have both endpoints.
 
 ---
 

@@ -83,7 +83,7 @@
   <div class="panel">
     <h2>Layers</h2>
     <label class="tog on"><input type="checkbox" id="ly-species" checked> species observations <span class="tier t3">3</span></label>
-    <label class="tog"><input type="checkbox" id="ly-gauge"> river gauge <span class="tier t1">1</span></label>
+    <label class="tog on"><input type="checkbox" id="ly-gauge" checked> river gauge <span class="tier t1">1</span></label>
   </div>
 
   <div class="panel">
@@ -106,14 +106,22 @@
 // ============================================================
 // CONFIGURE THIS BLOCK — this is the only part you must edit
 // ============================================================
+// Every value here comes from your KML (the doc.kml inside your KMZ) or from
+// your aerial. Have the model fill it in from the file. Do not type coordinates.
+// The values below are site 7's, as an example, so the page runs before you edit it.
 const SITE = {
-  number: 0,
-  name: "your name",
-  lat: 35.9548,          // your quad's centre, from prompting-impact.pages.dev
-  lng: -83.9205,
+  number: 7,
+  // center: the center point Placemark in your KML, as [lat, lng] for Leaflet
+  lat: 35.896917002620384,
+  lng: -83.96013141062076,
+  // corners: the four corners of your KML polygon, as [lat, lng]. KML writes lng,lat.
+  corners: [[35.885966647120085, -83.93934369345305], [35.91695887382534, -83.96178985215809],
+            [35.90786735812068, -83.98091912778847], [35.87687513141543, -83.95847296908343]],
+  // channel: a point on the main channel inside your quad, picked off the aerial.
+  // The flood model is queried here, not at your center (see the data sources page).
+  channel: [35.905, -83.966],
   zoom: 13,
-  gauge: "knot1",        // NWPS gauge id
-  inatRadiusKm: 25
+  gauge: "knot1"         // NWPS gauge id
 };
 
 // ============================================================
@@ -125,8 +133,20 @@ L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World
 L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
   {maxZoom:16}).addTo(map);
 
-// quad outline placeholder — replace with your four corners from the KMZ
-L.circle([SITE.lat,SITE.lng],{radius:1200,color:'#66ccff',weight:1,dashArray:'4 6',fill:false}).addTo(map);
+// your quad, drawn from its four corners. It is rotated to follow the river.
+L.polygon(SITE.corners,{color:'#66ccff',weight:1.5,dashArray:'4 6',fill:false}).addTo(map);
+function inQuad(lat, lng){            // true when a point falls inside your four corners
+  let ins = false; const c = SITE.corners;
+  for (let i = 0, j = c.length - 1; i < c.length; j = i++){
+    const [yi, xi] = c[i], [yj, xj] = c[j];
+    if ((yi > lat) != (yj > lat) && lng < (xj - xi) * (lat - yi) / (yj - yi) + xi) ins = !ins;
+  }
+  return ins;
+}
+const box = { south: Math.min(...SITE.corners.map(c=>c[0])), north: Math.max(...SITE.corners.map(c=>c[0])),
+              west:  Math.min(...SITE.corners.map(c=>c[1])), east:  Math.max(...SITE.corners.map(c=>c[1])) };
+// A note if you add a chart: style it by id (#profile { ... }), never with a bare svg { ... } rule.
+// Leaflet draws your quad and every dot inside an svg too, and a bare rule can make them vanish with no error.
 
 const $ = id => document.getElementById(id);
 $('q-site').textContent = SITE.number ? ('site-' + String(SITE.number).padStart(2,'0')) : 'unset';
@@ -164,7 +184,7 @@ fetch('https://api.water.noaa.gov/nwps/v1/gauges/' + SITE.gauge)
     addRow('instruments','stage', o.primary + ' ' + o.primaryUnit, 1);
     addRow('instruments','discharge', o.secondary + ' ' + o.secondaryUnit, 1);
     if (f) addRow('instruments','forecast', f.primary + ' ' + f.primaryUnit, 1);
-    $('hd-sub').textContent = d.name + ' · site ' + (SITE.number||'--');
+    $('hd-sub').textContent = 'site ' + String(SITE.number).padStart(2,'0') + ' · gauge: ' + d.name;
     L.circleMarker([d.latitude, d.longitude], {radius:6,color:'#66ccff',fillColor:'#66ccff',fillOpacity:.9})
       .addTo(gaugeLayer).bindTooltip(d.name + ' · ' + o.primary + ' ' + o.primaryUnit);
     renderCompare();
@@ -172,11 +192,17 @@ fetch('https://api.water.noaa.gov/nwps/v1/gauges/' + SITE.gauge)
   .catch(() => { clearPlaceholder('instruments'); addRow('instruments','gauge','unavailable',null); });
 
 // --- modeled discharge (Tier 2) -------------------------
-let modeledM3s = null;
-fetch('https://flood-api.open-meteo.com/v1/flood?latitude=' + SITE.lat + '&longitude=' + SITE.lng +
+let modeledM3s = null, modelCell = null;
+fetch('https://flood-api.open-meteo.com/v1/flood?latitude=' + SITE.channel[0] + '&longitude=' + SITE.channel[1] +
       '&daily=river_discharge&forecast_days=1')
   .then(r => r.json())
-  .then(d => { modeledM3s = d.daily.river_discharge[0]; renderCompare(); })
+  .then(d => {
+    modeledM3s = d.daily.river_discharge[0];
+    modelCell = [d.latitude, d.longitude];   // the cell the model answered for, about 5 km across
+    L.circleMarker(modelCell,{radius:5,color:'#ffb000',fill:false,weight:2})
+      .addTo(map).bindTooltip('flood model cell center, about 5 km across (not your quad)');
+    renderCompare();
+  })
   .catch(() => {});
 
 function renderCompare(){
@@ -187,10 +213,11 @@ function renderCompare(){
   addRow(host,'measured', Math.round(measuredM3s).toLocaleString() + ' m³/s', 1);
   addRow(host,'modeled',  Math.round(modeledM3s).toLocaleString()  + ' m³/s', 2);
   const r = addRow(host,'ratio', ratio.toFixed(1) + '×', null);
-  r.querySelector('.v').style.color = ratio > 1.5 || ratio < 0.67 ? '#ff5b6e' : '#00e5a0';
+  r.querySelector('.v').style.color = '#ffb000';   // a reading to hold, not a pass or a fail
+  addRow(host,'model cell', modelCell.map(v => v.toFixed(3)).join(', '), null);
   $('compare-note').textContent =
-    'Both sources answer the same question and disagree by ' + ratio.toFixed(1) +
-    '×. One is an instrument at a dam-regulated reach. The other is a global model that does not simulate reservoir operations. Say which you would trust, and for what.';
+    'The gauge, one point in the water, and the model, one 5 km cell, disagree by ' + ratio.toFixed(1) +
+    '×. Keep both. More than one reading fits: dam releases the model cannot know, a cell that resolves a different stretch of river, a daily value against a reading every few minutes. Say what the gap suggests and what would test it.';
 }
 
 // --- weather + air quality (Tier 2) ---------------------
@@ -212,18 +239,20 @@ fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + SITE.l
 // --- species (Tier 3) -----------------------------------
 const speciesLayer = L.layerGroup().addTo(map);
 let speciesCount = 0;
-fetch('https://api.inaturalist.org/v1/observations?lat=' + SITE.lat + '&lng=' + SITE.lng +
-      '&radius=' + SITE.inatRadiusKm + '&per_page=50&order=desc&order_by=observed_on')
+// queried by your bounding box, then clipped to your four corners. A radius reaches far past your quad.
+fetch('https://api.inaturalist.org/v1/observations?swlat=' + box.south + '&swlng=' + box.west +
+      '&nelat=' + box.north + '&nelng=' + box.east + '&per_page=200&order=desc&order_by=observed_on')
   .then(r => r.json()).then(d => {
     (d.results||[]).forEach(o => {
       if(!o.geojson || !o.geojson.coordinates) return;
       const [lng,lat] = o.geojson.coordinates;
+      if(!inQuad(lat,lng)) return;
       const t = (o.taxon && (o.taxon.preferred_common_name || o.taxon.name)) || 'unknown';
       L.circleMarker([lat,lng],{radius:3,color:'#00e5a0',fillColor:'#00e5a0',fillOpacity:.75})
         .addTo(speciesLayer).bindTooltip(t + (o.observed_on ? ' · ' + o.observed_on : ''));
       speciesCount++;
     });
-    addRow('instruments','species logged', speciesCount + ' within ' + SITE.inatRadiusKm + ' km', 3);
+    addRow('instruments','species logged', speciesCount + ' inside your quad, of the latest 200 in its box', 3);
   }).catch(()=>{});
 
 // --- toggles --------------------------------------------

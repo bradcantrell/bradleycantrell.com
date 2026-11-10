@@ -42,6 +42,7 @@
   <a href="index.html">~/living-systems</a>
   <a href="assignment-1.html">assignment-1</a>
   <a href="assignment-2.html" class="active">assignment-2</a>
+  <a href="data-sources.html">data-sources</a>
 </nav>
 
 <header class="hero">
@@ -80,6 +81,7 @@
     <div class="lecture"><div class="num">2</div><div><div class="t">Ask for the file, not the values</div><div class="d">Coordinates retyped from a number on a screen are where this assignment goes wrong. Have the model write the file, then download it.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Make it show its source</div><div class="d">Ask which endpoint, which archive, which photograph. A layer with no source behind it cannot go in the ledger, and the ledger is the assignment.</div></div></div>
     <p>If you are working in a chat window that cannot write files, ask for the contents in a code block and save the file yourself.</p>
+    <div class="a2-warn"><b>Your file is a KMZ, and a KMZ cannot be pasted.</b> It is a zipped KML. Make a copy, rename the copy from <em>.kmz</em> to <em>.zip</em>, open it and take out <em>doc.kml</em>. Or open the KMZ in Google Earth on a desktop, right-click the quad, choose Save Place As, and save it as KML. Open <em>doc.kml</em> in any text editor. That text is what this assignment means by your KML, and it is what you paste. If your interface takes file uploads, attach the <em>.kml</em>, not the <em>.kmz</em>.</div>
   </section>
 
   <section class="term-section" id="step1">
@@ -92,7 +94,7 @@
 
   <section class="term-section" id="step2">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 2 · gather the signal</span><span class="meta">four kinds of evidence</span></div>
-    <p>Gather as much as you can, then throw most of it away. Every source below was queried and returned data on November 9. They are grouped by what kind of evidence they are, and the kind is what your ledger is built from.</p>
+    <p>Gather as much as you can, then throw most of it away. Every source below was queried and returned data on November 9. They are grouped by what kind of evidence they are, and the kind is what your ledger is built from. The query for every source, and what each one will try to trick you with, is on the <a href="data-sources.html">data sources page</a>.</p>
 
     <table class="a2-table">
       <thead><tr><th>kind</th><th>sources</th><th>what they give you</th></tr></thead>
@@ -105,7 +107,7 @@
             <td>A documented method applied to data. Excellent at the scale it was built for, and carrying every assumption of that method.</td></tr>
         <tr><td>observed</td>
             <td>iNaturalist</td>
-            <td>Species recorded at or near your quad. A record is where somebody with a phone happened to walk.</td></tr>
+            <td>Species recorded inside your quad. Query your bounding box, then keep only the points inside your four corners. A radius search reaches far beyond your quad. A record is where somebody with a phone happened to walk.</td></tr>
         <tr><td>archival</td>
             <td>Open-Meteo archive, 1940 to present. McClung Digital Collection. Planetary Computer scenes.</td>
             <td>Reanalysis weather back to 1940 for the grid cell nearest your quad, and a century of photographs of this river. A reanalysis is a model run over the past rather than a station record, and it returns the cell and not your point. Treat it as evidence rather than as a measurement.</td></tr>
@@ -116,11 +118,12 @@
     <div class="a2-warn"><b>The live river gauge is not the one you expect.</b> Five USGS Tennessee River sites sit inside Knox County and <strong>none of them serves live data</strong>. The river here is a regulated TVA reservoir reach, so USGS returns an empty array and the API looks broken. The live instrument is the NWPS gauge, not USGS. Start with <em>knot1</em>.</div>
 
     <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Required · the gap</span> <span class="meta">two numbers, one river</span></div>
-    <p>Two answers for the flow of the same river exist in this set. The NWPS gauge reports <strong>55.3 kcfs</strong>, about <strong>1,566 m³/s</strong>, measured at a dam-regulated reach. The Open-Meteo flood model, queried at the same coordinates, reports <strong>266 m³/s</strong>.</p>
+    <p>Two answers for the flow of the same river exist in this set. The NWPS gauge reports <strong>55.3 kcfs</strong>, about <strong>1,566 m³/s</strong>, measured at a dam-regulated reach. The Open-Meteo flood model, queried at a point on the channel near downtown, reported <strong>266 m³/s</strong>.</p>
+    <div class="a2-warn"><b>Your two numbers will not be these.</b> The flood model answers for a cell about 5 km across, so what it returns depends on which cell your point falls in. Query it at a point on the main channel inside your quad, not at your center. A center can land in a cell off the river and return almost nothing. The response names the cell it answered for. Write that down beside the number, and mark the cell's center on your map as the model's cell, never as your quad. One test quad came out at 5.7×, another at 18.2×. Neither student had broken anything.</div>
     <p>Neither number is a lie, and neither one is the river. The flood model is a good instrument answering a different question. It does not represent how TVA operates these reservoirs, so it describes a river that is not managed the way this one is. The gauge reports the river as it is actually run.</p>
     <p>That makes the gap a reading in its own right. More than one explanation fits it. The model knows nothing of the dams. Its grid cell may not sit on the main channel. It answers for a day while the gauge answers for an hour. Each of those would mean something different about your reach, and you do not yet know which one, or which mix, is true.</p>
     <p>Put both numbers on your dashboard, side by side, with the ratio between them, and do not let the page pick a winner. Then write the paragraph. Not which number is right, but what the gap shows you about this river, which kind of divergence it is (step 6), and what you would watch to tell the explanations apart. This is the clearest lesson in this corridor and you already hold both ends of it.</p>
-  <div class="a2-feed"><b>Feed the model</b>Paste the endpoint list from the data sources page and your bounds file. Ask it to fetch each source and write the response into <code>data/</code>, not to describe what the response would probably say. Anything it did not just fetch is <em>asserted</em>.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste the queries from the <a href="data-sources.html">data sources page</a>, your KML and your <code>meta.json</code>. Ask it to fetch each source and write the response into <code>data/</code>, not to describe what the response would probably say. Anything it did not just fetch is <em>asserted</em>.</div>
   </section>
 
   <section class="term-section" id="step3">
@@ -139,11 +142,11 @@
   <section class="term-section" id="step4">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · host it</span><span class="meta">public url</span></div>
     <p>Your map has to live at a real URL. A file on your laptop cannot be assembled with seventeen other maps.</p>
-    <div class="lecture"><div class="num">A</div><div><div class="t">GitHub Pages</div><div class="d">Make a public repo, put <em>index.html</em> and a <em>data/</em> folder at the top level, then Settings → Pages → Source, deploy from branch, main, / root. Your map appears at <em>yourname.github.io/repo-name</em> within a minute or two.</div></div></div>
+    <div class="lecture"><div class="num">A</div><div><div class="t">GitHub Pages</div><div class="d">Make a public repo, put <em>index.html</em> and a <em>data/</em> folder at the top level, then Settings → Pages → Source, deploy from branch, main, / root. Your map appears at <em>yourname.github.io/repo-name</em> within a minute or two. Your GitHub username is in that address, so if your username is your name, use Netlify instead.</div></div></div>
     <div class="lecture"><div class="num">B</div><div><div class="t">Netlify Drop</div><div class="d">Drag the folder onto <em>app.netlify.com/drop</em>, then sign in and claim the site. A drop you leave unclaimed stays behind a temporary password and is deleted, so a URL that you do not claim will not be live.</div></div></div>
     <p>Test it in a private window while logged out. If it only works when you are signed in, it does not work.</p>
     <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use a <em>site-NN</em> path and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity.</div>
-    <div class="a2-warn"><b>It has to be https on a real origin.</b> Several of these endpoints refuse requests that come from a local file, which is a CORS rule rather than a bug you can fix. Prototype locally if you like, but the version you hand in must be served.</div>
+    <div class="a2-warn"><b>It has to be https at a real address.</b> The corridor map, your classmates and I read your map there, so a page that only works on your laptop has not been handed in. Prototype locally if you like, but the version you hand in must be served.</div>
   <div class="a2-feed"><b>Feed the model</b>Ask for the exact clicks or commands for your host, one stage at a time, and paste back any error text exactly as it appeared. A paraphrased error sends the model after the wrong problem.</div>
   </section>
 
@@ -154,8 +157,10 @@
   <span class="k">"site"</span>: 7,
   <span class="k">"name"</span>: <span class="s">"your name"</span>,
   <span class="k">"hosted_url"</span>: <span class="s">"https://yourname.github.io/site-07/"</span>,
-  <span class="k">"center"</span>: [-83.9205, 35.9548],
-  <span class="k">"bounds"</span>: [[-83.9381, 35.9452], [-83.9029, 35.9644]],
+  <span class="k">"center"</span>: [-83.96013141062076, 35.896917002620384],
+  <span class="k">"corners"</span>: [[-83.93934369345305, 35.885966647120085], [-83.96178985215809, 35.91695887382534],
+              [-83.98091912778847, 35.90786735812068], [-83.95847296908343, 35.87687513141543]],
+  <span class="k">"bounds"</span>: [[-83.98091912778847, 35.87687513141543], [-83.93934369345305, 35.91695887382534]],
   <span class="k">"pulled"</span>: <span class="s">"2026-11-12T09:30:00-05:00"</span>,
   <span class="k">"one_question"</span>: <span class="s">"your sentence from step 1"</span>,
   <span class="k">"layers"</span>: [
@@ -166,14 +171,17 @@
     { <span class="k">"name"</span>: <span class="s">"bank condition"</span>, <span class="k">"kind"</span>: <span class="s">"mine"</span>, <span class="k">"source"</span>: <span class="s">"traced from 2024 imagery"</span> }
   ]
 }</pre>
-    <p><strong>Do not type this file by hand.</strong> Every coordinate in it should arrive from a file the model can read, never from a number you copied off a screen. Paste the example above, paste your assignment 1 KML, and ask for <em>meta.json</em>. The only value you supply yourself is the URL you are hosting at.</p>
+    <p><strong>Do not type this file by hand.</strong> Every coordinate in it should arrive from a file the model can read, never from a number you copied off a screen. Paste the example above, paste the KML from your KMZ, and ask for <em>meta.json</em>. The only value you supply yourself is the URL you are hosting at.</p>
 <pre class="a2-pre">Read the KML pasted below and write meta.json for my corridor map.
 
   <span class="cm">rules</span>
-  take bounds from the KML exactly, do not round, do not reorder
-  bounds is the lower left corner first, then the upper right corner
+  corners are the four corners of the KML polygon, in order, without the repeated last point
+  copy every number at full precision, do not round
   every pair is [longitude, latitude]
-  center is the midpoint of those bounds, same order
+  my quad is rotated, so bounds is computed from the corners, not copied
+  bounds is [[smallest longitude, smallest latitude], [largest longitude, largest latitude]]
+  center is the center point Placemark in the KML
+  pulled is the time my data/ files were fetched, read from them, never invented
   copy my one_question verbatim, do not improve it
   one object per layer, each with name, kind and source
   kind is one of measured, modeled, observed, archival, mine, asserted
@@ -186,8 +194,8 @@
   my layers      listed below, with whatever I know about each source
 
   KML
-  &lt;paste your assignment 1 KML here&gt;</pre>
-    <p>Then check two things before you trust the result. <strong>bounds</strong> is the lower left corner first and the upper right corner second. <strong>center</strong> is longitude before latitude. Both catch people working from memory, and a model will only get them right if it is reading your file rather than guessing.</p>
+  &lt;paste the text of doc.kml from your KMZ here&gt;</pre>
+    <p>Then check three things before you trust the result. <strong>bounds</strong> is the smallest longitude and latitude first and the largest second, and the box holds all four corners. <strong>center</strong> is longitude before latitude, and it sits inside the box. <strong>corners</strong> has four pairs, not five. These catch people working from memory, and a model will only get them right if it is reading your file rather than guessing.</p>
     <p><strong>kind</strong> is what lets the corridor map color you honestly. Measured is a number from an instrument. Modeled is a number from a method. Observed is a person seeing a thing. Archival is evidence from the past. Mine is the layer you gathered yourself. If a value came from a model with nothing behind it, say <em>asserted</em> and do not dress it up. A map that admits one weak layer is more trustworthy than one that hides it.</p>
   </section>
 

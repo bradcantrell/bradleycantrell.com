@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Sources · Prompting Impact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+<style>
+.a2-pre{background:rgba(102,204,255,0.04);border:1px solid var(--line);border-left:2px solid var(--accent);
+  padding:0.9rem 1.1rem;margin:0.6rem 0 1rem;overflow-x:auto;font-size:0.72rem;line-height:1.7;
+  color:var(--muted);font-family:'IBM Plex Mono',monospace;white-space:pre}
+.a2-pre .k{color:var(--accent)}
+.a2-warn{border-left:2px solid var(--warn);padding:0.15rem 0 0.15rem 1.1rem;margin:1.2rem 0;
+  color:var(--muted);font-size:0.83rem}
+.a2-warn b{color:var(--ink);font-weight:500}
+.src{margin:1.6rem 0 0.4rem}
+.src h3{font-size:0.86rem;font-weight:500;color:var(--ink);margin:0 0 0.2rem}
+.src .kind{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-left:0.6em}
+.src p{color:var(--muted);font-size:0.82rem;margin:0.25rem 0}
+</style>
+</head>
+<body>
+<div class="gridbg"></div>
+<div class="scanlines"></div>
+
+<nav class="site-nav">
+  <span class="brand">prompting-impact</span>
+  <a href="../../teaching.html">← teaching</a>
+  <a href="index.html">~/living-systems</a>
+  <a href="assignment-1.html">assignment-1</a>
+  <a href="assignment-2.html">assignment-2</a>
+  <a href="data-sources.html" class="active">data-sources</a>
+</nav>
+
+<header class="hero">
+  <div class="term-window">
+    <div class="term-bar"><span class="term-title">bradley@prompting-impact · ~/data-sources</span></div>
+    <div class="term-body">
+      <span class="term-kicker">Prompting Impact · Module D · for Assignment 2</span>
+      <h1 class="term-h1">Data Sources</h1>
+      <div class="term-datum"><span>Every query below was run against a real quad on November 10</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="term-section" id="use">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat how-to-use.md</span><span class="meta">paste this page</span></div>
+    <p>This is the endpoint list step 2 asks you to hand the model. Copy the queries below, paste them with your KML and your <em>meta.json</em>, and ask the model to fill in your values and fetch each one into <em>data/</em>. None of them needs a key.</p>
+    <p>The placeholders are always the same. <strong>{lat}, {lon}</strong> is your quad's center from the KML. <strong>{west}, {south}, {east}, {north}</strong> is your bounding box from <em>meta.json</em>. <strong>{chan_lat}, {chan_lon}</strong> is a point on the main channel of the river inside your quad, which you pick off the aerial.</p>
+    <div class="a2-warn"><b>Your quad is rotated.</b> It follows the river, so its bounding box is about twice its area. Anything you query by box, species above all, has to be clipped back to the four corners of your quad before it means anything about your quad.</div>
+  </section>
+
+  <section class="term-section" id="live">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">live</span><span class="meta">refreshes on load</span></div>
+
+    <div class="src"><h3>NWPS gauge knot1<span class="kind">measured · tier 1</span></h3>
+    <p>Stage, discharge, forecast and flood categories for the Tennessee River at Knoxville. Action 817 ft, minor 820, moderate 825, major 830. It is one point in the water, so say how far it is from your quad.</p></div>
+<pre class="a2-pre">https://api.water.noaa.gov/nwps/v1/gauges/knot1</pre>
+
+    <div class="src"><h3>Open-Meteo flood model<span class="kind">modeled · tier 2</span></h3>
+    <p>Daily river discharge from GloFAS, a global model that works on cells about 5 km across. Query it at your <strong>channel point</strong>, not your center. Off the channel it can return almost nothing (0.37 m³/s at one quad center, against about 270 on the channel). The response gives the latitude and longitude of the cell it answered for. Record that pair. The API returns no outline for the cell, so mark its center and label it as the model's cell, never as your quad.</p></div>
+<pre class="a2-pre">https://flood-api.open-meteo.com/v1/flood?latitude={chan_lat}&longitude={chan_lon}&daily=river_discharge&forecast_days=1</pre>
+
+    <div class="src"><h3>Open-Meteo weather and air quality<span class="kind">modeled · tier 2</span></h3></div>
+<pre class="a2-pre">https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit
+https://air-quality-api.open-meteo.com/v1/air-quality?latitude={lat}&longitude={lon}&current=pm2_5,us_aqi</pre>
+
+    <div class="src"><h3>iNaturalist<span class="kind">observed · tier 3</span></h3>
+    <p>Query your bounding box, then keep only the observations inside your four corners. Do not use a radius. A 25 km radius returns records from all over Knoxville, and in one test none of the fifty newest fell inside the quad. Two hundred records is about 7.5 MB, so save the file once rather than fetching it on every page load if your map gets slow.</p></div>
+<pre class="a2-pre">https://api.inaturalist.org/v1/observations?swlat={south}&swlng={west}&nelat={north}&nelng={east}&per_page=200&order=desc&order_by=observed_on</pre>
+  </section>
+
+  <section class="term-section" id="ground">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">ground</span><span class="meta">land, water, elevation</span></div>
+
+    <div class="src"><h3>FEMA flood zones (NFHL)<span class="kind">modeled · tier 2</span></h3>
+    <p>Use the image export as a map overlay. It answers in a few seconds. Feature queries over a whole quad often time out or reset, so only query a small area when you need attributes, and leave out the geometry. A value of <strong>−9999</strong> means no value was published. It is not an elevation.</p></div>
+<pre class="a2-pre"><span class="k">overlay</span>  https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/export?bbox={west},{south},{east},{north}&bboxSR=4326&imageSR=4326&size=900,900&layers=show:28&transparent=true&format=png32&f=image
+<span class="k">zones</span>    https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28/query?geometry={a small box}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=FLD_ZONE,ZONE_SUBTY&returnGeometry=false&f=json</pre>
+
+    <div class="src"><h3>USGS 3DEP elevation<span class="kind">derived · tier 2</span></h3>
+    <p>One point per request, in feet, about four seconds each, and roughly one request in five fails and has to be retried. Keep a section to fifteen points or so. Over water the model is noisy by several feet, which can be larger than the difference you want to claim. The gauge reports in feet above sea level, so compare like with like.</p></div>
+<pre class="a2-pre">https://epqs.nationalmap.gov/v1/json?x={lon}&y={lat}&units=Feet&wkid=4326</pre>
+
+    <div class="src"><h3>NLCD 2021 land cover<span class="kind">modeled · tier 2</span></h3>
+    <p>A 30 m national classification from one year. Show it as a map layer, and ask for the class at a single point when you want to compare it with your own reading.</p></div>
+<pre class="a2-pre"><span class="k">layer</span>    https://www.mrlc.gov/geoserver/mrlc_display/wms   layers=NLCD_2021_Land_Cover_L48
+<span class="k">a point</span>  https://www.mrlc.gov/geoserver/mrlc_display/wms?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=NLCD_2021_Land_Cover_L48&query_layers=NLCD_2021_Land_Cover_L48&bbox={lon-0.0005},{lat-0.0005},{lon+0.0005},{lat+0.0005}&srs=EPSG:4326&width=11&height=11&x=5&y=5&info_format=application/json</pre>
+  </section>
+
+  <section class="term-section" id="past">
+    <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">past</span><span class="meta">archival</span></div>
+
+    <div class="src"><h3>Open-Meteo archive, 1940 to present<span class="kind">archival · tier 4</span></h3>
+    <p>Reanalysis, which is a model run over the past, for the grid cell nearest your center. The response names the cell. Treat it as evidence for that cell, not as a record at your point.</p></div>
+<pre class="a2-pre">https://archive-api.open-meteo.com/v1/archive?latitude={lat}&longitude={lon}&start_date=1940-01-01&end_date=2025-12-31&daily=precipitation_sum,temperature_2m_max&timezone=America/New_York</pre>
+
+    <div class="src"><h3>McClung Digital Collection<span class="kind">archival · tier 4</span></h3>
+    <p>Historic photographs of Knoxville. The records have no coordinates, so finding a photograph of your reach is real search work. Search for a landmark, a road or a bridge you can see in your quad, then place the photograph on your map yourself, which makes its location your reading.</p></div>
+<pre class="a2-pre">https://cmdc.knoxlib.org/digital/api/search/searchterm/{a place name}/maxRecords/50</pre>
+
+    <div class="src"><h3>Planetary Computer scenes<span class="kind">archival · optional</span></h3>
+    <p>Landsat and Sentinel scenes back to the 1980s. Finding scenes is easy. Displaying one needs a signed asset link, which is more setup than most maps need this week. Use it only if you want a historical image the McClung collection does not have.</p></div>
+<pre class="a2-pre">POST https://planetarycomputer.microsoft.com/api/stac/v1/search
+{"collections":["landsat-c2-l2"],"bbox":[{west},{south},{east},{north}],"datetime":"1984-01-01/1990-12-31","limit":5}</pre>
+  </section>
+
+  <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">&nbsp;</span><span class="cursor"></span></div>
+</main>
+</body>
+</html>
