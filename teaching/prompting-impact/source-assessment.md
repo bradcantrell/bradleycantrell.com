@@ -1,7 +1,7 @@
 # Assessing the Quality of Sources
 ### Assignment 2 · the assessment template
 
-**Due Monday, November 16, 2026 · 1700 EST.** Hand this in as `source-assessment.md`.
+**Due Thursday, November 12, 2026 · 1200 EST.** Hand this in as `source-assessment.md`.
 
 A source is not good or bad in the abstract. It is good or bad for a claim you are making about your quad, the 2 km by 4 km rectangle assigned to you on the Tennessee River corridor. A global flood model is excellent for screening a continent and useless for telling you what the water is doing at your quad. The judgment is always relative to the question.
 
@@ -11,7 +11,7 @@ So this assessment does not ask whether your data is verified. It asks you to ch
 
 ## 1. Tiers of authority
 
-Rank each source by who operates it and what they answer for. This corridor has five tiers, and your work will touch all five. The last one is where any claim you could not trace belongs.
+Rank each source by who operates it and what they answer for. This corridor has five tiers. The last one is where any claim you could not trace belongs.
 
 **Tier 1 · Instrumented by an agency that answers for it.**
 The stage and flow gauge at Knoxville, reported through the National Water Prediction Service and forecast by the Lower Mississippi River Forecast Center. NWS warnings. A physical instrument, in the water, whose readings a forecast center is accountable for.
@@ -118,6 +118,6 @@ Then five short sections.
 
 ## 7. What makes this hard
 
-The temptation is to rank sources once and reuse the ranking. It does not survive contact with the work. The gauge is the best source in your set and it cannot by itself tell you what is happening at your quad. iNaturalist is the weakest in method and it is the only source that knows a species is present.
+The temptation is to rank sources once and reuse the ranking. The gauge is the best source in your set and it cannot by itself tell you what is happening at your quad. iNaturalist is the weakest in method and it is the only source that knows a species is present.
 
 Quality is not a ranking. It is a fit between a source and a question, and the whole skill is being honest about which fit you have.

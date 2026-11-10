@@ -77,9 +77,9 @@
     <p>You will build this with a language model, and that is the intended way to build it. The model is the instrument you are learning to play. It is not the source of the answer, and you are the one who decides what counts. Every step below names what to hand it and what to ask for back.</p>
     <p>Three rules hold across all six steps.</p>
     <div class="lecture"><div class="num">1</div><div><div class="t">Paste the file</div><div class="d">Describe nothing from memory. If the question is about your bounds, paste the KML. A model that cannot read your file will invent numbers that look exactly as plausible as the right ones.</div></div></div>
-    <div class="lecture"><div class="num">2</div><div><div class="t">Ask for the file, not the values</div><div class="d">Coordinates retyped from a number on a screen are where this assignment goes wrong. Have the model write the file, then download it. You should never type a coordinate by hand.</div></div></div>
+    <div class="lecture"><div class="num">2</div><div><div class="t">Ask for the file, not the values</div><div class="d">Coordinates retyped from a number on a screen are where this assignment goes wrong. Have the model write the file, then download it.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Make it show its source</div><div class="d">Ask which endpoint, which archive, which photograph. A layer with no source behind it cannot go in the ledger, and the ledger is the assignment.</div></div></div>
-    <p>If you are working in a chat window that cannot write files, ask for the contents in a code block and save the file yourself. The rule does not change. You never retype a coordinate.</p>
+    <p>If you are working in a chat window that cannot write files, ask for the contents in a code block and save the file yourself.</p>
   </section>
 
   <section class="term-section" id="step1">
@@ -138,11 +138,11 @@
 
   <section class="term-section" id="step4">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · host it</span><span class="meta">public url</span></div>
-    <p>Your map has to live at a real URL. A file on your laptop cannot be assembled with seventeen other maps and cannot be graded by anyone but you.</p>
+    <p>Your map has to live at a real URL. A file on your laptop cannot be assembled with seventeen other maps.</p>
     <div class="lecture"><div class="num">A</div><div><div class="t">GitHub Pages</div><div class="d">Make a public repo, put <em>index.html</em> and a <em>data/</em> folder at the top level, then Settings → Pages → Source, deploy from branch, main, / root. Your map appears at <em>yourname.github.io/repo-name</em> within a minute or two.</div></div></div>
-    <div class="lecture"><div class="num">B</div><div><div class="t">Netlify Drop</div><div class="d">Drag the folder onto <em>app.netlify.com/drop</em>, then sign in and claim the site. A drop you leave unclaimed stays behind a temporary password and is deleted, so a URL you never claimed will not work for me. Claim it and it stays up.</div></div></div>
+    <div class="lecture"><div class="num">B</div><div><div class="t">Netlify Drop</div><div class="d">Drag the folder onto <em>app.netlify.com/drop</em>, then sign in and claim the site. A drop you leave unclaimed stays behind a temporary password and is deleted, so a URL that you do not claim will not be live.</div></div></div>
     <p>Test it in a private window while logged out. If it only works when you are signed in, it does not work.</p>
-    <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use a <em>site-NN</em> path and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity. Your site number is enough for me to know whose it is.</div>
+    <div class="a2-warn"><b>Name it by site number, not by your name.</b> Use a <em>site-NN</em> path and leave your name off the page title. The map is public and permanent, and there is no reason for a public page to carry your identity.</div>
     <div class="a2-warn"><b>It has to be https on a real origin.</b> Several of these endpoints refuse requests that come from a local file, which is a CORS rule rather than a bug you can fix. Prototype locally if you like, but the version you hand in must be served.</div>
   <div class="a2-feed"><b>Feed the model</b>Ask for the exact clicks or commands for your host, one stage at a time, and paste back any error text exactly as it appeared. A paraphrased error sends the model after the wrong problem.</div>
   </section>
@@ -196,7 +196,7 @@
     <p>This is the part being assessed. Not whether your data is verified. Whether you can say what each source is good for, and which of your claims it can actually hold up.</p>
     <p>Quality belongs to a pairing, a source and a claim about a specific 2 km reach. The same global flood model is excellent for screening a continent and useless for telling you what the water is doing at your quad. The judgment is always relative to the question.</p>
 
-    <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Tiers of authority</span> <span class="meta">five, and you will touch all five</span></div>
+    <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Tiers of authority</span> <span class="meta">five</span></div>
     <div class="lecture"><div class="num">1</div><div><div class="t">Instrumented by an agency that answers for it</div><div class="d">The NWPS gauge. NWS warnings. A physical instrument, maintained by an organization that is accountable when it fails.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">Modeled or derived, with a stated method</div><div class="d">Open-Meteo, NLCD, FEMA flood zones. The assumptions of the method are usually the thing that matters.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Volunteer and crowdsourced</div><div class="d">iNaturalist. Enormously valuable and unevenly distributed.</div></div></div>
@@ -210,7 +210,7 @@
   <div class="a2-feed"><b>Feed the model</b>Paste your <code>meta.json</code> and ask it to argue for the weakest layer, not the strongest. What a source is good for is something it can find. What your claim needs is yours to decide.</div>
 
     <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Holding the tension</span> <span class="meta">divergence as knowledge</span></div>
-    <p>The weakest link rule tells you how far a single claim can be trusted. It does not settle a disagreement. When two sources give incompatible accounts of the same thing, the gap between them is information about what your reach is doing that neither can capture alone. Disagreements come in three forms, and naming the form is most of the work.</p>
+    <p>The weakest link rule tells you how far a single claim can be trusted. It does not settle a disagreement. When two sources give incompatible accounts of the same thing, the gap between them is information about what your reach is doing that neither can capture alone. Disagreements come in three forms.</p>
     <div class="lecture"><div class="num">1</div><div><div class="t">Calibration</div><div class="d">The same variable read at different resolutions. A point gauge against a gridded flood model. A reanalysis cell against your own coordinates. The mismatch tells you the scale at which the process is actually working.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">Modality</div><div class="d">Your own reading and a technical source register different dimensions of one thing. The bank you traced against a land cover class. A photograph against a species list. The gap between them is the thing's full complexity.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Intentional</div><div class="d">Sources built by institutions with different mandates answer different questions. A FEMA flood zone is drawn for insurance. An NWS flood category is drawn for warning. Put them side by side and you see what each was built to see.</div></div></div>
@@ -229,10 +229,10 @@
 
   <section class="term-section" id="hard">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">cat hard.md</span><span class="meta">the trap</span></div>
-    <p>The temptation is to rank the sources once and reuse the ranking. It does not survive contact with the work.</p>
+    <p>The temptation is to rank the sources once and reuse the ranking.</p>
     <p>The gauge is the best source in your set and it cannot tell you anything specific about your quad. iNaturalist is the weakest by method and it is the only source that knows a species is actually there. A 1920 photograph has no method at all and it is the only thing on your page that shows what this bank looked like before the dam.</p>
     <p>Quality is a fit between a source and a question rather than a standing rank, and the whole skill is being honest about which fit you have.</p>
-    <p>The second temptation runs the other way. Once two sources disagree, it feels like rigor to pick the better one and move on. The ranking tells you how much weight each source can carry. It does not tell you what their disagreement means, and the disagreement is often the most specific thing your page knows about this reach. Keep the tension on the page until you understand it.</p>
+    <p>The second temptation runs the other way. Once two sources disagree, it feels like rigor to pick the better one and move on. The ranking tells you how much weight each source can carry. It does not tell you what their disagreement means, and the disagreement is often the most specific thing your page knows about this reach. Keep the tension on the page and look for productive ways to interpret it.</p>
     <p>Use whichever model you like to build this. It does not go in the ledger. Only the source of the number does.</p>
   </section>
 
