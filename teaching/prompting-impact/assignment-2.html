@@ -54,7 +54,7 @@
       <span class="term-kicker">Prompting Impact · Module D · Assignment 2</span>
       <h1 class="term-h1">Instrument Panel</h1>
       <div class="term-datum">
-        <span>Due Thursday, November 12 · 1200 EST</span>
+        <span>Due Thursday, November 12 · noon EST</span>
         <span style="opacity:.35;margin:0 .5em">·</span>
         <a href="https://prompting-impact.pages.dev/comparison/" target="_blank" rel="noopener"
            style="color:inherit;border-bottom:1px solid currentColor;text-decoration:none;opacity:.85">what the image changed →</a>
@@ -76,7 +76,7 @@
   <section class="term-section" id="step0">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 0 · the operator</span><span class="meta">how to work with the model</span></div>
     <p>You will build this with a language model, and that is the intended way to build it. The model is the instrument you are learning to play. It is not the source of the answer, and you are the one who decides what counts. Every step below names what to hand it and what to ask for back.</p>
-    <p>Three rules hold across all six steps.</p>
+    <p>Three rules hold across every step.</p>
     <div class="lecture"><div class="num">1</div><div><div class="t">Paste the file</div><div class="d">Describe nothing from memory. If the question is about your bounds, paste the KML. A model that cannot read your file will invent numbers that look exactly as plausible as the right ones.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">Ask for the file, not the values</div><div class="d">Coordinates retyped from a number on a screen are where this assignment goes wrong. Have the model write the file, then download it.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Make it show its source</div><div class="d">Ask which endpoint, which archive, which photograph. A layer with no source behind it cannot go in the ledger, and the ledger is the assignment.</div></div></div>
@@ -144,7 +144,7 @@
   <section class="term-section" id="step4">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · host it</span><span class="meta">public url</span></div>
     <p>Your map has to live at a real URL. A file on your laptop cannot be assembled with seventeen other maps.</p>
-    <p>Everyone hosts on Netlify. It takes a folder, needs no repository, and lets you name the address by site number.</p>
+    <p>Host on Netlify. It takes a folder, needs no repository, and lets you name the address by site number.</p>
     <div class="lecture"><div class="num">1</div><div><div class="t">Drop it</div><div class="d">Put <em>index.html</em> and your <em>data/</em> folder together in one folder. Drag that folder onto <em>app.netlify.com/drop</em>.</div></div></div>
     <div class="lecture"><div class="num">2</div><div><div class="t">Claim it</div><div class="d">Sign up or sign in, which is free, and claim the site. A drop you leave unclaimed sits behind a temporary password and is deleted, so it will not be live.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">Rename it</div><div class="d">In the site's configuration, change the site name to your site number and a word or two, such as <em>site-07-river-bend</em>. Names must be unique, so <em>site-07</em> alone may be taken. Your address becomes <em>https://site-07-river-bend.netlify.app</em>.</div></div></div>
@@ -220,6 +220,7 @@
     <div class="lecture"><div class="num">3</div><div><div class="t">Volunteer and crowdsourced</div><div class="d">iNaturalist. Enormously valuable and unevenly distributed.</div></div></div>
     <div class="lecture"><div class="num">4</div><div><div class="t">Archival and historical</div><div class="d">McClung photographs, old maps, engineering records. A 1920 photograph is a real observation by a real observer, and it is one frame, chosen by someone, at one moment.</div></div></div>
     <div class="lecture"><div class="num">5</div><div><div class="t">Machine assertion with no source</div><div class="d">Anything a language model told you that you could not trace. Useful as a hypothesis. It cannot support a claim about the world.</div></div></div>
+    <p>Your own layer has no tier. Write mine in the tier column, the way the example does, and say in the method column how you made it.</p>
 
     <div class="cmd-head" style="border-bottom:none;margin-bottom:0.4rem"><span class="cmdtext">Six dimensions</span> <span class="meta">in your table and your prose</span></div>
     <p><strong>Authority.</strong> Who produced it, under what mandate, and do they answer for errors. <strong>Method.</strong> Measured, modeled, derived, observed, or recalled. Most disagreements between sources are method disagreements wearing a numbers costume. <strong>Resolution.</strong> Grain against your quad, and which axis fails. <strong>Latency.</strong> Realtime, hourly, daily, annual, or frozen in 2019. <strong>Fitness.</strong> Can it answer what you asked of this reach, or does it answer a neighboring question at a different scale. <strong>Stated error.</strong> Is an uncertainty given, or is the number bare. A source that publishes its error bars is easier to trust than one that does not, even when the error is large. Five of them are in your table, with authority as the tier column. Stated error goes in your prose.</p>
@@ -242,8 +243,8 @@
     <div class="lecture"><div class="num">2</div><div><div class="t">meta.json</div><div class="d">Uploaded to your <strong>Session 2</strong> folder in the shared Drive. This carries your URL, so it is also how I find your map.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">source-assessment.md</div><div class="d">Uploaded to your <strong>Session 2</strong> folder in the shared Drive, written in the <a href="source-assessment.md">template</a>. One table with a row per source you actually used, then five short sections.<br><br><strong>What I built and why</strong>, in one paragraph.<br><strong>Source assessment</strong>, two or three sources that changed how you read your quad.<br><strong>Where the claim weakens</strong>, three of your own claims under the weakest link rule.<br><strong>Where the sources disagree</strong>, the required gap and one disagreement of your own that involves your layer, each with both readings, its form, what it suggests and what would test it.<br><strong>What I would trust less next time</strong>, in three sentences at most.</div></div></div>
     <p>The table wants seven columns. Source, tier, method, resolution, latency, what it can answer, what it cannot. One row per source you used. Below the table, list the sources you looked at and left aside, one line each saying why. Deciding not to use a source is part of being critical about it.</p>
-    <p>The <a href="https://prompting-impact.pages.dev/example/site-19/source-assessment.md">example's source-assessment.md</a> shows the standard, on a spare reach no one was assigned. Your sources, claims and disagreements should look nothing like its.</p>
-    <p><strong>Due Thursday, November 12 · 1200 EST.</strong></p>
+    <p>The <a href="https://prompting-impact.pages.dev/example/site-19/source-assessment.md">example's source-assessment.md</a> shows the standard, on a spare reach no one was assigned. Your sources, claims and disagreements should look nothing like the example's.</p>
+    <p><strong>Due Thursday, November 12 · noon EST.</strong></p>
   </section>
 
   <section class="term-section" id="hard">
