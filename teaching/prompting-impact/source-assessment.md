@@ -28,6 +28,8 @@ McClung photographs. Old maps. Engineering records. Not measurements, but eviden
 **Tier 5 · Machine assertion with no source.**
 Anything an AI model told you that you could not trace. It can be useful as a hypothesis. It cannot support a claim about the world.
 
+Your own layer has no tier. Write mine in the tier column, the way the example does, and say in the method column how you made it.
+
 ---
 
 ## 2. Six dimensions
@@ -112,7 +114,7 @@ The table carries method, resolution, latency and fitness. Authority is the tier
 
 Then five short sections.
 
-The [example on site 19](https://prompting-impact.pages.dev/example/site-19/source-assessment.md) shows the standard, on a spare reach no one was assigned. Your sources, claims and disagreements should look nothing like its.
+The [example on site 19](https://prompting-impact.pages.dev/example/site-19/source-assessment.md) shows the standard, on a spare reach no one was assigned. Your sources, claims and disagreements should look nothing like the example's.
 
 **What I built and why.** The question, the layers, and the dashboard. One paragraph.
 
