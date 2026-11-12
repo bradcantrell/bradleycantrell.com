@@ -85,7 +85,7 @@
     <div class="lecture"><div class="num">2</div><div><div class="t">An operation</div><div class="d">What happens. Cut, plant, open, release, close a path, let a bank erode, stop mowing, do nothing on purpose. Operations, not outcomes. The rule says what you do. The river decides what it becomes.</div></div></div>
     <div class="lecture"><div class="num">3</div><div><div class="t">A place</div><div class="d">Where on your quad the operation happens, drawn on the map as a point, line or area. Every rule has a geometry, and every geometry stays inside your bounds.</div></div></div>
     <div class="a2-warn"><b>A score is not a plan in disguise.</b> If your rules only make sense when they produce one particular drawing, you have written a plan and called it a score. Test each rule by asking what it would do in a year you did not expect. A good rule still means something in that year.</div>
-  <div class="a2-feed"><b>Feed the model</b>Paste your one question, your <code>meta.json</code> and the disagreement paragraph from your source assessment. Ask for ten candidate rules, each with a trigger your panel can read, and ask for three of them to be ones you would not have thought of. Keep the ones you can defend. Rewrite them in your own words.</div>
+  <div class="a2-feed"><b>Feed the model</b>Paste your one question, your <code>meta.json</code> and the disagreement paragraph from your source assessment. Ask for ten candidate rules, each with a trigger your panel can read, and ask for three of them to be ones you would not have thought of. Use any of the ten, develop your own, or both. Keep only the ones you can defend, and rewrite every one you keep in your own words.</div>
   </section>
 
   <section class="term-section" id="step2">
@@ -116,7 +116,8 @@
   <section class="term-section" id="step4">
     <div class="cmd-head"><span class="prompt">❯</span> <span class="cmdtext">step 4 · the corridor</span><span class="meta">gives downstream, asks upstream</span></div>
     <p>Your reach does not end at its bounds. Water, sediment, seeds, fish and people all cross the line. Site numbers run with the river, so the reach above yours is the number before yours and the reach below is the number after. Site 1 asks the Holston and the French Broad. Site 18 gives to the river beyond the corridor.</p>
-    <p>Write two lines.</p>
+    <p>Write two lines. Each one has three parts, what crosses the line, when it crosses, and the sentence itself in your words.</p>
+    <p>For <code>what</code>, choose one of water, sediment, species, people, debris or temperature. Species covers seeds and fish as well as birds, and people covers a path or a trail. For <code>when</code>, choose one of ordinary year, flood year, fifty years untended or always. The first three are the conditions from step 2, and always is for something that crosses every year. The short list is how the corridor map finds your neighbor. The sentence is how we know what you meant.</p>
     <div class="lecture"><div class="num">↓</div><div><div class="t">Gives downstream</div><div class="d">What your score sends to the next reach. Sediment released in a flood year. Cooler water from a shaded bank. A seed source. A trail that continues. Be specific about what and when.</div></div></div>
     <div class="lecture"><div class="num">↑</div><div><div class="t">Asks upstream</div><div class="d">What your score needs from the reach above. Clear water, or sediment. A corridor for a species to arrive along. A bank that does not send debris at the wrong moment.</div></div></div>
     <p>After Thursday's outcomes page goes up, open your upstream neighbor's map and read what is there. You do not have to agree with them. On the corridor map, every place where one reach gives what the next one asks for will show as a link, and every place where they collide will show as a conflict. A conflict is not a mistake. It is the corridor telling us something no single reach could.</p>
@@ -136,8 +137,10 @@
     <span class="k">"stance"</span>: <span class="s">"transform"</span>,
     <span class="k">"cultivates"</span>: <span class="s">"flood year"</span>,
     <span class="k">"tells_me"</span>: <span class="s">"the instrument and reading that would show which future is unfolding"</span>,
-    <span class="k">"gives_downstream"</span>: <span class="s">"sediment released from the bank cuts in flood years"</span>,
-    <span class="k">"asks_upstream"</span>: <span class="s">"no new riprap on the bank just upstream, so sediment keeps arriving"</span>,
+    <span class="k">"gives_downstream"</span>: { <span class="k">"what"</span>: <span class="s">"sediment"</span>, <span class="k">"when"</span>: <span class="s">"flood year"</span>,
+                          <span class="k">"line"</span>: <span class="s">"sediment released from the bank cuts in flood years"</span> },
+    <span class="k">"asks_upstream"</span>: { <span class="k">"what"</span>: <span class="s">"sediment"</span>, <span class="k">"when"</span>: <span class="s">"always"</span>,
+                       <span class="k">"line"</span>: <span class="s">"no new riprap on the bank just upstream, so sediment keeps arriving"</span> },
     <span class="k">"futures"</span>: [
       { <span class="k">"condition"</span>: <span class="s">"ordinary year"</span>, <span class="k">"image"</span>: <span class="s">"https://…/future-1.jpg"</span>, <span class="k">"operation"</span>: <span class="s">"https://…/future-1-section.png"</span>,
         <span class="k">"grounded"</span>: <span class="s">"what in it comes from your data"</span>, <span class="k">"speculative"</span>: <span class="s">"what you are choosing to imagine"</span> },
@@ -164,6 +167,10 @@
   one feature per rule, numbered to match my written score
   kind is grounded or speculative, and if a trigger has no instrument on my panel it is speculative
   stance is one of resist, recover, transform
+  gives_downstream and asks_upstream each have what, when and line
+  what is one of water, sediment, species, people, debris, temperature
+  when is one of ordinary year, flood year, fifty years untended, always
+  line is my corridor sentence, word for word
   copy my words for every text field, do not improve them
   image and operation are the https URLs of files on my hosted site
 
