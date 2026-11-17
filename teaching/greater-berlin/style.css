@@ -25,6 +25,12 @@ nav.site-nav a{color:var(--muted);text-decoration:none;white-space:nowrap}
 nav.site-nav a:hover{color:var(--accent-2)}
 nav.site-nav a.active{color:var(--ink)}
 
+/* ---------- RELOCATED BANNER ---------- */
+.relocated{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding:0.9rem 2rem;border-bottom:1px solid var(--line);background:var(--bg-2)}
+.relocated-link{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:var(--bg);background:var(--accent);padding:0.45rem 0.85rem;border-radius:3px;text-decoration:none;white-space:nowrap}
+.relocated-link:hover{background:var(--accent-2)}
+.relocated-text{font-family:var(--serif);font-style:italic;font-size:0.92rem;color:var(--muted);line-height:1.5}
+
 /* module sub-nav (on module pages) */
 nav.subnav{display:flex;gap:1.2rem;padding:0.6rem 2rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;overflow-x:auto;background:var(--bg-2)}
 nav.subnav a{color:var(--muted)}
