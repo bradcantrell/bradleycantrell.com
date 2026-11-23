@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0.85rem; margin: 0 auto; max-width: var(--max); padding: 0.85rem var(--pad) 3rem; background: transparent !important; }
-    .project-card { position: relative; background: transparent !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; border: 1px solid rgba(var(--ink-rgb), 0.05); border-radius: var(--radius-card); padding: 2rem; min-height: 300px; display: flex; flex-direction: column; gap: 0.9rem; overflow: hidden; isolation: isolate; }
+    .project-card { position: relative; background: transparent !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; border: 1px solid rgba(var(--ink-rgb), 0.05); border-radius: var(--radius-card); padding: 2rem; aspect-ratio: auto; min-height: 300px; display: flex; flex-direction: column; gap: 0.9rem; overflow: hidden; isolation: isolate; }
     .project-card::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: var(--bg-img); background-size: cover; background-position: center; opacity: 0.08; filter: blur(0.5px); transition: opacity 0.5s ease, filter 0.5s ease; pointer-events: none; }
     a.project-card:hover::before { opacity: 0.48; filter: blur(2px); }
     .project-card > * { position: relative; z-index: 1; }

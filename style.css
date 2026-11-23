@@ -1,5 +1,8 @@
 /* bradleycantrell.com — core styles */
 
+/* Google Fonts import (must come before every other rule, or browsers ignore it) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+
 :root {
   --bg: #080808;
   --bg2: #0f0f0f;
@@ -476,8 +479,6 @@ nav {
   display: inline-block;
 }
 
-/* Google Fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
 
 /* ── Print styles for the marketing pages ───────────────────────────────
    Chapter pages have their own @media print block in chapter.css; this

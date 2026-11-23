@@ -181,8 +181,10 @@ requestAnimationFrame(() => {
   fetch('https://ipapi.co/json/')
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      set('vr-ip',  d.ip); requestAnimationFrame(function() { seedTextObstacles(); });
+      set('vr-ip',  d.ip);
       set('vr-loc', [d.city, d.region_code, d.country_code].filter(Boolean).join(', '));
+      // The readout grew once filled in: mark its new outline as an obstacle
+      requestAnimationFrame(function() { SedimentSim.addTextObstacles(['.visitor-readout']); });
     })
     .catch(function() {
       set('vr-ip', 'unavailable');
