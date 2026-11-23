@@ -17,7 +17,7 @@
   --ink-rgb:239,238,222;
 }
 /* Light theme (theme.js sets <html data-theme="light">). Same tint as the
-   dark palette, on paper; text and accents meet WCAG AA on --bg-2. */
+   dark palette, on paper; text and accents meet WCAG AA on --bg-2; muted text is 7.5:1. */
 :root[data-theme="light"]{
   --bg:#F7F6EF;
   --bg-2:#F1EFE3;
@@ -26,13 +26,24 @@
   --accent:#6B6E31;
   --accent-2:#6A6E2F;
   --ink:#292714;
-  --muted:#676553;
+  --muted:#4C4B3D;
   --bg-rgb:247,246,239;
   --bg2-rgb:241,239,227;
   --accent-rgb:107,110,49;
   --accent2-rgb:106,110,47;
   --ink-rgb:41,39,20;
 }
+/* Light theme, hero and header text: small labels use deeper accents
+   (7:1), the text panel and header veil are more solid over photos, and
+   data-hero-box="light" on a hero adds a box where the photo stays too busy. */
+:root[data-theme="light"]{--accent-deep:#505224;--accent-2-deep:#4E5123}
+:root[data-theme="light"] .kicker{color:var(--accent-2-deep)}
+:root[data-theme="light"] .datum span{color:var(--accent-deep)}
+:root[data-theme="light"] .hero-panel{background:rgba(var(--bg-rgb),0.86)}
+:root[data-theme="light"] .page-header-veil{background:linear-gradient(180deg,rgba(var(--bg-rgb),0.80) 0%,rgba(var(--bg-rgb),0.94) 100%)}
+:root[data-theme="light"] .hero[data-hero-box~="light"] .hero-panel{background:rgba(var(--bg-rgb),0.94)}
+:root[data-theme="light"] .page-header[data-hero-box~="light"] .inner{background:rgba(var(--bg-rgb),0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:8px;padding:1.6rem 2rem}
+
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}

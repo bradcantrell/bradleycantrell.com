@@ -35,7 +35,7 @@
   --accent-2:#00775A;
   --warn:#8A5A00;
   --ink:#0B1F30;
-  --muted:#4A5F72;
+  --muted:#344658;
   --bg-rgb:238,243,247;
   --bg2-rgb:226,234,241;
   --accent-rgb:10,100,150;
@@ -45,6 +45,13 @@
   --glow:none;
   --glow-2:none;
 }
+/* Light theme, hero and header text: small labels use deeper accents
+   (7:1), the text panel and header veil are more solid over photos, and
+   data-hero-box="light" on a hero adds a box where the photo stays too busy. */
+:root[data-theme="light"]{--accent-deep:#085179;--accent-2-deep:#005641}
+:root[data-theme="light"] .term-kicker,:root[data-theme="light"] .prompt{color:var(--accent-2-deep)}
+:root[data-theme="light"] .term-datum span{color:var(--accent-deep)}
+
 :root[data-theme="light"] .scanlines{opacity:0.08}
 :root[data-theme="light"] .term-window{box-shadow:0 0 0 1px rgba(var(--accent-rgb),0.08),0 16px 40px rgba(11,31,48,0.12)}
 :root[data-theme="light"] .term-window,:root[data-theme="light"] .term-bar{background-color:var(--panel)}

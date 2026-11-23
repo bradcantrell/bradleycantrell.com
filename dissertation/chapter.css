@@ -1253,6 +1253,36 @@ nav {
    paper, and the generated hero ground warmed to match. The image modal
    above stays dark in both themes (a viewing room for figures). */
 
+/* Secondary text stays dark on paper: captions and sources use the dim
+   token instead of thinned ink, and labels drop their opacity. */
+:root[data-theme="light"] .ch-hero__caption,
+:root[data-theme="light"] .ch-backdrop__caption-title,
+:root[data-theme="light"] .ch-quote-panel__caption-title,
+:root[data-theme="light"] .ch-quote-panel__caption-credit,
+:root[data-theme="light"] .ch-hero__quote-source,
+:root[data-theme="light"] .ch-quote-panel__source { color: var(--text-dim); }
+:root[data-theme="light"] .ch-hero__quote-text,
+:root[data-theme="light"] .ch-quote-panel__text { color: var(--text); }
+:root[data-theme="light"] .ch-hero__label,
+:root[data-theme="light"] .ch-inline-figure__num,
+:root[data-theme="light"] .ch-figure-item figcaption .fig-num,
+:root[data-theme="light"] .ch-running__text,
+:root[data-theme="light"] .ch-sidebar__nav a.active .ch-sidebar__num { opacity: 1; }
+
+:root[data-theme="light"] .ch-hero__label { color: var(--text-dim); }
+
+/* Hero text box, only on chapters whose hero photo is too busy behind the
+   title for either white or dark text (measured). Mark the hero with
+   data-hero-box="light", "dark" or "light dark". */
+:root[data-theme="light"] .ch-hero[data-hero-box~="light"] .ch-hero__content,
+:root:not([data-theme="light"]) .ch-hero[data-hero-box~="dark"] .ch-hero__content {
+  background: rgba(var(--bg-rgb), 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 1.4rem 1.8rem;
+}
+
 /* SVG diagrams are drawn dark-on-paper and inverted for the dark theme;
    on the light theme they show as drawn. Photos are not dimmed. */
 :root[data-theme="light"] .ch-inline-figure img[src$=".svg"],
