@@ -12,13 +12,43 @@
   --warn:#ffb000;
   --ink:#cceeff;
   --muted:#5f7d99;
-  --line:rgba(102,204,255,0.14);
-  --line-strong:rgba(102,204,255,0.34);
+  --line:rgba(var(--accent-rgb),0.14);
+  --line-strong:rgba(var(--accent-rgb),0.34);
   --mono:'JetBrains Mono','IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --glow:0 0 6px rgba(102,204,255,0.55),0 0 18px rgba(102,204,255,0.22);
+  --glow:0 0 6px rgba(var(--accent-rgb),0.55),0 0 18px rgba(var(--accent-rgb),0.22);
   --max:1100px;
   --pad:clamp(1.2rem,4vw,3rem);
+  --bg-rgb:2,7,14;
+  --bg2-rgb:4,16,28;
+  --accent-rgb:102,204,255;
+  --accent2-rgb:0,229,160;
+  --glow-2:0 0 8px rgba(var(--accent2-rgb),0.5);
 }
+/* Light theme (theme.js sets <html data-theme="light">). The terminal on
+   paper: deep cyan and green ink, no neon glow, faint scanlines. Text and
+   accents meet WCAG AA on --bg-2. */
+:root[data-theme="light"]{
+  --bg:#EEF3F7;
+  --bg-2:#E2EAF1;
+  --panel:#F7FAFC;
+  --accent:#0A6496;
+  --accent-2:#00775A;
+  --warn:#8A5A00;
+  --ink:#0B1F30;
+  --muted:#4A5F72;
+  --bg-rgb:238,243,247;
+  --bg2-rgb:226,234,241;
+  --accent-rgb:10,100,150;
+  --accent2-rgb:0,119,90;
+  --line:rgba(10,100,150,0.18);
+  --line-strong:rgba(10,100,150,0.40);
+  --glow:none;
+  --glow-2:none;
+}
+:root[data-theme="light"] .scanlines{opacity:0.08}
+:root[data-theme="light"] .term-window{box-shadow:0 0 0 1px rgba(var(--accent-rgb),0.08),0 16px 40px rgba(11,31,48,0.12)}
+:root[data-theme="light"] .term-window,:root[data-theme="light"] .term-bar{background-color:var(--panel)}
+
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -37,10 +67,10 @@ body{
 .gridbg{
   position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(1100px 600px at 70% -10%, rgba(102,204,255,0.10), transparent 60%),
-    radial-gradient(900px 500px at 10% 110%, rgba(0,229,160,0.06), transparent 60%),
-    repeating-linear-gradient(0deg, rgba(102,204,255,0.035) 0 1px, transparent 1px 46px),
-    repeating-linear-gradient(90deg, rgba(102,204,255,0.035) 0 1px, transparent 1px 46px);
+    radial-gradient(1100px 600px at 70% -10%, rgba(var(--accent-rgb),0.10), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(var(--accent2-rgb),0.06), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(var(--accent-rgb),0.035) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(90deg, rgba(var(--accent-rgb),0.035) 0 1px, transparent 1px 46px);
 }
 .scanlines{
   position:fixed;inset:0;z-index:60;pointer-events:none;
@@ -54,7 +84,7 @@ nav.site-nav{
   position:sticky;top:0;z-index:100;
   display:flex;gap:1.6rem;align-items:center;
   padding:0.85rem 2rem;
-  background:rgba(2,7,14,0.82);
+  background:rgba(var(--bg-rgb),0.82);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
   font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
@@ -70,8 +100,8 @@ nav.site-nav a.active{color:var(--accent)}
   position:relative;max-width:var(--max);margin:0 auto;
   border:1px solid var(--line-strong);
   border-radius:10px;
-  background:linear-gradient(180deg, rgba(102,204,255,0.04), rgba(2,7,14,0.6) 40%);
-  box-shadow:0 0 0 1px rgba(102,204,255,0.06), 0 20px 60px rgba(0,0,0,0.6), inset 0 0 60px rgba(102,204,255,0.04);
+  background:linear-gradient(180deg, rgba(var(--accent-rgb),0.04), rgba(var(--bg-rgb),0.6) 40%);
+  box-shadow:0 0 0 1px rgba(var(--accent-rgb),0.06), 0 20px 60px rgba(0,0,0,0.6), inset 0 0 60px rgba(var(--accent-rgb),0.04);
   overflow:hidden;
 }
 .term-window::before,.term-window::after{
@@ -83,7 +113,7 @@ nav.site-nav a.active{color:var(--accent)}
   display:flex;align-items:center;gap:0.5rem;
   padding:0.65rem 1rem;
   border-bottom:1px solid var(--line);
-  background:rgba(4,16,28,0.85);
+  background:rgba(var(--bg2-rgb),0.85);
   font-size:0.66rem;letter-spacing:0.08em;color:var(--muted);
 }
 .term-bar .term-title{font-family:var(--mono)}
@@ -92,7 +122,7 @@ nav.site-nav a.active{color:var(--accent)}
 .term-body-inner{position:relative;z-index:1}
 .line{font-size:0.82rem;letter-spacing:0.02em}
 .line+.line{margin-top:0.55rem}
-.prompt{color:var(--accent-2);text-shadow:0 0 8px rgba(0,229,160,0.5);margin-right:0.55rem}
+.prompt{color:var(--accent-2);text-shadow:var(--glow-2);margin-right:0.55rem}
 .line.cmd{color:var(--muted)}
 .line.cmd .cmdtext{color:var(--ink)}
 .line.out{color:var(--muted)}
@@ -100,7 +130,7 @@ nav.site-nav a.active{color:var(--accent)}
 .term-kicker{
   display:inline-block;margin:1.4rem 0 0.9rem;
   font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent-2);
-  text-shadow:0 0 8px rgba(0,229,160,0.4);
+  text-shadow:var(--glow-2);
 }
 .term-h1{
   font-family:var(--mono);font-weight:600;
@@ -133,7 +163,7 @@ p,li{color:var(--muted)}
 p+p{margin-top:1rem}
 strong{color:var(--ink);font-weight:600}
 em{color:var(--accent);font-style:normal}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(102,204,255,0.3)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),0.3)}
 a:hover{color:var(--accent-2);border-color:var(--accent-2)}
 
 /* lecture list */
@@ -156,7 +186,7 @@ a:hover{color:var(--accent-2);border-color:var(--accent-2)}
 
 /* verification ledger table-ish */
 .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:1rem}
-.ledger .h{background:rgba(102,204,255,0.06);color:var(--accent);font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.55rem 0.9rem;border-bottom:1px solid var(--line)}
+.ledger .h{background:rgba(var(--accent-rgb),0.06);color:var(--accent);font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.55rem 0.9rem;border-bottom:1px solid var(--line)}
 .ledger .c{padding:0.55rem 0.9rem;font-size:0.8rem;color:var(--muted);border-bottom:1px solid var(--line)}
 .ledger .c.live{color:var(--accent-2)}
 

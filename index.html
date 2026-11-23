@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bradley Cantrell</title>
   <meta name="description" content="Bradley Cantrell &mdash; landscape architect, scholar, and practitioner working at the intersection of computation, ecology, and territory.">
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
 
 <style>
@@ -23,19 +24,19 @@
   line-height: 1.9;
   pointer-events: none;
 }
-.readout-header { font-size: 0.55rem; letter-spacing: 0.18em; color: rgba(200,184,154,0.55); margin-bottom: 0.5rem; }
+.readout-header { font-size: 0.55rem; letter-spacing: 0.18em; color: rgba(var(--accent-rgb), 0.55); margin-bottom: 0.5rem; }
 .readout-row {
   display: flex;
   gap: 1.2rem;
   align-items: baseline;
 }
 .readout-label {
-  color: rgba(200, 184, 154, 0.62);
+  color: rgba(var(--accent-rgb), 0.62);
   min-width: 5.5rem;
   text-transform: uppercase;
 }
 .readout-value {
-  color: rgba(232, 228, 220, 0.88);
+  color: rgba(var(--text-rgb), 0.88);
   font-variant-numeric: tabular-nums;
 }
 </style>

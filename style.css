@@ -17,12 +17,57 @@
   --surface-1: rgba(8, 8, 8, 0.62);
   --surface-2: rgba(0, 0, 0, 0.55);
   --border-soft: rgba(255, 255, 255, 0.06);
+  /* RGB triplets for translucent layers: rgba(var(--bg-rgb), 0.5).
+     --bg-rgb is the page ground, --ink-rgb the opposite (for faint
+     hover tints and hairlines), --accent-rgb and --text-rgb as named. */
+  --bg-rgb: 8, 8, 8;
+  --bg2-rgb: 15, 15, 15;
+  --ink-rgb: 255, 255, 255;
+  --text-rgb: 232, 228, 220;
+  --accent-rgb: 200, 184, 154;
+  /* Text over photographs (project heroes, card captions). */
+  --on-image: #ffffff;
+  --on-image-rgb: 255, 255, 255;
+  --image-scrim-rgb: 0, 0, 0;
   --radius-card: 10px;
   --radius-pill: 999px;
   --font-sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Freight Text Pro', 'Georgia', serif;
   --max: 1400px;
   --pad: clamp(1.5rem, 5vw, 4rem);
+}
+
+/* ── Light theme ─────────────────────────────────────────────────────────
+   Warm paper. Set by theme.js on <html data-theme="light">, from the
+   visitor's system setting or the nav toggle. Every value meets WCAG AA
+   on --bg (text 15.4:1, dim 6.4:1, dimmer 5.0:1, accent 5.3:1). */
+:root[data-theme="light"] {
+  --bg: #f4f1ea;
+  --bg2: #ebe6dc;
+  --text: #1c1a17;
+  --text-dim: #5c564d;
+  --text-dimmer: #6a645a;
+  --accent: #7a5f38;
+  --accent2: #4a6650;
+  --border: #d9d1c2;
+  --surface-1: rgba(244, 241, 234, 0.72);
+  --surface-2: rgba(235, 230, 220, 0.66);
+  --border-soft: rgba(28, 26, 23, 0.09);
+  --bg-rgb: 244, 241, 234;
+  --bg2-rgb: 235, 230, 220;
+  --ink-rgb: 28, 26, 23;
+  --text-rgb: 28, 26, 23;
+  --accent-rgb: 122, 95, 56;
+  --on-image: #1c1a17;
+  --on-image-rgb: 28, 26, 23;
+  --image-scrim-rgb: 244, 241, 234;
+}
+
+/* Smooth the switch, but not on first paint (theme.js sets the theme
+   before the body exists, so nothing animates on load). */
+body, nav, footer, section { transition: background-color 0.3s ease, color 0.3s ease; }
+@media (prefers-reduced-motion: reduce) {
+  body, nav, footer, section { transition: none; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,7 +102,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem var(--pad);
-  background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(var(--bg-rgb),0.95) 0%, transparent 100%);
 }
 
 .nav-name {
@@ -212,7 +257,7 @@ section:has(> .section-header) + * { margin-top: 0 !important; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 1.5rem;
-  background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(var(--bg-rgb),0.9) 0%, transparent 100%);
   transform: translateY(0.5rem);
   opacity: 0.85;
   transition: opacity 0.3s, transform 0.3s;
@@ -235,6 +280,10 @@ section:has(> .section-header) + * { margin-top: 0 !important; }
   letter-spacing: 0.05em;
 }
 
+/* Light theme: photos are not dimmed toward black */
+:root[data-theme="light"] .project-card-img { filter: grayscale(15%) brightness(0.95); }
+:root[data-theme="light"] .project-card:hover .project-card-img { filter: grayscale(0%) brightness(1); }
+
 /* Writing list */
 .writing-list { display: flex; flex-direction: column; gap: 0; }
 
@@ -248,7 +297,7 @@ section:has(> .section-header) + * { margin-top: 0 !important; }
   transition: background 0.2s;
 }
 
-.writing-item:hover { background: rgba(255,255,255,0.02); }
+.writing-item:hover { background: rgba(var(--ink-rgb),0.02); }
 
 .writing-title { font-size: 1rem; font-weight: 400; margin-bottom: 0.25rem; }
 .writing-subtitle { font-size: 0.85rem; color: var(--text-dim); }
@@ -354,6 +403,7 @@ footer p { font-size: 0.8rem; color: var(--text-dimmer); max-width: none; }
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
   }
+  .nav-links { min-width: 0; }
   .nav-links li { flex: 0 0 auto; }
   .nav-links a { font-size: 0.7rem; }
   .project-grid { grid-template-columns: 1fr; }
@@ -376,7 +426,7 @@ body:not(.page-dissertation) .writing-section,
 .book-grid,
 .project-full,
 body:not(.page-dissertation) footer {
-  background: rgba(8, 8, 8, 0.52) !important;
+  background: rgba(var(--bg-rgb), 0.52) !important;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -386,14 +436,14 @@ body:not(.page-dissertation) footer {
 .writing-item,
 .book-card,
 body:not(.page-dissertation) .cv-list li {
-  background: rgba(15, 15, 15, 0.48) !important;
+  background: rgba(var(--bg2-rgb), 0.48) !important;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
 
 /* Project full-width items */
 .project-full-item {
-  background: rgba(12, 12, 12, 0.50) !important;
+  background: rgba(var(--bg2-rgb), 0.50) !important;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
@@ -402,7 +452,7 @@ body:not(.page-dissertation) .cv-list li {
 nav {
   backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(6px) !important;
-  background: rgba(8, 8, 8, 0.72) !important;
+  background: rgba(var(--bg-rgb), 0.72) !important;
 }
 
 /* About / CV text blocks */
@@ -414,7 +464,7 @@ nav {
 
 /* Hero content wrapper */
 .hero-content {
-  background: rgba(8, 8, 8, 0.38);
+  background: rgba(var(--bg-rgb), 0.38);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   padding: 1.5rem 2rem;

@@ -40,6 +40,22 @@
 
   resize();
   window.addEventListener('resize', resize);
+  // Theme (theme.js sets <html data-theme>); light = warm paper, darker ink.
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
+  function fadeGround(a, darkFill) {
+    if (isLight()) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, ' + a + ')';
+      ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = darkFill;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+  window.addEventListener('themechange', () => ctx.clearRect(0, 0, W, H));
+
 
   function hash(n) {
     const s = Math.sin(n) * 43758.5453;
@@ -50,8 +66,9 @@
     requestAnimationFrame(loop);
     t += 0.004;
 
-    ctx.fillStyle = 'rgba(14, 11, 8, 0.18)';
-    ctx.fillRect(0, 0, W, H);
+    // Light mode fades trails to transparent so the canvas never lays a
+    // paper veil over the text; dark mode keeps its original ground fill.
+    fadeGround(0.18, 'rgba(14, 11, 8, 0.18)');
 
     // Sort by Z (painter's algorithm — distant points first)
     const rendered = points.map(p => {
@@ -83,7 +100,7 @@
     for (const pt of rendered) {
       ctx.beginPath();
       ctx.arc(pt.sx, pt.sy, pt.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(196, 172, 128, ${pt.alpha})`;
+      ctx.fillStyle = isLight() ? `rgba(100, 76, 42, ${pt.alpha})` : `rgba(196, 172, 128, ${pt.alpha})`;
       ctx.fill();
     }
   }

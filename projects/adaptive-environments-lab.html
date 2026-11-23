@@ -7,16 +7,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adaptive Environments Lab | Bradley Cantrell</title>
+  <script src="../theme.js"></script>
   <link rel="stylesheet" href="../style.css">
   <style>
     .hero { position: relative; height: 70vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
     .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center 40%; will-change: transform; }
     .hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(var(--image-scrim-rgb),0.7) 0%, rgba(var(--image-scrim-rgb),0) 50%); }
     .hero-content { position: relative; z-index: 2; padding: 0 var(--pad) 4rem; max-width: var(--max); margin: 0 auto; width: 100%; }
-    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
-    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
-    .hero-type { font-size: 0.85rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .hero-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(var(--on-image-rgb),0.6); margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.02em; color: var(--on-image); line-height: 1.15; margin-bottom: 0.5rem; max-width: 800px; }
+    .hero-type { font-size: 0.85rem; color: rgba(var(--on-image-rgb),0.5); letter-spacing: 0.04em; }
+    /* Light theme: the photo fades into the paper and the title sits on it
+       in dark ink. A taller, stronger fade than dark mode keeps dark text
+       readable over busy photographs. The lightbox stays dark in both. */
+    :root[data-theme="light"] .hero-overlay { background: linear-gradient(to top, rgba(var(--image-scrim-rgb),0.98) 0%, rgba(var(--image-scrim-rgb),0.9) 38%, rgba(var(--image-scrim-rgb),0.45) 62%, rgba(var(--image-scrim-rgb),0) 85%); }
+    :root[data-theme="light"] .hero .hero-content { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+    :root[data-theme="light"] .hero-year { color: var(--accent); }
+    :root[data-theme="light"] .hero-type { color: var(--text-dim); }
+    :root[data-theme="light"] .gallery-tile { background: var(--bg2); }
     .meta-bar { border-bottom: 1px solid var(--border); padding: 2rem var(--pad); max-width: var(--max); margin: 0 auto; }
     .meta-bar dl { display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.8rem; color: var(--text-dimmer); }
     .meta-bar dt { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; color: var(--text-dimmer); margin-bottom: 0.2rem; }

@@ -5,6 +5,8 @@
   var canvas = document.getElementById('rd-canvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
+  // Theme (theme.js sets <html data-theme>); light = warm paper, darker ink.
+  function isLight() { return document.documentElement.getAttribute('data-theme') === 'light'; }
   var W, H;
 
   // Noise
@@ -154,9 +156,10 @@
       var ct = contourLevels[di];
       ctx.lineWidth = ct.width;
       ctx.setLineDash([]);
-      var rr = Math.floor(60 + ct.iso * 20);
-      var gg = Math.floor(78 + ct.iso * 15);
-      var bb = Math.floor(92 + ct.iso * 12);
+      var light = isLight();
+      var rr = light ? Math.floor(70 + ct.iso * 20) : Math.floor(60 + ct.iso * 20);
+      var gg = light ? Math.floor(86 + ct.iso * 15) : Math.floor(78 + ct.iso * 15);
+      var bb = light ? Math.floor(104 + ct.iso * 12) : Math.floor(92 + ct.iso * 12);
       drawContour(ct.iso, ct.alpha, 'rgb(' + rr + ',' + gg + ',' + bb + ')');
     }
 
@@ -192,7 +195,7 @@
         for (var ti = 1; ti < p.trail.length; ti++) {
           ctx.lineTo(p.trail[ti].x, p.trail[ti].y);
         }
-        ctx.strokeStyle = 'rgba(190,168,122,' + p.alpha + ')';
+        ctx.strokeStyle = light ? 'rgba(110,84,48,' + p.alpha + ')' : 'rgba(190,168,122,' + p.alpha + ')';
         ctx.lineWidth = p.width;
         ctx.lineCap = 'round';
         ctx.stroke();

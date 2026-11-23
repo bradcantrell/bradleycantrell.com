@@ -33,14 +33,31 @@
   }
   resize();
   window.addEventListener('resize', resize);
+  // Theme (theme.js sets <html data-theme>); light = warm paper, darker ink.
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
+  function fadeGround(a, darkFill) {
+    if (isLight()) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, ' + a + ')';
+      ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = darkFill;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+  window.addEventListener('themechange', () => ctx.clearRect(0, 0, W, H));
+
 
   function loop() {
     requestAnimationFrame(loop);
     t += 0.01;
 
     // Dark fill so stars are visible on transparent canvas
-    ctx.fillStyle = 'rgba(8, 8, 8, 0.25)';
-    ctx.fillRect(0, 0, W, H);
+    // Light mode fades trails to transparent so the canvas never lays a
+    // paper veil over the text; dark mode keeps its original ground fill.
+    fadeGround(0.25, 'rgba(8, 8, 8, 0.25)');
 
     // Move stars
     for (const s of stars) {
@@ -64,7 +81,7 @@
           ctx.beginPath();
           ctx.moveTo(stars[i].x, stars[i].y);
           ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.strokeStyle = `rgba(200, 180, 140, ${a})`;
+          ctx.strokeStyle = isLight() ? `rgba(110, 84, 48, ${a * 1.4})` : `rgba(200, 180, 140, ${a})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -76,7 +93,9 @@
       const twinkle = 0.6 + 0.4 * Math.sin(s.twinkle);
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(230, 210, 170, ${Math.min(1, s.alpha * twinkle * 1.8)})`;
+      ctx.fillStyle = isLight()
+        ? `rgba(96, 72, 40, ${Math.min(1, s.alpha * twinkle * 1.8)})`
+        : `rgba(230, 210, 170, ${Math.min(1, s.alpha * twinkle * 1.8)})`;
       ctx.fill();
     }
   }

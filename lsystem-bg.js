@@ -79,7 +79,7 @@
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.lineTo(nx, ny);
-        ctx.strokeStyle = `rgba(200, 172, 120, ${tree.alpha * 0.7})`;
+        ctx.strokeStyle = isLight() ? `rgba(104, 80, 46, ${tree.alpha * 0.8})` : `rgba(200, 172, 120, ${tree.alpha * 0.7})`;
         ctx.lineWidth = 0.6;
         ctx.stroke();
         x = nx; y = ny;
@@ -99,13 +99,31 @@
     ctx.restore();
   }
 
+  // Theme (theme.js sets <html data-theme>); light = warm paper, darker ink.
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
+  function fadeGround(a, darkFill) {
+    if (isLight()) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, ' + a + ')';
+      ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = darkFill;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+  window.addEventListener('themechange', () => ctx.clearRect(0, 0, W, H));
+
   function loop() {
+
     requestAnimationFrame(loop);
     frame++;
 
     // Slow fade
-    ctx.fillStyle = 'rgba(18, 14, 10, 0.04)';
-    ctx.fillRect(0, 0, W, H);
+    // Light mode fades trails to transparent so the canvas never lays a
+    // paper veil over the text; dark mode keeps its original ground fill.
+    fadeGround(0.04, 'rgba(18, 14, 10, 0.04)');
 
     for (let t of trees) {
       if (frame < t.phase) continue;
@@ -117,8 +135,9 @@
     // When all trees are done, reset after a pause
     if (trees.every(t => t.progress >= 1)) {
       if (frame % 400 === 0) {
-        ctx.fillStyle = 'rgba(18, 14, 10, 0.8)';
-        ctx.fillRect(0, 0, W, H);
+        // Light mode fades trails to transparent so the canvas never lays a
+        // paper veil over the text; dark mode keeps its original ground fill.
+        fadeGround(0.8, 'rgba(18, 14, 10, 0.8)');
         trees = makeTrees();
         frame = 0;
       }

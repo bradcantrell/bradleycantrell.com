@@ -6,6 +6,7 @@
 <title>Living Systems &amp; Ecological Intelligence · Prompting Impact</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="../../theme.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3">
 </head>
@@ -157,11 +158,13 @@
 
   function draw() {
     ctx.clearRect(0, 0, cv.width, cv.height);
+    // Cell colour follows the theme accent (cyan on dark, deep cyan on paper)
+    const rgb = getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb').trim() || '102,204,255';
     for (let i = 0; i < cols * rows; i++) {
       alpha[i] += (grid[i] - alpha[i]) * 0.045;
       if (alpha[i] > 0.015) {
         const x = (i % cols) * CELL, y = Math.floor(i / cols) * CELL;
-        ctx.fillStyle = 'rgba(102,204,255,' + (alpha[i] * 0.20).toFixed(3) + ')';
+        ctx.fillStyle = 'rgba(' + rgb + ',' + (alpha[i] * 0.20).toFixed(3) + ')';
         ctx.fillRect(x + 1, y + 1, CELL - 2, CELL - 2);
       }
     }

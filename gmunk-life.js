@@ -28,8 +28,8 @@ function setup() {
   cyan = color(200, 184, 154);  // warm gold (matches site --accent)
   black = color(0, 0, 0);
   
-  // Ensure black background
-  background(0);
+  // Ensure ground colour (black, or warm paper in light mode)
+  paintGround(1);
   
   // Initialize grid
   cols = floor(width / cellSize);
@@ -47,6 +47,15 @@ function setup() {
   loop();
 }
 
+// Theme (theme.js sets <html data-theme>). Light = warm paper ground.
+function gIsLight() { return document.documentElement.getAttribute('data-theme') === 'light'; }
+function paintGround(a) {
+  // HSB mode: #f4f1ea is about (42, 4, 96)
+  // Light: transparent ground so the page paper shows and no veil covers text
+  if (gIsLight()) { clear(); noFill(); }
+  else { fill(0, 0, 0, a); if (a === 1) background(0); }
+}
+
 function makeGrid() {
   let g = [];
   for (let i = 0; i < cols; i++) {
@@ -61,8 +70,8 @@ function makeGrid() {
 function draw() {
   // Fade effect for trail
   noStroke();
-  fill(0, 0, 0, 10);
-  rect(0, 0, width, height);
+  paintGround(10);
+  if (!gIsLight()) rect(0, 0, width, height);
   
   time += 0.02;
   
@@ -84,7 +93,7 @@ function draw() {
         drawCell(x, y, 0); // Cyan center
         
         // Wireframe grid lines for live cells
-        stroke(35, 60, 55, 30);  // warm amber wireframe
+        stroke(35, 60, gIsLight() ? 70 : 55, 30);  // warm amber wireframe
         strokeWeight(0.5);
         noFill();
         rect(x, y, cellSize, cellSize);
@@ -113,14 +122,14 @@ function draw() {
 
 function drawCell(x, y, hueShift) {
   let hue = (hueShift + 180) % 360;
-  stroke(hue, 90, 100, 80);
+  stroke(hue, 90, gIsLight() ? 50 : 100, 80);
   strokeWeight(2);
   point(x + cellSize/2, y + cellSize/2);
 }
 
 function drawCellWithAberration(x, y, offset, col) {
   let colHue = hue(col);
-  stroke(colHue, 85, 95, 60);
+  stroke(colHue, 85, gIsLight() ? 55 : 95, 60);
   strokeWeight(1.5);
   point(x + cellSize/2 + offset, y + cellSize/2);
 }

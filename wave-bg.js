@@ -99,9 +99,12 @@
         ctx.lineTo(p2.x, p2.y);
       }
     }
-    ctx.strokeStyle = `rgba(196, 172, 128, ${alpha})`;
+    ctx.strokeStyle = isLight() ? `rgba(100, 76, 42, ${alpha})` : `rgba(196, 172, 128, ${alpha})`;
     ctx.stroke();
   }
+
+  // Theme (theme.js sets <html data-theme>); light = warm paper, darker ink.
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
 
   // Contour levels — 16 isolines, tighter spacing
   const NUM_CONTOURS = 16;

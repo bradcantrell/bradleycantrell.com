@@ -85,6 +85,29 @@ const CFG = {
   BASE_DROP_CHANCE: 0.15,    // 5% base deposit chance per frame at full brightness
 };
 
+// ── Theme palettes ───────────────────────────────────────────────────────────
+// Dark: pink sediment builds toward near-white on black. Light: the same
+// sediment builds toward deep magenta on warm paper. theme.js sets
+// <html data-theme>; render() reads CFG every frame, so swapping is enough.
+const PALETTES = {
+  dark:  { BG: [10, 7, 5],       WATER: [28, 50, 82],
+           SED_THIN: [180, 40, 120], SED_THICK: [255, 210, 240],
+           P_SLOW: [255, 120, 180],  P_FAST: [220, 220, 240] },
+  light: { BG: [244, 241, 234],  WATER: [168, 190, 210],
+           SED_THIN: [228, 160, 200], SED_THICK: [120, 18, 78],
+           P_SLOW: [150, 30, 100],   P_FAST: [90, 90, 120] },
+};
+let PCOL = PALETTES.dark;
+function applyTheme() {
+  const light = document.documentElement.getAttribute('data-theme') === 'light';
+  PCOL = light ? PALETTES.light : PALETTES.dark;
+  CFG.BG = PCOL.BG; CFG.WATER = PCOL.WATER;
+  CFG.SED_THIN = PCOL.SED_THIN; CFG.SED_THICK = PCOL.SED_THICK;
+}
+applyTheme();
+window.addEventListener('themechange', applyTheme);
+
+
 // ── State ─────────────────────────────────────────────────────────────────────
 let canvas, ctx, sizeEl;
 let W, H, GW, GH;
@@ -368,9 +391,9 @@ function render() {
     if (pa < 0.01) continue;
     const sp = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
     const t  = clamp(1 - sp / 0.15, 0, 1);
-    const pr = Math.round(lerp(220, 255, t));
-    const pg = Math.round(lerp(220, 120, t));
-    const pb = Math.round(lerp(240, 180, t));
+    const pr = Math.round(lerp(PCOL.P_FAST[0], PCOL.P_SLOW[0], t));
+    const pg = Math.round(lerp(PCOL.P_FAST[1], PCOL.P_SLOW[1], t));
+    const pb = Math.round(lerp(PCOL.P_FAST[2], PCOL.P_SLOW[2], t));
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, 6.2832);
     ctx.fillStyle = `rgba(${pr},${pg},${pb},${pa.toFixed(3)})`;

@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Writing &mdash; Bradley Cantrell</title>
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <style>
     /* Game of Life backdrop — full page behind content */
@@ -73,7 +74,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(8,8,8,0.18);
+      background: rgba(var(--bg-rgb), 0.18);
       backdrop-filter: blur(2px) saturate(0.9);
       -webkit-backdrop-filter: blur(2px) saturate(0.9);
       z-index: 1;
@@ -81,7 +82,7 @@
       transition: background 0.4s ease, backdrop-filter 0.4s ease;
     }
     .book-card:hover::after {
-      background: rgba(8,8,8,0.55);
+      background: rgba(var(--bg-rgb), 0.55);
       backdrop-filter: blur(8px) saturate(0.9);
       -webkit-backdrop-filter: blur(8px) saturate(0.9);
     }

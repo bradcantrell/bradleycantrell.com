@@ -52,6 +52,22 @@
 
   resize();
   window.addEventListener('resize', resize);
+  // Theme (theme.js sets <html data-theme>); light = warm paper, darker ink.
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
+  function fadeGround(a, darkFill) {
+    if (isLight()) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, ' + a + ')';
+      ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = darkFill;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+  window.addEventListener('themechange', () => ctx.clearRect(0, 0, W, H));
+
 
   let frame = 0;
   function loop() {
@@ -60,8 +76,9 @@
     t += SPEED;
 
     // Very slow fade — lines persist as thin traces
-    ctx.fillStyle = 'rgba(14, 11, 9, 0.015)';
-    ctx.fillRect(0, 0, W, H);
+    // Light mode fades trails to transparent so the canvas never lays a
+    // paper veil over the text; dark mode keeps its original ground fill.
+    fadeGround(0.015, 'rgba(14, 11, 9, 0.015)');
 
     ctx.setLineDash([2, 6]);   // dashed strokes
     ctx.lineWidth = 0.7;
@@ -87,7 +104,7 @@
       ctx.beginPath();
       ctx.moveTo(l.x, l.y);
       ctx.lineTo(nx, ny);
-      ctx.strokeStyle = `rgba(220, 198, 152, ${alpha * 2.2})`;
+      ctx.strokeStyle = isLight() ? `rgba(110, 84, 48, ${alpha * 2.2})` : `rgba(220, 198, 152, ${alpha * 2.2})`;
       ctx.stroke();
 
       l.x = nx; l.y = ny;

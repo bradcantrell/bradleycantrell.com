@@ -6,17 +6,18 @@
 <title>Assignment 2 · Instrument Panel · Prompting Impact</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="../../theme.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3">
 <style>
 /* scoped to this page so style.css is not cache-busted for every other page */
 .a2-table{width:100%;border-collapse:collapse;border:1px solid var(--line);margin:1.1rem 0 0.4rem;font-size:0.78rem}
-.a2-table th{text-align:left;padding:0.55rem 0.8rem;background:rgba(102,204,255,0.06);color:var(--accent);
+.a2-table th{text-align:left;padding:0.55rem 0.8rem;background:rgba(var(--accent-rgb),0.06);color:var(--accent);
   font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--line)}
 .a2-table td{padding:0.55rem 0.8rem;color:var(--muted);border-bottom:1px solid var(--line);vertical-align:top}
 .a2-table td:first-child{color:var(--ink);white-space:nowrap}
 .a2-table tr:last-child td{border-bottom:none}
-.a2-pre{background:rgba(102,204,255,0.04);border:1px solid var(--line);border-left:2px solid var(--accent);
+.a2-pre{background:rgba(var(--accent-rgb),0.04);border:1px solid var(--line);border-left:2px solid var(--accent);
   padding:0.9rem 1.1rem;margin:1rem 0;overflow-x:auto;font-size:0.74rem;line-height:1.75;
   color:var(--muted);font-family:'IBM Plex Mono',monospace}
 .a2-pre .k{color:var(--accent)}

@@ -38,6 +38,7 @@
 
     const imgData = ctx.createImageData(W, H);
     const data = imgData.data;
+    const light = document.documentElement.getAttribute('data-theme') === 'light';
 
     for (let y = 0; y < H; y += STEP) {
       for (let x = 0; x < W; x += STEP) {
@@ -52,9 +53,10 @@
         const bright = Math.max(0, Math.min(1, norm));
         const ridge = Math.pow(bright, 0.6); // sharpen ridges slightly
 
-        const r = Math.floor(20 + ridge * 188);
-        const g = Math.floor(14 + ridge * 148);
-        const b = Math.floor(8  + ridge * 100);
+        // Light mode: bronze ridges (darker on paper) instead of bright amber
+        const r = light ? Math.floor(150 - ridge * 60) : Math.floor(20 + ridge * 188);
+        const g = light ? Math.floor(120 - ridge * 50) : Math.floor(14 + ridge * 148);
+        const b = light ? Math.floor(80  - ridge * 36) : Math.floor(8  + ridge * 100);
         const a = Math.floor(6  + ridge * 160);
 
         for (let dy = 0; dy < STEP && y + dy < H; dy++) {
