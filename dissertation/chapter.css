@@ -1283,6 +1283,12 @@ nav {
   padding: 1.4rem 1.8rem;
 }
 
+/* Dark theme: chapter number, label and subtitle brighter so they read on
+   the dark ground (they were 2.3 to 4.3:1). */
+:root:not([data-theme="light"]) .ch-hero__num { color: #a39d91; }
+:root:not([data-theme="light"]) .ch-hero__label { opacity: 1; }
+:root:not([data-theme="light"]) .ch-hero__subtitle { color: #a39d91; }
+
 /* SVG diagrams are drawn dark-on-paper and inverted for the dark theme;
    on the light theme they show as drawn. Photos are not dimmed. */
 :root[data-theme="light"] .ch-inline-figure img[src$=".svg"],

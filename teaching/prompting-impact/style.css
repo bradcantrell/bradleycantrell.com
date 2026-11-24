@@ -207,3 +207,10 @@ a:hover{color:var(--accent-2);border-color:var(--accent-2)}
   .ledger{grid-template-columns:1fr}
   .term-datum{gap:0.8rem}
 }
+
+/* Dark theme, hero and header labels: brighter versions of this course's
+   accents and muted grey (8:1 on --bg-2, so they hold over header photos) so small labels read on the dark
+   ground. Body text keeps the original palette. */
+:root:not([data-theme="light"]){--accent-bright:#66CCFF;--accent-2-bright:#00E5A0;--muted-bright:#96ABBE}
+:root:not([data-theme="light"]) .term-title,:root:not([data-theme="light"]) .term-datum{color:var(--muted-bright)}
+:root:not([data-theme="light"]) .term-datum a{opacity:1!important}

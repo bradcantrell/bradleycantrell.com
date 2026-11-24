@@ -177,3 +177,11 @@ footer b{color:var(--accent-2);font-weight:500}
 @media(max-width:860px){.framing{grid-template-columns:1fr}.sheet{grid-template-columns:1fr}.modules{grid-template-columns:1fr}.samples{grid-template-columns:repeat(2,1fr)}}
 /* Dark theme: text box where the hero photo is too bright behind the text (measured) */
 :root:not([data-theme="light"]) .hero[data-hero-box~="dark"] .hero-panel{background:rgba(var(--bg-rgb),0.84)}
+
+/* Dark theme, hero and header labels: brighter versions of this course's
+   accents and muted grey (8:1 on --bg-2, so they hold over header photos) so small labels read on the dark
+   ground. Body text keeps the original palette. */
+:root:not([data-theme="light"]){--accent-bright:#E88FC9;--accent-2-bright:#D599C1;--muted-bright:#BAA5B4}
+:root:not([data-theme="light"]) .kicker{color:var(--accent-2-bright)}
+:root:not([data-theme="light"]) .datum span{color:var(--accent-bright)}
+:root:not([data-theme="light"]) .hero .subtitle,:root:not([data-theme="light"]) .page-header .subtitle,:root:not([data-theme="light"]) .hero .datum,:root:not([data-theme="light"]) .page-header .datum{color:var(--muted-bright)}

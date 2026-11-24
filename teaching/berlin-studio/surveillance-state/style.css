@@ -178,3 +178,11 @@ footer{border-top:1px solid var(--line);padding:2.5rem 2rem;font-family:var(--mo
 footer b{color:var(--accent-2);font-weight:500}
 
 @media(max-width:860px){.framing{grid-template-columns:1fr}.core{margin-top:1.5rem}.panopticon{grid-template-columns:1fr}.modules{grid-template-columns:1fr}.samples{grid-template-columns:repeat(2,1fr)}}
+
+/* Dark theme, hero and header labels: brighter versions of this course's
+   accents and muted grey (8:1 on --bg-2, so they hold over header photos) so small labels read on the dark
+   ground. Body text keeps the original palette. */
+:root:not([data-theme="light"]){--accent-bright:#9FB1CC;--accent-2-bright:#A4B0C6;--muted-bright:#A6B0BF}
+:root:not([data-theme="light"]) .kicker{color:var(--accent-2-bright)}
+:root:not([data-theme="light"]) .datum span{color:var(--accent-bright)}
+:root:not([data-theme="light"]) .hero .subtitle,:root:not([data-theme="light"]) .page-header .subtitle,:root:not([data-theme="light"]) .hero .datum,:root:not([data-theme="light"]) .page-header .datum{color:var(--muted-bright)}
