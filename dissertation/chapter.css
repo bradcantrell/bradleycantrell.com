@@ -397,12 +397,10 @@ nav {
   font-size: 1.85rem;
   font-weight: 400;
   color: var(--text);
-  margin-top: 3.5rem;
+  margin-top: 4.5rem;
   margin-bottom: 1.25rem;
   letter-spacing: -0.01em;
   line-height: 1.2;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
 }
 
 .ch-content h3 {
@@ -789,7 +787,6 @@ nav {
   max-width: var(--ch-figure);
   margin: 0 auto;
   padding: 3rem clamp(1.5rem, 5vw, 3rem) 0;
-  border-top: 1px solid var(--border);
 }
 
 .ch-figures-section__label {
@@ -841,7 +838,6 @@ nav {
   font-size: 3rem;
   font-weight: 300;
   color: var(--text-dimmer);
-  border-bottom: 1px solid var(--border);
   padding-bottom: 0.25rem;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
@@ -881,7 +877,6 @@ nav {
   font-family: var(--font-sans);
   font-weight: 500;
   color: var(--text-dimmer);
-  border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
@@ -898,7 +893,6 @@ nav {
 .ch-references {
   margin-top: 5rem;
   padding-top: 2.5rem;
-  border-top: 1px solid var(--border);
 }
 
 .ch-references h2 {
@@ -930,7 +924,6 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   padding: 2.5rem clamp(1.5rem, 5vw, 3rem) 5rem;
-  border-top: 1px solid var(--border);
   max-width: calc(var(--ch-content) + clamp(3rem, 10vw, 6rem));
   margin: 0 auto;
   gap: 2rem;
@@ -993,7 +986,6 @@ nav {
 
 /* ── Footer ───────────────────────────────────────────────────────────── */
 .ch-footer {
-  border-top: 1px solid var(--border);
   padding: 2rem clamp(1.5rem, 5vw, 3rem);
   display: flex;
   justify-content: space-between;

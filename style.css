@@ -206,9 +206,18 @@ section {
   display: flex;
   align-items: baseline;
   gap: 1.5rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem;
+  margin-bottom: 3.25rem;
+}
+/* Sections are made with type and space, not rules: the page header is a
+   real title, group headings are small capitals in the accent colour, and
+   list items are separated by spacing (Brad 2026-11-24). */
+.section-header h3 {
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--text);
+  line-height: 1.05;
 }
 
 /* First content after a page header always starts at the same offset */
@@ -216,9 +225,10 @@ section {
 section:has(> .section-header) + * { margin-top: 0 !important; }
 
 .section-count {
-  font-size: 0.7rem;
-  color: var(--text-dimmer);
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 /* Project grid */
@@ -299,12 +309,11 @@ section:has(> .section-header) + * { margin-top: 0 !important; }
   grid-template-columns: 1fr auto;
   gap: 2rem;
   align-items: baseline;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
+  padding: 0.7rem 0;
 }
 
-.writing-item:hover { background: rgba(var(--ink-rgb),0.02); }
+.writing-item .writing-title { transition: color 0.2s; }
+.writing-item:hover .writing-title { color: var(--accent); }
 
 .writing-title { font-size: 1rem; font-weight: 400; margin-bottom: 0.25rem; }
 .writing-subtitle { font-size: 0.85rem; color: var(--text-dim); }
@@ -373,11 +382,10 @@ section:has(> .section-header) + * { margin-top: 0 !important; }
 }
 
 .cv-section { margin-top: 3rem; }
-.cv-section h3 { margin-bottom: 1rem; }
+.cv-section h3 { margin-bottom: 1.1rem; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.16em; }
 .cv-list { list-style: none; }
 .cv-list li {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0;
   font-size: 0.9rem;
   color: var(--text-dim);
   display: flex;
@@ -388,8 +396,7 @@ section:has(> .section-header) + * { margin-top: 0 !important; }
 
 /* Footer */
 footer {
-  padding: 3rem var(--pad);
-  border-top: 1px solid var(--border);
+  padding: 5rem var(--pad) 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -440,9 +447,7 @@ body:not(.page-dissertation) footer {
 
 /* Cards and list items */
 .project-card,
-.writing-item,
-.book-card,
-body:not(.page-dissertation) .cv-list li {
+.book-card {
   background: rgba(var(--bg2-rgb), 0.48) !important;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);

@@ -16,12 +16,10 @@
       grid-template-columns: 1fr 18ch 5ch;
       gap: 1.5rem;
       align-items: baseline;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
+      padding: 0.7rem 0;
     }
-    .lecture-item:hover { background: rgba(var(--ink-rgb), 0.015); padding-left: 0.5rem; }
-    .lecture-institution { font-size: 0.9rem; font-weight: 400; }
+    .lecture-institution { font-size: 1rem; font-weight: 400; transition: color 0.2s; }
+    .lecture-item:hover .lecture-institution { color: var(--accent); }
     .lecture-title { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.2rem; }
     .lecture-video {
       display: inline-block;
@@ -32,23 +30,34 @@
     }
     .lecture-video:hover { color: var(--accent); }
     .lecture-video svg { display: block; }
-    .lecture-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.5rem; border: 1px solid var(--border); color: var(--text-dimmer); margin-top: 0.3rem; margin-right: 0.3rem; }
-    .lecture-tag.keynote { border-color: var(--accent2); color: var(--accent2); }
+    .lecture-tag { display: inline-block; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dimmer); margin-top: 0.3rem; margin-right: 0.9rem; }
+    .lecture-tag.keynote { color: var(--accent2); }
     .lecture-location { font-size: 0.8rem; color: var(--text-dim); }
     .lecture-year { font-size: 0.8rem; color: var(--text-dimmer); text-align: right; }
-    .year-group { margin-top: 3rem; }
+    /* Each year is a large numeral in a left column that stays in view
+       while its group scrolls; groups are separated by space, not rules. */
+    .year-group { display: grid; grid-template-columns: 9rem 1fr; column-gap: 2.5rem; margin-top: 4.5rem; }
     .year-group:first-child { margin-top: 0; }
     .year-heading {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dimmer);
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
+      grid-row: 1 / span 999;
+      position: sticky; top: 6.5rem; align-self: start;
+      font-size: clamp(2.2rem, 3.6vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      color: var(--text-dim);
+      margin-top: 0.15rem;
+    }
+    /* The group already says the year */
+    .year-group .lecture-item { grid-template-columns: 1fr 18ch; }
+    .year-group .lecture-year { display: none; }
+    @media (max-width: 700px) {
+      .year-group { grid-template-columns: 1fr; }
+      .year-heading { position: static; grid-row: auto; margin-bottom: 0.8rem; }
     }
     @media (max-width: 600px) {
-      .lecture-item { grid-template-columns: 1fr auto; }
+      .lecture-item, .year-group .lecture-item { grid-template-columns: 1fr; }
       .lecture-location { display: none; }
     }
   </style>
